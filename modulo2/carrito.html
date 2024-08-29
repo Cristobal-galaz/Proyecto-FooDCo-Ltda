@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalles de Campaña</title>
+    <title id="pageTitle">Detalles de Campaña</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
@@ -15,6 +15,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            position: relative; /* Add relative position to body to anchor the button correctly */
         }
         .modal {
             display: none;
@@ -92,9 +93,25 @@
         .confirm-button:hover {
             background-color: #444;
         }
+        .lang-toggle {
+            position: fixed;
+            top: 20px; /* Adjust top position to be below navbar */
+            right: 20px; /* Adjust right position to be within view */
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            z-index: 9999; /* Ensure the button is above other content */
+        }
+        .navbar {
+            z-index: 1000; /* Ensure navbar is below the toggle button */
+        }
     </style>
 </head>
 <body>
+    <button class="lang-toggle" onclick="toggleLanguage()">Español</button>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" href="{% url 'inicio' %}">ADVANCE</a>
@@ -110,13 +127,13 @@
             </a>
         </div>
     </nav>
-    <h1>Carrito de Compra</h1>
-    <table>
+    <h1 id="pageHeader">Carrito de Compra</h1>
+    <table id="cartTable">
         <tr>
-            <th>Producto</th>
-            <th>Valor Unitario</th>
-            <th>Cantidad</th>
-            <th>Total</th>
+            <th id="productHeader">Producto</th>
+            <th id="unitPriceHeader">Valor Unitario</th>
+            <th id="quantityHeader">Cantidad</th>
+            <th id="totalHeader">Total</th>
         </tr>
         <tr>
             <td>Producto 1</td>
@@ -131,55 +148,90 @@
             <td>$150</td>
         </tr>
         <tr>
-            <th colspan="3" style="text-align:right;">Valor Total:</th>
+            <th colspan="3" style="text-align:right;" id="totalLabel">Valor Total:</th>
             <th>$550</th>
         </tr>
     </table>
-    <h2>Información del Cliente</h2>
+    <h2 id="clientInfoHeader">Información del Cliente</h2>
     <form>
-        <label for="name">Nombre Completo:</label><br>
+        <label for="name" id="nameLabel">Nombre Completo:</label><br>
         <input type="text" id="name" name="name" required><br><br>
-        <label for="email">Correo Electrónico:</label><br>
+        <label for="email" id="emailLabel">Correo Electrónico:</label><br>
         <input type="email" id="email" name="email" required><br><br>
-        <label for="phone">Teléfono:</label><br>
+        <label for="phone" id="phoneLabel">Teléfono:</label><br>
         <input type="text" id="phone" name="phone" required><br><br>
-        <label for="message">Mensaje para el Ejecutivo:</label><br>
+        <label for="message" id="messageLabel">Mensaje para el Ejecutivo:</label><br>
         <textarea id="message" name="message" class="comment-box"></textarea><br><br>
-        <button class="pay-button" onclick="showModal()">Pagar</button>
+        <button class="pay-button" onclick="showModal()"><span id="payButtonText">Pagar</span></button>
     </form>
     <div id="paymentModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
-            <h2>Detalles de Pago</h2>
+            <h2 id="paymentHeader">Detalles de Pago</h2>
             <form id="paymentForm">
-                <label for="cardName">Nombre en la Tarjeta:</label><br>
+                <label for="cardName" id="cardNameLabel">Nombre en la Tarjeta:</label><br>
                 <input type="text" id="cardName" name="cardName" required><br><br>
-                <label for="cardNumber">Número de Tarjeta:</label><br>
+                <label for="cardNumber" id="cardNumberLabel">Número de Tarjeta:</label><br>
                 <input type="text" id="cardNumber" name="cardNumber" required><br><br>
-                <label for="expiry">Fecha de Expiración (MM/AA):</label><br>
+                <label for="expiry" id="expiryLabel">Fecha de Expiración (MM/AA):</label><br>
                 <input type="text" id="expiry" name="expiry" required><br><br>
-                <label for="cvv">CVV:</label><br>
+                <label for="cvv" id="cvvLabel">CVV:</label><br>
                 <input type="text" id="cvv" name="cvv" required><br><br>
-                <button type="submit" class="pay-button">Confirmar Pago</button>
+                <button type="submit" class="pay-button"><span id="confirmButtonText">Confirmar Pago</span></button>
             </form>
         </div>
     </div>
     <script>
-        var modal = document.getElementById("myModal");
-        var btn = document.getElementById("myBtn");
-        var span = document.getElementsByClassName("close")[0];
+        var isEnglish = false;
 
-        btn.onclick = function() {
-            modal.style.display = "block";
+        function toggleLanguage() {
+            isEnglish = !isEnglish;
+            updateContent();
         }
 
-        span.onclick = function() {
-            modal.style.display = "none";
-        }
-
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
+        function updateContent() {
+            if (isEnglish) {
+                document.getElementById('pageTitle').textContent = "Campaign Details";
+                document.getElementById('pageHeader').textContent = "Shopping Cart";
+                document.getElementById('productHeader').textContent = "Product";
+                document.getElementById('unitPriceHeader').textContent = "Unit Price";
+                document.getElementById('quantityHeader').textContent = "Quantity";
+                document.getElementById('totalHeader').textContent = "Total";
+                document.getElementById('totalLabel').textContent = "Total Value:";
+                document.getElementById('clientInfoHeader').textContent = "Customer Information";
+                document.getElementById('nameLabel').textContent = "Full Name:";
+                document.getElementById('emailLabel').textContent = "Email Address:";
+                document.getElementById('phoneLabel').textContent = "Phone:";
+                document.getElementById('messageLabel').textContent = "Message to the Executive:";
+                document.getElementById('payButtonText').textContent = "Pay";
+                document.getElementById('paymentHeader').textContent = "Payment Details";
+                document.getElementById('cardNameLabel').textContent = "Name on Card:";
+                document.getElementById('cardNumberLabel').textContent = "Card Number:";
+                document.getElementById('expiryLabel').textContent = "Expiration Date (MM/YY):";
+                document.getElementById('cvvLabel').textContent = "CVV:";
+                document.getElementById('confirmButtonText').textContent = "Confirm Payment";
+                document.querySelector('.lang-toggle').textContent = "Español";
+            } else {
+                document.getElementById('pageTitle').textContent = "Detalles de Campaña";
+                document.getElementById('pageHeader').textContent = "Carrito de Compra";
+                document.getElementById('productHeader').textContent = "Producto";
+                document.getElementById('unitPriceHeader').textContent = "Valor Unitario";
+                document.getElementById('quantityHeader').textContent = "Cantidad";
+                document.getElementById('totalHeader').textContent = "Total";
+                document.getElementById('totalLabel').textContent = "Valor Total:";
+                document.getElementById('clientInfoHeader').textContent = "Información del Cliente";
+                document.getElementById('nameLabel').textContent = "Nombre Completo:";
+                document.getElementById('emailLabel').textContent = "Correo Electrónico:";
+                document.getElementById('phoneLabel').textContent = "Teléfono:";
+                document.getElementById('messageLabel').textContent = "Mensaje para el Ejecutivo:";
+                document.getElementById('payButtonText').textContent = "Pagar";
+                document.getElementById('paymentHeader').textContent = "Detalles de Pago";
+                document.getElementById('cardNameLabel').textContent = "Nombre en la Tarjeta:";
+                document.getElementById('cardNumberLabel').textContent = "Número de Tarjeta:";
+                document.getElementById('expiryLabel').textContent = "Fecha de Expiración (MM/AA):";
+                document.getElementById('cvvLabel').textContent = "CVV:";
+                document.getElementById('confirmButtonText').textContent = "Confirmar Pago";
+                document.querySelector('.lang-toggle').textContent = "English";
             }
         }
 
@@ -199,7 +251,7 @@
 
         document.getElementById('paymentForm').onsubmit = function(event) {
             event.preventDefault();
-            alert("Pago procesado correctamente. ¡Gracias por su compra!");
+            alert(isEnglish ? "Payment processed successfully. Thank you for your purchase!" : "Pago procesado correctamente. ¡Gracias por su compra!");
             closeModal();
         }
     </script>
