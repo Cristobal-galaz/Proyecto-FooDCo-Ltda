@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="image-container">
+    <img src="https://i.imgur.com/0J6sW6j.jpg" alt="Imagen de una canasta de verduras">
+  </div>
+  <div class="text-container">
+    <p>Somos una empresa familiar, nacida y criada en la sexta región.</p>
+    <p>Valoramos el esfuerzo de cada productor porque conocemos su trabajo desde muy cerca.</p>
+    <p>Nuestra alimentación siempre fue prácticamente directa desde la huerta. disfrutamos de los beneficios de productos de alta calidad, inocuos y muy sabrosos. creemos que una alimentación saludable es la base en el bienestar de cada persona y, en este sentido, queremos ser un aporte, llevando los mejores productos a las principales empresas que proveen alimentación dentro de nuestro país.</p>
+  </div>
+</div>
+
+<style>
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .image-container {
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 20px;
+  }
+
+  .image-container img {
+    width: 100%;
+    height: auto;
+  }
+
+  .text-container {
+    text-align: center;
+  }
+
+  .text-container p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+</style>

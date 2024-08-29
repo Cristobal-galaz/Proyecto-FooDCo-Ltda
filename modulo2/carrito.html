@@ -1,0 +1,259 @@
+{% load static %}
+
+<!-- compra.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle">Detalles de Campaña</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'api/styles.css' %}">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            position: relative; /* Add relative position to body to anchor the button correctly */
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+            text-align: left;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        .pay-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 20px 0;
+            cursor: pointer;
+            border: none;
+        }
+        .comment-box {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        .confirm-button {
+            background-color: black;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        .confirm-button:hover {
+            background-color: #444;
+        }
+        .lang-toggle {
+            position: fixed;
+            top: 20px; /* Adjust top position to be below navbar */
+            right: 20px; /* Adjust right position to be within view */
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            z-index: 9999; /* Ensure the button is above other content */
+        }
+        .navbar {
+            z-index: 1000; /* Ensure navbar is below the toggle button */
+        }
+    </style>
+</head>
+<body>
+    <button class="lang-toggle" onclick="toggleLanguage()">Español</button>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'inicio' %}">ADVANCE</a>
+            <div class="flex-grow-1"></div>
+            <a class="navbar-brand ml-auto" href="#">
+                <img src="https://www.pngall.com/wp-content/uploads/2016/04/Cart-Free-Download-PNG.png" alt="Carrito de Compras" height="30">
+            </a>
+            <a href="{% url 'inicio' %}" class="navbar-brand">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-skip-backward" viewBox="0 0 16 16">
+                    <path d="M.5 3.5A.5.5 0 0 1 1 4v3.248l6.267-3.636c.52-.302 1.233.043 1.233.696v2.94l6.267-3.636c.52-.302 1.233.043 1.233.696v7.384c0 .653-.713.998-1.233.696L8.5 8.752v2.94c0 .653-.713.998-1.233.696L1 8.752V12a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5m7 1.133L1.696 8 7.5 11.367zm7.5 0L9.196 8 15 11.367z"/>
+                </svg>
+                <a href="{% url 'user_logout' %}" class="navbar-brand">Cerrar sesión</a>
+            </a>
+        </div>
+    </nav>
+    <h1 id="pageHeader">Carrito de Compra</h1>
+    <table id="cartTable">
+        <tr>
+            <th id="productHeader">Producto</th>
+            <th id="unitPriceHeader">Valor Unitario</th>
+            <th id="quantityHeader">Cantidad</th>
+            <th id="totalHeader">Total</th>
+        </tr>
+        <tr>
+            <td>Producto 1</td>
+            <td>$200</td>
+            <td>2</td>
+            <td>$400</td>
+        </tr>
+        <tr>
+            <td>Producto 2</td>
+            <td>$150</td>
+            <td>1</td>
+            <td>$150</td>
+        </tr>
+        <tr>
+            <th colspan="3" style="text-align:right;" id="totalLabel">Valor Total:</th>
+            <th>$550</th>
+        </tr>
+    </table>
+    <h2 id="clientInfoHeader">Información del Cliente</h2>
+    <form>
+        <label for="name" id="nameLabel">Nombre Completo:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+        <label for="email" id="emailLabel">Correo Electrónico:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+        <label for="phone" id="phoneLabel">Teléfono:</label><br>
+        <input type="text" id="phone" name="phone" required><br><br>
+        <label for="message" id="messageLabel">Mensaje para el Ejecutivo:</label><br>
+        <textarea id="message" name="message" class="comment-box"></textarea><br><br>
+        <button class="pay-button" onclick="showModal()"><span id="payButtonText">Pagar</span></button>
+    </form>
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="paymentHeader">Detalles de Pago</h2>
+            <form id="paymentForm">
+                <label for="cardName" id="cardNameLabel">Nombre en la Tarjeta:</label><br>
+                <input type="text" id="cardName" name="cardName" required><br><br>
+                <label for="cardNumber" id="cardNumberLabel">Número de Tarjeta:</label><br>
+                <input type="text" id="cardNumber" name="cardNumber" required><br><br>
+                <label for="expiry" id="expiryLabel">Fecha de Expiración (MM/AA):</label><br>
+                <input type="text" id="expiry" name="expiry" required><br><br>
+                <label for="cvv" id="cvvLabel">CVV:</label><br>
+                <input type="text" id="cvv" name="cvv" required><br><br>
+                <button type="submit" class="pay-button"><span id="confirmButtonText">Confirmar Pago</span></button>
+            </form>
+        </div>
+    </div>
+    <script>
+        var isEnglish = false;
+
+        function toggleLanguage() {
+            isEnglish = !isEnglish;
+            updateContent();
+        }
+
+        function updateContent() {
+            if (isEnglish) {
+                document.getElementById('pageTitle').textContent = "Campaign Details";
+                document.getElementById('pageHeader').textContent = "Shopping Cart";
+                document.getElementById('productHeader').textContent = "Product";
+                document.getElementById('unitPriceHeader').textContent = "Unit Price";
+                document.getElementById('quantityHeader').textContent = "Quantity";
+                document.getElementById('totalHeader').textContent = "Total";
+                document.getElementById('totalLabel').textContent = "Total Value:";
+                document.getElementById('clientInfoHeader').textContent = "Customer Information";
+                document.getElementById('nameLabel').textContent = "Full Name:";
+                document.getElementById('emailLabel').textContent = "Email Address:";
+                document.getElementById('phoneLabel').textContent = "Phone:";
+                document.getElementById('messageLabel').textContent = "Message to the Executive:";
+                document.getElementById('payButtonText').textContent = "Pay";
+                document.getElementById('paymentHeader').textContent = "Payment Details";
+                document.getElementById('cardNameLabel').textContent = "Name on Card:";
+                document.getElementById('cardNumberLabel').textContent = "Card Number:";
+                document.getElementById('expiryLabel').textContent = "Expiration Date (MM/YY):";
+                document.getElementById('cvvLabel').textContent = "CVV:";
+                document.getElementById('confirmButtonText').textContent = "Confirm Payment";
+                document.querySelector('.lang-toggle').textContent = "Español";
+            } else {
+                document.getElementById('pageTitle').textContent = "Detalles de Campaña";
+                document.getElementById('pageHeader').textContent = "Carrito de Compra";
+                document.getElementById('productHeader').textContent = "Producto";
+                document.getElementById('unitPriceHeader').textContent = "Valor Unitario";
+                document.getElementById('quantityHeader').textContent = "Cantidad";
+                document.getElementById('totalHeader').textContent = "Total";
+                document.getElementById('totalLabel').textContent = "Valor Total:";
+                document.getElementById('clientInfoHeader').textContent = "Información del Cliente";
+                document.getElementById('nameLabel').textContent = "Nombre Completo:";
+                document.getElementById('emailLabel').textContent = "Correo Electrónico:";
+                document.getElementById('phoneLabel').textContent = "Teléfono:";
+                document.getElementById('messageLabel').textContent = "Mensaje para el Ejecutivo:";
+                document.getElementById('payButtonText').textContent = "Pagar";
+                document.getElementById('paymentHeader').textContent = "Detalles de Pago";
+                document.getElementById('cardNameLabel').textContent = "Nombre en la Tarjeta:";
+                document.getElementById('cardNumberLabel').textContent = "Número de Tarjeta:";
+                document.getElementById('expiryLabel').textContent = "Fecha de Expiración (MM/AA):";
+                document.getElementById('cvvLabel').textContent = "CVV:";
+                document.getElementById('confirmButtonText').textContent = "Confirmar Pago";
+                document.querySelector('.lang-toggle').textContent = "English";
+            }
+        }
+
+        function showModal() {
+            document.getElementById('paymentModal').style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById('paymentModal').style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('paymentModal')) {
+                closeModal();
+            }
+        }
+
+        document.getElementById('paymentForm').onsubmit = function(event) {
+            event.preventDefault();
+            alert(isEnglish ? "Payment processed successfully. Thank you for your purchase!" : "Pago procesado correctamente. ¡Gracias por su compra!");
+            closeModal();
+        }
+    </script>
+</body>
+</html>

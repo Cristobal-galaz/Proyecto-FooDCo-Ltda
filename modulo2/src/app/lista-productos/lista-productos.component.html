@@ -1,0 +1,64 @@
+<html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Productos</title>
+      <!-- Bootstrap CSS -->
+      <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body>
+      <main>
+        <div class="container">
+          <table>
+            <thead>
+              <tr>
+                <th>Imagen</th>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Precio</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><img src="https://d31f1ehqijlcua.cloudfront.net/n/6/0/f/2/60f26e0321d9f381ad5d3e36690f2aae51a70f14_Poultry_440081_01.jpg" height="50"></td>
+                <td><a href="#" target="_blank">Producto 1</a></td>
+                <td>Congelado</td>
+                <th>$700</th>
+              </tr>
+              <!-- Reemplazar más filas según sea necesario -->
+            </tbody>
+          </table>
+          
+        </div>
+      </main>
+  
+      <script>
+        function toggleChat() {
+          const chatPopup = document.getElementById('chatPopup');
+          chatPopup.style.display = chatPopup.style.display === 'none' || chatPopup.style.display === '' ? 'block' : 'none';
+        }
+  
+        function sendMessage(event) {
+          if (event.key === 'Enter') {
+            const input = event.target;
+            const message = input.value;
+            if (message.trim() !== '') {
+              const chatBody = document.getElementById('chatBody');
+              const userMessage = document.createElement('div');
+              userMessage.className = 'message user';
+              userMessage.innerHTML = `<p>${message}</p>`;
+              chatBody.appendChild(userMessage);
+              input.value = '';
+              chatBody.scrollTop = chatBody.scrollHeight;
+            }
+          }
+        }
+      </script>
+  
+      <!-- Bootstrap JS -->
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </body>
+  </html>
+  

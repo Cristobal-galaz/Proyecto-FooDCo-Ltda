@@ -1,0 +1,222 @@
+<div class="container">
+    <style>
+        body {
+          margin: 0;
+          font-family: sans-serif;
+        }
+    
+        .container {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 1rem;
+          background-color: #ffffff4d;
+        }
+    
+        .logo {
+          display: flex;
+          align-items: center;
+        }
+    
+        .logo img {
+          width: 30px;
+          height: 30px;
+          margin-right: 1rem;
+        }
+    
+        .logo h1 {
+          font-size: 1.5rem;
+          margin: 0;
+        }
+    
+        .actions {
+          display: flex;
+          align-items: center;
+        }
+    
+        .action {
+          margin-right: 1rem;
+          cursor: pointer;
+        }
+    
+        .action i {
+          font-size: 1.5rem;
+        }
+    
+        .header {
+          background-color: #f5f5f5;
+          padding: 1rem;
+        }
+    
+        .header h2 {
+          margin: 0;
+          font-size: 2rem;
+        }
+    
+        .header p {
+          margin: 0;
+          font-size: 1rem;
+        }
+    
+        .nav {
+          display: flex;
+          justify-content: space-around;
+          padding: 1rem;
+        }
+    
+        .nav a {
+          text-decoration: none;
+          color: #333;
+          font-weight: bold;
+        }
+    
+        .nav a:hover {
+          text-decoration: underline;
+        }
+    
+        .products {
+          display: flex;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          padding: 1rem;
+        }
+    
+        .product {
+          width: 300px;
+          margin-bottom: 1rem;
+          border: 1px solid #ddd;
+          padding: 1rem;
+        }
+    
+        .product img {
+          width: 100%;
+          height: auto;
+        }
+    
+        .product h3 {
+          margin: 1rem 0;
+        }
+    
+        .product p {
+          margin: 0;
+          font-size: 0.8rem;
+        }
+    
+        .price {
+          font-weight: bold;
+          font-size: 1.2rem;
+        }
+    
+        .discount {
+          font-size: 0.8rem;
+          color: #888;
+        }
+    
+        .footer {
+          background-color: #333;
+          color: #fff;
+          padding: 1rem;
+          text-align: center;
+        }
+      </style>
+    <div class="header">
+      <div class="logo">
+        <img src="https://th.bing.com/th/id/OIP.0uPt8eUvnw8pNcdA0EdYXwHaEo?w=248&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Mercado Libre Logo" />
+      </div>
+      <div class="search-bar">
+        <input type="text" placeholder="Buscar productos" />
+        <button type="submit">Buscar</button>
+      </div>
+      <div class="user-actions">
+        <button type="button">Ingresar</button>
+        <button type="button">Vender</button>
+        <button type="button">Mi cuenta</button>
+      </div>
+    </div>
+  
+    <div class="content">
+      <div class="banner">
+        <img src="https://th.bing.com/th/id/OIP.Mc21D3ojCLPQoqm-hJ8T3gHaHG?w=202&h=193&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="the gpat" />
+      </div>
+  
+      <div class="categories">
+        <ul>
+          <li>
+            <a href="#">productos</a>
+          </li>
+          <li>
+            <a href="#">filtro</a>
+          </li>
+          <li>
+            <a href="#">Categorías</a>
+          </li>
+        </ul>
+      </div>
+  
+      <div class="products">
+        <div class="product">
+          <img src="https://frutasyverdurashuechuraba.cl/wp-content/uploads/2021/12/frutilla3kg.png" alt="Frutillas" />
+          <div class="product-info">
+            <h3>Frutillas</h3>
+            <p>Caja de 500 gramos de Frutillas</p>
+            <span class="price">$1500</span>
+            <button type="button">Agregar al carrito</button>
+          </div>
+        </div>
+        <div class="product">
+          <img src="https://d26z5keclpxl8.cloudfront.net/web-dist/fotos/productos/1900/jpg/cebolla_5630_300x300.jpg" alt="Cebollas" />
+          <div class="product-info">
+            <h3>Cebollas</h3>
+            <p>Malla de 1 Kilogramo de Cebollas</p>
+            <span class="price">$4000</span>
+            <button type="button">Agregar al carrito</button>
+          </div>
+        </div>
+        <div class="product">
+          <img src="https://llevamostupedido.cl/wp-content/uploads/2020/09/zanahoria.jpg" alt="Zanahorias" />
+          <div class="product-info">
+            <h3>Zanahorias</h3>
+            <p>Malla de 1 Kilogramo de Zanahorias</p>
+            <span class="price">$1150</span>
+            <button type="button">Agregar al carrito</button>
+          </div>
+        </div>
+        <div class="product">
+          <img src="https://naranjasdelarbolacasa.com/wp-content/uploads/2017/12/MURCOOT-MANDARINAS3-0002-300x300.jpg" alt="Mandarinas" />
+          <div class="product-info">
+            <h3>Mandarinas</h3>
+            <p>Malla de 1 Kilogramo de Mandarinas</p>
+            <span class="price">$2700</span>
+            <button type="button">Agregar al carrito</button>
+          </div>
+        </div>
+        <div class="product">
+            <img src="https://th.bing.com/th/id/OIP.Txq5IFqTHCPZ6sWRBPYctAHaE8?w=274&h=183&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Tomate" />
+            <div class="product-info">
+              <h3>Tomate</h3>
+              <p>1 Kilogramo de Tomate</p>
+              <span class="price">$1950</span>
+              <button type="button">Agregar al carrito</button>
+            </div>
+          </div>
+      </div>
+    </div>
+  
+    <div class="footer">
+      <p>© 2023 anibal gg </p>
+      <ul>
+        <li>
+          <a href="#">Sobre nosotros</a>
+        </li>
+        <li>
+          <a href="#">Ayuda</a>
+        </li>
+        <li>
+          <a href="#">Términos y condiciones</a>
+        </li>
+        <li>
+          <a href="#">Política de privacidad</a>
+        </li>
+      </ul>
+    </div>
+  </div>
