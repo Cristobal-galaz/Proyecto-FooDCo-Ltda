@@ -15,7 +15,7 @@ import {
   XhrFactory,
   getDOM,
   setRootDomAdapter
-} from "./chunk-REUFAKTA.js";
+} from "./chunk-EFNADYPR.js";
 import {
   ALLOW_MULTIPLE_PLATFORMS,
   ANIMATION_MODULE_TYPE,
@@ -54,7 +54,7 @@ import {
   ɵɵdefineInjector,
   ɵɵdefineNgModule,
   ɵɵinject
-} from "./chunk-OWLUMR7K.js";
+} from "./chunk-PKEKTO2Z.js";
 import {
   __async,
   __objRest,
