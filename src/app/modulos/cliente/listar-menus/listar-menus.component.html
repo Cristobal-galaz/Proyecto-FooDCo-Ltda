@@ -1,3 +1,12 @@
+@if(dietaSeleccionada === ''){
+    <div class="green-box">
+        <mat-form-field class ="search" appearance="outline" >
+            <mat-label >Busqueda por ingrediente</mat-label>
+            <input matInput placeholder="Escriba algun ingrediente">
+            <mat-icon matSuffix>search</mat-icon>
+          </mat-form-field>
+      </div>
+
 <div class="card-container">
     @for (dieta of dietas; track dieta.nombre){
         <mat-card 
@@ -12,10 +21,23 @@
         </mat-card>
     }
 </div>
-
-@if(dietaSeleccionada != ''){
-
-    <mat-tab-group dynamicHeight class="tabs">
+}
+@else{
+    <div class="card-container">
+    @for (dieta of dietas; track $index){
+            <mat-card 
+            class="item types" 
+            appearance="outlined" 
+            [ngStyle]="{'background-image': 'url(' + dieta.imagen + ')'}"
+            (click) ="seleccionarDieta(dieta.nombre)"
+            >
+            <mat-card-content class="">
+                {{dieta.nombre}}
+            </mat-card-content>
+        </mat-card>
+    }
+</div>
+        <mat-tab-group dynamicHeight class="tabs">
     @for(tipo of tipos; track $index){
             <mat-tab label="{{tipo}}">
                 <div class="container">

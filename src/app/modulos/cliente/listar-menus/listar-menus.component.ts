@@ -5,11 +5,14 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatTabsModule} from '@angular/material/tabs';
 import { ProductoComponent } from './producto/producto.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatIconModule} from '@angular/material/icon';
+import {MatInputModule} from '@angular/material/input';
 
 @Component({
   selector: 'app-listar-menus',
   standalone: true,
-  imports: [MatCardModule, MatChipsModule, MatProgressBarModule, CommonModule, MatTabsModule, ProductoComponent],
+  imports: [MatCardModule, MatChipsModule, MatProgressBarModule, CommonModule, MatTabsModule, ProductoComponent, MatFormFieldModule, MatInputModule, MatIconModule],
   templateUrl: './listar-menus.component.html',
   styleUrl: './listar-menus.component.scss'
 
@@ -38,6 +41,10 @@ export class ListarMenusComponent  {
     {
       nombre: 'Sin gluten',
       imagen: 'assets/images/dietas/sin_gluten.jpg'
+    },
+    {
+      nombre: 'Todo incluido',
+      imagen: 'assets/images/dietas/todo.jpg'
     }
   ];
   tipos = ["Cafeteria", "Eventos", "Snacks"]

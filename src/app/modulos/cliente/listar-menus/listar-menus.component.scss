@@ -6,8 +6,8 @@
   }
   
   .card {
-    width: 200px; /* Ancho de la tarjeta */
-    height: 200px; /* Altura de la tarjeta para que sea cuadrada */
+    width: 350px; /* Ancho de la tarjeta */
+    height: 350px; /* Altura de la tarjeta para que sea cuadrada */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -63,4 +63,30 @@
     .item {
       flex: 1 1 calc(100% - 16px); /* 1 elemento por fila en pantallas muy pequeñas */
     }
+  }
+
+  .types{
+    display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center; /* Esto centra el texto en el mat-card */
+  height: 100%; 
+  }
+  .green-box {
+    width: 100vw; /* Ocupa todo el ancho de la ventana del navegador */
+    height: 15vw; /* Puedes ajustar la altura según lo que necesites */
+    background-color: rgb(86, 136, 44); /* Color de fondo verde */
+    margin: 0; /* Elimina cualquier margen por defecto */
+    padding: 0; /* Elimina cualquier padding por defecto */
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    text-align: center;
+    padding-top: 10px ;
+  }
+  .search{
+    width: 90vw;    
+  }
+input{
+    background-color: antiquewhite;
   }
