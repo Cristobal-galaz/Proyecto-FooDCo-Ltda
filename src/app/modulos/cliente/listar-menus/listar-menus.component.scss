@@ -1,0 +1,66 @@
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px; /* Espacio entre las tarjetas */
+  }
+  
+  .card {
+    width: 200px; /* Ancho de la tarjeta */
+    height: 200px; /* Altura de la tarjeta para que sea cuadrada */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-size: cover; /* Asegura que la imagen de fondo cubra toda la tarjeta */
+    background-position: center; /* Centra la imagen de fondo */
+    background-repeat: no-repeat; /* Evita la repetición de la imagen de fondo */
+    color: white; /* Mejora la legibilidad del texto sobre la imagen de fondo */
+  }
+  
+  .card-content {
+    z-index: 1; /* Asegura que el contenido se muestre sobre la imagen de fondo */
+    position: relative; /* Asegura que el contenido esté en el flujo del documento */
+  }
+  
+  .tabs {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin: 50px;
+  }
+  
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centra los elementos horizontalmente */
+    gap: 30px; /* Espacio entre los elementos */
+    padding: 20px;
+  }
+  
+  .item {
+    flex: 1 1 calc(20% - 16px); /* Permite que el elemento crezca y se encoja, ocupando un 20% del ancho */
+    max-width: 300px; /* Limita el ancho máximo del elemento */
+    min-width: 200px; /* Establece un ancho mínimo para evitar que el elemento se deforme */
+    box-sizing: border-box;
+  }
+  
+  /* Ajustes para pantallas más pequeñas */
+  @media (max-width: 768px) {
+    .item {
+      flex: 1 1 calc(33.33% - 16px); /* 3 elementos por fila en pantallas medianas */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .item {
+      flex: 1 1 calc(50% - 16px); /* 2 elementos por fila en pantallas pequeñas */
+    }
+  }
+  
+  @media (max-width: 320px) {
+    .item {
+      flex: 1 1 calc(100% - 16px); /* 1 elemento por fila en pantallas muy pequeñas */
+    }
+  }

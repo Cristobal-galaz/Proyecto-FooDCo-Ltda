@@ -1,0 +1,30 @@
+<div class="card-container">
+    @for (dieta of dietas; track dieta.nombre){
+        <mat-card 
+            class="card" 
+            appearance="outlined" 
+            [ngStyle]="{'background-image': 'url(' + dieta.imagen + ')'}"
+            (click) ="seleccionarDieta(dieta.nombre)"
+        >
+            <mat-card-content class="card-content">
+                {{dieta.nombre}}
+            </mat-card-content>
+        </mat-card>
+    }
+</div>
+
+@if(dietaSeleccionada != ''){
+
+    <mat-tab-group dynamicHeight class="tabs">
+    @for(tipo of tipos; track $index){
+            <mat-tab label="{{tipo}}">
+                <div class="container">
+                    @for(producto of productos; track $index){
+                        <app-producto class="item"></app-producto>
+                    }
+                </div>
+            </mat-tab>
+        }
+    </mat-tab-group>
+    
+}
