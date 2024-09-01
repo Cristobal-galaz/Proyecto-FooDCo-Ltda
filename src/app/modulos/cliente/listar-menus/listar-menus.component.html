@@ -1,52 +1,60 @@
 @if(dietaSeleccionada === ''){
-    <div class="green-box">
-        <mat-form-field class ="search" appearance="outline" >
-            <mat-label >Busqueda por ingrediente</mat-label>
-            <input matInput placeholder="Escriba algun ingrediente">
-            <mat-icon matSuffix>search</mat-icon>
-          </mat-form-field>
-      </div>
+<div class="green-box">
+    <h1 class="titulo">
+        <span class="titulo-azul">FooD</span><span class="titulo-amarillo">Co</span>
+    </h1>
+    <h2 class="subtitulo">
+        Llevamos los mejores productos desde el campo a su empresa.
+    </h2>
+    <mat-form-field class="search">
+        <mat-label>Buscar Producto</mat-label>
+        <input matInput>
+    </mat-form-field>
+</div>
+
 
 <div class="card-container">
     @for (dieta of dietas; track dieta.nombre){
-        <mat-card 
-            class="card" 
-            appearance="outlined" 
-            [ngStyle]="{'background-image': 'url(' + dieta.imagen + ')'}"
-            (click) ="seleccionarDieta(dieta.nombre)"
-        >
-            <mat-card-content class="card-content">
-                {{dieta.nombre}}
-            </mat-card-content>
-        </mat-card>
+    <mat-card class="card" appearance="outlined" [ngStyle]="{'background-image': 'url(' + dieta.imagen + ')'}"
+        (click)="seleccionarDieta(dieta.nombre)">
+        <mat-card-content class="card-content">
+            {{dieta.nombre}}
+        </mat-card-content>
+    </mat-card>
     }
 </div>
 }
+
 @else{
-    <div class="card-container">
-    @for (dieta of dietas; track $index){
-            <mat-card 
-            class="item types" 
-            appearance="outlined" 
-            [ngStyle]="{'background-image': 'url(' + dieta.imagen + ')'}"
-            (click) ="seleccionarDieta(dieta.nombre)"
-            >
-            <mat-card-content class="">
-                {{dieta.nombre}}
-            </mat-card-content>
-        </mat-card>
-    }
-</div>
-        <mat-tab-group dynamicHeight class="tabs">
-    @for(tipo of tipos; track $index){
-            <mat-tab label="{{tipo}}">
-                <div class="container">
-                    @for(producto of productos; track $index){
+    <div class="body">
+        <div class="left-column">
+            <app-filtrar-producto></app-filtrar-producto>
+        </div>
+        <div class="center-column">
+            <div class="card-container">
+                @for (dieta of dietas; track $index){
+                <mat-card class="item types" appearance="outlined" [ngStyle]="{'background-image': 'url(' + dieta.imagen + ')'}"
+                    (click)="seleccionarDieta(dieta.nombre)">
+                    <mat-card-content class="">
+                        {{dieta.nombre}}
+                    </mat-card-content>
+                </mat-card>
+                }
+            </div>
+            <mat-tab-group dynamicHeight class="tabs">
+                @for(tipo of tipos; track $index){
+                <mat-tab label="{{tipo}}">
+                    <div class="container">
+                        @for(producto of productos; track $index){
                         <app-producto class="item"></app-producto>
-                    }
-                </div>
-            </mat-tab>
-        }
-    </mat-tab-group>
-    
+                        }
+                    </div>
+                </mat-tab>
+                }
+            </mat-tab-group>
+        </div>
+        <div class="right-column">
+            <app-lista-productos></app-lista-productos>
+        </div>
+    </div>
 }

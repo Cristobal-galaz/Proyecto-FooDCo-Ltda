@@ -1,0 +1,11 @@
+<mat-card appearance="outlined">
+    <mat-card-header>
+      <mat-card-title> Productos Seleccionados</mat-card-title>
+    </mat-card-header>
+    <mat-card-actions>
+        @for(producto of listaProductos; track producto){
+            {{producto}}
+        }
+      <button mat-button>Crear Orden de Compra</button>
+    </mat-card-actions>
+  </mat-card>

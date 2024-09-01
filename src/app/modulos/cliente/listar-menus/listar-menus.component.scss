@@ -75,18 +75,78 @@
   }
   .green-box {
     width: 100vw; /* Ocupa todo el ancho de la ventana del navegador */
-    height: 15vw; /* Puedes ajustar la altura según lo que necesites */
+    height: auto; /* Ajusta la altura automáticamente según el contenido */
     background-color: rgb(86, 136, 44); /* Color de fondo verde */
     margin: 0; /* Elimina cualquier margen por defecto */
     padding: 0; /* Elimina cualquier padding por defecto */
     margin-bottom: 20px;
     box-sizing: border-box;
     text-align: center;
-    padding-top: 10px ;
+    padding-top: 10px;
   }
-  .search{
-    width: 90vw;    
+  
+  .search {
+    width: 90vw; /* Limita el ancho máximo de la barra de búsqueda */
+    margin: 10px auto; /* Centra la barra de búsqueda */
   }
-input{
-    background-color: antiquewhite;
+  
+  .titulo {
+    text-align: left;
+    margin-left: 5vw;
+    font-size: 3.375rem; /* 54px en unidades rem */
+    font-family: sans-serif;
   }
+  
+  .titulo-azul {
+    color: rgb(135, 206, 250); /* Color azul para "FooD" */
+  }
+  
+  .titulo-amarillo {
+    color: rgb(255, 255, 224); /* Color amarillo para "Co" */
+  }
+  
+  .subtitulo {
+    text-align: left;
+    margin-left: 5vw;
+    font-size: 1.5rem; /* 24px en unidades rem */
+    font-family: sans-serif;
+    font-style: oblique;
+    color: rgb(255, 255, 224); /* Color amarillo pálido */
+    margin-top: 10px;
+  }
+  
+  /* Media queries para pantallas pequeñas */
+  @media (max-width: 768px) {
+    .titulo {
+      font-size: 2.5rem; /* Reduce el tamaño de fuente en pantallas más pequeñas */
+    }
+    .subtitulo {
+      font-size: 1.25rem; /* Ajusta el tamaño de fuente en pantallas más pequeñas */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .titulo {
+      font-size: 2rem; /* Reduce aún más el tamaño de fuente en pantallas muy pequeñas */
+      margin-left: 2vw; /* Reduce el margen izquierdo */
+    }
+    .subtitulo {
+      font-size: 1rem; /* Ajusta el tamaño de fuente en pantallas muy pequeñas */
+      margin-left: 2vw; /* Reduce el margen izquierdo */
+    }
+  }
+  .body {
+    display: grid;
+    grid-template-columns: 1fr 5fr 1fr; /* Tres columnas, la del medio es más ancha */
+    gap: 10px; /* Espacio entre las columnas */
+}
+
+.left-column, .right-column {
+    background-color: #f0f0f0; /* Color de fondo para las columnas vacías */
+}
+
+.center-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra el contenido horizontalmente */
+}
