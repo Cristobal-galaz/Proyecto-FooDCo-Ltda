@@ -6,6 +6,8 @@ import { PersonalComponent } from "./personal/personal.component";
 import { CarritoComponent } from './carrito/carrito.component';
 
 
+
+
 @Component({
   selector: 'app-root',
   standalone: true,
