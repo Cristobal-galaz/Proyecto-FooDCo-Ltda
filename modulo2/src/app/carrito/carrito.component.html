@@ -7,8 +7,6 @@
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-   !-- Asegúrate de que esta ruta sea correcta -->
-
     <style>
         /* Incluye aquí tus estilos CSS personalizados */
     </style>
@@ -49,6 +47,16 @@
         <input type="email" id="email" name="email" required><br><br>
         <label for="phone" id="phoneLabel">Teléfono:</label><br>
         <input type="text" id="phone" name="phone" required><br><br>
+        <label for="deliveryDate" id="deliveryDateLabel">Fecha de Entrega: (15 dias a partir de hoy)</label><br>
+        <input type="date" id="deliveryDate" name="deliveryDate" required><br><br>
+        <label for="invoiceName" id="invoiceNameLabel">Nombre para Factura:</label><br>
+        <input type="text" id="invoiceName" name="invoiceName" required><br><br>
+        <label for="invoiceRUT" id="invoiceRUTLabel">RUT:</label><br>
+        <input type="text" id="invoiceRUT" name="invoiceRUT" required><br><br>
+        <label for="invoiceDate" id="invoiceDateLabel">Fecha de Emisión:</label><br>
+        <input type="date" id="invoiceDate" name="invoiceDate" required><br><br>
+        <label for="invoiceLocation" id="invoiceLocationLabel">Localización:</label><br>
+        <input type="text" id="invoiceLocation" name="invoiceLocation" required><br><br>
         <label for="message" id="messageLabel">Mensaje para el Ejecutivo:</label><br>
         <textarea id="message" name="message" class="comment-box"></textarea><br><br>
         <button class="pay-button" onclick="showModal()"><span id="payButtonText">Pagar</span></button>
@@ -91,6 +99,11 @@
                 document.getElementById('nameLabel').textContent = "Full Name:";
                 document.getElementById('emailLabel').textContent = "Email Address:";
                 document.getElementById('phoneLabel').textContent = "Phone:";
+                document.getElementById('deliveryDateLabel').textContent = "Delivery Date:";
+                document.getElementById('invoiceNameLabel').textContent = "Invoice Name:";
+                document.getElementById('invoiceRUTLabel').textContent = "RUT:";
+                document.getElementById('invoiceDateLabel').textContent = "Issue Date:";
+                document.getElementById('invoiceLocationLabel').textContent = "Location:";
                 document.getElementById('messageLabel').textContent = "Message to the Executive:";
                 document.getElementById('payButtonText').textContent = "Pay";
                 document.getElementById('paymentHeader').textContent = "Payment Details";
@@ -99,8 +112,8 @@
                 document.getElementById('expiryLabel').textContent = "Expiration Date (MM/YY):";
                 document.getElementById('cvvLabel').textContent = "CVV:";
                 document.getElementById('confirmButtonText').textContent = "Confirm Payment";
-                document.querySelector('.lang-toggle').textContent = "English"; // Cambiar a "English"
-            } else {
+                document.querySelector('.lang-toggle').textContent = "Español"; // Cambiar a "Español"
+            } else {   
                 document.getElementById('pageTitle').textContent = "Detalles de Campaña";
                 document.getElementById('pageHeader').textContent = "Carrito de Compra";
                 document.getElementById('productHeader').textContent = "Producto";
@@ -112,6 +125,11 @@
                 document.getElementById('nameLabel').textContent = "Nombre Completo:";
                 document.getElementById('emailLabel').textContent = "Correo Electrónico:";
                 document.getElementById('phoneLabel').textContent = "Teléfono:";
+                document.getElementById('deliveryDateLabel').textContent = "Fecha de Entrega:";
+                document.getElementById('invoiceNameLabel').textContent = "Nombre para Factura:";
+                document.getElementById('invoiceRUTLabel').textContent = "RUT:";
+                document.getElementById('invoiceDateLabel').textContent = "Fecha de Emisión:";
+                document.getElementById('invoiceLocationLabel').textContent = "Localización:";
                 document.getElementById('messageLabel').textContent = "Mensaje para el Ejecutivo:";
                 document.getElementById('payButtonText').textContent = "Pagar";
                 document.getElementById('paymentHeader').textContent = "Detalles de Pago";
@@ -120,7 +138,7 @@
                 document.getElementById('expiryLabel').textContent = "Fecha de Expiración (MM/AA):";
                 document.getElementById('cvvLabel').textContent = "CVV:";
                 document.getElementById('confirmButtonText').textContent = "Confirmar Pago";
-                document.querySelector('.lang-toggle').textContent = "Español"; // Cambiar a "Español"
+                document.querySelector('.lang-toggle').textContent = "English"; // Cambiar a "English"
             }
         }
 
