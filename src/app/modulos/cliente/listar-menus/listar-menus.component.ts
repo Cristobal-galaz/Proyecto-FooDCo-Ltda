@@ -31,23 +31,23 @@ export class ListarMenusComponent  {
   dietas = [
     {
       nombre: 'Omnivoro',
-      imagen: 'assets/images/dietas/omnivoro.jpg'
+      imagen: 'assets/images/dietas/omnivoro.webp'
     },
     {
       nombre: 'Vegetariano',
-      imagen: 'assets/images/dietas/vegetariano.jpg'
+      imagen: 'assets/images/dietas/vegetariano.webp'
     },
     {
       nombre: 'Vegano',
-      imagen: 'assets/images/dietas/vegano.jpg'
+      imagen: 'assets/images/dietas/vegano.webp'
     },
     {
       nombre: 'Sin gluten',
-      imagen: 'assets/images/dietas/sin_gluten.jpg'
+      imagen: 'assets/images/dietas/sin_gluten.webp'
     },
     {
       nombre: 'Todo incluido',
-      imagen: 'assets/images/dietas/todo.jpg'
+      imagen: 'assets/images/dietas/todo.webp'
     }
   ];
   tipos = ["Cafeteria", "Eventos", "Snacks"]
