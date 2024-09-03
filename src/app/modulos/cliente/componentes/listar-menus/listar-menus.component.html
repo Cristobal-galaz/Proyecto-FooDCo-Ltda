@@ -41,7 +41,7 @@
                 </mat-card>
                 }
             </div>
-            <mat-tab-group dynamicHeight class="tabs">
+            <mat-tab-group dynamicHeight class="tabs"  (selectedTabChange)="onTabChange($event)">
                 @for(tipo of tipos; track $index){
                 <mat-tab label="{{tipo}}">
                     <div class="container">

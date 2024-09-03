@@ -1,0 +1,154 @@
+<div style="display: flex; justify-content: center; align-items: flex-start; height: 100vh;">
+    <div style="max-width: 400px; width: 100%;">
+
+<!--
+<button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+    {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+</button>
+-->
+
+
+
+    <mat-stepper orientation="vertical" [linear]="isLinear" #stepper>
+
+        <!-- step 1 = REgistro-->
+
+        <mat-step [stepControl]="firstFormGroup">
+            <form [formGroup]="firstFormGroup">
+                <ng-template matStepLabel>Registro</ng-template>
+
+
+                <mat-form-field>
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="Ingresa email" formControlName="firstCtrl" required>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Contraseña</mat-label>
+                    <input matInput placeholder="Ingrese contraseña" formControlName="firstCtrl" required>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Confirmar contraseña</mat-label>
+                    <input matInput placeholder="Confirme contraseña" formControlName="firstCtrl" required>
+                </mat-form-field>
+
+
+                <div>
+                    <button mat-button matStepperNext>Siguiente</button>
+                </div>
+            </form>
+        </mat-step>
+
+        <!-- step 2 = datos de empresa-->
+        <mat-step [stepControl]="secondFormGroup">
+            <form [formGroup]="secondFormGroup">
+                <ng-template matStepLabel>Datos de empresa</ng-template>
+
+                <mat-form-field>
+                    <mat-label>Rut empresa</mat-label>
+                    <input matInput formControlName="secondCtrl" placeholder="12345678-9" required>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Giro</mat-label>
+                    <input matInput formControlName="secondCtrl"
+                        placeholder="FABRICACIÓN DE OTRAS SUSTANCIAS QUÍMICAS BÁSICAS N.C.P." required>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Direccion</mat-label>
+                    <input matInput formControlName="secondCtrl" placeholder="Calle Santiago, 1234" required>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Comuna</mat-label>
+                    <input matInput formControlName="secondCtrl" placeholder="Puente Alto" required>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Ciudad</mat-label>
+                    <input matInput formControlName="secondCtrl" placeholder="Santiago" required>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Correo</mat-label>
+                    <input matInput formControlName="secondCtrl" placeholder="ejemplo@ejemplo.cl" required>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Telefono</mat-label>
+                    <input matInput formControlName="secondCtrl" placeholder="912345678" required>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Nombre de empresa</mat-label>
+                    <input matInput formControlName="secondCtrl" placeholder="EMPRESA FICTICIA LTDA" required>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Rubro</mat-label>
+                    <mat-select>
+                        <mat-option value="one">A - Agricultura, Ganadería, Caza y Silvicultura</mat-option>
+                        <mat-option value="two">B - Pesca</mat-option>
+                        <mat-option value="one">C - Explotación de Minas y Canteras</mat-option>
+                        <mat-option value="two">D - Industrias Manufactureras No Metálicas</mat-option>
+                        <mat-option value="one">E - Industrias Manufactureras Metálicas</mat-option>
+                        <mat-option value="two">F - Suministro de Electricidad, Gas y Agua</mat-option>
+                        <mat-option value="one">G - Construcción</mat-option>
+                        <mat-option value="two">H - Comercio al por Mayor y Menor, Rep. Veh. Automotores / Enseres Domésticos</mat-option>
+                        <mat-option value="one">I - Hoteles y Restaurantes</mat-option>
+                        <mat-option value="two">J - Transporte, Almacenamiento y Comunicaciones</mat-option>
+                        <mat-option value="one">K - Intermediación Financiera</mat-option>
+                        <mat-option value="two">L - Actividades Inmobiliarias, Empresariales y de Alquiler</mat-option>
+                        <mat-option value="one">M - Adm. Pública y Defensa, Planes de Seg. Social Afiliación Obligatoria</mat-option>
+                        <mat-option value="two">N – Enseñanza</mat-option>
+                        <mat-option value="one">O - Servicios Sociales y de Salud</mat-option>
+                        <mat-option value="two">P - Otras Actividades de Servicios Comunitarias, Sociales y Personales</mat-option>
+                        <mat-option value="one">Q - Consejo De Administración de Edificios y Condominios</mat-option>
+                        <mat-option value="two">R - Organizaciones Y Órganos Extraterritoriales</mat-option>
+                        <mat-option value="one">Sin Información</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+
+                <div>
+                    <button mat-button matStepperPrevious>Volver</button>
+                    <button mat-button matStepperNext>Siguiente</button>
+                </div>
+            </form>
+        </mat-step>
+
+        <!-- step 3 = datos personales -->
+        <mat-step [stepControl]="firstFormGroup">
+            <form [formGroup]="firstFormGroup">
+                <ng-template matStepLabel>Datos personales</ng-template>
+
+                <mat-form-field>
+                    <mat-label>Nombre</mat-label>
+                    <input matInput placeholder="Ingresa nombre" formControlName="firstCtrl" required>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Apellido</mat-label>
+                    <input matInput placeholder="Ingrese apellido" formControlName="firstCtrl" required>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Telefono</mat-label>
+                    <input matInput placeholder="Confirme telefono" formControlName="firstCtrl" required>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="Confirme email" formControlName="firstCtrl" required>
+                </mat-form-field>
+
+
+                <div>
+                    <button mat-button matStepperPrevious>Volver</button>
+                    <button mat-button matStepperNext>Siguiente</button>
+                </div>
+            </form>
+        </mat-step>
+
+        <!-- step final-->
+        <mat-step>
+            <ng-template matStepLabel>Finalización</ng-template>
+            <p>El registro está completo</p>
+            <div>
+                <button mat-button matStepperPrevious>Volver</button>
+                <button mat-button (click)="stepper.reset()">Finalizar</button>
+            </div>
+        </mat-step>
+
+    </mat-stepper>
+</div>
+</div>

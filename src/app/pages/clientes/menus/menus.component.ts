@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ListarMenusComponent } from '../../../modulos/cliente/listar-menus/listar-menus.component';
+import { ListarMenusComponent } from '../../../modulos/cliente/componentes/listar-menus/listar-menus.component';
 
 @Component({
   selector: 'app-menus',

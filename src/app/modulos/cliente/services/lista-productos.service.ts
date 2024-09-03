@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import {Producto} from '../interfaces/producto'
+import {Producto} from '../interfaces/alimento'
 
 @Injectable({
   providedIn: 'root'
@@ -19,12 +19,4 @@ export class ListaProductosService {
     return this._productos.asObservable();
    }
 
-   agregarProducto(productoBuscado: Producto) {
-    const productoExistente = this.productos.find(producto => producto.nombre === productoBuscado.nombre);
-    if (productoExistente) {
-      productoExistente.cantidad += productoBuscado.cantidad;
-    } else {
-      this.productos.push(productoBuscado);
-    }
-  }
 }
