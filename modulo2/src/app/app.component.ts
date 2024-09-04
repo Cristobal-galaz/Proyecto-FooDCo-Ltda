@@ -5,14 +5,13 @@ import { NavbarComponent } from "./navbar/navbar.component";
 import { PersonalComponent } from "./personal/personal.component";
 
 import { InicioComponent } from "./inicio/inicio.component";
-
-
+import { OrdenCompraComponent } from './orden-compra/orden-compra.component';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavbarComponent, PersonalComponent, InicioComponent],
+  imports: [RouterOutlet, NavbarComponent, PersonalComponent, InicioComponent,OrdenCompraComponent ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
