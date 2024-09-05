@@ -2,12 +2,9 @@ import {ChangeDetectionStrategy, Component, signal, computed} from '@angular/cor
 import {MatExpansionModule} from '@angular/material/expansion';
 import {FormsModule} from '@angular/forms';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { Task } from '../../../interfaces/task';
+import { MostrarProductosService } from '../../../services/mostrar-productos.service';
 
-export interface Task {
-  name: string;
-  completed: boolean;
-  subtasks?: Task[];
-}
 @Component({
   selector: 'app-filtrar-producto',
   standalone: true,
@@ -16,6 +13,16 @@ export interface Task {
   styleUrl: './filtrar-producto.component.scss'
 })
 export class FiltrarProductoComponent {
+
+  constructor(private mostrarProductosService: MostrarProductosService) {}
+
+  ngOnInit(): void {
+    this.mostrarProductosService.filters$.subscribe((filters: Task) => {
+      this.task.set(filters);
+    })
+    
+  }
+
   readonly task = signal<Task>({
     name: 'Categoria',
     completed: false,
@@ -44,6 +51,8 @@ export class FiltrarProductoComponent {
         task.subtasks![index].completed = completed;
         task.completed = task.subtasks?.every(t => t.completed) ?? true;
       }
+
+      this.mostrarProductosService.updateFilters(task);
       return {...task};
     });
   }
