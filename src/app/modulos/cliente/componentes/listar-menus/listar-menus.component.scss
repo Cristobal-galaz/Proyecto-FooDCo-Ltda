@@ -1,152 +1,253 @@
-.card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 16px; /* Espacio entre las tarjetas */
-  }
-  
-  .card {
-    width: 350px; /* Ancho de la tarjeta */
-    height: 350px; /* Altura de la tarjeta para que sea cuadrada */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background-size: cover; /* Asegura que la imagen de fondo cubra toda la tarjeta */
-    background-position: center; /* Centra la imagen de fondo */
-    background-repeat: no-repeat; /* Evita la repetición de la imagen de fondo */
-    color: white; /* Mejora la legibilidad del texto sobre la imagen de fondo */
-  }
-  
-  .card-content {
-    z-index: 1; /* Asegura que el contenido se muestre sobre la imagen de fondo */
-    position: relative; /* Asegura que el contenido esté en el flujo del documento */
-  }
-  
-  .tabs {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    margin: 50px;
-  }
-  
-  .container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center; /* Centra los elementos horizontalmente */
-    gap: 30px; /* Espacio entre los elementos */
-    padding: 20px;
-  }
-  
-  .item {
-    flex: 1 1 calc(20% - 16px); /* Permite que el elemento crezca y se encoja, ocupando un 20% del ancho */
-    max-width: 300px; /* Limita el ancho máximo del elemento */
-    min-width: 200px; /* Establece un ancho mínimo para evitar que el elemento se deforme */
-    box-sizing: border-box;
-  }
-  
-  /* Ajustes para pantallas más pequeñas */
-  @media (max-width: 768px) {
-    .item {
-      flex: 1 1 calc(33.33% - 16px); /* 3 elementos por fila en pantallas medianas */
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .item {
-      flex: 1 1 calc(50% - 16px); /* 2 elementos por fila en pantallas pequeñas */
-    }
-  }
-  
-  @media (max-width: 320px) {
-    .item {
-      flex: 1 1 calc(100% - 16px); /* 1 elemento por fila en pantallas muy pequeñas */
-    }
-  }
-
-  .types{
-    display: flex;
+.search-box {
+  display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center; /* Esto centra el texto en el mat-card */
-  height: 100%; 
-  }
-  .green-box {
-    width: 100vw; /* Ocupa todo el ancho de la ventana del navegador */
-    height: auto; /* Ajusta la altura automáticamente según el contenido */
-    background-color: rgb(86, 136, 44); /* Color de fondo verde */
-    margin: 0; /* Elimina cualquier margen por defecto */
-    padding: 0; /* Elimina cualquier padding por defecto */
-    margin-bottom: 20px;
-    box-sizing: border-box;
-    text-align: center;
-    padding-top: 10px;
-  }
-  
-  .search {
-    width: 90vw; /* Limita el ancho máximo de la barra de búsqueda */
-    margin: 10px auto; /* Centra la barra de búsqueda */
-  }
-  
-  .titulo {
-    text-align: left;
-    margin-left: 5vw;
-    font-size: 3.375rem; /* 54px en unidades rem */
-    font-family: sans-serif;
-  }
-  
-  .titulo-azul {
-    color: rgb(135, 206, 250); /* Color azul para "FooD" */
-  }
-  
-  .titulo-amarillo {
-    color: rgb(255, 255, 224); /* Color amarillo para "Co" */
-  }
-  
-  .subtitulo {
-    text-align: left;
-    margin-left: 5vw;
-    font-size: 1.5rem; /* 24px en unidades rem */
-    font-family: sans-serif;
-    font-style: oblique;
-    color: rgb(255, 255, 224); /* Color amarillo pálido */
-    margin-top: 10px;
-  }
-  
-  /* Media queries para pantallas pequeñas */
-  @media (max-width: 768px) {
-    .titulo {
-      font-size: 2.5rem; /* Reduce el tamaño de fuente en pantallas más pequeñas */
-    }
-    .subtitulo {
-      font-size: 1.25rem; /* Ajusta el tamaño de fuente en pantallas más pequeñas */
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .titulo {
-      font-size: 2rem; /* Reduce aún más el tamaño de fuente en pantallas muy pequeñas */
-      margin-left: 2vw; /* Reduce el margen izquierdo */
-    }
-    .subtitulo {
-      font-size: 1rem; /* Ajusta el tamaño de fuente en pantallas muy pequeñas */
-      margin-left: 2vw; /* Reduce el margen izquierdo */
-    }
-  }
-  .body {
-    display: grid;
-    grid-template-columns: 1fr 5fr 1fr; /* Tres columnas, la del medio es más ancha */
-    gap: 10px; /* Espacio entre las columnas */
+  align-items: flex-start; /* Cambia a flex-start para alinear el contenido a la izquierda */
+  background-color: #5cca5c; /* Verde pálido */
+  border-radius: 8px;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.7);
+  margin: 0 auto;
+  width: 80vw;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 35px;
+
+
+
+}
+.border {
+  display: block;
+  width: 80vw;
+  height: 2px;
+  background-color: #2e3c28; /* Color de la línea de separación */
+  margin: 40px auto;
+  border-radius: 10%;
 }
 
-.left-column, .right-column {
-    background-color: #f0f0f0; /* Color de fondo para las columnas vacías */
+.titulo {
+  font-size: 2.5rem;
+  margin: 0;
+  text-align: left;
+  word-wrap: break-word; 
+}
+
+.titulo-azul {
+  color: #4682b4;
+}
+
+.titulo-amarillo {
+  color: #ffd700;
+}
+
+.subtitulo {
+  font-size: 1.5rem;
+  margin: 10px 0;
+  text-align: left;
+  color: #666;
+}
+
+.search {
+  margin-top: 20px;
+  width: 90vw; /* 90% del ancho de la ventana */
+  max-width: 100%; /* Asegura que no se corte en pantallas pequeñas */
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px; /* Espacio entre las tarjetas */ /* Separación de la search-box */
+  justify-content: center;
+  margin-left: 10vw;
+  margin-right: 10vw;
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  padding-top: 100%; /* Mantiene la proporción cuadrada */
+  background-size: cover; /* Asegura que la imagen de fondo cubra toda la tarjeta */
+  background-position: center;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.card-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  z-index: 2;
+}
+
+.mat-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.component-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.card-container-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px; /* Espacio entre las tarjetas */
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  max-width: 1200px; /* Limita el ancho máximo del contenedor */
+  margin: 0 auto; /* Centra el contenedor horizontalmente */
+}
+
+.card-container-2 .item {
+  width: 100%;
+  height: 70px; /* Define la altura para que los items sean rectangulares */
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+  color: rgb(248, 249, 227); /* Letra blanca */
+  font-weight: bold; /* Letra en negrita *//* Sin bordes */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: none; /* Elimina la sombra de la tarjeta si es necesario */
+}
+
+
+
+
+.body {
+  display: grid;
+  grid-template-columns: 1fr 9fr 1fr; /* Tres columnas */
+  gap: 20px; /* Espacio entre las columnas */
+  width: 100%;
+  margin: 0 auto;
+}
+
+.left-column,
+.center-column,
+.right-column {
+  padding: 20px;
+}
+@media (max-width: 600px) {
+  .titulo {
+    font-size: 2rem;
+  }
+
+  .subtitulo {
+    font-size: 1.2rem;
+  }
+
+  .search {
+    width: 90vw;
+    max-width: 100%;
+  }
+}
+@media (max-width: 400px) {
+  .titulo {
+    font-size: 1.5rem; /* Ajuste adicional para pantallas muy pequeñas */
+  }
+
+  .subtitulo {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 1024px) {
+  .body {
+    grid-template-columns: 1fr; /* Una columna en pantallas medianas */
+  }
+
+  .left-column,
+  .right-column {
+    display: none; /* Oculta las columnas laterales en pantallas medianas */
+  }
+}
+
+@media (max-width: 768px) {
+  .body {
+    grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
+    gap: 10px;
+  }
+
+  .left-column,
+  .right-column {
+    display: none; /* Sigue ocultando las columnas laterales en pantallas pequeñas */
+  }
+
+  .center-column {
+    padding: 10px; /* Reduce el padding en pantallas pequeñas */
+  }
+}
+@media (max-width: 768px) {
+  .card-container-2 .item {
+    height: 120px; /* Reduce la altura en pantallas más pequeñas */
+  }
+}
+
+@media (max-width: 480px) {
+  .card-container-2 .item {
+    height: 100px; /* Ajuste adicional para pantallas muy pequeñas */
+  }
 }
 
 .center-column {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centra el contenido horizontalmente */
+  padding: 20px;
+  margin: 5px; /* Margen de 5px alrededor del contenido */
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Centra los elementos horizontalmente */
+  gap: 15px; /* Espacio entre los elementos */
+  padding: 10px;
+}
+
+.product {
+  flex: 1 1 calc(20% - 8px); /* Permite que el elemento crezca y se encoja, ocupando un 20% del ancho */
+  max-width: 300px; /* Limita el ancho máximo del elemento */
+  min-width: 100px; /* Establece un ancho mínimo para evitar que el elemento se deforme */
+  box-sizing: border-box;
+}
+
+@media (min-width: 1024px) {
+  .container {
+    grid-template-columns: repeat(5, 1fr); /* 4 elementos por fila en pantallas grandes */
+  }
+}
+
+@media (max-width: 768px) {
+  .product {
+    height: 120px; /* Reduce la altura en pantallas más pequeñas */
+  }
+  .container {
+    grid-template-columns: repeat(2, 1fr); /* 2 elementos por fila en pantallas medianas */
+  }
+}
+
+@media (max-width: 480px) {
+  .product {
+    height: 100px; /* Ajuste adicional para pantallas muy pequeñas */
+  }
+  .container {
+    grid-template-columns: 1fr; /* 1 elemento por fila en pantallas pequeñas */
+  }
 }
