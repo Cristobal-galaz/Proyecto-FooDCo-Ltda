@@ -5,6 +5,8 @@ import { PersonalComponent } from './personal/personal.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { ConexionService } from './Service/conexion.service';  // Ajusta la ruta según tu estructura
 import { CommonModule } from '@angular/common';
+import { AppRoutingModule } from './app-routing.module';
+import { Routes } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,7 @@ import { CommonModule } from '@angular/common';
   imports: [
     BrowserModule,
     CommonModule,
+    AppRoutingModule,
     // otros módulos
   ],
   providers: [ConexionService],  // Añadir el servicio aquí si no usas providedIn: 'root'

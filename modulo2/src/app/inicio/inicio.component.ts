@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ConexionService } from '../Service/conexion.service';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-inicio',
@@ -13,11 +14,14 @@ import { CommonModule } from '@angular/common';
 export class InicioComponent implements OnInit{
   message: string | null = null;
 
-  constructor(private conexionService: ConexionService) {}
+  constructor(private router: Router, private conexionService: ConexionService) {}
 
   ngOnInit() {
     this.conexionService.buttonClicked$.subscribe(() => {
       this.message = 'Button in Personal component was clicked!';
     });
+  }
+  goToPersonal() {
+    this.router.navigate(['/personal']);  // Navega al componente de personal
   }
 }
