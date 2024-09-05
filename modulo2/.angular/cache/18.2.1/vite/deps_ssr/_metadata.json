@@ -1,40 +1,58 @@
 {
-  "hash": "4dbb539b",
-  "configHash": "ddd06ea2",
+  "hash": "3f6b0a79",
+  "configHash": "c6698247",
   "lockfileHash": "311cfb2f",
-  "browserHash": "62ca54b8",
+  "browserHash": "b87e8294",
   "optimized": {
+    "@angular/common": {
+      "src": "../../../../../node_modules/@angular/common/fesm2022/common.mjs",
+      "file": "@angular_common.js",
+      "fileHash": "29acfc83",
+      "needsInterop": false
+    },
     "@angular/core": {
       "src": "../../../../../node_modules/@angular/core/fesm2022/core.mjs",
       "file": "@angular_core.js",
-      "fileHash": "e7dee947",
+      "fileHash": "9b0568cc",
       "needsInterop": false
     },
     "@angular/platform-browser": {
       "src": "../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
       "file": "@angular_platform-browser.js",
-      "fileHash": "395c6217",
+      "fileHash": "163ed8f1",
       "needsInterop": false
     },
     "@angular/platform-server": {
       "src": "../../../../../node_modules/@angular/platform-server/fesm2022/platform-server.mjs",
       "file": "@angular_platform-server.js",
-      "fileHash": "7f8e6a5b",
+      "fileHash": "04458fd5",
       "needsInterop": false
     },
     "@angular/router": {
       "src": "../../../../../node_modules/@angular/router/fesm2022/router.mjs",
       "file": "@angular_router.js",
-      "fileHash": "aeced814",
+      "fileHash": "92062b4b",
       "needsInterop": false
+    },
+    "rxjs": {
+      "src": "../../../../../node_modules/rxjs/dist/cjs/index.js",
+      "file": "rxjs.js",
+      "fileHash": "a7635b2f",
+      "needsInterop": true
     }
   },
   "chunks": {
-    "chunk-EFNADYPR": {
-      "file": "chunk-EFNADYPR.js"
+    "chunk-VGVTVWTQ": {
+      "file": "chunk-VGVTVWTQ.js"
     },
-    "chunk-PKEKTO2Z": {
-      "file": "chunk-PKEKTO2Z.js"
+    "chunk-KPWK2OWC": {
+      "file": "chunk-KPWK2OWC.js"
+    },
+    "chunk-MPF7ZH23": {
+      "file": "chunk-MPF7ZH23.js"
+    },
+    "chunk-VDZEJD3D": {
+      "file": "chunk-VDZEJD3D.js"
     },
     "xhr2-AQ42KH57": {
       "file": "xhr2-AQ42KH57.js"
