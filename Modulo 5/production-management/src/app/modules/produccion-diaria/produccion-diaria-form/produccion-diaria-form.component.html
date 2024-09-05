@@ -1,0 +1,55 @@
+<mat-card class="mat-elevation-z8">
+  <mat-card-header>
+    <mat-card-title>
+      <h2 *ngIf="!produccionForm.get('id')?.value">Agregar Nueva Producción</h2>
+      <h2 *ngIf="produccionForm.get('id')?.value">Editar Producción</h2>
+    </mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form [formGroup]="produccionForm" (ngSubmit)="onSubmit()">
+      <div class="form-group-with-button">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Tipo de Producto</mat-label>
+          <mat-select formControlName="tipo_producto_id">
+            <mat-option *ngFor="let tipo of tiposProducto" [value]="tipo.id">{{ tipo.nombre }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="produccionForm.get('tipo_producto_id')?.invalid && produccionForm.get('tipo_producto_id')?.touched">
+            El tipo de producto es requerido.
+          </mat-error>
+        </mat-form-field>
+        <button mat-icon-button color="primary" routerLink="/tipos-producto/nuevo" matTooltip="Agregar tipo de producto">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Cantidad Producida</mat-label>
+        <input matInput type="number" formControlName="cantidad_producida">
+        <mat-error *ngIf="produccionForm.get('cantidad_producida')?.invalid && produccionForm.get('cantidad_producida')?.touched">
+          La cantidad producida es requerida.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Fecha de Producción</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="fecha_produccion">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        
+        <!-- Mostrar el error de fecha inválida -->
+        <mat-error *ngIf="produccionForm.get('fecha_produccion')?.hasError('fechaInvalida')">
+          La fecha de producción no puede ser en el futuro.
+        </mat-error>
+        <mat-error *ngIf="produccionForm.get('fecha_produccion')?.hasError('required')">
+          La fecha es obligatoria.
+        </mat-error>
+      </mat-form-field>
+
+      <div class="actions">
+        <button mat-raised-button color="primary" type="submit" [disabled]="produccionForm.invalid">Guardar</button>
+        <button mat-button color="warn" type="button" routerLink="/produccion-diaria">Cancelar</button> 
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

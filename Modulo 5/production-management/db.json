@@ -1,0 +1,58 @@
+{
+  "produccion_diaria": [
+    {
+      "id": "506a",
+      "tipo_producto_id": "d223",
+      "cantidad_producida": 10,
+      "fecha_produccion": "2024-09-03T04:00:00.000Z"
+    },
+    {
+      "id": "ffdb",
+      "tipo_producto_id": "0999",
+      "cantidad_producida": 20,
+      "fecha_produccion": "2024-09-04T04:00:00.000Z"
+    }
+  ],
+  "tipos_producto": [
+    {
+      "id": "d223",
+      "nombre": "Congelados "
+    },
+    {
+      "id": "0999",
+      "nombre": "Enlatados"
+    },
+    {
+      "id": "72f7",
+      "nombre": "Comida Preparada Caliente"
+    },
+    {
+      "id": "0084",
+      "nombre": "Bebidas"
+    },
+    {
+      "id": "f215",
+      "nombre": "Lácteos"
+    },
+    {
+      "nombre": "Panadería",
+      "id": "1429"
+    },
+    {
+      "id": "9bf2",
+      "nombre": "Snacks"
+    },
+    {
+      "id": "e13e",
+      "nombre": "Conservas y Mermeladas"
+    },
+    {
+      "id": "2cb5",
+      "nombre": "Carnes y Pescados"
+    },
+    {
+      "id": "bd8d",
+      "nombre": "Harinas y Pastas"
+    }
+  ]
+}

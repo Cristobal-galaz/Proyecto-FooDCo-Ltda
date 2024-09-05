@@ -1,0 +1,30 @@
+<mat-card class="mat-elevation-z8">
+  <mat-card-header>
+    <mat-card-title>
+      <h2 *ngIf="isEdit">Editar Tipo de Producto</h2>
+      <h2 *ngIf="!isEdit">Agregar Tipo de Producto</h2>
+    </mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form [formGroup]="tipoProductoForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Nombre del Tipo de Producto</mat-label>
+        <input matInput formControlName="nombre">
+        <mat-error *ngIf="tipoProductoForm.get('nombre')?.hasError('required')">
+          El nombre es obligatorio.
+        </mat-error>
+        <mat-error *ngIf="tipoProductoForm.get('nombre')?.hasError('nombreDuplicado')">
+          Ya existe un tipo de producto con este nombre.
+        </mat-error>
+      </mat-form-field>      
+
+      <div class="actions">
+        <button mat-raised-button color="primary" type="submit" [disabled]="tipoProductoForm.invalid">
+          {{ isEdit ? 'Guardar Cambios' : 'Agregar' }}
+        </button>
+        <button mat-button color="warn" type="button" routerLink="/tipos-producto">Cancelar</button> 
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
