@@ -136,16 +136,20 @@
 
 .body {
   display: grid;
-  grid-template-columns: 1fr 9fr 1fr; /* Tres columnas */
+  grid-template-columns: 1fr 9fr 4fr; /* Tres columnas */
   gap: 20px; /* Espacio entre las columnas */
   width: 100%;
   margin: 0 auto;
+}
+.left-column,
+.right-column{
+  margin-top: 80px;
 }
 
 .left-column,
 .center-column,
 .right-column {
-  padding: 20px;
+  padding: 10px;
 }
 @media (max-width: 600px) {
   .titulo {
@@ -172,12 +176,17 @@
 }
 @media (max-width: 1024px) {
   .body {
-    grid-template-columns: 1fr; /* Una columna en pantallas medianas */
+    grid-template-columns: 1fr; /* Cambia a una sola columna en pantallas pequeñas */
   }
 
   .left-column,
   .right-column {
-    display: none; /* Oculta las columnas laterales en pantallas medianas */
+    display: block; /* Vuelve a mostrar las columnas laterales */
+    order: -1; /* Asegura que las columnas laterales aparezcan primero */
+  }
+
+  .center-column {
+    order: 0; /* La columna central sigue estando en el centro, pero ahora debajo de las laterales */
   }
 }
 
@@ -221,11 +230,14 @@
   padding: 10px;
 }
 
-.product {
-  flex: 1 1 calc(20% - 8px); /* Permite que el elemento crezca y se encoja, ocupando un 20% del ancho */
-  max-width: 300px; /* Limita el ancho máximo del elemento */
-  min-width: 100px; /* Establece un ancho mínimo para evitar que el elemento se deforme */
-  box-sizing: border-box;
+.product { /* Permite que el elemento crezca y se encoja, ocupando un 20% del ancho */
+  flex: 1 1 30%; /* Haz que las tarjetas ocupen el 30% del ancho del contenedor y sean flexibles */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Asegura que el contenido de la tarjeta esté distribuido */
+  height: 100%; /* Asegura que las tarjetas ocupen todo el alto disponible */
+  max-width: 300px; /* Limita el ancho máximo */
+  margin: 10px;
 }
 
 @media (min-width: 1024px) {
@@ -237,17 +249,21 @@
 @media (max-width: 768px) {
   .product {
     height: 120px; /* Reduce la altura en pantallas más pequeñas */
+    margin-bottom:180px;
   }
   .container {
     grid-template-columns: repeat(2, 1fr); /* 2 elementos por fila en pantallas medianas */
+    
   }
 }
 
 @media (max-width: 480px) {
   .product {
     height: 100px; /* Ajuste adicional para pantallas muy pequeñas */
+    margin-bottom:180px;
   }
   .container {
     grid-template-columns: 1fr; /* 1 elemento por fila en pantallas pequeñas */
+
   }
 }
