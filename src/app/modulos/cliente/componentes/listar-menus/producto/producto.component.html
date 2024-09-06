@@ -11,15 +11,24 @@
     </mat-card-content>
     <mat-card-actions>
       <div class="buttons">
-        <button mat-button (click)= "onSelect()" >Seleccionar</button>
-        @if(showInput){
-          <mat-form-field class="example-full-width">
-            <mat-label>Cantidad</mat-label>
-            <input matInput #cantidadProducto maxlength="6" placeholder="Ex. 10000" value="">
-          </mat-form-field>
-          <button mat-mini-fab><mat-icon>check</mat-icon></button>
+        @if(!showInput){
+          <button mat-button (click)= "onSelect()" >Seleccionar</button>
+          <button mat-button>Detalle</button>
+        }        
+        @else{
+          <div class="input-group">
+
+            <mat-form-field class="cantidad">
+              <mat-label>Cantidad</mat-label>
+              <input matInput #cantidadProducto maxlength="6" placeholder="Ex. 10000" type="number">
+            </mat-form-field>
+            <div class="button-group">
+              <button mat-mini-fab (click)="onClick(cantidadProducto.valueAsNumber)"><mat-icon>check</mat-icon></button>
+              <button mat-mini-fab (click)="closeSelect()"><mat-icon>close</mat-icon></button>
+            </div>
+          </div>
         }
-        <button mat-button>Detalle</button>
+        
       </div>
     </mat-card-actions>
   </mat-card>

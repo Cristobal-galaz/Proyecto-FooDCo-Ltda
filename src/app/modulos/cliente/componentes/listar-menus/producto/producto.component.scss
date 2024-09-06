@@ -1,25 +1,55 @@
-.product { /* Permite que el elemento crezca y se encoja, ocupando un 20% del ancho */
+.product {
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Esto mantiene el contenido bien distribuido */
-    height: 100%; /* Asegura que ocupe todo el espacio disponible dentro de la tarjeta */
+    justify-content: space-between;
+    height: 100%;
   }
   
   .product img {
     max-width: 100%;
     height: auto;
-    object-fit: cover; /* Asegura que la imagen no se deforme */
+    object-fit: cover;
   }
   
   .product .description {
-    flex-grow: 1; /* Hace que la descripción ocupe el espacio disponible y evite que la tarjeta cambie de tamaño */
+    flex-grow: 1;
   }
   
   .product .actions {
     display: flex;
-    justify-content: space-between; /* Asegura que los botones estén bien distribuidos */
+    justify-content: space-between;
   }
-
-  .example-full-width {
+  
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra horizontalmente los elementos dentro de "buttons" */
+  }
+  
+  .input-group {
+    display: flex;
+    flex-direction: column; /* Coloca el input de cantidad y los botones en una columna */
+    align-items: center; /* Centra los elementos horizontalmente */
+}
+  
+  .cantidad {
+    width: 100%; /* El input de cantidad será responsivo */
+    margin-bottom: 10px; /* Espacio inferior para separar el input de los botones */
+  }
+  
+  .button-group {
+    display: flex;
+    justify-content: center; /* Centra los botones debajo del input */
+    gap: 5px; /* Espacio entre los botones */
+  }
+  
+  .mat-card {
+    flex-grow: 1;
     width: 100%;
+    height: 100%; /* Evita que los botones modifiquen el tamaño del card */
+  }
+  
+  .mat-card-actions {
+    flex-grow: 0;
+    flex-shrink: 0; /* Asegura que las acciones no afecten el tamaño del card */
   }

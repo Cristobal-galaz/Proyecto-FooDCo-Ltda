@@ -22,25 +22,27 @@ constructor(private listaProductosService: ListaProductosService,
 ){}
 
   @Input() cardProduct!: Producto;
-  cantidadProducto: number = 1;
   showInput = false;
 
   onSelect(){
     this.showInput = true;
   }
+  closeSelect(){
+    this.showInput = false;
+  }
 
-  onClick(producto: Producto) {
-    console.log('Producto seleccionado', producto._id);
+  onClick(cantidadProduct:number) {
     const cantidadProducto: CantidadProducto = {
-      producto: producto,
-      cantidad: 1
+      producto: this.cardProduct,
+      cantidad: cantidadProduct
     };
     this.listaProductosService.addProductos(cantidadProducto);
+    this.closeSelect();
 
     this.cdr.detectChanges();
-
-    console.log(producto.imagenes[0]);
   }
+
+
 
 
 
