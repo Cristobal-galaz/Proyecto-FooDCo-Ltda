@@ -10,7 +10,7 @@ export interface Menu {
   }
 
 export interface Producto {
-    id: string;
+    _id: string;
     nombre: string;
     descripcion: string;
     precio: number;

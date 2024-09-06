@@ -1,0 +1,12 @@
+.productos-lista {
+    max-height: 300px; /* Ajusta el tamaño según lo que necesites */
+    overflow-y: auto;
+    margin-bottom: 10px;
+  }
+  
+  .acciones {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 10px;
+  }
+  

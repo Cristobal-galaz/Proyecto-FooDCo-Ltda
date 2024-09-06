@@ -20,15 +20,17 @@ export class ListaProductosService {
    }
 
    addProductos(productoCantidad: CantidadProducto) {
-    const productoExistente = this.productos.find(p => p.producto.id === productoCantidad.producto.id);
-    
+    console.log('productoCantidad', productoCantidad.producto._id);
+
+    const productoExistente = this.productos.find(p => p.producto._id === productoCantidad.producto._id);
     
     if (productoExistente) {
       productoExistente.cantidad += productoCantidad.cantidad;
-      console.log(productoExistente);
+
+      console.log(productoExistente.producto._id);
     } else {
       this.productos.push(productoCantidad);
-      console.log(productoExistente);
+      console.log('producto nuevo');
     }
     this._productos.next(this.productos);
   }
