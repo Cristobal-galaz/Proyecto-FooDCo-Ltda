@@ -52,7 +52,7 @@
                 <mat-tab label="{{tipo}}">
                     <div class="container">
                         @for(producto of productos; track $index){
-                        <app-producto class="product"></app-producto>
+                        <app-producto  [cardProduct]="producto" class="product"></app-producto>
                         }
                     </div>
                 </mat-tab>

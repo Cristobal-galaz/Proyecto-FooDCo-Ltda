@@ -79,25 +79,10 @@
                 <mat-form-field>
                     <mat-label>Rubro</mat-label>
                     <mat-select>
-                        <mat-option value="one">A - Agricultura, Ganadería, Caza y Silvicultura</mat-option>
-                        <mat-option value="two">B - Pesca</mat-option>
-                        <mat-option value="one">C - Explotación de Minas y Canteras</mat-option>
-                        <mat-option value="two">D - Industrias Manufactureras No Metálicas</mat-option>
-                        <mat-option value="one">E - Industrias Manufactureras Metálicas</mat-option>
-                        <mat-option value="two">F - Suministro de Electricidad, Gas y Agua</mat-option>
-                        <mat-option value="one">G - Construcción</mat-option>
-                        <mat-option value="two">H - Comercio al por Mayor y Menor, Rep. Veh. Automotores / Enseres Domésticos</mat-option>
-                        <mat-option value="one">I - Hoteles y Restaurantes</mat-option>
-                        <mat-option value="two">J - Transporte, Almacenamiento y Comunicaciones</mat-option>
-                        <mat-option value="one">K - Intermediación Financiera</mat-option>
-                        <mat-option value="two">L - Actividades Inmobiliarias, Empresariales y de Alquiler</mat-option>
-                        <mat-option value="one">M - Adm. Pública y Defensa, Planes de Seg. Social Afiliación Obligatoria</mat-option>
-                        <mat-option value="two">N – Enseñanza</mat-option>
-                        <mat-option value="one">O - Servicios Sociales y de Salud</mat-option>
-                        <mat-option value="two">P - Otras Actividades de Servicios Comunitarias, Sociales y Personales</mat-option>
-                        <mat-option value="one">Q - Consejo De Administración de Edificios y Condominios</mat-option>
-                        <mat-option value="two">R - Organizaciones Y Órganos Extraterritoriales</mat-option>
-                        <mat-option value="one">Sin Información</mat-option>
+                        @for(rubro of opciones; track $index){
+                            <mat-option value="{{rubro.id}}"> {{rubro.clasificacion}}  {{rubro.nombre}} </mat-option>
+                        }
+                        
                     </mat-select>
                 </mat-form-field>
 

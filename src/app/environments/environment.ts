@@ -1,4 +1,4 @@
 export const environment = {
     production: false,
-    apiUrl: 'http://207.211.181.152:3000/api/v1'
+    apiUrl: 'http://foodco.agroheladas.cl/api/v1/'
 };
