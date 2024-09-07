@@ -1,0 +1,7 @@
+<p>  {{data.producto.nombre}} </p>
+<p>  {{data.producto.descripcion}} </p>
+
+@for (ingrediente of data.producto.ingredientes; track $index){
+    <p> {{ingrediente.nombre}} </p>
+
+}

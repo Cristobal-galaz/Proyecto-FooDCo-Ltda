@@ -7,7 +7,8 @@ import {MatIconModule} from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-
+import{ MatDialog } from '@angular/material/dialog';
+import { DetalleProductoComponent } from './detalle-producto/detalle-producto.component';
 @Component({
   selector: 'app-producto',
   standalone: true,
@@ -17,7 +18,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
   styleUrl: './producto.component.scss'
 })
 export class ProductoComponent {
-constructor(private listaProductosService: ListaProductosService,
+constructor(private listaProductosService: ListaProductosService, private _matDialog: MatDialog,
   private cdr: ChangeDetectorRef
 ){}
 
@@ -29,6 +30,12 @@ constructor(private listaProductosService: ListaProductosService,
   }
   closeSelect(){
     this.showInput = false;
+  }
+  abrirModal():void{
+    this._matDialog.open(DetalleProductoComponent,{
+      width: '500px',
+      data: {producto: this.cardProduct}
+    });
   }
 
   onClick(cantidadProduct:number) {

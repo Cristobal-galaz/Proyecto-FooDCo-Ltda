@@ -13,7 +13,7 @@
       <div class="buttons">
         @if(!showInput){
           <button mat-button (click)= "onSelect()" >Seleccionar</button>
-          <button mat-button>Detalle</button>
+          <button mat-button (click)="abrirModal()">Detalle</button>
         }        
         @else{
           <div class="input-group">
