@@ -3,25 +3,24 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { PersonalComponent } from './personal/personal.component';
 import { InicioComponent } from './inicio/inicio.component';
-import { ConexionService } from './Service/conexion.service';  // Ajusta la ruta según tu estructura
+import { InicioEnComponent } from './inicio-en/inicio-en.component'; // Asegúrate de importar el nuevo componente
+import { ConexionService } from './Service/conexion.service';
 import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
-import { Routes } from '@angular/router';
 
 @NgModule({
   declarations: [
     AppComponent,
     PersonalComponent,
-    InicioComponent
-    // otros componentes
+    InicioComponent,
+    InicioEnComponent // Asegúrate de agregar el nuevo componente aquí
   ],
   imports: [
     BrowserModule,
-    CommonModule,
-    AppRoutingModule,
-    // otros módulos
+    CommonModule,  // Asegúrate de incluir CommonModule
+    AppRoutingModule
   ],
-  providers: [ConexionService],  // Añadir el servicio aquí si no usas providedIn: 'root'
+  providers: [ConexionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

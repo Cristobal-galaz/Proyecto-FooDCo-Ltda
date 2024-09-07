@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';  // Asegúrate de importar CommonModule
 import { ConexionService } from '../Service/conexion.service';
-import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-inicio',
+  selector: 'app-inicio-en',
   standalone: true,
-  imports: [CommonModule],
-  templateUrl: './inicio.component.html',
-  styleUrls: ['./inicio.component.css']
+  templateUrl: './inicio-en.component.html',
+  styleUrls: ['./inicio-en.component.css'],
+  imports: [CommonModule]  // Importa CommonModule aquí
 })
-export class InicioComponent implements OnInit {
+export class InicioEnComponent implements OnInit {
   message: string | null = null;
 
   constructor(private router: Router, private conexionService: ConexionService) {}
@@ -25,7 +25,7 @@ export class InicioComponent implements OnInit {
     this.router.navigate(['/personal']);
   }
 
-  switchToEnglish() {
-    this.router.navigate(['/inicio-en']);
+  switchToSpanish() {
+    this.router.navigate(['/inicio']);
   }
 }

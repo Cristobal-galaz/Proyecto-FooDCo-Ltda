@@ -1,11 +1,11 @@
 <div class="inicio-container">
-    <h1>Bienvenido a FoodCo Ltda.</h1>
-    <p>Esperamos que encuentre el menú que necesite</p>
-    <p>¿Como desea ser atendido?</p>
-    <div class="button-group">
-      <button (click)="goToPersonal()">Ser atendido por un Ejecutivo</button>
-      <button class="btn">Ser atendido autonomamente</button>
-    </div>
+  <h1>Bienvenido a FoodCo Ltda.</h1>
+  <p>Esperamos que encuentre el menú que necesite</p>
+  <p>¿Cómo desea ser atendido?</p>
+  <div class="button-group">
+    <button (click)="goToPersonal()">Ser atendido por un Ejecutivo</button>
+    <button class="btn">Ser atendido autonomamente</button>
+  </div>
+  <button (click)="switchToEnglish()">Cambiar a inglés</button>
 </div>
 <p *ngIf="message">{{ message }}</p>
-  
