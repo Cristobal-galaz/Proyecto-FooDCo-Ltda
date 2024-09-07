@@ -1,4 +1,3 @@
-/* Copia el contenido de inicio.component.css aquí si los estilos son los mismos */
 .inicio-container {
     display: flex;
     flex-direction: column;
@@ -6,28 +5,48 @@
     justify-content: center;
     height: 100vh;
     text-align: center;
-}
-
-h1 {
+    position: relative; /* Para permitir que el botón se posicione respecto al contenedor */
+  }
+  
+  h1 {
     font-size: 2.5rem;
     margin-bottom: 20px;
-}
-
-.button-group {
+  }
+  
+  .button-group {
     display: flex;
     gap: 20px;
-}
-
-button {
+  }
+  
+  button {
     padding: 10px 20px;
     font-size: 1rem;
-    background-color: #00ff40b0;
+    background-color: #1b79f5b0;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-}
-
-button:hover {
+  }
+  
+  button:hover {
     background-color: #b39e00;
-}
+  }
+  
+  /* Clase específica para el botón de cambiar a inglés */
+  .english-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #1b79f5b0;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .english-button:hover {
+    background-color: #b39e00;
+  }
+  
