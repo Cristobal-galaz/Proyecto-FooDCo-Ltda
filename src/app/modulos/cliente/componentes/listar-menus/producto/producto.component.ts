@@ -31,10 +31,12 @@ constructor(private listaProductosService: ListaProductosService, private _matDi
   closeSelect(){
     this.showInput = false;
   }
-  abrirModal():void{
-    this._matDialog.open(DetalleProductoComponent,{
-      width: '500px',
-      data: {producto: this.cardProduct}
+  abrirModal(): void {
+    this._matDialog.open(DetalleProductoComponent, {
+      panelClass: 'custom-dialog-container',
+      width: '40vw',
+      maxWidth: 'none', 
+      data: { producto: this.cardProduct }
     });
   }
 

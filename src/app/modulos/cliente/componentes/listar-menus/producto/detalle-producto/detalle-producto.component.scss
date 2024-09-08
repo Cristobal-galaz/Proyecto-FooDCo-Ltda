@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital@0;1&display=swap');
+  
+.recipe-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: RGB(230, 226, 224) ;
+    width: 100%;
+    height: 50vw;
+    gap: 45px;
+    position: relative; /* Necesario para que el posicionamiento absoluto funcione */
+    font-family: "Montserrat", sans-serif;
+}
+
+.image-container {
+    background-size: cover; /* Asegura que la imagen cubra todo el contenedor sin distorsionarse */
+    background-position: center; /* Centra la imagen en el contenedor */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    width: 100%; /* Asegura que ocupe el 100% del ancho del contenedor */
+    height: 20vw; /* Ajusta la altura como desees, por ejemplo usando vw para hacerlo responsivo */
+    position: relative;
+}
+
+
+.title {
+    font-size: 200%;
+    background-color: RGB(181, 90, 54);
+    width: 80%;
+    height: 5%;
+    margin: 0 auto;
+    position: absolute; /* Se posiciona de forma absoluta para superposición */
+    top: 36%; /* Ajusta este valor para controlar la superposición */
+    z-index: 1; /* Para que el título esté por encima de la imagen */
+    
+    display: flex; /* Flexbox para alinear contenido */
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Centra el contenido verticalmente */
+    
+    color: white;
+    text-align: center;
+    padding: 10px; /* Añadir un poco de espacio interior si lo deseas */
+}
+
+.content {
+    display:flex;
+    flex-direction: row;
+    gap: 10px;
+    width: 80%;
+    height: 50%;
+    margin: 0 auto;
+}
+.ingredients {
+    background-color: RGB(254, 254, 254);
+    width: 50%;
+    padding: 10px; /* Para dar espacio interior */
+    overflow: auto;
+}
+
+.preparation {
+    background-color: RGB(254, 254, 254);
+    width: 50%;
+    padding: 10px; /* Para dar espacio interior */
+    overflow: auto;
+    line-height: 1.5;
+}
+p {
+    margin: 10px 0; /* Agrega margen superior e inferior a los párrafos */
+}
+
+/* Centrando los títulos h3 */
+h3 {
+    text-align: center;
+    margin: 10px 0; /* Ajusta los márgenes de los títulos */
+    margin-bottom: 20px;;
+}

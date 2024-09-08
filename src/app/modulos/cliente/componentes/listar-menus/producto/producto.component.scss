@@ -6,9 +6,11 @@
   }
   
   .product img {
-    max-width: 100%;
-    height: auto;
-    object-fit: cover;
+    background-size: cover; /* Asegura que la imagen cubra todo el contenedor sin distorsionarse */
+    background-position: center; /* Centra la imagen en el contenedor */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    width: 100%; /* Asegura que ocupe el 100% del ancho del contenedor */
+    height: 45%;
   }
   
   .product .description {

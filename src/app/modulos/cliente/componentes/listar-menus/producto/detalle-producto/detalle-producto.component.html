@@ -1,7 +1,28 @@
-<p>  {{data.producto.nombre}} </p>
-<p>  {{data.producto.descripcion}} </p>
+<div class="recipe-container">
+    <div class="image-container" [ngStyle]="{'background-image': 'url(' + 'http://' + data.producto.imagenes[0] + ')'}">
+       
+    </div>
 
-@for (ingrediente of data.producto.ingredientes; track $index){
-    <p> {{ingrediente.nombre}} </p>
+    <div class="title">
+            {{data.producto.nombre}}
 
-}
+    </div>
+
+    <div class="content">
+        <div class="ingredients">
+            <h3>INGREDIENTES:</h3>
+
+            <ul>
+                @for(objct of data.producto.ingredientes; track $index){
+                <li> {{objct.ingrediente.nombre}} </li>
+
+                }
+            </ul>
+        </div>
+
+        <div class="preparation">
+            <h3>Descripcion:</h3>
+            <p> {{data.producto.descripcion}} </p>
+        </div>
+    </div>
+</div>

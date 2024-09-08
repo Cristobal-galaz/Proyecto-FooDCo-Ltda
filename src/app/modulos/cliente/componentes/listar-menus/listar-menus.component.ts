@@ -66,6 +66,7 @@ export class ListarMenusComponent implements OnInit {
   seleccionarDieta(dieta: string): void {
     this.dietaSeleccionada = dieta;
     this.applyFilters();
+    this.tipo = this.tipos[0];
   }
 
   applyFilters(): void {
