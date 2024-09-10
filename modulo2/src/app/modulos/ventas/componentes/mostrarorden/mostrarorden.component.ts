@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ConexionService } from '../Service/conexion.service';
+import { ConexionService } from '../../Service/conexion.service';
 import { Router } from '@angular/router';
 
 @Component({
