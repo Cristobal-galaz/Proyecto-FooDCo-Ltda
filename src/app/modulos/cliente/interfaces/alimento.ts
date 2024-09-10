@@ -42,3 +42,10 @@ export interface CantidadProducto{
     producto: Producto;
     cantidad: number;
 }
+
+export interface SeleccionProducto{
+    productos: CantidadProducto[];
+    clienteId: string;
+    direccion: string;
+    fecha: Date;
+}

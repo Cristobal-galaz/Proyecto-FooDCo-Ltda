@@ -3,10 +3,11 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import { CantidadProducto } from '../../../interfaces/alimento';
 import { ListaProductosService } from '../../../services/lista-productos.service';
+import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-lista-productos',
   standalone: true,
-  imports: [MatCardModule, MatButtonModule],
+  imports: [MatCardModule, MatButtonModule, RouterLink],
   templateUrl: './lista-productos.component.html',
   styleUrl: './lista-productos.component.scss'
 })
