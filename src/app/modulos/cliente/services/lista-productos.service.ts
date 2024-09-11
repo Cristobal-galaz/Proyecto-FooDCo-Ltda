@@ -20,18 +20,24 @@ export class ListaProductosService {
    }
 
    addProductos(productoCantidad: CantidadProducto) {
-    console.log('productoCantidad', productoCantidad.producto._id);
-
     const productoExistente = this.productos.find(p => p.producto._id === productoCantidad.producto._id);
-    
+
     if (productoExistente) {
       productoExistente.cantidad += productoCantidad.cantidad;
 
-      console.log(productoExistente.producto._id);
     } else {
       this.productos.push(productoCantidad);
-      console.log('producto nuevo');
     }
     this._productos.next(this.productos);
   }
+
+  deleteProducto(index: number) {
+    this.productos.splice(index, 1);
+    this._productos.next(this.productos);
+  }
+  editProducto(index: number, cantidad: number){
+    this.productos[index].cantidad = cantidad;
+    this._productos.next(this.productos);
+  }
+
 }

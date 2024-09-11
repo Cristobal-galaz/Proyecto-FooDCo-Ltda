@@ -1,0 +1,106 @@
+.flex-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 15px;
+}
+
+.formulario {
+  width: 60%;
+  margin: auto;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 768px) {
+  .formulario {
+    width: 95%;
+  }
+}
+
+@media (max-width: 480px) {
+  .formulario {
+    width: 100%;
+  }
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.inputs, .table {
+  padding: 10px;
+}
+
+.button-row {
+  display: flex;
+  justify-content: center;
+}
+
+.quantity {
+  text-align: right;
+  padding-right: 20px;
+}
+
+th, td {
+  vertical-align: middle;
+  text-align: center;
+  padding: 10px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.horizontal-inputs {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 20px;
+}
+
+.info-input {
+  width: 100%;
+  margin: 10px 0;
+}
+
+.info-input.direccion {
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .horizontal-inputs {
+    flex-direction: column;
+  }
+}
+
+.table {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end; /* Alinea los botones a la derecha */
+  gap: 10px; /* Añade espacio entre los botones */
+}
+
+.enviar-btn, .atras-btn {
+  margin-top: 20px;
+}
+
+@media (max-width: 600px) {
+  .enviar-btn, .atras-btn {
+    margin: 10px auto;
+    display: block;
+  }
+}
+
+.form::after {
+  content: "";
+  display: table;
+  clear: both;
+}

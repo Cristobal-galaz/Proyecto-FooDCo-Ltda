@@ -1,91 +1,152 @@
-import {Component, inject, OnInit} from '@angular/core';
-import {FormBuilder, Validators, FormsModule, ReactiveFormsModule, FormArray} from '@angular/forms';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component,model, inject, OnInit,ViewEncapsulation }  from '@angular/core';
+import {FormGroup, FormBuilder, Validators, FormsModule, ReactiveFormsModule, FormArray, FormControl} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {provideNativeDateAdapter} from '@angular/material/core';
-import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatDatepickerModule, MatCalendarCellClassFunction} from '@angular/material/datepicker';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import { ListaProductosService } from '../../services/lista-productos.service';
 import { CantidadProducto } from '../../interfaces/alimento';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmComponent } from '../layout/confirm/confirm.component';
+import { Observable, pairs } from 'rxjs';
+import {MatCardModule} from '@angular/material/card';
+import { ApiMenusService } from '../../services/api-menus.service';
 @Component({
   selector: 'app-orden-compra',
   standalone: true,
   providers: [provideNativeDateAdapter()],
   imports: [MatButtonModule,
+    MatCardModule,
     FormsModule,
     ReactiveFormsModule,
+    MatIconModule,
     MatFormFieldModule,
     MatInputModule,
-    MatDatepickerModule,
-    MatTableModule],
+    MatTableModule,
+  ConfirmComponent,
+  MatDatepickerModule],
   templateUrl: './orden-compra.component.html',
-  styleUrl: './orden-compra.component.scss'
+  styleUrl: './orden-compra.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OrdenCompraComponent {
-
-
-  constructor(private listaProductosService:ListaProductosService) {  }
-  
-  private _formBuilder = inject(FormBuilder);
-
-  dataSource!: MatTableDataSource<CantidadProducto>;
-  seleccionPedidos = this._formBuilder.group({
-    direccion: ['', Validators.required],
-    ciudad: ['', Validators.required],
-    pais: ['', Validators.required],
-    productos: this._formBuilder.array([])
-  });
-
+  readonly dialog = inject(MatDialog);
+  formOrdenCompra!: FormGroup;
+  dataSource: MatTableDataSource<any> = new MatTableDataSource<any>();
+  productos!: CantidadProducto[];
+  editMode: boolean[]= [];
+  displayedColumns = ['producto','cantidad','acciones'];
+  dateInitial!: Date;
+  selected = model<Date | null>(null);
+constructor(private listaProductosService: ListaProductosService,
+  private _fb: FormBuilder, private cd: ChangeDetectorRef,
+private apiMenu: ApiMenusService) { }
 
 
   ngOnInit(): void {
-    // Suscribirse al servicio y llenar el FormArray
-    this.listaProductosService.listaProductos.subscribe(cantidadProductos => {
-      this.dataSource = new MatTableDataSource(cantidadProductos);
-      this.clearProductosFormArray();
-      cantidadProductos.forEach(producto => {
-        this.agregarProductoAlFormulario(producto);
-      });
+    this.dateInitial = new Date();
+    this.dateInitial.setDate(this.dateInitial.getDate() + 15);
+    this.formOrdenCompra = this._fb.group({
+      productos: this._fb.array([]),
+      clienteId: ['66d9faecaef81e8b832e1013'],
+      direccion: [''],
+      ciudad: [''],
+      pais: [''],
+      fechaRequerida: [''],
     });
-    console.log(this.seleccionPedidos.value);
-  }
 
-  displayedColumns: string[] = ['nombre', 'cantidad', 'acciones'];
-  
+    this.listaProductosService.listaProductos.subscribe(
+      (productos: CantidadProducto[]) => {
+        this.productosForm.clear();
+        productos.forEach(producto => {
+          this.addCantidad(producto);
 
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
-
-  get productos(): FormArray {
-    return this.seleccionPedidos.get('productos') as FormArray;
-  }
-
-  // Función para agregar un producto al FormArray usando la interfaz CantidadProducto
-  agregarProductoAlFormulario(producto: CantidadProducto) {
-    const productoForm = this._formBuilder.group({
-        nombre: [producto.producto.nombre, Validators.required],
-        cantidad: [producto.cantidad, [Validators.required, Validators.min(1)]]
+          this.editMode = new Array(productos.length).fill(false);
+        });
+        this.dataSource = new MatTableDataSource(this.productosForm.controls);
       });
-    this.productos.push(productoForm);
+  }
+  get productosForm(){
+    return this.formOrdenCompra.controls['productos'] as FormArray;
   }
 
-  // Limpiar el FormArray antes de agregar nuevos productos
-  clearProductosFormArray() {
-    while (this.productos.length !== 0) {
-      this.productos.removeAt(0);
-    }
+  onSubmit() {
+    this.apiMenu.sendOrdenCompra(this.formOrdenCompra.value);
   }
 
-  // Función para eliminar un producto del FormArray
-  eliminarProducto(index: number) {
-    this.productos.removeAt(index);
-    this.dataSource.data.splice(index, 1); // Elimina también del dataSource
-    this.dataSource._updateChangeSubscription(); // Refresca la tabla
+  addCantidad(producto: CantidadProducto){
+    const formProducto = this._fb.group({
+      productoNombre: [producto.producto.nombre],
+      producto: [producto.producto._id],
+      cantidad: [producto.cantidad]
+    });
+
+    this.productosForm.push(formProducto);
+    this.dataSource = new MatTableDataSource(this.productosForm.controls);
+    this.cd.detectChanges();
   }
 
+  onEdit(index: number){
+    this.openDialog('editar').subscribe(result => {
+      if(result){
+        this.editMode[index] = true;
+        this.cd.detectChanges();
+      }
+    });
+  }
+  onSave(index: number){
+    this.openDialog('confirmar_edicion').subscribe(result => {
+      if(result){
+        this.editMode[index] = false;
+        this.listaProductosService.editProducto(index, this.productosForm.at(index).value.cantidad);
+        this.cd.detectChanges();
+      }
+    });
+  }
+
+  onDelete(index: number){
+    this.openDialog('eliminar').subscribe(result => {
+      if(result){
+        this.productosForm.removeAt(index);
+        this.dataSource = new MatTableDataSource(this.productosForm.controls);
+        this.cd.detectChanges();
+        this.listaProductosService.deleteProducto(index);
+      }
+    });
+    
+  }
+
+  openDialog(tipoMensaje: string): Observable<boolean> {
+    const dialogRef = this.dialog.open(ConfirmComponent, {
+      data: { message: tipoMensaje },
+      width: '250px',
+      panelClass: ['custom-dialog', 'additional-class-for-animation']
+    });
   
+    return dialogRef.afterClosed();
+  }
 
+  dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
+    // Only highligh dates inside the month view.
+    if (view === 'month') {
+      const date = cellDate.getDate();
+
+      // Highlight the 1st and 20th day of each month.
+      return date === 1 || date === 20 ? 'example-custom-date-class' : '';
+    }
+
+    return '';
+  };
+  myFilter = (d: Date | null): boolean => {
+    const day = (d || new Date());
+    // Prevent Saturday and Sunday from being selected.
+    return day >= this.dateInitial;
+  };
+
+  onBack(){
+    
+  }
 }

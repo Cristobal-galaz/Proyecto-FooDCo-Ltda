@@ -7,11 +7,14 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatButtonModule} from '@angular/material/button';
 import { HttpClient } from '@angular/common/http';
 import{ environment } from '../../../../environments/environment';
+import { AbstractControl, ValidationErrors } from '@angular/forms';
+
 
 import {ChangeDetectionStrategy} from '@angular/core';
 import {MatSelectModule} from '@angular/material/select';
 
 import { OptionService } from '../../services/api-rubros.service'; // Asegúrate de usar la ruta correcta
+
 
 @Component({
   selector: 'app-registro',
@@ -23,7 +26,10 @@ import { OptionService } from '../../services/api-rubros.service'; // Asegúrate
 export class RegistroComponent implements OnInit{
   
   opciones: any[] = [];
+
+
   constructor(private optionService: OptionService, private http: HttpClient) { }
+
   apiUrl = environment.apiUrl;
   ngOnInit(): void {
     this.cargarOpciones();
@@ -43,25 +49,25 @@ export class RegistroComponent implements OnInit{
 
   firstFormGroup = this._formBuilder.group({
     username: ['', Validators.required],
-    email: ['', Validators.required],
-    password: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.minLength(6)]],
   });
   secondFormGroup = this._formBuilder.group({
-    rut_empresa: ['', Validators.required],
+    rut_empresa: ['',[Validators.required, this.rutValidator]],
     giro: ['', Validators.required],
     direccion: ['', Validators.required],
     comuna: ['', Validators.required],
     ciudad: ['', Validators.required],
-    correo_contacto: ['', Validators.required],
-    telefono_empresa: ['', Validators.required],
+    correo_contacto: ['', [Validators.required, Validators.email]],
+    telefono_empresa: ['', [Validators.required, this.telefonoValidator]],
     nombre_empresa: ['', Validators.required],
     rubro: ['', Validators.required],
   });
   thirdFormGroup= this._formBuilder.group({
     nombre: ['', Validators.required],
     apellido: ['', Validators.required],
-    telefono: ['', Validators.required],
-    email: ['', Validators.required],
+    telefono: ['', [Validators.required, this.telefonoValidator]],
+    email: ['', [Validators.required, Validators.email]],
   });
   isLinear = false;
 
@@ -88,5 +94,20 @@ export class RegistroComponent implements OnInit{
     } else {
       console.error('Formulario no válido');
     }
+
   }
+    // Validador personalizado para RUT
+    rutValidator(control: AbstractControl): ValidationErrors | null {
+      const rutPattern = /^\d{1,2}\.\d{3}\.\d{3}-[\dkK]{1}$/; //11.111.111-1
+      const valid = rutPattern.test(control.value);
+      return valid ? null : { rutInvalido: true };
+    }
+      // Validador personalizado para números de teléfono chilenos
+  telefonoValidator(control: AbstractControl): ValidationErrors | null {
+    const telefonoPattern = /^(\+56|56)?[2-9]\d{8}$/; // +56 o 56 seguido por 9 dígitos (2-9 para el código de área)
+    const valid = telefonoPattern.test(control.value);
+    return valid ? null : { telefonoInvalido: true };
+  }
+
 }
+

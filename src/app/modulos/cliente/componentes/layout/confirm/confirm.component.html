@@ -1,0 +1,35 @@
+@if(data.message == 'editar'){
+
+    
+    <h2 mat-dialog-title>Editar cantidad Producto</h2>
+    <mat-dialog-content>
+        ¿Desea continuar con la edición de la cantidad del producto?
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button mat-dialog-close (click)="onConfirm()">Ok</button>
+    <button mat-button mat-dialog-close  (click)="onCancel()">No</button>
+</mat-dialog-actions>
+}
+@else if(data.message == 'eliminar'){
+    <h2 mat-dialog-title>Eliminar Producto</h2>
+    <mat-dialog-content>
+       ¿Desea continuar con la eliminacion del producto?
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button mat-dialog-close (click)="onConfirm()">Ok</button>
+    <button mat-button mat-dialog-close  (click)="onCancel()">No</button>
+</mat-dialog-actions>
+}
+@else if(data.message == 'confirmar_edicion'){
+    <h2 mat-dialog-title>Confirmacion</h2>
+    <mat-dialog-content>
+       El producto será editado, ¿Desea continuar?
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button mat-dialog-close (click)="onConfirm()">Ok</button>
+    <button mat-button mat-dialog-close  (click)="onCancel()">No</button>
+</mat-dialog-actions>
+}
+
+    
+    
