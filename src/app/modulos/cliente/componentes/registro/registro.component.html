@@ -16,7 +16,7 @@
                     <ng-template matStepLabel>Registro</ng-template>
 
                     <mat-form-field>
-                        <mat-label>Nombre Usiario</mat-label>
+                        <mat-label>Nombre Usuario</mat-label>
                         <input matInput placeholder="Ingresa nombre de usuario" formControlName="username" required>
                     </mat-form-field>
                     <mat-form-field>
@@ -70,7 +70,7 @@
                     <mat-form-field>
                         <mat-label>Correo</mat-label>
                         <input matInput formControlName="correo_contacto" placeholder="ejemplo@ejemplo.cl" required>
-                    </mat-form-field>
+                    </mat-form-field>  
                     <mat-form-field>
                         <mat-label>Telefono</mat-label>
                         <input matInput formControlName="telefono_empresa" placeholder="912345678" required>
@@ -133,9 +133,9 @@
                 <ng-template matStepLabel>Finalización</ng-template>
                 <p>El registro está completo</p>
                 <div>
-                    <button mat-buttom (click)="registrarCliente()">Subir</button>
+                    <button mat-buttom (click)="registrarCliente()">Finalizar</button>
                     <button mat-button matStepperPrevious>Volver</button>
-                    <button mat-button (click)="stepper.reset()">Finalizar</button>
+                    <button mat-button (click)="stepper.reset()">Rehacer</button>
                 </div>
             </mat-step>
 

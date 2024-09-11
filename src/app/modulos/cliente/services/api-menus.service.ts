@@ -15,4 +15,13 @@ export class ApiMenusService {
    getMenus(){
     return this.http.get<[]>(`${this.apiUrl}menu/list/true`);
   }
+
+  sendOrdenCompra(ordenCompra: any){
+    this.http.post(this.apiUrl+"seleccion-productos/new",ordenCompra).
+    subscribe(response => {
+      console.log('Registro exitoso', response);
+    }, error => {
+      console.error('Error en el registro', error);
+    });
+  }
 }
