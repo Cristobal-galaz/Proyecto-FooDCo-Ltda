@@ -30,6 +30,24 @@
     <button mat-button mat-dialog-close  (click)="onCancel()">No</button>
 </mat-dialog-actions>
 }
+@else if(data.message == 'sin_productos'){
+    <h2 mat-dialog-title>Sin productos Seleccionados</h2>
+    <mat-dialog-content>
+       No existen productos seleccionados, por favor seleccione al menos uno.
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button mat-dialog-close>Ok</button>
+</mat-dialog-actions>
+}
+@else if(data.message == 'invalido'){
+    <h2 mat-dialog-title>Formulario Inválido</h2>
+    <mat-dialog-content>
+       Existen Campos Invalidos
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button mat-dialog-close>Ok</button>
+</mat-dialog-actions>
+}
 
     
     

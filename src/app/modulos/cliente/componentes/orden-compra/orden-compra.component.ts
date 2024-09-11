@@ -14,6 +14,8 @@ import { ConfirmComponent } from '../layout/confirm/confirm.component';
 import { Observable, pairs } from 'rxjs';
 import {MatCardModule} from '@angular/material/card';
 import { ApiMenusService } from '../../services/api-menus.service';
+import {UserService} from '../../../../services/user.service';
+import {Router} from '@angular/router';
 @Component({
   selector: 'app-orden-compra',
   standalone: true,
@@ -43,7 +45,8 @@ export class OrdenCompraComponent {
   selected = model<Date | null>(null);
 constructor(private listaProductosService: ListaProductosService,
   private _fb: FormBuilder, private cd: ChangeDetectorRef,
-private apiMenu: ApiMenusService) { }
+private apiMenu: ApiMenusService,
+private user: UserService, private router:Router) { }
 
 
   ngOnInit(): void {
@@ -51,11 +54,11 @@ private apiMenu: ApiMenusService) { }
     this.dateInitial.setDate(this.dateInitial.getDate() + 15);
     this.formOrdenCompra = this._fb.group({
       productos: this._fb.array([]),
-      clienteId: ['66d9faecaef81e8b832e1013'],
-      direccion: [''],
-      ciudad: [''],
-      pais: [''],
-      fechaRequerida: [''],
+      clienteId: [this.user.getIdUser(), Validators.required],
+      direccion: ['', Validators.required],
+      ciudad: ['', Validators.required],
+      pais: ['', Validators.required],
+      fechaRequerida: ['', Validators.required],
     });
 
     this.listaProductosService.listaProductos.subscribe(
@@ -74,7 +77,18 @@ private apiMenu: ApiMenusService) { }
   }
 
   onSubmit() {
+    if (this.formOrdenCompra.valid){
+      if(this.listaProductosService.totalProductos === 0){
+      this.openDialog('sin_productos');
+      this.onBack();
+      return;
+    }      
     this.apiMenu.sendOrdenCompra(this.formOrdenCompra.value);
+    }
+    else{
+      this.openDialog('invalido');
+    }
+    
   }
 
   addCantidad(producto: CantidadProducto){
@@ -146,7 +160,7 @@ private apiMenu: ApiMenusService) { }
     return day >= this.dateInitial;
   };
 
-  onBack(){
-    
+  onBack() {
+    this.router.navigate(['/cliente/menus']); // Usa navigate para ir a la ruta deseada
   }
 }
