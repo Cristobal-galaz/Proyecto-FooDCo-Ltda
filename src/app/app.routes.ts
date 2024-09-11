@@ -25,7 +25,7 @@ export const routes: Routes = [
     },
     {
         path: '',
-        redirectTo: '/login',
+        redirectTo: '/inicio',
         pathMatch: 'full'
     },
     {
@@ -38,5 +38,30 @@ export const routes: Routes = [
         title: 'Registro Cliente',
         loadComponent:()=> import('./pages/clientes/registro-clientes/registro-clientes.component').then(m => m.RegistroClientesComponent),
         canActivate: [authenticatedGuard]
+    },
+    {
+        path: 'inicio',
+        title: 'Inicio',
+        loadComponent:()=> import('./modulos/ventas/componentes/inicio/inicio.component').then(m => m.InicioComponent),
+    },
+    {
+        path: 'mostrarorden',
+        title: 'Mostrar Orden',
+        loadComponent:()=> import('./modulos/ventas/componentes/mostrarorden/mostrarorden.component').then(m => m.MostrarordenComponent),
+    },
+    {
+        path: 'personal',
+        title: 'Personal',
+        loadComponent:()=> import('./modulos/ventas/componentes/personal/personal.component').then(m => m.PersonalComponent),
+    },
+    {
+        path: 'orden',
+        title: 'Orden',
+        loadComponent:()=> import('./modulos/ventas/componentes/orden-compra/orden-compra.component').then(m => m.OrdenCompraComponent),
+    },
+    {
+        path: 'inicio-en',
+        title: 'Inicio-en',
+        loadComponent:()=> import('./modulos/ventas/componentes/inicio-en/inicio-en.component').then(m => m.InicioEnComponent),
     }
 ];
