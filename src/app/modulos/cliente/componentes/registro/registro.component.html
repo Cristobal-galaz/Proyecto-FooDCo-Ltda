@@ -1,16 +1,9 @@
 <div style="display: flex; justify-content: center; align-items: flex-start; height: 100vh;">
     <div style="max-width: 400px; width: 100%;">
 
-        <!--
-                <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
-                    {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
-                </button>
-                -->
-
         <mat-stepper orientation="vertical" [linear]="isLinear" #stepper>
 
-            <!-- step 1 = REgistro-->
-
+            <!-- Step 1: Registro -->
             <mat-step [stepControl]="firstFormGroup">
                 <form [formGroup]="firstFormGroup">
                     <ng-template matStepLabel>Registro</ng-template>
@@ -18,22 +11,26 @@
                     <mat-form-field>
                         <mat-label>Nombre Usuario</mat-label>
                         <input matInput placeholder="Ingresa nombre de usuario" formControlName="username" required>
+                        <mat-error *ngIf="isFieldInvalid(firstFormGroup, 'username')">
+                            {{ getErrorMessage(firstFormGroup, 'username') }}
+                        </mat-error>
                     </mat-form-field>
+
                     <mat-form-field>
                         <mat-label>Email</mat-label>
                         <input matInput placeholder="Ingresa email" formControlName="email" required>
+                        <mat-error *ngIf="isFieldInvalid(firstFormGroup, 'email')">
+                            {{ getErrorMessage(firstFormGroup, 'email') }}
+                        </mat-error>
                     </mat-form-field>
+
                     <mat-form-field>
                         <mat-label>Contraseña</mat-label>
                         <input matInput placeholder="Ingrese contraseña" formControlName="password" type="password" required>
+                        <mat-error *ngIf="isFieldInvalid(firstFormGroup, 'password')">
+                            {{ getErrorMessage(firstFormGroup, 'password') }}
+                        </mat-error>
                     </mat-form-field>
-                    <!--
-                        <mat-form-field>
-                    <mat-label>Confirmar contraseña</mat-label>
-                    <input matInput placeholder="Confirme contraseña" formControlName="firstCtrl" required>
-                </mat-form-field>
-                -->
-
 
                     <div>
                         <button mat-button matStepperNext>Siguiente</button>
@@ -41,7 +38,7 @@
                 </form>
             </mat-step>
 
-            <!-- step 2 = datos de empresa-->
+            <!-- Step 2: Datos de empresa -->
             <mat-step [stepControl]="secondFormGroup">
                 <form [formGroup]="secondFormGroup">
                     <ng-template matStepLabel>Datos de empresa</ng-template>
@@ -49,47 +46,78 @@
                     <mat-form-field>
                         <mat-label>Rut empresa</mat-label>
                         <input matInput formControlName="rut_empresa" placeholder="12345678-9" required>
+                        <mat-error *ngIf="isFieldInvalid(secondFormGroup, 'rut_empresa')">
+                            {{ getErrorMessage(secondFormGroup, 'rut_empresa') }}
+                        </mat-error>
                     </mat-form-field>
+
                     <mat-form-field>
                         <mat-label>Giro</mat-label>
-                        <input matInput formControlName="giro"
-                            placeholder="FABRICACIÓN DE OTRAS SUSTANCIAS QUÍMICAS BÁSICAS N.C.P." required>
+                        <input matInput formControlName="giro" placeholder="FABRICACIÓN DE OTRAS SUSTANCIAS QUÍMICAS BÁSICAS N.C.P." required>
+                        <mat-error *ngIf="isFieldInvalid(secondFormGroup, 'giro')">
+                            {{ getErrorMessage(secondFormGroup, 'giro') }}
+                        </mat-error>
                     </mat-form-field>
+
                     <mat-form-field>
-                        <mat-label>Direccion</mat-label>
+                        <mat-label>Dirección</mat-label>
                         <input matInput formControlName="direccion" placeholder="Calle Santiago, 1234" required>
+                        <mat-error *ngIf="isFieldInvalid(secondFormGroup, 'direccion')">
+                            {{ getErrorMessage(secondFormGroup, 'direccion') }}
+                        </mat-error>
                     </mat-form-field>
+
                     <mat-form-field>
                         <mat-label>Comuna</mat-label>
                         <input matInput formControlName="comuna" placeholder="Puente Alto" required>
+                        <mat-error *ngIf="isFieldInvalid(secondFormGroup, 'comuna')">
+                            {{ getErrorMessage(secondFormGroup, 'comuna') }}
+                        </mat-error>
                     </mat-form-field>
+
                     <mat-form-field>
                         <mat-label>Ciudad</mat-label>
                         <input matInput formControlName="ciudad" placeholder="Santiago" required>
+                        <mat-error *ngIf="isFieldInvalid(secondFormGroup, 'ciudad')">
+                            {{ getErrorMessage(secondFormGroup, 'ciudad') }}
+                        </mat-error>
                     </mat-form-field>
+
                     <mat-form-field>
                         <mat-label>Correo</mat-label>
                         <input matInput formControlName="correo_contacto" placeholder="ejemplo@ejemplo.cl" required>
-                    </mat-form-field>  
-                    <mat-form-field>
-                        <mat-label>Telefono</mat-label>
-                        <input matInput formControlName="telefono_empresa" placeholder="912345678" required>
+                        <mat-error *ngIf="isFieldInvalid(secondFormGroup, 'correo_contacto')">
+                            {{ getErrorMessage(secondFormGroup, 'correo_contacto') }}
+                        </mat-error>
                     </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-label>Teléfono</mat-label>
+                        <input matInput formControlName="telefono_empresa" placeholder="912345678" required>
+                        <mat-error *ngIf="isFieldInvalid(secondFormGroup, 'telefono_empresa')">
+                            {{ getErrorMessage(secondFormGroup, 'telefono_empresa') }}
+                        </mat-error>
+                    </mat-form-field>
+
                     <mat-form-field>
                         <mat-label>Nombre de empresa</mat-label>
                         <input matInput formControlName="nombre_empresa" placeholder="EMPRESA FICTICIA LTDA" required>
+                        <mat-error *ngIf="isFieldInvalid(secondFormGroup, 'nombre_empresa')">
+                            {{ getErrorMessage(secondFormGroup, 'nombre_empresa') }}
+                        </mat-error>
                     </mat-form-field>
+
                     <mat-form-field>
                         <mat-label>Rubro</mat-label>
                         <mat-select formControlName="rubro">
-                            @for(rubro of opciones; track $index){
-                            <mat-option value="{{rubro._id}}"> {{rubro.clasificacion}} - {{rubro.nombre}} </mat-option>
-                            }
-
+                            <mat-option *ngFor="let rubro of opciones" [value]="rubro._id">
+                                {{ rubro.clasificacion }} - {{ rubro.nombre }}
+                            </mat-option>
                         </mat-select>
-
+                        <mat-error *ngIf="isFieldInvalid(secondFormGroup, 'rubro')">
+                            {{ getErrorMessage(secondFormGroup, 'rubro') }}
+                        </mat-error>
                     </mat-form-field>
-
 
                     <div>
                         <button mat-button matStepperPrevious>Volver</button>
@@ -98,7 +126,7 @@
                 </form>
             </mat-step>
 
-            <!-- step 3 = datos personales -->
+            <!-- Step 3: Datos personales -->
             <mat-step [stepControl]="thirdFormGroup">
                 <form [formGroup]="thirdFormGroup">
                     <ng-template matStepLabel>Datos personales</ng-template>
@@ -106,20 +134,34 @@
                     <mat-form-field>
                         <mat-label>Nombre</mat-label>
                         <input matInput placeholder="Ingresa nombre" formControlName="nombre" required>
-                    </mat-form-field>
-                    <mat-form-field>
-                        <mat-label>Apellido</mat-label>
-                        <input matInput placeholder="Ingrese apellido" formControlName="apellido" required>
-                    </mat-form-field>
-                    <mat-form-field>
-                        <mat-label>Telefono</mat-label>
-                        <input matInput placeholder="Confirme telefono" formControlName="telefono" required>
-                    </mat-form-field>
-                    <mat-form-field>
-                        <mat-label>Email</mat-label>
-                        <input matInput placeholder="Confirme email" formControlName="email" required>
+                        <mat-error *ngIf="isFieldInvalid(thirdFormGroup, 'nombre')">
+                            {{ getErrorMessage(thirdFormGroup, 'nombre') }}
+                        </mat-error>
                     </mat-form-field>
 
+                    <mat-form-field>
+                        <mat-label>Apellido</mat-label>
+                        <input matInput placeholder="Ingresa apellido" formControlName="apellido" required>
+                        <mat-error *ngIf="isFieldInvalid(thirdFormGroup, 'apellido')">
+                            {{ getErrorMessage(thirdFormGroup, 'apellido') }}
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-label>Teléfono</mat-label>
+                        <input matInput placeholder="912345678" formControlName="telefono" required>
+                        <mat-error *ngIf="isFieldInvalid(thirdFormGroup, 'telefono')">
+                            {{ getErrorMessage(thirdFormGroup, 'telefono') }}
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-label>Email</mat-label>
+                        <input matInput placeholder="ejemplo@ejemplo.cl" formControlName="email" required>
+                        <mat-error *ngIf="isFieldInvalid(thirdFormGroup, 'email')">
+                            {{ getErrorMessage(thirdFormGroup, 'email') }}
+                        </mat-error>
+                    </mat-form-field>
 
                     <div>
                         <button mat-button matStepperPrevious>Volver</button>
@@ -128,13 +170,13 @@
                 </form>
             </mat-step>
 
-            <!-- step final-->
+            <!-- Step final -->
             <mat-step>
                 <ng-template matStepLabel>Finalización</ng-template>
                 <p>El registro está completo</p>
                 <div>
-                    <button mat-buttom (click)="registrarCliente()">Finalizar</button>
-                    <button mat-button matStepperPrevious>Volver</button>
+                    <button mat-button (click)="registrarCliente()">Finalizar</button>
+                    <button mat-button (click)="volverALogin()">Volver</button>
                     <button mat-button (click)="stepper.reset()">Rehacer</button>
                 </div>
             </mat-step>

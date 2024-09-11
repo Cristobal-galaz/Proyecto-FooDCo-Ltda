@@ -5,24 +5,24 @@
 
     <mat-form-field  class = "info-input" >
       <mat-label> Direccion </mat-label> 
-      <input  matInput  placeholder = "Ej. Pizza"  value = "Sushi" formControlName="direccion" > 
+      <input  matInput  placeholder = "Direccion"  value = "" formControlName="direccion" required> 
     </mat-form-field>
     <div class="horizontal-inputs">
 
       <mat-form-field  class = "info-input" > 
         <mat-label> Ciudad </mat-label> 
-        <input  matInput  placeholder = "Ej. Pizza"  value = "Sushi" formControlName="ciudad"> 
+        <input  matInput  placeholder = "Ciudad"  value = "" formControlName="ciudad" required> 
       </mat-form-field>
  
       <mat-form-field  class = "info-input" > 
         <mat-label> Pais </mat-label> 
-        <input  matInput  placeholder = "Ej. Pizza"  value = "Sushi" formControlName="pais"> 
+        <input  matInput  placeholder = "Pais"  value = "" formControlName="pais" required> 
       </mat-form-field>
     </div>
     
     <mat-form-field class="info-input">
       <mat-label>Choose a date</mat-label>
-      <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker" formControlName="fechaRequerida">
+      <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker" formControlName="fechaRequerida" required>
     <mat-hint>MM/DD/YYYY</mat-hint>
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
@@ -115,7 +115,7 @@
             </table>
     </div>
     <div class="button-container">
-    <button mat-stroked-button (click)="onSubmit()" type="submit" class="enviar-btn">Enviar</button>
+    <button mat-stroked-button type="submit" class="enviar-btn">Enviar</button>
     <button mat-stroked-button (click)="onBack()" type="button" class="enviar-btn">Atras</button>
   </div>
   </div>

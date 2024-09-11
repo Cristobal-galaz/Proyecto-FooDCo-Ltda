@@ -14,10 +14,13 @@ export class ListaProductosService {
     this._productos = new BehaviorSubject<CantidadProducto[]>([]);
    }
 
-
+   get totalProductos(){
+      return this.productos.length;
+   }
    get listaProductos(){
     return this._productos.asObservable();
    }
+
 
    addProductos(productoCantidad: CantidadProducto) {
     const productoExistente = this.productos.find(p => p.producto._id === productoCantidad.producto._id);

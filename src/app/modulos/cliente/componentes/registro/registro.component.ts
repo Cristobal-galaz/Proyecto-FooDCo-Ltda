@@ -8,7 +8,8 @@ import {MatButtonModule} from '@angular/material/button';
 import { HttpClient } from '@angular/common/http';
 import{ environment } from '../../../../environments/environment';
 import { AbstractControl, ValidationErrors } from '@angular/forms';
-
+import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 import {ChangeDetectionStrategy} from '@angular/core';
 import {MatSelectModule} from '@angular/material/select';
@@ -19,7 +20,7 @@ import { OptionService } from '../../services/api-rubros.service'; // Asegúrate
 @Component({
   selector: 'app-registro',
   standalone: true,
-  imports: [FormsModule,ReactiveFormsModule,MatInputModule,MatFormFieldModule,MatStepperModule,MatButtonModule,MatSelectModule ],
+  imports: [FormsModule,ReactiveFormsModule,MatInputModule,MatFormFieldModule,MatStepperModule,MatButtonModule,MatSelectModule,CommonModule ],
   templateUrl: './registro.component.html',
   styleUrl: './registro.component.scss'
 })
@@ -28,7 +29,7 @@ export class RegistroComponent implements OnInit{
   opciones: any[] = [];
 
 
-  constructor(private optionService: OptionService, private http: HttpClient) { }
+  constructor(private optionService: OptionService, private http: HttpClient, private router: Router) { }
 
   apiUrl = environment.apiUrl;
   ngOnInit(): void {
@@ -87,12 +88,14 @@ export class RegistroComponent implements OnInit{
 
       // Envía los datos a la API
       this.http.post(this.apiUrl+"auth/register/cliente", formData).subscribe(response => {
-        console.log('Registro exitosso', response);
+        console.log('Registro exitoso', response);
+        this.router.navigate(['/login']);
       }, error => {
         console.error('Error en el registro', error);
       });
     } else {
       console.error('Formulario no válido');
+      
     }
 
   }
@@ -108,6 +111,37 @@ export class RegistroComponent implements OnInit{
     const valid = telefonoPattern.test(control.value);
     return valid ? null : { telefonoInvalido: true };
   }
+  volverALogin(): void {
+    this.router.navigate(['/login']);
+  }
+
+
+  isFieldInvalid(formGroup: AbstractControl, field: string): boolean {
+    const control = formGroup.get(field);
+    return !!(control && control.invalid && (control.dirty || control.touched));
+  }
+  
+  getErrorMessage(formGroup: AbstractControl, field: string): string {
+    const control = formGroup.get(field);
+    if (control?.errors?.['required']) {
+      return 'Este campo es obligatorio';
+    }
+    if (control?.errors?.['email']) {
+      return 'Formato de email inválido';
+    }
+    if (control?.errors?.['minlength']) {
+      return 'La longitud mínima es de 6 caracteres';
+    }
+    if (control?.errors?.['rutInvalido']) {
+      return 'RUT inválido';
+    }
+    if (control?.errors?.['telefonoInvalido']) {
+      return 'Teléfono inválido';
+    }
+    return '';
+  }
+  
+  
 
 }
 
