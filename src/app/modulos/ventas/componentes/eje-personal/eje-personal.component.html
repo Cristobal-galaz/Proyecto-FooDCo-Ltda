@@ -1,0 +1,100 @@
+<div class="container">
+    <h2>PERSONAL</h2>
+    <div class="header">
+      <input type="text" placeholder="Buscar...">
+      <button>Filtros</button>
+    </div>
+  
+    <div class="content-wrapper">
+      <!-- Tabla unificada -->
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Labor</th>
+            <th>IMAGEN</th>
+            <th>Telefono</th>
+            <th>Correo</th> <!-- Nueva columna de correos -->
+            <th>Contratos activos</th> <!-- Nueva columna de contratos activos -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Nicolas Aros</td>
+            <td><span class="label seguridad">Ejecutivo de Ventas</span></td>
+            <td>
+              <img
+                src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/14/2f/3c/57/restaurant-vina-indomita.jpg?w=1100&h=-1&s=1"
+                height="40"
+                alt="Pedro Sanchez Image"
+              />
+            </td>
+            <td>+56944205663</td>
+            <td>n.arossalazar&#64;uan.cl</td> <!-- Dato de correo -->
+            <td>4</td> <!-- Dato de contratos activos -->
+          </tr>
+          <tr>
+            <td>Diego Vergara</td>
+            <td><span class="label artista-digital">Ejecutivo de Ventas</span></td>
+            <td>
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSo50Y8Jtvo60eE6pqShktEuaIQMkpjf6IiSA&s"
+                height="40" 
+                alt="Diego Vergara Image"
+              />
+            </td>
+            <td>+56944205665</td>
+            <td>d.vergara&#64;uan.cl</td> <!-- Dato de correo -->
+            <td>0</td> <!-- Dato de contratos activos -->
+          </tr>
+          <tr>
+            <td>Carmen Elizabeth Juanita de Costa Brava Cortez</td>
+            <td><span class="label developer">Ejecutivo de Ventas</span></td>
+            <td>
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgWTfOUohAwNvA1O_3VY0ceGev4OPLKtgKlw&s"
+                height="40"
+                alt="Carmen Elizabeth Image"
+              />
+            </td>
+            <td>+56944205662</td>
+            <td>carmen.decostrabava&#64;uan.cl</td> <!-- Dato de correo -->
+            <td>5</td> <!-- Dato de contratos activos -->
+          </tr>
+          <tr>
+            <td>Cristobal Galaz</td>
+            <td><span class="label periodista">Ejecutivo de Ventas</span></td>
+            <td>
+              <img
+                src="https://images.visitchile.com/destinos/656_Vina_del_Mar.jpg?w=960&h=448&fit=crop&q=auto&auto=format"
+                height="40"
+                alt="Cristobal Galaz Image"
+              />
+            </td>
+            <td>+56944205668</td>
+            <td>c.galazbrito&#64;uan.cl</td> <!-- Dato de correo -->
+            <td>3</td> <!-- Dato de contratos activos -->
+          </tr>
+          <tr>
+            <td>Anibal Muñoz</td>
+            <td><span class="label developer">Ejecutivo de Ventas</span></td>
+            <td>
+              <img
+                src="https://valparaisoregion.org/wp-content/uploads/2022/07/quilpue2.jpg"
+                height="40"
+                alt="Anibal Muñoz Image"
+              />
+            </td>
+            <td>+56944205660</td>
+            <td>a.munozyes1&#64;uan.cl</td> <!-- Dato de correo -->
+            <td>15</td> <!-- Dato de contratos activos -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  <!-- Botones -->
+  <button (click)="sendNotification()">Click me</button>
+  <button (click)="goToInicio()">Go to Inicio</button>
+  

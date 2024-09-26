@@ -63,5 +63,10 @@ export const routes: Routes = [
         path: 'inicio-en',
         title: 'Inicio-en',
         loadComponent:()=> import('./modulos/ventas/componentes/inicio-en/inicio-en.component').then(m => m.InicioEnComponent),
-    }
+    },
+    {
+        path: 'ejecutivopersonal',
+        title: 'Ejecutivo persoanl ',
+        loadComponent:()=> import('./modulos/ventas/componentes/eje-personal/eje-personal.component').then(m => m.EjePersonalComponent),
+    },
 ];
