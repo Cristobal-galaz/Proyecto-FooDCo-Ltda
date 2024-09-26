@@ -1,61 +1,71 @@
 <div class="orden-compra">
-    <h1>Orden de compra N° X</h1>
-    
-    <div class="seccion">
-      <p><strong>Nombre cliente:</strong> [Nombre del Cliente]</p>
-      <p><strong>Datos de factura:</strong> [Datos de Factura]</p>
-      <p><strong>Fecha de orden:</strong> [Fecha]</p>
-    </div>
-  
-    <h3>Productos:</h3>
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Descripción</th>
-          <th>Cantidad</th>
-          <th>Precio unitario</th>
-          <th>Precio</th>
-          <th>Descuento</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>001</td>
-          <td>Producto 1</td>
-          <td>1</td>
-          <td>$10</td>
-          <td>$10</td>
-          <td>$0</td>
-        </tr>
-        <tr>
-          <td>002</td>
-          <td>Producto 2</td>
-          <td>2</td>
-          <td>$15</td>
-          <td>$30</td>
-          <td>$5</td>
-        </tr>
-        <tr>
-          <td>003</td>
-          <td>Producto 3</td>
-          <td>3</td>
-          <td>$20</td>
-          <td>$60</td>
-          <td>$10</td>
-        </tr>
-      </tbody>
-    </table>
-  
-    <div class="resumen">
-      <p><strong>IVA:</strong> $X</p>
-      <p class="precio-final"><strong>Precio final:</strong> $X</p>
-    </div>
-  
-    <div class="seccion">
-      <p><strong>Lugar de entrega:</strong> [Lugar]</p>
-      <p><strong>Fecha de entrega:</strong> [Fecha]</p>
-    </div>
+  <!-- Botón para cambiar el idioma -->
+  <div class="text-right mb-3">
+    <button class="btn btn-primary" (click)="toggleLanguage()">
+      {{ isEnglish ? 'Switch to Spanish' : 'Cambiar a Inglés' }}
+    </button>
   </div>
+
+  <h1>{{ isEnglish ? 'Purchase Order No. X' : 'Orden de compra N° X' }}</h1>
+
+  <div class="seccion">
+    <p><strong>{{ isEnglish ? 'Client Name:' : 'Nombre cliente:' }}</strong> [Nombre del Cliente]</p>
+    <p><strong>{{ isEnglish ? 'Client DNI:' : 'Rut cliente:' }}</strong> [Rut del Cliente]</p>
+    <p><strong>{{ isEnglish ? 'In Charge Name:' : 'Nombre Encargado:' }}</strong> [Nombre del Encargado]</p>
+    <p><strong>{{ isEnglish ? 'In Charge DNI:' : 'Rut Encargado:' }}</strong> [Rut del Encargado]</p>
+    <p><strong>{{ isEnglish ? 'Invoice Details:' : 'Datos de factura:' }}</strong> [Datos de Factura]</p>
+    <p><strong>{{ isEnglish ? 'Order Date:' : 'Fecha de orden:' }}</strong> [Fecha]</p>
+  </div>
+
+  <h3>{{ isEnglish ? 'Products:' : 'Productos:' }}</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>{{ isEnglish ? 'Description' : 'Descripción' }}</th>
+        <th>{{ isEnglish ? 'Quantity' : 'Cantidad' }}</th>
+        <th>{{ isEnglish ? 'Unit Price' : 'Precio unitario' }}</th>
+        <th>{{ isEnglish ? 'Price' : 'Precio' }}</th>
+        <th>{{ isEnglish ? 'Discount' : 'Descuento' }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>001</td>
+        <td>{{ isEnglish ? 'Product 1' : 'Producto 1' }}</td>
+        <td>1</td>
+        <td>$10</td>
+        <td>$10</td>
+        <td>$0</td>
+      </tr>
+      <tr>
+        <td>002</td>
+        <td>{{ isEnglish ? 'Product 2' : 'Producto 2' }}</td>
+        <td>2</td>
+        <td>$15</td>
+        <td>$30</td>
+        <td>$5</td>
+      </tr>
+      <tr>
+        <td>003</td>
+        <td>{{ isEnglish ? 'Product 3' : 'Producto 3' }}</td>
+        <td>3</td>
+        <td>$20</td>
+        <td>$60</td>
+        <td>$10</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="resumen">
+    <p><strong>{{ isEnglish ? 'VAT:' : 'IVA:' }}</strong> $X</p>
+    <p class="precio-final"><strong>{{ isEnglish ? 'Final Price:' : 'Precio final:' }}</strong> $X</p>
+  </div>
+
+  <div class="seccion">
+    <p><strong>{{ isEnglish ? 'Delivery Location:' : 'Lugar de entrega:' }}</strong> [Lugar]</p>
+    <p><strong>{{ isEnglish ? 'Delivery Date:' : 'Fecha de entrega:' }}</strong> [Fecha]</p>
+  </div>
+</div>
   
   <!--Para pedir los datos de la api, no usar modelos, usar interfaces-->

@@ -5,8 +5,12 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './orden-compra.component.html',
-  styleUrl: './orden-compra.component.css'
+  styleUrls: ['./orden-compra.component.css']
 })
 export class OrdenCompraComponent {
+  isEnglish: boolean = false; // Controlador del idioma
 
+  toggleLanguage() {
+    this.isEnglish = !this.isEnglish; // Cambia entre inglés y español
+  }
 }
