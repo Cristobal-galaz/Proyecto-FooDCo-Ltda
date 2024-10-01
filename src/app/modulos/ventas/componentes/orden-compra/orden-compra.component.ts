@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-orden-compra',
   standalone: true,
-  imports: [],
   templateUrl: './orden-compra.component.html',
   styleUrls: ['./orden-compra.component.css']
 })
 export class OrdenCompraComponent {
-  isEnglish: boolean = false; // Controlador del idioma
+  constructor(private router: Router) {}
 
-  toggleLanguage() {
-    this.isEnglish = !this.isEnglish; // Cambia entre inglés y español
+  switchToEnglish() {
+    this.router.navigate(['/orden-compra-en']);
   }
 }

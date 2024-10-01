@@ -1,26 +1,30 @@
 import { Component, OnInit } from '@angular/core';
-import { ConexionService } from '../../Service/conexion/conexion.service';
 import { Router } from '@angular/router';
+import { ConexionService } from '../../Service/conexion/conexion.service';
 
 @Component({
   selector: 'app-mostrarorden',
   standalone: true,
   imports: [],
   templateUrl: './mostrarorden.component.html',
-  styleUrl: './mostrarorden.component.css'
+  styleUrls: ['./mostrarorden.component.css']
 })
-export class MostrarordenComponent implements OnInit{
+export class MostrarordenComponent implements OnInit {
   message: string | null = null;
 
   constructor(private router: Router, private conexionService: ConexionService) {}
 
   ngOnInit() {
     this.conexionService.buttonClicked$.subscribe(() => {
-      this.message = 'Button in Personal component was clicked!';
+      this.message = '¡El botón en el componente Personal fue presionado!';
     });
   }
+
   goToOrden() {
-    this.router.navigate(['/orden']);  // Navega al componente de Inicio
+    this.router.navigate(['/orden']);
   }
 
+  switchToEnglish() {
+    this.router.navigate(['/mostrarorden-en']);
+  }
 }

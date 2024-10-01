@@ -1,0 +1,61 @@
+<button class="btn btn-outline-secondary" (click)="switchToSpanish()">Cambiar a Español</button>
+
+<div class="orden-compra">
+    <h1>Purchase Order N° X</h1>
+    
+    <div class="seccion">
+      <p><strong>Customer Name:</strong> [Customer Name]</p>
+      <p><strong>Invoice Details:</strong> [Invoice Details]</p>
+      <p><strong>Order Date:</strong> [Date]</p>
+    </div>
+  
+    <h3>Products:</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Description</th>
+          <th>Quantity</th>
+          <th>Unit Price</th>
+          <th>Price</th>
+          <th>Discount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>001</td>
+          <td>Product 1</td>
+          <td>1</td>
+          <td>$10</td>
+          <td>$10</td>
+          <td>$0</td>
+        </tr>
+        <tr>
+          <td>002</td>
+          <td>Product 2</td>
+          <td>2</td>
+          <td>$15</td>
+          <td>$30</td>
+          <td>$5</td>
+        </tr>
+        <tr>
+          <td>003</td>
+          <td>Product 3</td>
+          <td>3</td>
+          <td>$20</td>
+          <td>$60</td>
+          <td>$10</td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <div class="resumen">
+      <p><strong>Tax (VAT):</strong> $X</p>
+      <p class="precio-final"><strong>Total Price:</strong> $X</p>
+    </div>
+  
+    <div class="seccion">
+      <p><strong>Delivery Location:</strong> [Location]</p>
+      <p><strong>Delivery Date:</strong> [Date]</p>
+    </div>
+</div>
