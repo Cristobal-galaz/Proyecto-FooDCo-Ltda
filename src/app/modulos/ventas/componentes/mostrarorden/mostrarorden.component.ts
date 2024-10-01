@@ -21,7 +21,7 @@ export class MostrarordenComponent implements OnInit {
   }
 
   goToOrden() {
-    this.router.navigate(['/orden']);
+    this.router.navigate(['/orden-compra']);
   }
 
   switchToEnglish() {

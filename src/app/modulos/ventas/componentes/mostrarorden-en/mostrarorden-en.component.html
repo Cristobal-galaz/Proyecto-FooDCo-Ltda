@@ -1,5 +1,4 @@
-<!-- Botón para cambiar a español -->
-<button class="btn btn-outline-secondary mb-3" (click)="switchToSpanish()">Switch to Spanish</button>
+<button class="btn btn-outline-secondary mb-3" (click)="switchToSpanish()">Cambiar a Español</button>
 
 <div class="row">
   <div class="col-sm-6 mb-3 mb-sm-0">
@@ -7,18 +6,55 @@
       <div class="card-body">
         <h5 class="card-title">Daily Report</h5>
         <p class="card-text">Report of Purchase Orders, Frequent Customers, and Frequent Purchases on XX/XX/XXXX</p>
-        <!-- Botón que llama al método de redirección -->
         <button class="btn btn-outline-info" (click)="goToOrden()">Go to Report</button>
       </div>
     </div>
   </div>
-  
   <div class="col-sm-6">
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Weekly Report</h5>
         <p class="card-text">Report of Purchase Orders, Frequent Customers, and Frequent Purchases for the week XX/XX/XXXX</p>
-        <!-- Botón que llama al método de redirección -->
+        <button class="btn btn-outline-info" (click)="goToOrden()">Go to Report</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-6 mb-3 mb-sm-0">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Biweekly Report</h5>
+        <p class="card-text">Purchase Orders Report, Frequent Customers, and Frequent Purchases for the weeks between XX/XX/XXXX and XX/XX/XXXX</p>
+        <button class="btn btn-outline-info" (click)="goToOrden()">Go to Report</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Monthly Report</h5>
+        <p class="card-text">Purchase Orders Report, Frequent Customers, and Frequent Purchases for the month of XX/XXXX</p>
+        <button class="btn btn-outline-info" (click)="goToOrden()">Go to Report</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-6 mb-3 mb-sm-0">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Quarterly Report</h5>
+        <p class="card-text">Purchase Orders Report, Frequent Customers, and Frequent Purchases between the months XX/XXXX and XX/XXXX</p>
+        <button class="btn btn-outline-info" (click)="goToOrden()">Go to Report</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Semiannual Report</h5>
+        <p class="card-text">Purchase Orders Report, Frequent Customers, and Frequent Purchases between the months XX/XXXX and XX/XXXX</p>
         <button class="btn btn-outline-info" (click)="goToOrden()">Go to Report</button>
       </div>
     </div>
