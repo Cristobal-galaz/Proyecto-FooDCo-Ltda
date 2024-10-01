@@ -7,11 +7,10 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [],
   templateUrl: './mostrarorden.component.html',
-  styleUrls: ['./mostrarorden.component.css']
+  styleUrl: './mostrarorden.component.css'
 })
-export class MostrarordenComponent implements OnInit {
+export class MostrarordenComponent implements OnInit{
   message: string | null = null;
-  isEnglish: boolean = false; // Variable para controlar el idioma
 
   constructor(private router: Router, private conexionService: ConexionService) {}
 
@@ -20,12 +19,8 @@ export class MostrarordenComponent implements OnInit {
       this.message = 'Button in Personal component was clicked!';
     });
   }
-
   goToOrden() {
-    this.router.navigate(['/orden']);  // Navega al componente de inicio
+    this.router.navigate(['/orden']);  // Navega al componente de Inicio
   }
 
-  toggleLanguage() {
-    this.isEnglish = !this.isEnglish; // Cambia el idioma entre inglés y español
-  }
 }
