@@ -65,13 +65,20 @@ export const routes: Routes = [
         loadComponent:()=> import('./modulos/ventas/componentes/inicio-en/inicio-en.component').then(m => m.InicioEnComponent),
     },
     {
-        path: 'ejecutivopersonal',
-        title: 'Ejecutivo persoanl ',
-        loadComponent:()=> import('./modulos/ventas/componentes/eje-personal/eje-personal.component').then(m => m.EjePersonalComponent),
+        path: 'ejecutivo',
+        title: 'Ejecutivo',
+        children: [
+            {
+                path: 'personal',
+                title: 'Ejecutivo personal ',
+                loadComponent:()=> import('./modulos/ventas/componentes/eje-personal/eje-personal.component').then(m => m.EjePersonalComponent),
+            },
+            {
+                path: 'inicio',
+                title: 'Ejecutivo inicio',
+                loadComponent:()=> import('./modulos/ventas/componentes/eje-inicio/eje-inicio.component').then(m => m.EjeInicioComponent),
+            },
+        ]
     },
-    {
-        path: 'ejecutivoinicio',
-        title: 'Ejecutivo inicio',
-        loadComponent:()=> import('./modulos/ventas/componentes/eje-inicio/eje-inicio.component').then(m => m.EjeInicioComponent),
-    },
+    
 ];
