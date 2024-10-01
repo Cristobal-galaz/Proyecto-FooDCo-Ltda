@@ -12,13 +12,12 @@ import { Router } from '@angular/router';
 })
 export class PersonalComponent implements OnInit {
   message: string | null = null;
-  isEnglish: boolean = false; // Propiedad para manejar el idioma
 
   constructor(private router: Router, private conexionService: ConexionService) {}
 
   ngOnInit() {
     this.conexionService.buttonClicked$.subscribe(() => {
-      this.message = this.isEnglish ? 'Button in Personal component was clicked!' : '¡Botón en el componente Personal fue clicado!';
+      this.message = 'Button in Personal component was clicked!';
     });
   }
 
@@ -27,10 +26,6 @@ export class PersonalComponent implements OnInit {
   }
   
   goToHome() {
-    this.router.navigate(['/home']);  // Navega al componente de Inicio
-  }
-
-  toggleLanguage() {
-    this.isEnglish = !this.isEnglish; // Alterna el idioma
+    this.router.navigate(['/home']);  // Navigate to Home component
   }
 }

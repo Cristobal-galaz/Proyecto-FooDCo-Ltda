@@ -1,85 +1,97 @@
 <div class="container">
-    <h2>PERSONAL</h2>
-    <div class="header">
-      <input type="text" placeholder="Buscar...">
-      <button>Filtros</button>
-    </div>
-    <table>
-      <thead>
-        <tr>
-          <th>Nombre</th>  
-          <th>Labor</th>
-          <th>IMAGEN</th>
-          <th>Telefono</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Nicolas Aros</td>
-          <td><span class="label seguridad">Ejecutivo de Ventas </span></td>
-          <td>
-            <img
-              src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/14/2f/3c/57/restaurant-vina-indomita.jpg?w=1100&h=-1&s=1"
-              height="40"
-              alt="Pedro Sanchez Image"
-            />
-          </td>
-          <td>+56944205663</td>
-          <td class="actions"></td>
-        </tr>
-        <tr>
-          <td>Diego Vergara </td>
-          <td><span class="label artista-digital">Ejecutivo de Ventas </span></td>
-          <td>
-            <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSo50Y8Jtvo60eE6pqShktEuaIQMkpjf6IiSA&s"
-              height="40" 
-              alt="terry mcginnis Image"
-            />
-          </td>
-          <td>+56944205665</td>
-          <td class="actions"></td>
-        </tr>
-        <tr>
-          <td>Carmen Elizabeth Juanita de Costa Brava Cortez</td>
-          <td><span class="label developer">Ejecutivo de Ventes </span></td>
-          <td>
-            <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgWTfOUohAwNvA1O_3VY0ceGev4OPLKtgKlw&s"
-              height="40"
-              alt="Carmen Elizabeth Image"
-            />
-          </td>
-          <td>+56944205662</td>
-          <td class="actions"></td>
-        </tr>
-        <tr>
-          <td>Cristobal Galaz</td>
-          <td><span class="label periodista">Ejecutivo de Ventas </span></td>
-          <td>
-            <img
-              src="https://images.visitchile.com/destinos/656_Vina_del_Mar.jpg?w=960&h=448&fit=crop&q=auto&auto=format"
-              height="40"
-              alt="Dante Alighieri Image"
-            />
-          </td>
-          <td>+56944205668</td>
-          <td class="actions"></td>
-        </tr>
-        <tr>
-          <td>Anibal Muñoz</td>
-          <td><span class="label developer">Ejecutivo de Ventas </span></td>
-          <td>
-            <img
-              src="https://valparaisoregion.org/wp-content/uploads/2022/07/quilpue2.jpg"
-              height="40"
-              alt="Virgilo Sparda Image"
-            />
-          </td>
-          <td>+56944205660</td>
-          <td class="actions"></td>
-        </tr>
-      </tbody>
-    </table>
+  <h2>{{ isEnglish ? 'PERSONAL' : 'PERSONAL' }}</h2>
+  <div class="header">
+    <input type="text" placeholder="{{ isEnglish ? 'Search...' : 'Buscar...' }}">
+    <button>{{ isEnglish ? 'Filters' : 'Filtros' }}</button>
+    <button (click)="toggleLanguage()">{{ isEnglish ? 'Switch to Spanish' : 'Cambiar a Inglés' }}</button>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>{{ isEnglish ? 'Name' : 'Nombre' }}</th>  
+        <th>{{ isEnglish ? 'Role' : 'Labor' }}</th>
+        <th>{{ isEnglish ? 'IMAGE' : 'IMAGEN' }}</th>
+        <th>{{ isEnglish ? 'Phone' : 'Teléfono' }}</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+
+
+
+
+
+      <tr>
+  <td>Nicolas Aros</td>
+  <td><span class="label seguridad">{{ isEnglish ? 'Sales Executive' : 'Ejecutivo de Ventas' }}</span></td>
+  <td>
+    <img
+      src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/14/2f/3c/57/restaurant-vina-indomita.jpg?w=1100&h=-1&s=1"
+      height="40"
+      alt="Nicolas Aros Image"
+    />
+  </td>
+  <td>+56944205663</td>
+  <td class="actions"></td>
+</tr>
+<tr>
+  <td>Diego Vergara</td>
+  <td><span class="label artista-digital">{{ isEnglish ? 'Sales Executive' : 'Ejecutivo de Ventas' }}</span></td>
+  <td>
+    <img
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSo50Y8Jtvo60eE6pqShktEuaIQMkpjf6IiSA&s"
+      height="40" 
+      alt="Diego Vergara Image"
+    />
+  </td>
+  <td>+56944205665</td>
+  <td class="actions"></td>
+</tr>
+<tr>
+  <td>Carmen Elizabeth Juanita de Costa Brava Cortez</td>
+  <td><span class="label developer">{{ isEnglish ? 'Sales Executive' : 'Ejecutivo de Ventas' }}</span></td>
+  <td>
+    <img
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgWTfOUohAwNvA1O_3VY0ceGev4OPLKtgKlw&s"
+      height="40"
+      alt="Carmen Elizabeth Image"
+    />
+  </td>
+  <td>+56944205662</td>
+  <td class="actions"></td>
+</tr>
+<tr>
+  <td>Cristobal Galaz</td>
+  <td><span class="label periodista">{{ isEnglish ? 'Sales Executive' : 'Ejecutivo de Ventas' }}</span></td>
+  <td>
+    <img
+      src="https://images.visitchile.com/destinos/656_Vina_del_Mar.jpg?w=960&h=448&fit=crop&q=auto&auto=format"
+      height="40"
+      alt="Cristobal Galaz Image"
+    />
+  </td>
+  <td>+56944205668</td>
+  <td class="actions"></td>
+</tr>
+<tr>
+  <td>Anibal Muñoz</td>
+  <td><span class="label developer">{{ isEnglish ? 'Sales Executive' : 'Ejecutivo de Ventas' }}</span></td>
+  <td>
+    <img
+      src="https://valparaisoregion.org/wp-content/uploads/2022/07/quilpue2.jpg"
+      height="40"
+      alt="Anibal Muñoz Image"
+    />
+  </td>
+  <td>+56944205660</td>
+  <td class="actions"></td>
+</tr>
+
+
+
+
+
+
+    </tbody>
+  </table>
 </div>
