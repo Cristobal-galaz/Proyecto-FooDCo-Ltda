@@ -1,0 +1,130 @@
+.frame{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.titulo {
+  width: 58%; /* El ancho será del 58% del contenedor padre */
+  max-width: 696px; /* En pantallas grandes, no excederá los 696px */
+  margin: 0 auto; /* Centrar el div horizontalmente */
+  text-align: center;
+  display: flex; /* Usamos Flexbox */
+  flex-direction: column; /* Alineamos los elementos en columna */
+  align-items: center; /* Centramos los elementos horizontalmente */
+  gap: 32px; /* Espacio entre los elementos del div */
+  margin-bottom: 4rem; /* Añadimos un margen inferior de 4rem */
+}
+
+.titulo h1, .titulo p {
+  font-family: 'Inter';
+}
+
+.titulo h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 4rem;
+  overflow-wrap: break-word; /* Reemplazamos word-wrap */
+}
+
+.titulo p {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  letter-spacing: 0.50px;
+  overflow-wrap: break-word; /* Reemplazamos word-wrap */
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row; /* Disponer horizontalmente en pantallas grandes */
+  gap: 16px; /* Añade espacio entre los botones */
+}
+
+.ver-productos, .dato-contacto {
+  padding: 16px;
+  background: #74e478; /* Fondo del botón (verde) */
+  box-shadow: 0px 8px 24px rgba(169, 230, 169, 0.24);
+  border-radius: 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  display: inline-flex;
+  width: 10.8rem;
+  height: 3.5rem;
+  border: none; /* Eliminar el borde */
+  cursor: pointer;
+  color: white;
+  font-size: 0.875rem; /* 14px convertido a rem */
+  font-family: 'Inter';
+  font-weight: 600;
+  line-height: 1.25rem; /* 20px convertido a rem */
+  letter-spacing: 0.00625rem; /* 0.10px convertido a rem */
+}
+
+.ver-productos:hover {
+  background-color: #5fc867; /* Cambiar el color de fondo en hover */
+  box-shadow: 0px 10px 30px rgba(169, 230, 169, 0.35); /* Efecto de sombra en hover */
+  transform: scale(1.05); /* Aumentar ligeramente el tamaño en hover */
+  transition: all 0.3s ease; /* Transición suave */
+}
+
+.dato-contacto {
+  background: #4ca9f5; /* Fondo del botón (azul) */
+}
+
+.dato-contacto:hover {
+  background-color: #3d8ddc; /* Cambiar el color de fondo en hover */
+  box-shadow: 0px 10px 30px rgba(130, 193, 247, 0.35); /* Efecto de sombra en hover */
+  transform: scale(1.05); /* Aumentar ligeramente el tamaño en hover */
+  transition: all 0.3s ease; /* Transición suave */
+}
+
+/* Media Queries */
+@media (max-width: 480px) {
+  .buttons {
+    flex-direction: column; /* Cambiar a disposición vertical en pantallas pequeñas */
+  }
+}
+.imagenes img {
+  width: 275px;
+  height: 275px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.imagenes {
+  display: flex;
+  justify-content: space-between; /* Para distribuir el espacio entre las imágenes */
+  width: calc(100% - 40px); /* Espacio total menos 20px a cada lado */
+  max-width: 1200px; /* Puedes ajustar esto según el diseño deseado */
+  margin: 0 20px; /* Mantener 20px (o 1.25rem) de separación desde los bordes de la pantalla */
+  margin-bottom: 8rem;
+}
+
+@media (max-width: 768px) {
+  .imagenes {
+    flex-wrap: wrap; /* Permitir que las imágenes se alineen en filas cuando el espacio es limitado */
+    justify-content: center; /* Centrar las imágenes en pantallas pequeñas */
+  }
+
+  .imagenes img {
+    margin-bottom: 20px; /* Añadir separación en pantallas pequeñas */
+  }
+}
+.explicacion h1{
+  color: #323434;
+font-size: 2.8rem;
+font-family: Inter;
+font-weight: 700;
+line-height: 3.25rem;
+word-wrap: break-word
+}
+.explicacion p{
+  color: #888888;
+font-size: 1rem;
+font-family: Inter;
+font-weight: 500;
+line-height: 1.25rem;
+letter-spacing: 0,009375rem;
+word-wrap: break-word
+}

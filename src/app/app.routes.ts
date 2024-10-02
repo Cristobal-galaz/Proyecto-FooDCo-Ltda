@@ -25,13 +25,17 @@ export const routes: Routes = [
     },
     {
         path: '',
-        redirectTo: '/inicio',
+        redirectTo: '/home',
         pathMatch: 'full'
     },
     {
         path: 'login',
         loadComponent: ()=> import('./pages/clientes/login-clientes/login-clientes.component'),
         canActivate: [authenticatedGuard]
+    },
+    {
+        path: 'home',
+        loadComponent: ()=> import('./pages/main/main.component').then(m => m.MainComponent),
     },
     {
         path: 'registro',
