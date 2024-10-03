@@ -71,6 +71,11 @@ export const routes: Routes = [
         loadComponent: () => import('./modulos/ventas/componentes/Espanol-comp/ventas-pago/ventas-pago.component').then(m => m.VentasPagoComponent),
     },
     {
+        path: 'subcontratos',
+        title: 'subcontratos activos ',
+        loadComponent: () => import('./modulos/ventas/componentes/Espanol-comp/subcontratos/subcontratos.component').then(m => m.SubcontratosComponent),
+    },
+    {
         path: 'orden-compra',
         title: 'Orden de Compra',
         loadComponent: () => import('./modulos/ventas/componentes/Espanol-comp/orden-compra/orden-compra.component').then(m => m.OrdenCompraComponent),
