@@ -50,29 +50,9 @@ export const routes: Routes = [
         loadComponent: () => import('./modulos/ventas/componentes/mostrarorden/mostrarorden.component').then(m => m.MostrarordenComponent),
     },
     {
-        path: 'mostrarorden-en',
-        title: 'Mostrar Orden (EN)',
-        loadComponent: () => import('./modulos/ventas/componentes/mostrarorden-en/mostrarorden-en.component').then(m => m.MostrarordenEnComponent),
-    },
-    {
         path: 'personal',
         title: 'Personal',
         loadComponent: () => import('./modulos/ventas/componentes/personal/personal.component').then(m => m.PersonalComponent),
-    },
-    {
-        path: 'orden-compra',
-        title: 'Orden de Compra',
-        loadComponent: () => import('./modulos/ventas/componentes/orden-compra/orden-compra.component').then(m => m.OrdenCompraComponent),
-    },
-    {
-        path: 'orden-compra-en',
-        title: 'Purchase Order (EN)',
-        loadComponent: () => import('./modulos/ventas/componentes/orden-compra-en/orden-compra-en.component').then(m => m.OrdenCompraEnComponent),
-    },
-    {
-        path: 'inicio-en',
-        title: 'Inicio (EN)',
-        loadComponent: () => import('./modulos/ventas/componentes/inicio-en/inicio-en.component').then(m => m.InicioEnComponent),
     },
     {
         path: 'ejecutivo',
@@ -88,6 +68,11 @@ export const routes: Routes = [
                 title: 'Ejecutivo Inicio',
                 loadComponent: () => import('./modulos/ventas/componentes/eje-inicio/eje-inicio.component').then(m => m.EjeInicioComponent),
             },
+            {
+                path: 'inicio-en',
+                title: 'Executive Home (EN)',
+                loadComponent: () => import('./modulos/ventas/componentes/eje-inicio-en/eje-inicio-en.component').then(m => m.EjeInicioEnComponent),
+            }
         ]
     }
 ];

@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { ConexionService } from '../../Service/conexion/conexion.service';
 import { Router } from '@angular/router';
+import { ConexionService } from '../../Service/conexion/conexion.service';
 
 @Component({
-  selector: 'app-eje-inicio',
-  templateUrl: './eje-inicio.component.html',
-  styleUrls: ['./eje-inicio.component.scss']
+  selector: 'app-eje-inicio-en',
+  templateUrl: './eje-inicio-en.component.html',
+  styleUrls: ['./eje-inicio-en.component.scss']
 })
-export class EjeInicioComponent implements OnInit {
+export class EjeInicioEnComponent implements OnInit {
   message: string | null = null;
 
   constructor(private router: Router, private conexionService: ConexionService) {}
 
   ngOnInit() {
     this.conexionService.buttonClicked$.subscribe(() => {
-      this.message = '¡El botón en el componente Eje-inicio fue clickeado!';
+      this.message = 'Button in Eje-inicio-en component was clicked!';
     });
   }
 
