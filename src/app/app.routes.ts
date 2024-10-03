@@ -55,6 +55,11 @@ export const routes: Routes = [
         loadComponent: () => import('./modulos/ventas/componentes/personal/personal.component').then(m => m.PersonalComponent),
     },
     {
+        path: 'pago',
+        title: 'Pagosrealisados',
+        loadComponent: () => import('./modulos/ventas/componentes/ventas-pago/ventas-pago.component').then(m => m.VentasPagoComponent),
+    },
+    {
         path: 'ejecutivo',
         title: 'Ejecutivo',
         children: [
