@@ -45,19 +45,40 @@ export const routes: Routes = [
         loadComponent: () => import('./modulos/ventas/componentes/inicio/inicio.component').then(m => m.InicioComponent),
     },
     {
+        path: 'inicio-en',
+        title: 'Inicio (EN)',
+        loadComponent: () => import('./modulos/ventas/componentes/inicio-en/inicio-en.component').then(m => m.InicioEnComponent),
+    },
+    {
         path: 'mostrarorden',
         title: 'Mostrar Orden',
         loadComponent: () => import('./modulos/ventas/componentes/mostrarorden/mostrarorden.component').then(m => m.MostrarordenComponent),
+    },
+    {
+        path: 'mostrarorden-en',
+        title: 'Mostrar Orden (EN)',
+        loadComponent: () => import('./modulos/ventas/componentes/mostrarorden-en/mostrarorden-en.component').then(m => m.MostrarordenEnComponent),
     },
     {
         path: 'personal',
         title: 'Personal',
         loadComponent: () => import('./modulos/ventas/componentes/personal/personal.component').then(m => m.PersonalComponent),
     },
+    
     {
         path: 'pago',
-        title: 'Pagosrealisados',
+        title: 'Pagos Realizados',
         loadComponent: () => import('./modulos/ventas/componentes/ventas-pago/ventas-pago.component').then(m => m.VentasPagoComponent),
+    },
+    {
+        path: 'orden-compra',
+        title: 'Orden de Compra',
+        loadComponent: () => import('./modulos/ventas/componentes/orden-compra/orden-compra.component').then(m => m.OrdenCompraComponent),
+    },
+    {
+        path: 'orden-compra-en',
+        title: 'Orden de Compra (EN)',
+        loadComponent: () => import('./modulos/ventas/componentes/orden-compra-en/orden-compra-en.component').then(m => m.OrdenCompraEnComponent),
     },
     {
         path: 'ejecutivo',
