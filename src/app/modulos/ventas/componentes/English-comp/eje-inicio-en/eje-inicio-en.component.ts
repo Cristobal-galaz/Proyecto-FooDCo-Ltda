@@ -1,29 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ConexionService } from '../../Service/conexion/conexion.service';
+import { ConexionService } from '../../../Service/conexion/conexion.service';
 
 @Component({
-  selector: 'app-eje-personal-en',
-  templateUrl: './eje-personal-en.component.html',
-  styleUrls: ['./eje-personal-en.component.scss']
+  selector: 'app-eje-inicio-en',
+  templateUrl: './eje-inicio-en.component.html',
+  styleUrls: ['./eje-inicio-en.component.scss']
 })
-export class EjePersonalEnComponent implements OnInit {
+export class EjeInicioEnComponent implements OnInit {
   message: string | null = null;
 
   constructor(private router: Router, private conexionService: ConexionService) {}
 
   ngOnInit() {
     this.conexionService.buttonClicked$.subscribe(() => {
-      this.message = 'Button in Personal component was clicked!';
+      this.message = 'Button in Eje-inicio-en component was clicked!';
     });
-  }
-
-  sendNotification() {
-    this.conexionService.notifyButtonClicked();
-  }
-
-  goToInicio() {
-    this.router.navigate(['/inicio']);
   }
 
   toggleLanguage() {
@@ -33,5 +25,9 @@ export class EjePersonalEnComponent implements OnInit {
     } else {
       this.router.navigate([`${currentUrl}-en`]);
     }
+  }
+
+  goToOrden() {
+    this.router.navigate(['/orden']);
   }
 }

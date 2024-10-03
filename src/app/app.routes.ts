@@ -47,7 +47,7 @@ export const routes: Routes = [
     {
         path: 'inicio-en',
         title: 'Inicio (EN)',
-        loadComponent: () => import('./modulos/ventas/componentes/inicio-en/inicio-en.component').then(m => m.InicioEnComponent),
+        loadComponent: () => import('./modulos/ventas/componentes/English-comp/inicio-en/inicio-en.component').then(m => m.InicioEnComponent),
     },
     {
         path: 'mostrarorden',
@@ -57,7 +57,7 @@ export const routes: Routes = [
     {
         path: 'mostrarorden-en',
         title: 'Mostrar Orden (EN)',
-        loadComponent: () => import('./modulos/ventas/componentes/mostrarorden-en/mostrarorden-en.component').then(m => m.MostrarordenEnComponent),
+        loadComponent: () => import('./modulos/ventas/componentes/English-comp/mostrarorden-en/mostrarorden-en.component').then(m => m.MostrarordenEnComponent),
     },
     {
         path: 'personal',
@@ -78,7 +78,7 @@ export const routes: Routes = [
     {
         path: 'orden-compra-en',
         title: 'Orden de Compra (EN)',
-        loadComponent: () => import('./modulos/ventas/componentes/orden-compra-en/orden-compra-en.component').then(m => m.OrdenCompraEnComponent),
+        loadComponent: () => import('./modulos/ventas/componentes/English-comp/orden-compra-en/orden-compra-en.component').then(m => m.OrdenCompraEnComponent),
     },
     {
         path: 'ejecutivo',
@@ -92,7 +92,7 @@ export const routes: Routes = [
             {
                 path: 'personal-en',
                 title: 'Executive Personnel (EN)',
-                loadComponent: () => import('./modulos/ventas/componentes/eje-personal-en/eje-personal-en.component').then(m => m.EjePersonalEnComponent),
+                loadComponent: () => import('./modulos/ventas/componentes/English-comp/eje-personal-en/eje-personal-en.component').then(m => m.EjePersonalEnComponent),
             },
             {
                 path: 'inicio',
@@ -102,7 +102,7 @@ export const routes: Routes = [
             {
                 path: 'inicio-en',
                 title: 'Executive Home (EN)',
-                loadComponent: () => import('./modulos/ventas/componentes/eje-inicio-en/eje-inicio-en.component').then(m => m.EjeInicioEnComponent),
+                loadComponent: () => import('./modulos/ventas/componentes/English-comp/eje-inicio-en/eje-inicio-en.component').then(m => m.EjeInicioEnComponent),
             }
         ]
     }

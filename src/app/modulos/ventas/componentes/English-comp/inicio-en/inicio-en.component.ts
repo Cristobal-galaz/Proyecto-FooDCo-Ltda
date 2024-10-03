@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';  // Asegúrate de importar CommonModule
-import { ConexionService } from '../../Service/conexion/conexion.service';
+import { ConexionService } from '../../../Service/conexion/conexion.service';
 
 @Component({
   selector: 'app-inicio-en',
@@ -22,7 +22,7 @@ export class InicioEnComponent implements OnInit {
   }
 
   goToPersonal() {
-    this.router.navigate(['/personal']);
+    this.router.navigate(['/personal-en']);
   }
 
   switchToSpanish() {
