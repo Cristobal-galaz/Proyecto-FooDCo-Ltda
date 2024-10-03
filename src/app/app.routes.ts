@@ -42,7 +42,7 @@ export const routes: Routes = [
     {
         path: 'inicio',
         title: 'Inicio',
-        loadComponent: () => import('./modulos/ventas/componentes/inicio/inicio.component').then(m => m.InicioComponent),
+        loadComponent: () => import('./modulos/ventas/componentes/Espanol-comp/inicio/inicio.component').then(m => m.InicioComponent),
     },
     {
         path: 'inicio-en',
@@ -52,7 +52,7 @@ export const routes: Routes = [
     {
         path: 'mostrarorden',
         title: 'Mostrar Orden',
-        loadComponent: () => import('./modulos/ventas/componentes/mostrarorden/mostrarorden.component').then(m => m.MostrarordenComponent),
+        loadComponent: () => import('./modulos/ventas/componentes/Espanol-comp/mostrarorden/mostrarorden.component').then(m => m.MostrarordenComponent),
     },
     {
         path: 'mostrarorden-en',
@@ -62,18 +62,18 @@ export const routes: Routes = [
     {
         path: 'personal',
         title: 'Personal',
-        loadComponent: () => import('./modulos/ventas/componentes/personal/personal.component').then(m => m.PersonalComponent),
+        loadComponent: () => import('./modulos/ventas/componentes/Espanol-comp/personal/personal.component').then(m => m.PersonalComponent),
     },
     
     {
         path: 'pago',
         title: 'Pagos Realizados',
-        loadComponent: () => import('./modulos/ventas/componentes/ventas-pago/ventas-pago.component').then(m => m.VentasPagoComponent),
+        loadComponent: () => import('./modulos/ventas/componentes/Espanol-comp/ventas-pago/ventas-pago.component').then(m => m.VentasPagoComponent),
     },
     {
         path: 'orden-compra',
         title: 'Orden de Compra',
-        loadComponent: () => import('./modulos/ventas/componentes/orden-compra/orden-compra.component').then(m => m.OrdenCompraComponent),
+        loadComponent: () => import('./modulos/ventas/componentes/Espanol-comp/orden-compra/orden-compra.component').then(m => m.OrdenCompraComponent),
     },
     {
         path: 'orden-compra-en',
@@ -87,7 +87,7 @@ export const routes: Routes = [
             {
                 path: 'personal',
                 title: 'Ejecutivo Personal',
-                loadComponent: () => import('./modulos/ventas/componentes/eje-personal/eje-personal.component').then(m => m.EjePersonalComponent),
+                loadComponent: () => import('./modulos/ventas/componentes/Espanol-comp/eje-personal/eje-personal.component').then(m => m.EjePersonalComponent),
             },
             {
                 path: 'personal-en',
@@ -97,7 +97,7 @@ export const routes: Routes = [
             {
                 path: 'inicio',
                 title: 'Ejecutivo Inicio',
-                loadComponent: () => import('./modulos/ventas/componentes/eje-inicio/eje-inicio.component').then(m => m.EjeInicioComponent),
+                loadComponent: () => import('./modulos/ventas/componentes/Espanol-comp/eje-inicio/eje-inicio.component').then(m => m.EjeInicioComponent),
             },
             {
                 path: 'inicio-en',

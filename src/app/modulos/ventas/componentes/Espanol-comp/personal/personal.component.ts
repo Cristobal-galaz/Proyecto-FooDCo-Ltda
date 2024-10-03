@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ConexionService } from '../../Service/conexion/conexion.service';
+import { ConexionService } from '../../../Service/conexion/conexion.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 

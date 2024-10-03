@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ApiserviceService } from '../../Service/apiservice.service';
+import { ApiserviceService } from '../../../Service/apiservice.service';
 
 @Component({
   selector: 'app-orden-compra',
