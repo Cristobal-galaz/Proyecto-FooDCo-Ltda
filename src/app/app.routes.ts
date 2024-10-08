@@ -34,10 +34,15 @@ export const routes: Routes = [
         canActivate: [authenticatedGuard]
     },
     {
+        path: 'editar',
+        loadComponent: ()=> import('./modulos/cliente/componentes/editar-usuario/editar-usuario.component').then(m => m.EditarUsuarioComponent),
+        canActivate: [authenticatedGuard]
+    },
+    {
         path: 'registro',
         title: 'Registro Cliente',
         loadComponent:()=> import('./pages/clientes/registro-clientes/registro-clientes.component').then(m => m.RegistroClientesComponent),
-        canActivate: [authenticatedGuard]
+        //canActivate: [authenticatedGuard]
     },
     {
         path: 'inicio',
