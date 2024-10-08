@@ -71,6 +71,11 @@ export const routes: Routes = [
         loadComponent: () => import('./modulos/ventas/componentes/Espanol-comp/ventas-pago/ventas-pago.component').then(m => m.VentasPagoComponent),
     },
     {
+        path: 'pago-en',
+        title: 'Payments Made',
+        loadComponent: () => import('./modulos/ventas/componentes/English-comp/ventas-pago-en/ventas-pago-en.component').then(m => m.VentasPagoEnComponent),
+    },
+    {
         path: 'subcontratos',
         title: 'subcontratos activos ',
         loadComponent: () => import('./modulos/ventas/componentes/Espanol-comp/subcontratos/subcontratos.component').then(m => m.SubcontratosComponent),
@@ -110,16 +115,5 @@ export const routes: Routes = [
                 loadComponent: () => import('./modulos/ventas/componentes/English-comp/eje-inicio-en/eje-inicio-en.component').then(m => m.EjeInicioEnComponent),
             }
         ]
-    },
-    {
-        path: 'pago',
-        title: 'Pagos Realizados',
-        loadComponent: () => import('./modulos/ventas/componentes/Espanol-comp/ventas-pago/ventas-pago.component').then(m => m.VentasPagoComponent),
-    },
-    {
-        path: 'pago-en',
-        title: 'Payments Made',
-        loadComponent: () => import('./modulos/ventas/componentes/English-comp/ventas-pago-en/ventas-pago-en.component').then(m => m.VentasPagoEnComponent),
-    },
-    
+    },    
 ];
