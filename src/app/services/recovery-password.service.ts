@@ -9,8 +9,8 @@ import { response } from 'express';
   providedIn: 'root'
 })
 export class RecoveryPasswordService {
-  private RecoveryKey = environment.apiUrl + "cliente/request-reset-password"
-  private ResetKey = environment.apiUrl + "cliente/reset-password"
+  private RecoveryKey = environment.apiUrl + "auth/cliente/request-reset-password"
+  private ResetKey = environment.apiUrl + "auth/cliente/reset-password"
   constructor(private HttpClient: HttpClient, private router: Router) { }
 
   recovery(email: string): Observable<any>{
