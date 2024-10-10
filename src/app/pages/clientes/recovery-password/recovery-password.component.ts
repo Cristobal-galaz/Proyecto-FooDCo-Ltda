@@ -1,17 +1,25 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { RecoveryPasswordService } from '../../../services/recovery-password.service';
+
 
 @Component({
   selector: 'app-recovery-password',
   standalone: true,
-  imports: [],
+  imports: [FormsModule, CommonModule],
   templateUrl: './recovery-password.component.html',
   styleUrl: './recovery-password.component.scss'
 })
 export class RecoveryPasswordComponent {
-  constructor(private router: Router){
+  email:string = "";
+  constructor(private router: Router, private recoveryPass: RecoveryPasswordService){
   }
-change(){
-  this.router.navigate(["/change-password"])
-}
+  recoveryPassword(): void{
+    this.recoveryPass.recovery(this.email).subscribe({
+      next: ()=> this.router.navigate(["change-password"]),
+      error: (err) => console.error("Envio de correo", err)
+    })
+  }
 }
