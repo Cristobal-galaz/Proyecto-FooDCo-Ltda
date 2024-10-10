@@ -19,7 +19,7 @@ export interface Cliente{
 
 export interface Empresa{
     _id:string,
-    rut_emppresa:string,
+    rut_empresa:string,
     giro:string,
     direccion:string,
     comuna:string,
@@ -74,6 +74,9 @@ export interface Ingrediente {
 export interface CantidadProducto{
     producto: Producto;
     cantidad: number;
+    descuento: number;
+    precioUnitario: number,
+    precioTotal:number;
 }
 
 export interface SeleccionProducto{

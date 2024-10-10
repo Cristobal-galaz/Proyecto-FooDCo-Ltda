@@ -12,7 +12,7 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./orden-compra.component.css']
 })
 export class OrdenCompraComponent implements OnInit {
-
+  orden!: OrdenCompra;
   constructor(private router: Router, private ordenCompra: ApiserviceService) {}
 
   switchToEnglish() {
@@ -26,11 +26,17 @@ export class OrdenCompraComponent implements OnInit {
           _id: data._id,
           cliente: data.cliente,
           estado: data.estado,
+          seleccionProductos: data.seleccionProductos,
+          precioTotalOrden:data.precioTotalOrden,
+          iva:data.iva,
+          precioFinalConIva:data.precioFinalConIva,
         } as OrdenCompra;
       })
     ).subscribe(
       (ordenCompra: OrdenCompra) => {
-        console.log(ordenCompra);
+        this.orden = ordenCompra;
+        console.log(this.orden);
+        console.log(this.orden.seleccionProductos.productos[0].descuento);
       },
       (error) => {
         console.error('Error al cargar la orden de compra', error);

@@ -22,7 +22,7 @@ export class InicioEnComponent implements OnInit {
   }
 
   goToPersonal() {
-    this.router.navigate(['/personal-en']);
+    this.router.navigate(['/personal']);
   }
 
   switchToSpanish() {

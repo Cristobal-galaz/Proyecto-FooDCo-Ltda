@@ -4,12 +4,17 @@
   <h1>Orden de compra N° X</h1>
   
   <div class="seccion">
-    <p><strong>Nombre cliente:</strong> [Nombre del Cliente]</p>
+    <p><strong>Nombre cliente:</strong> {{orden.cliente.username}} {{orden.cliente.contacto.apellido}}</p>
     <p><strong>Rut cliente:</strong> [Rut del Cliente]</p>
     <p><strong>Nombre Encargado:</strong> [Nombre del Encargado]</p>
     <p><strong>Rut Encargado:</strong> [Rut del Encargado]</p>
-    <p><strong>Datos de factura:</strong> [Datos de Factura]</p>
-    <p><strong>Fecha de orden:</strong> [Fecha]</p>
+    <p><strong>Datos de factura:</strong> Nombre: {{orden.cliente.empresa.nombre_empresa}} | 
+    Direccion: {{orden.cliente.empresa.direccion}} |
+    Giro: {{orden.cliente.empresa.giro}} | 
+    Rut: {{orden.cliente.empresa.rut_empresa}} |
+    Fono: {{orden.cliente.empresa.telefono_empresa}} | 
+    Correo: {{orden.cliente.empresa.correo_contacto}}</p>
+    <p><strong>Fecha de orden:</strong> {{orden.seleccionProductos.fechaCreacion}}</p>
   </div>
 
   <h3>Productos:</h3>
@@ -17,7 +22,7 @@
     <thead>
       <tr>
         <th>ID</th>
-        <th>Descripción</th>
+        <th>Nombre</th>
         <th>Cantidad</th>
         <th>Precio unitario</th>
         <th>Precio</th>
@@ -27,11 +32,11 @@
     <tbody>
       <tr>
         <td>001</td>
-        <td>Producto 1</td>
-        <td>1</td>
-        <td>$10</td>
-        <td>$10</td>
-        <td>$0</td>
+        <td>{{orden.seleccionProductos.productos[0].producto.nombre}}</td>
+        <td>{{orden.seleccionProductos.productos[0].cantidad}}</td>
+        <td>${{orden.seleccionProductos.productos[0].precioUnitario}}</td>
+        <td>${{orden.seleccionProductos.productos[0].precioTotal}}</td>
+        <td>${{orden.seleccionProductos.productos[0].descuento}}</td>
       </tr>
       <tr>
         <td>002</td>
@@ -53,13 +58,13 @@
   </table>
 
   <div class="resumen">
-    <p><strong>IVA:</strong> $X</p>
-    <p class="precio-final"><strong>Precio final:</strong> $X</p>
+    <p><strong>IVA:</strong> {{orden.iva}}</p>
+    <p class="precio-final"><strong>Precio final:</strong> {{orden.precioFinalConIva}}</p>
   </div>
 
   <div class="seccion">
-    <p><strong>Lugar de entrega:</strong> [Lugar]</p>
-    <p><strong>Fecha de entrega:</strong> [Fecha]</p>
+    <p><strong>Lugar de entrega:</strong> {{orden.seleccionProductos.direccion}}</p>
+    <p><strong>Fecha de entrega:</strong> {{orden.seleccionProductos.fechaRequerida}}</p>
   </div>
 
 </div>
