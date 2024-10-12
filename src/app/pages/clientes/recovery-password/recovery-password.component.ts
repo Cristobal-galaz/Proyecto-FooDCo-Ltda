@@ -19,7 +19,7 @@ export class RecoveryPasswordComponent {
   recoveryPassword(): void{
     this.recoveryPass.recovery(this.email).subscribe({
       next: ()=> this.router.navigate(["change-password"]),
-      error: (err) => console.error("Envio de correo", err)
+      error: (err) => console.error("Envio de codigo fallido", err)
     })
   }
 }

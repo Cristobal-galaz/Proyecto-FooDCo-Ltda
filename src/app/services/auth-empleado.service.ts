@@ -8,7 +8,7 @@ import { environment } from '../environments/environment';
   providedIn: 'root'
 })
 export class AuthEmpleadoService {
-  private LOGIN_URL = environment.apiUrl + 'auth/login/cliente' //cambiar esto por el de empleados
+  private LOGIN_URL = environment.apiUrl + 'auth/login/empleado' //cambiar esto por el de empleados
   private tokenKey = 'authToken'
   constructor(private httpClient: HttpClient, private router: Router) { }
 
