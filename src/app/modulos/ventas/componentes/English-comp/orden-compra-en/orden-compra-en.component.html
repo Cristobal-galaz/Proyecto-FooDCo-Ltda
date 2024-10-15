@@ -4,12 +4,17 @@
     <h1>Purchase Order N° X</h1>
     
     <div class="seccion">
-      <p><strong>Customer Name:</strong> [Customer Name]</p>
+      <p><strong>Customer Name:</strong> {{orden.cliente.username}} {{orden.cliente.contacto.apellido}}</p>
       <p><strong>Customer DNI:</strong> [Customer DNI]</p>
       <p><strong>In Charge Name:</strong> [In Charge Name]</p>
       <p><strong>In Charge DNI:</strong> [In Charge DNI]</p>
-      <p><strong>Invoice Details:</strong> [Invoice Details]</p>
-      <p><strong>Order Date:</strong> [Date]</p>
+      <p><strong>Invoice Details:</strong> Nombre: {{orden.cliente.empresa.nombre_empresa}} | 
+        Direccion: {{orden.cliente.empresa.direccion}} |
+        Giro: {{orden.cliente.empresa.giro}} | 
+        Rut: {{orden.cliente.empresa.rut_empresa}} |
+        Fono: {{orden.cliente.empresa.telefono_empresa}} | 
+        Correo: {{orden.cliente.empresa.correo_contacto}}</p>
+      <p><strong>Order Date:</strong> {{orden.seleccionProductos.fechaCreacion}}</p>
     </div>
   
     <h3>Products:</h3>
@@ -26,12 +31,11 @@
       </thead>
       <tbody>
         <tr>
-          <td>001</td>
-          <td>Product 1</td>
-          <td>1</td>
-          <td>$10</td>
-          <td>$10</td>
-          <td>$0</td>
+        <td>{{orden.seleccionProductos.productos[0].producto.nombre}}</td>
+        <td>{{orden.seleccionProductos.productos[0].cantidad}}</td>
+        <td>${{orden.seleccionProductos.productos[0].precioUnitario}}</td>
+        <td>${{orden.seleccionProductos.productos[0].precioTotal}}</td>
+        <td>${{orden.seleccionProductos.productos[0].descuento}}</td>
         </tr>
         <tr>
           <td>002</td>
@@ -53,12 +57,12 @@
     </table>
   
     <div class="resumen">
-      <p><strong>Tax (VAT):</strong> $X</p>
-      <p class="precio-final"><strong>Total Price:</strong> $X</p>
+      <p><strong>Tax (VAT):</strong> ${{orden.iva}}</p>
+      <p class="precio-final"><strong>Total Price:</strong> ${{orden.precioFinalConIva}}</p>
     </div>
   
     <div class="seccion">
-      <p><strong>Delivery Location:</strong> [Location]</p>
-      <p><strong>Delivery Date:</strong> [Date]</p>
+      <p><strong>Delivery Location:</strong> {{orden.seleccionProductos.direccion}}</p>
+      <p><strong>Delivery Date:</strong> {{orden.seleccionProductos.fechaRequerida}}</p>
     </div>
 </div>
