@@ -116,4 +116,15 @@ export const routes: Routes = [
             }
         ]
     },    
+    {
+        path: 'subcontratos',
+        title: 'Subcontratos Activos',
+        loadComponent: () => import('./modulos/ventas/componentes/Espanol-comp/subcontratos/subcontratos.component').then(m => m.SubcontratosComponent),
+    },
+    {
+        path: 'subcontratos-en',
+        title: 'Active Subcontracts (EN)',
+        loadComponent: () => import('./modulos/ventas/componentes/English-comp/subcontratos-en/subcontratos-en.component').then(m => m.SubcontratosEnComponent),
+    },
+    
 ];
