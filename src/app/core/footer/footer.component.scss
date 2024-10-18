@@ -1,0 +1,100 @@
+.footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 10rem;
+    width: 100%;
+    padding: 6.25rem;
+}
+
+.izquierda, .derecha {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.izquierda{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0.25rem;
+}
+
+.icons {
+    display: flex;
+    flex-direction: row;
+    align-items: center; /* Asegúrate de que los íconos se alineen correctamente */
+    height: 2rem;
+}
+
+.mat-icon {
+    font-size: 24px; /* Asegúrate de que el tamaño sea adecuado */
+    line-height: 1;  /* Elimina el recorte de la parte inferior */
+    vertical-align: middle; /* Asegura que estén centrados verticalmente */
+}
+
+.email {
+    width: 18.75rem;
+    height: 2rem;
+    padding: 4px 3px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+}
+
+input {
+    text-align: left;
+    color: #888888;
+    font-size: 14px;
+    font-family: Inter;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.25px;
+    width: 100%;
+    border: none;
+    background-color: #F5F5F5;
+}
+
+button {
+    width: 2rem;
+    height: 2rem;
+    background: #9AD983;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: darken(#9AD983, 10%);
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+a {
+    color: #888888;
+    font-size: 1rem;
+    font-family: Poppins;
+    font-weight: 400;
+    line-height: 1.5rem;
+    text-decoration: none;
+}
+
+.footer h1 {
+    color: #323434;
+    font-size: 1rem;
+    font-family: Inter;
+    font-weight: 500;
+    line-height: 1.5rem;
+    letter-spacing: 0.15px;
+}

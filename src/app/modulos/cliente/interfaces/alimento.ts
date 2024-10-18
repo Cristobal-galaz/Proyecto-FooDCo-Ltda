@@ -5,7 +5,6 @@ export interface Menu {
     disponible: boolean,
     productos: Producto[],
     dieta: string,
-    
     fechaInicio: Date
   }
 
