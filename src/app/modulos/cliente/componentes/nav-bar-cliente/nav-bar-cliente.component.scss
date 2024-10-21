@@ -1,0 +1,8 @@
+.navbar {
+    width: 100%;
+    display: flex;
+    background-color: white;
+    flex-direction: column;
+    align-items: flex-start; /* Alinea el contenido a la izquierda */
+    padding-left: 1rem; /* Añade un pequeño espacio a la izquierda si es necesario */
+}

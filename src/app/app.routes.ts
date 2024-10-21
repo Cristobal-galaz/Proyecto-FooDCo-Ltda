@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './guards/auth.guard';
 import { authenticatedGuard } from './guards/authenticated.guard';
+import { navBarCliente } from './modulos/cliente/componentes/nav-bar-cliente/dashboard-cliente.routes';
 
 export const routes: Routes = [
     {
@@ -20,7 +21,13 @@ export const routes: Routes = [
                 title: 'Orden',
                 loadComponent: ()=>import('./pages/clientes/orden-de-compra/orden-de-compra.component').then(m => m.OrdenDeCompraComponent),
                 canActivate: [authGuard],
-            },  
+            },
+            {
+                path: 'historial',
+                title: 'Historial',
+                loadComponent: ()=>import('./pages/clientes/historial-compras/historial-compras.component').then(m => m.HistorialDeComprasComponent),
+                canActivate: [authGuard],
+            },   
         ]
     },
     {
@@ -68,5 +75,13 @@ export const routes: Routes = [
         path: 'inicio-en',
         title: 'Inicio-en',
         loadComponent:()=> import('./modulos/ventas/componentes/inicio-en/inicio-en.component').then(m => m.InicioEnComponent),
+    },
+    {
+        path: 'dashboard',
+        title: 'Dashbaord',
+        loadComponent:()=> import('./pages/dashboard/dashboard.component').then(m => m.DashboardComponent),
+        children:  [
+            ...navBarCliente
+        ]
     }
 ];
