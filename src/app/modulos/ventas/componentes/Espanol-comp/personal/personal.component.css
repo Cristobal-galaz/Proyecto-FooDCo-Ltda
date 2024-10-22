@@ -1,6 +1,7 @@
 .container {
   max-width: 800px;
   margin: 0 auto;
+  position: relative; /* Para permitir que el botón se posicione correctamente */
 }
 
 .header {
@@ -17,6 +18,24 @@
 
 .header button {
   padding: 5px 10px;
+}
+
+/* Botón de cambiar idioma en la esquina superior derecha */
+.language-toggle-button {
+  position: absolute;
+  top: 10px; /* Ajusta según sea necesario */
+  right: -500px; /* Ajusta según sea necesario */
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #1b79f5b0;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.language-toggle-button:hover {
+  background-color: #b39e00;
 }
 
 table {

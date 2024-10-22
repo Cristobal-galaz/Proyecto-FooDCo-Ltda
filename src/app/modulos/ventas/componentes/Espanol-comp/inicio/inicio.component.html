@@ -6,6 +6,8 @@
     <button (click)="goToPersonal()">Ser atendido por un Ejecutivo</button>
     <button class="btn" (click)="goTomenus()">Ser atendido autonomamente</button>
   </div>
-  <button (click)="switchToEnglish()" class="english-button">Switch to English</button>
+  <div class="top-right-button">
+    <button (click)="switchToEnglish()" class="english-button">Switch to English</button>
+  </div>
 </div>
 <p *ngIf="message">{{ message }}</p>

@@ -5,7 +5,7 @@
   justify-content: center;
   height: 100vh;
   text-align: center;
-  position: relative; /* Para permitir que el botón se posicione respecto al contenedor */
+  position: relative; /* Permitir que los botones se posicionen respecto al contenedor */
 }
 
 h1 {
@@ -32,7 +32,7 @@ button:hover {
   background-color: #b39e00;
 }
 
-/* Clase específica para el botón de cambiar a inglés */
+/* Botón para cambiar a inglés */
 .english-button {
   position: absolute;
   top: 20px;
