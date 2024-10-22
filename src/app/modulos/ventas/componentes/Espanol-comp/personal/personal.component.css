@@ -24,7 +24,7 @@
 .language-toggle-button {
   position: absolute;
   top: 10px; /* Ajusta según sea necesario */
-  right: -500px; /* Ajusta según sea necesario */
+  right: -350px; /* Ajusta según sea necesario */
   padding: 10px 20px;
   font-size: 1rem;
   background-color: #1b79f5b0;
