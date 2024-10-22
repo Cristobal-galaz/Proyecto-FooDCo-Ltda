@@ -1,60 +1,81 @@
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  .header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-  
-    input[type="text"] {
-      flex: 1;
-      margin-right: 10px;
-      padding: 5px;
-    }
-  
-    button {
-      padding: 5px 10px;
-    }
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  
-    th, td {
-      border: 1px solid #ddd;
-      padding: 8px;
-      text-align: left;
-    }
-  
-    th {
-      background-color: #f2f2f2;
-    }
-  }
-  
-  .label {
-    display: inline-block;
-    padding: 2px 5px;
-    border-radius: 3px;
-    color: #fff;
-    font-size: 0.9em;
-  
-    &.seguridad {
-      background-color: #f44336;
-    }
-  
-    &.artista-digital {
-      background-color: #3f51b5;
-    }
-  
-    &.developer {
-      background-color: #4caf50;
-    }
-  
-    &.periodista {
-      background-color: #ff9800;
-    }
-  }
-  
+.eje-personal-en-container {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative; /* Para permitir la posición relativa del botón */
+  padding-top: 60px; /* Espacio suficiente para evitar superposición con el botón */
+}
+
+.top-right-button {
+  position: absolute;
+  top: 20px;
+  right: -350px;
+}
+
+.top-right-button button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #1b79f5b0; /* Mismo color que otros componentes */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.top-right-button button:hover {
+  background-color: #b39e00;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.header input[type="text"] {
+  flex: 1;
+  margin-right: 10px;
+  padding: 5px;
+}
+
+.header button {
+  padding: 5px 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+.label {
+  display: inline-block;
+  padding: 2px 5px;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 0.9em;
+}
+
+.seguridad {
+  background-color: #f44336;
+}
+
+.artista-digital {
+  background-color: #3f51b5;
+}
+
+.developer {
+  background-color: #4caf50;
+}
+
+.periodista {
+  background-color: #ff9800;
+}

@@ -1,0 +1,37 @@
+.ventas-pago-en-container {
+  position: relative;
+  padding-top: 60px; /* Añadir espacio suficiente para que el botón no se superponga con el contenido */
+}
+
+.top-right-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.top-right-button button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #1b79f5b0; /* Color igual que los otros componentes */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.top-right-button button:hover {
+  background-color: #b39e00; /* Cambia de color al hacer hover */
+}
+
+.section {
+  margin-bottom: 20px;
+}
+
+a.btn-primary {
+  background-color: #1b79f5b0; /* Color del botón "Go to Order" */
+  border: none;
+}
+
+a.btn-primary:hover {
+  background-color: #b39e00; /* Color hover del botón "Go to Order" */
+}

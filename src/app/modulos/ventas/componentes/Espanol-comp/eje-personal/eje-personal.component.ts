@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 })
 export class EjePersonalComponent implements OnInit {
   message: string | null = null;
+  isEnglish: boolean = false;  // Nueva propiedad para manejar el idioma
 
   constructor(private router: Router, private conexionService: ConexionService) {}
 
@@ -19,6 +20,9 @@ export class EjePersonalComponent implements OnInit {
     this.conexionService.buttonClicked$.subscribe(() => {
       this.message = '¡El botón en el componente Personal fue clickeado!';
     });
+    
+    // Establecer el idioma inicial basado en la URL
+    this.isEnglish = this.router.url.includes('-en');
   }
 
   sendNotification() {
@@ -31,10 +35,14 @@ export class EjePersonalComponent implements OnInit {
 
   toggleLanguage() {
     const currentUrl = this.router.url;
+    
+    // Cambiar la URL y el valor de isEnglish
     if (currentUrl.includes('-en')) {
       this.router.navigate([currentUrl.replace('-en', '')]);
+      this.isEnglish = false;
     } else {
       this.router.navigate([`${currentUrl}-en`]);
+      this.isEnglish = true;
     }
   }
 }
