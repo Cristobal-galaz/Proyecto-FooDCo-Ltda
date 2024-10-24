@@ -1,0 +1,41 @@
+<div class="container">
+    <h4>Panel de Control</h4>
+    <mat-tree #tree [dataSource]="main" [childrenAccessor]="childrenAccessor" class="navbar">
+    <!-- Leaf nodes -->
+      <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding [matTreeNodePaddingIndent]="24">
+        <div class="node-container" routerLinkActive="active" routerLink="{{node.route}}">
+        <mat-icon>{{node.icon}}</mat-icon>
+            <h6>{{node.name}}</h6>
+        </div>
+    </mat-tree-node>
+
+    <!-- Expandable nodes -->
+      <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding matTreeNodeToggle
+        [cdkTreeNodeTypeaheadLabel]="node.name">
+        <div class="node-container">
+        <mat-icon class="mat-icon-rtl-mirror">{{node.icon}}</mat-icon>
+        <h5>{{node.name}}</h5>
+        </div>
+    </mat-tree-node>
+    </mat-tree>
+
+    <h4>Otros</h4>
+    <mat-tree #tree [dataSource]="otros" [childrenAccessor]="childrenAccessor" class="navbar">
+    <!-- Leaf nodes -->
+      <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+        <div class="node-container">
+
+        <mat-icon>{{node.icon}}</mat-icon>
+
+        <a >{{node.name}}</a>
+        </div>
+    </mat-tree-node>
+    
+    </mat-tree>
+    <div class="node-container">
+
+    <mat-icon>exit_to_app</mat-icon>
+
+    <a (click) = "logout()">Cerrar Sesión</a>
+    </div>
+</div>

@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './guards/auth.guard';
 import { authenticatedGuard } from './guards/authenticated.guard';
+import { modulosRutas } from './modulos/modulos.routes';
 
 export const routes: Routes = [
     {
@@ -126,5 +127,13 @@ export const routes: Routes = [
         title: 'Active Subcontracts (EN)',
         loadComponent: () => import('./modulos/ventas/componentes/English-comp/subcontratos-en/subcontratos-en.component').then(m => m.SubcontratosEnComponent),
     },
+    {
+        path: 'dashboard',
+        title: 'Dashbaord',
+        loadComponent:()=> import('./pages/dashboard/dashboard.component').then(m => m.DashboardComponent),
+        children:  [
+            ...modulosRutas
+        ]
+    }
     
 ];

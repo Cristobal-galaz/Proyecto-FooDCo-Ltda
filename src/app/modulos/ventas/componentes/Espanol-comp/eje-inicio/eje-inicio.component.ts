@@ -4,9 +4,12 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-eje-inicio',
+  standalone: true,
   templateUrl: './eje-inicio.component.html',
   styleUrls: ['./eje-inicio.component.scss']
 })
+
+
 export class EjeInicioComponent implements OnInit {
   message: string | null = null;
 
