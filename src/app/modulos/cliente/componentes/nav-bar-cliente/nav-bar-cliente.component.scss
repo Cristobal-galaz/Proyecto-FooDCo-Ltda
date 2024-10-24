@@ -1,8 +1,93 @@
+a {
+    text-decoration: none; /* Quita el subrayado de los links */
+  }
 .navbar {
     width: 100%;
     display: flex;
     background-color: white;
     flex-direction: column;
-    align-items: flex-start; /* Alinea el contenido a la izquierda */
-    padding-left: 1rem; /* Añade un pequeño espacio a la izquierda si es necesario */
+    align-items: flex-start;
+
 }
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    width: 100%;
+}
+
+.container h4 {
+    color: #ACACAC;
+    font-size: 1.5em;
+    font-family: Inter;
+    font-weight: 500;
+    word-wrap: break-word;
+}
+
+.container h5 {
+    color: black;
+    font-size: 2rem;
+    font-family: Inter;
+    font-weight: 600;
+    word-wrap: break-word;
+    margin-left: 0.15rem; /* Añade margen para separar el texto del ícono */
+}
+
+.container h6 {
+    color: #556778;
+    font-size: 1rem;
+    font-family: Inter;
+    font-weight: 500;
+    word-wrap: break-word;
+
+}
+.container a {
+    color: #556778;
+    font-size: 1rem;
+    font-family: Inter;
+    font-weight: 500;
+    word-wrap: break-word;
+
+}
+.node-container {
+    display: flex;
+    width: 11.5rem; /* Ocupa todo el ancho disponible */
+    height: 2.5rem;
+    align-items: center; /* Alinea íconos y texto verticalmente */
+    justify-content: flex-start; /* Alinea íconos y texto a la izquierda */
+    gap: 0.5rem; /* Espacio entre íconos y texto */
+    padding-left: 0.55rem; /* Añade un padding para más espacio entre el borde y el contenido */
+    border-radius: 0.4735rem;
+    transition: background-color 0.3s ease;
+
+}
+.node-container:hover {
+    background-color: #e0e0e0; /* Color de fondo al hacer hover */
+    cursor: pointer; /* Cambia el cursor para indicar que es interactivo */
+  }
+
+.node-container h6 {
+    margin: 0;
+    font-size: 11px;
+    font-family: Inter;
+    font-weight: 500;
+    color: #556778;
+}
+
+.node-container h5 {
+    margin: 0;
+    font-size: 12px;
+    font-family: Inter;
+    font-weight: 600;
+    color: black;
+}
+
+.mat-icon-rtl-mirror {
+    margin-right: 0.5rem; /* Espacio entre el ícono y el texto */
+}
+
+
+.node-container.active {
+    background-color: #f0f0f0;
+}
+

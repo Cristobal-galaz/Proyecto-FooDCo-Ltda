@@ -22,5 +22,15 @@ export class UserService {
     
   }
 
-  
+  getRolUser(): string | null { 
+    const token = this.auth.getToken();
+    if (!token){
+      return null;
+    }
+
+    const payload = JSON.parse(atob(token.split('.')[1]));
+
+    return payload.rol;
+    
+  }
 }
