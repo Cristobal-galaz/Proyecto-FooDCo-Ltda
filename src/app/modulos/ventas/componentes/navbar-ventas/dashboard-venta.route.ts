@@ -3,7 +3,7 @@ import { Routes } from "@angular/router";
 export const navBarVentas: Routes = [
     {
         path: '',
-        redirectTo: '/dashboard/venta',
+        redirectTo: '/dashboard/ventas',
         pathMatch: 'full'
     },
     {
@@ -22,16 +22,7 @@ export const navBarVentas: Routes = [
         loadComponent: () => import('../Espanol-comp/personal/personal.component').then(m => m.PersonalComponent),
     },
     
-    {
-        path: 'pago',
-        title: 'Pagos Realizados',
-        loadComponent: () => import('../Espanol-comp/ventas-pago/ventas-pago.component').then(m => m.VentasPagoComponent),
-    },
-    {
-        path: 'pago-en',
-        title: 'Payments Made',
-        loadComponent: () => import('../English-comp/ventas-pago-en/ventas-pago-en.component').then(m => m.VentasPagoEnComponent),
-    },
+    
     {
         path: 'ejecutivo',
         title: 'Ejecutivo',
@@ -85,6 +76,16 @@ export const navBarVentas: Routes = [
                 path: 'orden-compra-en',
                 title: 'Orden de Compra (EN)',
                 loadComponent: () => import('../English-comp/orden-compra-en/orden-compra-en.component').then(m => m.OrdenCompraEnComponent),
+            },
+            {
+                path: 'pago',
+                title: 'Pagos Realizados',
+                loadComponent: () => import('../Espanol-comp/ventas-pago/ventas-pago.component').then(m => m.VentasPagoComponent),
+            },
+            {
+                path: 'pago-en',
+                title: 'Payments Made',
+                loadComponent: () => import('../English-comp/ventas-pago-en/ventas-pago-en.component').then(m => m.VentasPagoEnComponent),
             },
         ]
     }

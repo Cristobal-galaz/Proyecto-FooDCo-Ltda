@@ -1,6 +1,6 @@
 import { Routes } from "@angular/router";
 import { NavbarVentasComponent } from "./ventas/componentes/navbar-ventas/navbar-ventas.component";
-import { navBarVentas } from "./ventas/componentes/navbar-ventas/dashboard-venta";
+import { navBarVentas } from "./ventas/componentes/navbar-ventas/dashboard-venta.route";
 
 export const modulosRutas: Routes = [
     {
