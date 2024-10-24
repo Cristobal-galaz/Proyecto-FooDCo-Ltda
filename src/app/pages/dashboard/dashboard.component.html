@@ -2,8 +2,21 @@
 
 
 <div class="dashboard">
+  <div class="nav-bar">
+    @switch (rol) {
+      @case ('Cliente') {
+         <app-nav-bar-cliente></app-nav-bar-cliente>
+      }
+      @case ('caseB') {
+        Case B.
+      }
+      @default {
+       <p>no hay nada</p>
+      }
+    }
 
-    <app-nav-bar-cliente class="nav-bar"></app-nav-bar-cliente>
+
+  </div>
 
     <div class="contenido">
       <router-outlet></router-outlet>

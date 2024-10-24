@@ -27,10 +27,12 @@ export class UserService {
     if (!token){
       return null;
     }
-
     const payload = JSON.parse(atob(token.split('.')[1]));
-
-    return payload.rol;
+    
+    if (payload.type === 'cliente'){
+      return payload.type;
+    }
+    return payload.role;
     
   }
 }

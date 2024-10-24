@@ -1,7 +1,7 @@
 import { Component} from '@angular/core';
 import { NavBarClienteComponent } from '../../modulos/cliente/componentes/nav-bar-cliente/nav-bar-cliente.component';
 import { HistorialComprasComponent } from '../../modulos/cliente/componentes/historial-compras/historial-compras.component';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { TodosPedidosComponent } from '../../modulos/cliente/componentes/pedidos/todos-pedidos/todos-pedidos.component';
@@ -34,11 +34,24 @@ import { UserService } from '../../services/user.service';
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
-
-  constructor (private user: UserService) {}
+  rol!: string| null;
+  constructor (private user: UserService, private router: Router) {}
 
   ngOnInit() {
-    console.log(this.user.getRolUser());
-  }
+    if (this.user.getRolUser() != null){
+
+      this.rol = this.user.getRolUser();
+    }
+
+    if (this.rol === 'Cliente') {
+      this.router.navigate(['/dashboard/cliente']);
+    } else if (this.rol === 'Ejecutivo de Ventas') {
+      this.router.navigate(['/dashboard/ventas']);
+    } else if (this.rol === 'Encargado de Despacho'){
+      this.router.navigate(['/dashboard/despacho']);
+    }else {
+      this.router.navigate(['/dashboard']);
+    };
+    }
 
 }
