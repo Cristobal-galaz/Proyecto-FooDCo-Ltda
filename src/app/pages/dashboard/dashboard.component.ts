@@ -1,7 +1,6 @@
-import { Component} from '@angular/core';
+import { Component, HostListener} from '@angular/core';
 import { NavBarClienteComponent } from '../../modulos/cliente/componentes/nav-bar-cliente/nav-bar-cliente.component';
-import { HistorialComprasComponent } from '../../modulos/cliente/componentes/historial-compras/historial-compras.component';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { TodosPedidosComponent } from '../../modulos/cliente/componentes/pedidos/todos-pedidos/todos-pedidos.component';
@@ -10,6 +9,8 @@ import { CompletadosComponent } from '../../modulos/cliente/componentes/pedidos/
 import { DatosEmpresaComponent } from '../../modulos/cliente/componentes/editar/datos-empresa/datos-empresa.component';
 import { DatosContactoComponent } from '../../modulos/cliente/componentes/editar/datos-contacto/datos-contacto.component';
 import { UserService } from '../../services/user.service';
+import { MatIconModule } from '@angular/material/icon';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 
@@ -28,17 +29,56 @@ import { UserService } from '../../services/user.service';
               ActualesComponent,
               CompletadosComponent,
               DatosEmpresaComponent,
-              DatosContactoComponent
+              DatosContactoComponent,
+              MatIconModule,
+              MatProgressSpinnerModule              
             ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
-
-  constructor (private user: UserService) {}
+  rol!: string| null;
+  isSmallScreen: boolean = false;
+  menuOpen: boolean = false;
+  isLoading: boolean = true; 
+  constructor (private user: UserService, private router: Router) {}
 
   ngOnInit() {
-    console.log(this.user.getRolUser());
+    this.checkScreenSize();
+    this.loadUserRole();
   }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.checkScreenSize();
+  }
+
+  checkScreenSize() {
+    if (typeof window !== 'undefined') {
+      this.isSmallScreen = window.innerWidth < 960;
+    }
+  }
+
+  loadUserRole() {
+    setTimeout(() => {
+      // Simula la carga
+      this.rol = this.user.getRolUser();
+      this.navigateByRole();
+      this.isLoading = false; // Quita el spinner cuando la carga esté completa
+    }, 2000); // Tiempo simulado de carga
+  }
+
+  navigateByRole() {
+    if (this.rol === 'Cliente') {
+      this.router.navigate(['/dashboard/cliente']);
+    } else if (this.rol === 'Ejecutivo de Ventas') {
+      this.router.navigate(['/dashboard/ventas']);
+    } else if (this.rol === 'Encargado de Despacho') {
+      this.router.navigate(['/dashboard/despacho']);
+    } else {
+      this.router.navigate(['/dashboard']);
+    }
+  }
+
 
 }

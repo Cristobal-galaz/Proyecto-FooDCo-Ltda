@@ -13,7 +13,12 @@ export class ApiHistorialComprasService {
 
     constructor(private http: HttpClient) { }
 
-    getPurchaseHistory(userId: string): Observable<any[]> {
+    getPedidosAll(userId: string): Observable<any[]> {
         return this.http.get<any[]>(`${this.apiUrl}orden-compra/list/cliente/${userId}`);
+    }
+
+    getPedidos(userId: string, estados: string[]): Observable<any[]> {
+        const estadoQuery = estados.join(',');
+        return this.http.get<any[]>(`${this.apiUrl}orden-compra/list/cliente/${userId}?estado=${estadoQuery}`);
     }
 }
