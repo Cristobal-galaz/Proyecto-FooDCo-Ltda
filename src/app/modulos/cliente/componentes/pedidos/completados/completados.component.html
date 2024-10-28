@@ -1,1 +1,18 @@
-<p>completados works!</p>
+<div class="pedidos-container">
+    <h2>Pedidos Completados</h2>
+
+    <div *ngIf="pedidosCompletados.length > 0; else noPedidos">
+        <ul class="pedido-list">
+            <li *ngFor="let pedido of pedidosCompletados" class="pedido-item">
+                <div class="pedido-info">
+                    <span class="pedido-numero">Pedido #{{ pedido.numero }}</span>
+                    <span class="pedido-estado">{{ pedido.estado }}</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <ng-template #noPedidos>
+        <p>No hay pedidos completados en este momento.</p>
+    </ng-template>
+</div>
