@@ -2,6 +2,8 @@ import { Routes } from '@angular/router';
 import { authGuard } from './guards/auth.guard';
 import { authenticatedGuard } from './guards/authenticated.guard';
 import { modulosRutas } from './modulos/modulos.routes';
+import { navBarCliente } from './modulos/cliente/componentes/nav-bar-cliente/dashboard-cliente.routes';
+import { modulosRutas } from './modulos/modulos.routes';
 
 export const routes: Routes = [
     {
@@ -22,11 +24,18 @@ export const routes: Routes = [
                 loadComponent: () => import('./pages/clientes/orden-de-compra/orden-de-compra.component').then(m => m.OrdenDeCompraComponent),
                 canActivate: [authGuard],
             },
+            },
+            {
+                path: 'historial',
+                title: 'Historial',
+                loadComponent: ()=>import('./pages/clientes/historial-compras/historial-compras.component').then(m => m.HistorialDeComprasComponent),
+                canActivate: [authGuard],
+            },   
         ]
     },
     {
         path: '',
-        redirectTo: '/inicio',
+        redirectTo: '/home',
         pathMatch: 'full'
     },
     {
@@ -35,10 +44,16 @@ export const routes: Routes = [
         canActivate: [authenticatedGuard]
     },
     {
+        path: 'home',
+        loadComponent: ()=> import('./pages/main/main.component').then(m => m.MainComponent),
+    },
+    {
         path: 'registro',
         title: 'Registro Cliente',
         loadComponent: () => import('./pages/clientes/registro-clientes/registro-clientes.component').then(m => m.RegistroClientesComponent),
         canActivate: [authenticatedGuard]
+        loadComponent:()=> import('./pages/clientes/registro-clientes/registro-clientes.component').then(m => m.RegistroClientesComponent),
+        //canActivate: [authenticatedGuard]
     },
     {
         path: 'inicio',
@@ -136,4 +151,21 @@ export const routes: Routes = [
         ]
     }
     
+        path: 'orden',
+        title: 'Orden',
+        loadComponent:()=> import('./modulos/ventas/componentes/orden-compra/orden-compra.component').then(m => m.OrdenCompraComponent),
+    },
+    {
+        path: 'inicio-en',
+        title: 'Inicio-en',
+        loadComponent:()=> import('./modulos/ventas/componentes/inicio-en/inicio-en.component').then(m => m.InicioEnComponent),
+    },
+    {
+        path: 'dashboard',
+        title: 'Dashbaord',
+        loadComponent:()=> import('./pages/dashboard/dashboard.component').then(m => m.DashboardComponent),
+        children:  [
+            ...modulosRutas
+        ]
+    }
 ];

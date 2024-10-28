@@ -1,0 +1,53 @@
+<div class="container">
+    <h2>Editar datos de empresa</h2>
+    <form [formGroup]="empresaForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill">
+        <mat-label>RUT Empresa</mat-label>
+        <input matInput formControlName="rut" placeholder="Ingresa el RUT" required />
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Giro</mat-label>
+        <input matInput formControlName="giro" placeholder="Ingresa el giro" required />
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Dirección</mat-label>
+        <input matInput formControlName="direccion" placeholder="Ingresa la dirección" required />
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Comuna</mat-label>
+        <input matInput formControlName="comuna" placeholder="Ingresa la comuna" required />
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Correo</mat-label>
+        <input matInput formControlName="correo" type="email" placeholder="Ingresa el correo" required />
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Teléfono</mat-label>
+        <input matInput formControlName="telefono" placeholder="Ingresa el teléfono" required />
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Nombre Empresa</mat-label>
+        <input matInput formControlName="nombreEmpresa" placeholder="Ingresa el nombre de la empresa" required />
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Rubro</mat-label>
+        <mat-select formControlName="rubro">
+          <mat-option value="Tecnología">Tecnología</mat-option>
+          <mat-option value="Construcción">Construcción</mat-option>
+          <mat-option value="Salud">Salud</mat-option>
+          <mat-option value="Educación">Educación</mat-option>
+          <!-- Agrega más opciones según tus necesidades -->
+        </mat-select>
+      </mat-form-field>
+  
+      <button mat-raised-button color="primary" type="submit">Guardar</button>
+    </form>
+  </div>
+  

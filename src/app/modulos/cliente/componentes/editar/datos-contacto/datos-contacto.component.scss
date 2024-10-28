@@ -1,0 +1,13 @@
+.container {
+/* Ocupar toda la altura de la pantalla */
+  display: flex;
+  justify-content: center; /* Centrar horizontalmente */
+  align-items: center; /* Centrar verticalmente */
+  flex-direction: column;
+}
+
+form {
+  display: flex;
+  justify-content: center; /* Centrar horizontalmente *//* Centrar verticalmente */
+  flex-direction: column;/* Establecer un ancho máximo para el formulario */
+}

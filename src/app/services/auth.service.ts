@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, tap } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { environment } from '../environments/environment';
 
 @Injectable({
@@ -10,6 +10,8 @@ import { environment } from '../environments/environment';
 export class AuthService {
   private LOGIN_URL = environment.apiUrl + 'auth/login/cliente'
   private tokenKey = 'authToken'
+  private isLoggedIn = new BehaviorSubject<boolean>(this.isAuthenticated());
+  isLoggedIn$ = this.isLoggedIn.asObservable();
 
   constructor(private httpClient: HttpClient, private router: Router) { }
 
@@ -17,8 +19,8 @@ export class AuthService {
     return this.httpClient.post<any>(this.LOGIN_URL, {email, password}).pipe(
       tap(response => {
         if (response.token){
-          console.log(response.token);
           this.setToken(response.token);
+          this.isLoggedIn.next(true);
         }
       })
     )
@@ -51,6 +53,7 @@ export class AuthService {
 
   logout(): void{
     localStorage.removeItem(this.tokenKey);
+    this.isLoggedIn.next(false); 
     this.router.navigate(['/login']);
   }
 }
