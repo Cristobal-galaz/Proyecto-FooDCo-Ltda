@@ -1,0 +1,58 @@
+<mat-card class="mat-elevation-z8">
+    <mat-card-header>
+      <mat-card-title>Gestión de Materias Primas</mat-card-title>
+      <button mat-raised-button color="primary" routerLink="/materias-primas/nuevo">Agregar Materia Prima</button>
+    </mat-card-header>
+  
+    <mat-card-content>
+      <div *ngIf="isLoading" class="loading-container">
+        <mat-spinner></mat-spinner>
+      </div>
+  
+      <div *ngIf="!isLoading">
+        <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  
+          <!-- Columna Nombre -->
+          <ng-container matColumnDef="nombre">
+            <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.nombre}} </mat-cell>
+          </ng-container>
+  
+          <!-- Columna Tipo de Unidad -->
+          <ng-container matColumnDef="unidad">
+            <mat-header-cell *matHeaderCellDef> Unidad </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.unidad}} </mat-cell>
+          </ng-container>
+  
+          <!-- Columna Cantidad -->
+          <ng-container matColumnDef="cantidad">
+            <mat-header-cell *matHeaderCellDef> Cantidad </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.cantidad}} </mat-cell>
+          </ng-container>
+  
+          <!-- Columna Stock Mínimo -->
+          <ng-container matColumnDef="stock_minimo">
+            <mat-header-cell *matHeaderCellDef> Stock Mínimo </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.stock_minimo}} </mat-cell>
+          </ng-container>
+  
+          <!-- Columna Acciones -->
+          <ng-container matColumnDef="acciones">
+            <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              <button mat-icon-button color="primary" [routerLink]="['/materias-primas/editar', element.id]">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button color="warn" (click)="deleteMateriaPrima(element.id)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </mat-cell>
+          </ng-container>
+  
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  

@@ -1,0 +1,49 @@
+<mat-card class="mat-elevation-z8">
+  <mat-card-header>
+    <mat-card-title>
+      <h2 *ngIf="!materiaPrimaId">Agregar Nueva Materia Prima</h2>
+      <h2 *ngIf="materiaPrimaId">Editar Materia Prima</h2>
+    </mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form [formGroup]="materiaPrimaForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Nombre de la Materia Prima</mat-label>
+        <input matInput formControlName="nombre">
+        <mat-error *ngIf="materiaPrimaForm.get('nombre')?.invalid && materiaPrimaForm.get('nombre')?.touched">
+          El nombre es requerido.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Cantidad</mat-label>
+        <input matInput type="number" formControlName="cantidad">
+        <mat-error *ngIf="materiaPrimaForm.get('cantidad')?.invalid && materiaPrimaForm.get('cantidad')?.touched">
+          La cantidad es requerida y debe ser mayor a 0.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Stock Mínimo</mat-label>
+        <input matInput type="number" formControlName="stock_minimo">
+        <mat-error *ngIf="materiaPrimaForm.get('stock_minimo')?.invalid && materiaPrimaForm.get('stock_minimo')?.touched">
+          El stock mínimo es requerido.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Unidad</mat-label>
+        <input matInput formControlName="unidad">
+        <mat-error *ngIf="materiaPrimaForm.get('unidad')?.invalid && materiaPrimaForm.get('unidad')?.touched">
+          La unidad es requerida.
+        </mat-error>
+      </mat-form-field>
+
+      <div class="actions">
+        <button mat-raised-button color="primary" type="submit" [disabled]="materiaPrimaForm.invalid">Guardar</button>
+        <button mat-button color="warn" type="button" routerLink="/materias-primas">Cancelar</button> 
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

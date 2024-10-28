@@ -1,0 +1,80 @@
+<mat-card class="mat-elevation-z8">
+  <mat-card-header class="header-with-buttons">
+    <mat-card-title>Gestión de Producción Diaria</mat-card-title>
+    <div class="buttons">
+      <button mat-raised-button color="primary" routerLink="/produccion-diaria/nuevo">Agregar Producción</button>
+      <button mat-raised-button color="accent" routerLink="/tipos-producto/nuevo">Agregar Tipo de Producto</button>
+    </div>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div *ngIf="isLoading" class="loading-container">
+      <mat-spinner></mat-spinner>
+    </div>
+
+    <div *ngIf="!isLoading">
+      <mat-form-field appearance="fill">
+        <mat-label>Filtrar por Tipo de Producto</mat-label>
+        <mat-select [(value)]="selectedTiposProducto" (selectionChange)="applyFilter()" multiple>
+          <mat-option *ngFor="let tipo of tiposProducto" [value]="tipo.id">
+            {{ tipo.nombre }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>      
+
+      <!-- Botón para limpiar filtros -->
+      <button mat-raised-button color="warn" (click)="clearFilter()">Limpiar Filtro</button>
+
+      <!-- Tabla de produccion diaria -->
+      <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <!-- Columna Fecha -->
+        <ng-container matColumnDef="fecha_produccion">
+          <mat-header-cell *matHeaderCellDef> Fecha </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.fecha_produccion | date}} </mat-cell>
+        </ng-container>
+
+        <!-- Columna Tipo de Producto -->
+        <ng-container matColumnDef="tipo_producto_nombre">
+          <mat-header-cell *matHeaderCellDef> Tipo de Producto </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.tipo_producto_nombre}} </mat-cell>
+        </ng-container>
+
+        <!-- Columna Materias Primas Utilizadas -->
+        <ng-container matColumnDef="materias_primas">
+          <mat-header-cell *matHeaderCellDef> Materias Primas Utilizadas </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <ul *ngIf="element.materiasPrimasUtilizadas?.length > 0">
+              <li *ngFor="let materia of element.materiasPrimasUtilizadas">
+                {{ materia.nombre }}: {{ materia.cantidadUsada }} {{ materia.unidad }}
+              </li>
+            </ul>
+            <span *ngIf="element.materiasPrimasUtilizadas?.length === 0">No hay materias primas utilizadas</span>
+          </mat-cell>
+        </ng-container>        
+
+        <!-- Columna Cantidad Producida -->
+        <ng-container matColumnDef="cantidad_producida">
+          <mat-header-cell *matHeaderCellDef> Cantidad Producida </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.cantidad_producida}} </mat-cell>
+        </ng-container>
+
+        <!-- Columna Acciones -->
+        <ng-container matColumnDef="acciones">
+          <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <button mat-icon-button color="primary" [routerLink]="['/produccion-diaria/editar', element.id]">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" (click)="deleteProduccion(element.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    </div>
+  </mat-card-content>
+</mat-card>

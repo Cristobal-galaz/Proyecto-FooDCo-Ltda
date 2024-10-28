@@ -1,0 +1,51 @@
+@use '@angular/material' as mat;
+
+// Define la paleta de colores para el tema
+$primary-palette: mat.define-palette(mat.$azure-palette);
+$accent-palette: mat.define-palette(mat.$blue-palette);
+$warn-palette: mat.define-palette(mat.$red-palette);
+
+// Define los colores de fondo y de primer plano (texto)
+$background-palette: (
+  background: mat.define-background-palette(mat.$grey-palette),
+  card: mat.define-background-palette(mat.$grey-palette, A100),
+  dialog: mat.define-background-palette(mat.$grey-palette, A100),
+  hover: mat.define-background-palette(mat.$grey-palette, 100),
+  disabled-button: mat.define-background-palette(mat.$grey-palette, 300),
+  disabled-button-text: mat.define-background-palette(mat.$grey-palette, 500),
+);
+
+$foreground-palette: (
+  base: mat.define-foreground-palette(mat.$black-palette),
+  divider: mat.define-foreground-palette(mat.$black-palette, 12),
+  disabled: mat.define-foreground-palette(mat.$black-palette, 38),
+  disabled-button: mat.define-foreground-palette(mat.$black-palette, 38),
+  disabled-text: mat.define-foreground-palette(mat.$black-palette, 38),
+  hint-text: mat.define-foreground-palette(mat.$black-palette, 38),
+  secondary-text: mat.define-foreground-palette(mat.$black-palette, 60),
+  icon: mat.define-foreground-palette(mat.$black-palette, 54),
+  text: mat.define-foreground-palette(mat.$black-palette),
+);
+
+// Define el tema global con todas las paletas
+$production-management-theme: mat.define-light-theme((
+  color: (
+    primary: $primary-palette,
+    accent: $accent-palette,
+    warn: $warn-palette,
+    background: $background-palette,
+    foreground: $foreground-palette,
+  ),
+  density: (
+    scale: 0,
+  )
+));
+
+@include mat.core();
+
+// Aplica el tema a todos los componentes
+:root {
+  @include mat.all-component-themes($production-management-theme);
+}
+
+// Opcional: puedes incluir tipografía o variantes de color aquí

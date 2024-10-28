@@ -1,0 +1,76 @@
+<mat-card class="mat-elevation-z8">
+  <mat-card-header>
+    <mat-card-title>
+      <h2 *ngIf="!produccionId">Agregar Nueva Producción</h2>
+      <h2 *ngIf="produccionId">Editar Producción</h2>
+    </mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form [formGroup]="produccionForm" (ngSubmit)="onSubmit()">
+      <div class="form-group-with-button">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Tipo de Producto</mat-label>
+          <mat-select formControlName="tipo_producto_id">
+            <mat-option *ngFor="let tipo of tiposProducto" [value]="tipo.id">{{ tipo.nombre }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Cantidad Producida</mat-label>
+        <input matInput type="number" formControlName="cantidad_producida">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Fecha de Producción</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="fecha_produccion">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <!-- Sección para añadir materias primas -->
+      <mat-divider></mat-divider>
+      <h3>Materias Primas Utilizadas</h3>
+
+      <div>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Materia Prima</mat-label>
+          <mat-select formControlName="materia_prima">
+            <mat-option *ngFor="let materia of materiasPrimas" [value]="materia.id">{{ materia.nombre }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <!-- Mostrar la unidad de la materia prima seleccionada -->
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Unidad</mat-label>
+          <input matInput formControlName="unidad_materia" readonly>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Cantidad Usada</mat-label>
+          <input matInput type="number" formControlName="cantidad_usada">
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="button" (click)="addMateriaPrima()">Añadir Materia Prima</button>
+      </div>
+
+      <div *ngIf="materiasPrimasUtilizadas.length > 0">
+        <h4>Lista de Materias Primas Utilizadas:</h4>
+        <ul>
+          <li *ngFor="let materia of materiasPrimasUtilizadas; let i = index">
+            {{ materia.nombre }}: {{ materia.cantidadUsada }} {{ materia.unidad }}
+            <button mat-icon-button color="warn" (click)="removeMateriaPrima(i)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </li>
+        </ul>
+      </div>
+
+      <div class="actions">
+        <button mat-raised-button color="primary" type="submit" [disabled]="produccionForm.invalid">Guardar</button>
+        <button mat-button color="warn" type="button" routerLink="/produccion-diaria">Cancelar</button> 
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
