@@ -1,0 +1,70 @@
+<div class="mostrarorden-container">
+  <!-- Botón para cambiar a inglés -->
+  <button class="english-button" (click)="switchToEnglish()">Switch to English</button>
+
+  <!-- Fila de reportes Diario y Semanal -->
+  <div class="row">
+    <div class="col-sm-6 mb-3 mb-sm-0">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Reporte Diario</h5>
+          <p class="card-text">Reporte de Órdenes de Compra, Clientes frecuentes y Compras frecuentes del día XX/XX/XXXX</p>
+          <button class="btn btn-outline-info" (click)="goToOrden()">Ir a Reporte</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Reporte Semanal</h5>
+          <p class="card-text">Reporte de Órdenes de Compra, Clientes frecuentes y Compras frecuentes de la semana XX/XX/XXXX</p>
+          <button class="btn btn-outline-info" (click)="goToOrden()">Ir a Reporte</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fila de reportes Bisemanal y Mensual -->
+  <div class="row">
+    <div class="col-sm-6 mb-3 mb-sm-0">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Reporte Bisemanal</h5>
+          <p class="card-text">Reporte de Órdenes de Compra, Clientes frecuentes y Compras frecuentes de las semanas entre XX/XX/XXXX y XX/XX/XXXX</p>
+          <button class="btn btn-outline-info" (click)="goToOrden()">Ir a Reporte</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Reporte Mensual</h5>
+          <p class="card-text">Reporte de Órdenes de Compra, Clientes frecuentes y Compras frecuentes del mes de XX/XXXX</p>
+          <button class="btn btn-outline-info" (click)="goToOrden()">Ir a Reporte</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fila de reportes Trimestral y Semestral -->
+  <div class="row">
+    <div class="col-sm-6 mb-3 mb-sm-0">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Reporte Trimestral</h5>
+          <p class="card-text">Reporte de Órdenes de Compra, Clientes frecuentes y Compras frecuentes entre los meses XX/XXXX y XX/XXXX</p>
+          <button class="btn btn-outline-info" (click)="goToOrden()">Ir a Reporte</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Reporte Semestral</h5>
+          <p class="card-text">Reporte de Órdenes de Compra, Clientes frecuentes y Compras frecuentes entre los meses XX/XXXX y XX/XXXX</p>
+          <button class="btn btn-outline-info" (click)="goToOrden()">Ir a Reporte</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

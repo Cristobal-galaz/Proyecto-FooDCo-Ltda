@@ -1,5 +1,6 @@
 import { Routes } from "@angular/router";
-import { navBarCliente } from "./cliente/componentes/nav-bar-cliente/dashboard-cliente.routes";
+import { NavbarVentasComponent } from "./ventas/componentes/navbar-ventas/navbar-ventas.component";
+import { navBarVentas } from "./ventas/componentes/navbar-ventas/dashboard-venta.route";
 
 export const modulosRutas: Routes = [
     {
@@ -8,12 +9,12 @@ export const modulosRutas: Routes = [
         pathMatch: 'full'
     },
     {
-        path: 'cliente',
-        title: 'Pedidos Actuales',
+        path: 'ventas',
+        title: 'Inicio',
         children: [
-            ...navBarCliente
+            ...navBarVentas
         ]
     }
 
-   
+
 ]

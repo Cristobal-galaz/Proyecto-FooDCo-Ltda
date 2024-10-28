@@ -1,0 +1,38 @@
+.ventas-pago-container {
+    position: relative;
+    padding-top: 60px; /* Añadir espacio suficiente para que el botón no se superponga con el contenido */
+  }
+  
+  .top-right-button {
+    position: absolute;
+    top: 20px; /* Ajustar la posición del botón */
+    right: 20px;
+  }
+  
+  .top-right-button button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #1b79f5b0; /* Color similar a los otros componentes */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .top-right-button button:hover {
+    background-color: #b39e00; /* Cambia de color al hacer hover */
+  }
+  
+  .seccion {
+    margin-bottom: 20px;
+  }
+  
+  a.btn-primary {
+    background-color: #1b79f5b0; /* Color de fondo del botón Ir a orden-compra */
+    border: none;
+  }
+  
+  a.btn-primary:hover {
+    background-color: #b39e00; /* Color hover */
+  }
+  

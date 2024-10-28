@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './login-clientes.component.html',
   styleUrl: './login-clientes.component.scss'
 })
-export default class LoginClientesComponent {
+export class LoginClientesComponent {
   email: string = "";
   password: string = "";
 

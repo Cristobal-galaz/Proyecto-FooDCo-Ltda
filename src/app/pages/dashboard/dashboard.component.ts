@@ -8,6 +8,15 @@ import { ActualesComponent } from '../../modulos/cliente/componentes/pedidos/act
 import { CompletadosComponent } from '../../modulos/cliente/componentes/pedidos/completados/completados.component';
 import { DatosEmpresaComponent } from '../../modulos/cliente/componentes/editar/datos-empresa/datos-empresa.component';
 import { DatosContactoComponent } from '../../modulos/cliente/componentes/editar/datos-contacto/datos-contacto.component';
+
+import { NavbarVentasComponent } from "../../modulos/ventas/componentes/navbar-ventas/navbar-ventas.component";
+import { EjeInicioComponent } from '../../modulos/ventas/componentes/Espanol-comp/eje-inicio/eje-inicio.component';
+import { EjePersonalComponent } from '../../modulos/ventas/componentes/Espanol-comp/eje-personal/eje-personal.component';
+import { SubcontratosComponent } from '../../modulos/ventas/componentes/Espanol-comp/subcontratos/subcontratos.component';
+import { VentasPagoComponent } from '../../modulos/ventas/componentes/Espanol-comp/ventas-pago/ventas-pago.component';
+import { MostrarordenComponent } from '../../modulos/ventas/componentes/Espanol-comp/mostrarorden/mostrarorden.component';
+import { OrdenCompraComponent } from '../../modulos/cliente/componentes/orden-compra/orden-compra.component';
+
 import { UserService } from '../../services/user.service';
 import { MatIconModule } from '@angular/material/icon';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
@@ -31,7 +40,14 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
               DatosEmpresaComponent,
               DatosContactoComponent,
               MatIconModule,
-              MatProgressSpinnerModule              
+              MatProgressSpinnerModule,
+              OrdenCompraComponent,
+              MostrarordenComponent,
+              VentasPagoComponent,
+              EjeInicioComponent,
+              EjePersonalComponent,
+              SubcontratosComponent,
+              NavbarVentasComponent           
             ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
