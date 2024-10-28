@@ -1,0 +1,18 @@
+<div class="pedidos-container">
+  <h2>Todos los pedidos</h2>
+
+  <div *ngIf="todosPedidos.length > 0; else noPedidos">
+    <ul class="pedido-list">
+      <li *ngFor="let pedido of todosPedidos" class="pedido-item">
+        <div class="pedido-info">
+          <span class="pedido-numero">Pedido #{{ pedido.numero }}</span>
+          <span class="pedido-estado">{{ pedido.estado }}</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <ng-template #noPedidos>
+    <p>No hay pedidos para mostrar.</p>
+  </ng-template>
+</div>

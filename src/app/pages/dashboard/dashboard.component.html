@@ -1,0 +1,40 @@
+  <mat-drawer-container class="dashboard" autosize>
+    <mat-drawer #drawer class="nav-bar" mode="side" [opened]="!isSmallScreen">
+      <div >
+        @switch (rol) {
+        @case ('Cliente') {
+        <app-nav-bar-cliente></app-nav-bar-cliente>
+        }
+        @case ('Ejecutivo de Ventas') {
+        <app-navbar-ventas class="nav-bar"></app-navbar-ventas>
+        }
+        }
+      </div>
+    </mat-drawer>
+
+
+    <div class="contenido"
+    [style.backgroundColor]="drawer.opened ? 'transparent' : 'white'">
+      @if(isSmallScreen){
+        
+        <button mat-icon-button (click)="drawer.toggle()">
+          <mat-icon>{{ drawer.opened ? 'menu_open' : 'menu' }}</mat-icon>
+        </button>
+      }   
+        <router-outlet></router-outlet>
+
+      @if(isLoading){
+        <div class="spinner-container">
+          <mat-spinner></mat-spinner>
+        </div> 
+
+      }       
+    </div>
+<div class="dashboard">
+
+    
+
+    <div class="contenido">
+    <router-outlet></router-outlet>
+    </div>
+</div>

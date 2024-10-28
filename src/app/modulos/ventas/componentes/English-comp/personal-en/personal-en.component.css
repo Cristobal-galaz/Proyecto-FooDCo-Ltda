@@ -1,0 +1,59 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.header input[type="text"] {
+  flex: 1;
+  margin-right: 10px;
+  padding: 5px;
+}
+
+.header button {
+  padding: 5px 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+.label {
+  display: inline-block;
+  padding: 2px 5px;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 0.9em;
+}
+
+.seguridad {
+  background-color: #f44336;
+}
+
+.artista-digital {
+  background-color: #3f51b5;
+}
+
+.developer {
+  background-color: #4caf50;
+}
+
+.periodista {
+  background-color: #ff9800;
+}

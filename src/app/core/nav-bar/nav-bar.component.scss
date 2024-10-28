@@ -1,0 +1,76 @@
+.nav-bar {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 6.25rem;
+    padding-right: 9rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    background-color: #FAF9F6;
+
+    .logo {
+        flex: 1;
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .links {
+        flex: 2;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        gap: 2.5rem;
+
+        a {
+            text-decoration: none; // Elimina el subrayado
+            color: #323434; // Color del texto de los links
+            font-size: 1rem;
+            font-family: Poppins, sans-serif;
+            font-weight: 400;
+            line-height: 1.5rem;
+
+            &:hover {
+                color: #9AD983; // Cambia el color al pasar el cursor
+                transition: color 0.3s ease; // Suaviza la transición del color
+            }
+        }
+    }
+
+    .perfil {
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .perfil button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        background: transparent;
+        border: none;
+    }
+
+    .perfil mat-icon {
+        font-size: 3rem;
+        width: 3rem;
+        height: 3rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-bar {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .logo, .links, .perfil {
+        justify-content: center;
+    }
+}

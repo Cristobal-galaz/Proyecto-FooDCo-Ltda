@@ -1,0 +1,18 @@
+<div class="pedidos-container">
+  <h2>Pedidos Actuales</h2>
+
+  <div *ngIf="pedidos.length > 0; else noPedidos">
+    <ul class="pedido-list">
+      <li *ngFor="let pedido of pedidos" class="pedido-item">
+        <div class="pedido-info">
+          <span class="pedido-numero">Pedido #{{ pedido.numero }}</span>
+          <span class="pedido-estado">{{ pedido.estado }}</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <ng-template #noPedidos>
+    <p>No hay pedidos actuales en este momento.</p>
+  </ng-template>
+</div>

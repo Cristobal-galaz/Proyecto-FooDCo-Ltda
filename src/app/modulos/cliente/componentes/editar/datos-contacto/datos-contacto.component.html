@@ -1,0 +1,27 @@
+<div class="container">
+    <h2>Editar datos contacto</h2>
+    <form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill">
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="nombre" placeholder="Ingresa el nombre" required />
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Apellido</mat-label>
+        <input matInput formControlName="apellido" placeholder="Ingresa el apellido" required />
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Teléfono</mat-label>
+        <input matInput formControlName="telefono" placeholder="Ingresa el teléfono" required />
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" placeholder="Ingresa el email" required />
+      </mat-form-field>
+  
+      <button mat-raised-button color="primary" type="submit">Guardar</button>
+    </form>
+  </div>
+  

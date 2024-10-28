@@ -1,0 +1,333 @@
+.frame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #FAF9F6;
+}
+
+.titulo {
+  width: 100%;
+  max-width: 696px;
+  margin: 0 auto 4rem auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.titulo h1, .titulo p {
+  font-family: 'Inter';
+}
+
+.titulo h1 {
+  font-size: 3rem; /* Ajuste de tamaño para mejor visualización en pantallas pequeñas */
+  font-weight: 700;
+  line-height: 3.5rem;
+  overflow-wrap: break-word;
+}
+
+.titulo p {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  letter-spacing: 0.5px;
+  overflow-wrap: break-word;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap; /* Permitir que los botones se ajusten a nuevas filas en pantallas pequeñas */
+  justify-content: center; /* Asegura que los botones estén centrados */
+  gap: 16px;
+}
+
+.ver-productos, .dato-contacto {
+  padding: 16px;
+  background: #74e478;
+  box-shadow: 0 8px 24px rgba(169, 230, 169, 0.24);
+  border-radius: 12px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  width: 10.8rem;
+  height: 3.5rem;
+  border: none;
+  cursor: pointer;
+  color: white;
+  font-size: 0.875rem;
+  font-family: 'Inter';
+  font-weight: 600;
+  line-height: 1.25rem;
+  letter-spacing: 0.00625rem;
+  transition: all 0.3s ease;
+}
+
+.ver-productos:hover {
+  background-color: #5fc867;
+  box-shadow: 0 10px 30px rgba(169, 230, 169, 0.35);
+  transform: scale(1.05);
+}
+
+.dato-contacto {
+  background: #4ca9f5;
+}
+
+.dato-contacto:hover {
+  background-color: #3d8ddc;
+  box-shadow: 0 10px 30px rgba(130, 193, 247, 0.35);
+  transform: scale(1.05);
+}
+
+@media (max-width: 480px) {
+  .buttons {
+    flex-direction: column;
+    align-items: center; /* Centra los botones en pantallas pequeñas */
+  }
+}
+
+.imagenes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px; /* Añadir espacio entre las imágenes */
+  margin: 0 auto 8rem auto;
+}
+
+.imagenes img {
+  width: 100%;
+  max-width: 275px;
+  height: 275px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+  .imagenes img {
+    margin-bottom: 20px;
+    width: 100%; /* Asegura que las imágenes tomen todo el ancho disponible */
+  }
+}
+
+.explicacion {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 6.25rem;
+  padding-right: 6.25rem;
+}
+
+.texto {
+  width: 100%;
+  max-width: 37.5rem;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.texto h1 {
+  color: #323434;
+  font-size: 2.8rem;
+  font-family: 'Inter';
+  font-weight: 700;
+  line-height: 3.25rem;
+  text-align: center;
+}
+
+.texto p {
+  margin-top: 0.5rem;
+  text-align: center;
+  color: #888888;
+  font-size: 1rem;
+  font-family: 'Inter';
+  font-weight: 500;
+  line-height: 1.5rem;
+  letter-spacing: 0.009375rem;
+}
+
+@media (max-width: 768px) {
+  .texto {
+    max-width: 90%;
+  }
+
+  .texto h1 {
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
+
+  .texto p {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .texto {
+    padding: 0 15px;
+  }
+
+  .texto p {
+    font-size: 0.8rem;
+  }
+}
+
+.cuadrados {
+  margin-top: 3rem;
+  width: calc(100% - 6.25rem);  
+  display: flex;
+  flex-wrap: wrap; /* Permite que los elementos se envuelvan a la siguiente fila */
+  justify-content: space-around; /* Distribuye los cuadrados de manera uniforme */
+  gap: 2rem; /* Espacio entre los cuadrados */
+}
+
+.cuadrado {
+  flex: 1 1 auto;
+  max-width: 250px;
+  height: auto;
+  max-height: 17.5rem;
+  background-color: #9AD983;
+  display: flex;
+  flex-direction: column; /* Coloca el contenido en disposición de columna */
+  margin: 10px;
+  border-radius: 10px;
+  aspect-ratio: 1; /* Mantiene la proporción cuadrada */
+  padding: 1.5rem;
+}
+.cuadrado h3{
+  color: #323434;
+font-size: 1.5rem;
+font-family: Inter;
+font-weight: 600;
+line-height: 2rem;
+word-wrap: break-word;
+padding-top: 1.5rem;
+}
+.cuadrado p{
+  color: #323434;
+font-size: 1rem;
+font-family: Inter;
+font-weight: 400;
+line-height: 1.5rem;
+letter-spacing: 0.03125rem;
+word-wrap: break-word
+}
+.paso {
+  background-color: black; /* Fondo negro */
+  color: white; /* Letras blancas */
+  width: 1.5rem; /* Tamaño del círculo */
+  height: 1.5rem; /* Tamaño del círculo */
+  border-radius: 50%; /* Hace que el div tenga forma circular */
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem; /* Tamaño de la fuente dentro del círculo */ /* Alinea el círculo a la izquierda */
+}
+
+@media (max-width: 768px) {
+  .cuadrado {
+    flex: 1 1 calc(50% - 20px); /* Ajusta a dos cuadrados por fila en pantallas más pequeñas */
+  }
+}
+
+@media (max-width: 480px) {
+  .cuadrado {
+    flex: 1 1 100%; /* Un cuadrado por fila en pantallas muy pequeñas */
+  }
+}
+.mejores-platos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem; /* Ajusta el gap a 36px */
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 4rem;
+  padding-left: 6.25rem;
+  padding-right: 6.25rem;
+  justify-content: center; /* Centra el contenido horizontalmente */
+  align-items: center; /* Centra el contenido verticalmente */
+}
+
+
+.mejores-platos img {
+  height: 20rem;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+.mejores-platos div {
+  position: relative;
+}
+
+.mejores-platos div span {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  color: white;
+  font-size: 1rem;
+  font-family: Inter;
+  font-weight: 600;
+  line-height: 2rem;
+  word-wrap: break-word;
+  z-index: 10;
+  text-shadow: -1px -1px 0 #000;
+}
+
+.cuadro-texto {
+  width: 31.125rem;
+}
+
+.img-1 img {
+  width: 20.5rem; /* Ancho específico para la imagen en .img-1 */
+}
+
+.img-2 img {
+  width: 20.5rem; /* Ancho específico para la imagen en .img-2 */
+}
+
+.img-3 img {
+  width: 17.875rem; /* Ancho específico para la imagen en .img-3 */
+}
+
+.img-4 img {
+  width: 24.5rem; /* Ancho específico para la imagen en .img-4 */
+}
+
+.img-5 img {
+  width: 31.125rem; /* Ancho específico para la imagen en .img-5 */
+}
+
+@media (max-width: 768px) {
+  .mejores-platos img {
+    width: 100%; /* Asegura que las imágenes tomen el ancho disponible */
+    height: auto; /* Deja que la altura se ajuste proporcionalmente */
+    max-width: 300px; /* Define un máximo ancho en pantallas pequeñas */
+  }
+  .cuadro-texto {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra horizontalmente */
+    justify-content: center; /* Centra verticalmente */
+    text-align: center; /* Alinea el texto al centro */
+    padding: 1.5rem 0; /* Ajuste de padding para pantallas pequeñas */
+  }
+}
+
+@media (max-width: 480px) {
+  .mejores-platos img {
+    width: 100%; /* Asegura que las imágenes ocupen todo el ancho disponible */
+    height: auto; /* Mantiene la proporción correcta */
+    max-width: 100%; /* Para pantallas muy pequeñas */
+  }
+    .cuadro-texto {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Centra horizontalmente */
+      justify-content: center; /* Centra verticalmente */
+      text-align: center; /* Alinea el texto al centro */
+      padding: 1.5rem 0; /* Ajuste de padding para pantallas pequeñas */
+  }
+}
