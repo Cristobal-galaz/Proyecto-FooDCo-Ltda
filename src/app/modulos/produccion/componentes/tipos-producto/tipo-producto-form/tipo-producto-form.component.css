@@ -1,0 +1,12 @@
+/* tipo-producto-form.component.css */
+.full-width {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+  
+  .actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+  }
+  
