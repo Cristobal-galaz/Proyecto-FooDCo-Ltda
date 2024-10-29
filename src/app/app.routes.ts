@@ -45,12 +45,24 @@ export const routes: Routes = [
     path: 'home',
     loadComponent: () => import('./pages/main/main.component').then(m => m.MainComponent),
   },
+    {
+        path: 'login-empleados',
+        loadComponent: ()=> import('./pages/empleados/login-empleados/login-empleados.component'),
+    },
   {
     path: 'registro',
     title: 'Registro Cliente',
     loadComponent: () => import('./pages/clientes/registro-clientes/registro-clientes.component').then(m => m.RegistroClientesComponent),
     canActivate: [authenticatedGuard]
   },
+    {
+        path: 'recovery',
+        loadComponent: ()=> import('./pages/clientes/recovery-password/recovery-password.component').then(m => m.RecoveryPasswordComponent)
+    },
+    {
+        path: 'change-password',
+        loadComponent: ()=> import('./pages/clientes/change-password/change-password.component').then(m => m.ChangePasswordComponent)
+    },
   {
     path: 'inicio',
     title: 'Inicio',
