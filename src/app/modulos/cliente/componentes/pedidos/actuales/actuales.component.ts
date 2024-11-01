@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -32,6 +32,7 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 export class ActualesComponent implements OnInit {
   @ViewChild(MatAccordion) accordion!: MatAccordion;
   pedidos: Pedido[] = [];
+  readonly panelOpenState = signal(false);
 
   constructor(private historial: ApiHistorialComprasService, private userService: UserService) {}
 
@@ -55,4 +56,6 @@ export class ActualesComponent implements OnInit {
       }
     );
   }
+
+  
 }

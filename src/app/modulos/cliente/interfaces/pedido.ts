@@ -2,6 +2,8 @@ export interface Pedido {
   _id: string;
   numero: string;
   estado: string; 
-  fecha: Date;
+  fechaCreacion: Date;
+  fechaRequerida: Date;
+  precioTotalOrden: number;
 }
   
