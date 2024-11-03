@@ -1,3 +1,4 @@
+import { SeleccionProducto } from './alimento';
 export interface Pedido {
   _id: string;
   numero: string;
@@ -5,5 +6,7 @@ export interface Pedido {
   fechaCreacion: Date;
   fechaRequerida: Date;
   precioTotalOrden: number;
+  precioFinalConIva: number;
+  seleccionProductos: SeleccionProducto;
 }
   

@@ -4,21 +4,50 @@
   <mat-accordion class="pedido-list">
     @for(pedido of pedidos; track pedido.numero){
 
-    <mat-expansion-panel hideToggle>
+    <mat-expansion-panel hideToggle (opened)="setListaProducto(pedido.seleccionProductos.productos)">
       <mat-expansion-panel-header class="pedido-info">
         <mat-panel-title> Pedido #{{pedido.numero}} </mat-panel-title>
-        <mat-panel-description> {{pedido.estado}} </mat-panel-description>
+        <mat-panel-description [ngClass]="getEstadoClass(pedido.estado)"> {{ajustarPalabra(pedido.estado)}} </mat-panel-description>
       </mat-expansion-panel-header>
-      <p>Fecha de Creación: {{ pedido.fechaCreacion | date:'dd/MM/yyyy' }}</p>
-      <p>Fecha Requerida: {{ pedido.fechaRequerida | date:'dd/MM/yyyy' }}</p>
-      <p>Precio Total: {{ pedido.precioTotalOrden | currency:'CLP':'symbol':'1.0-0' }}</p>
-    </mat-expansion-panel>
-    }
-  </mat-accordion>
+      <div class="informacion-tabla">
+
+        <div class="informacion">
+          
+          <p>Fecha de Creación: {{ pedido.fechaCreacion | date:'dd/MM/yyyy' }}</p>
+          <p>Fecha Requerida: {{ pedido.fechaRequerida | date:'dd/MM/yyyy' }}</p>
+          <p>Precio Total Sin IVA: {{ pedido.precioTotalOrden | currency:'CLP':'symbol':'1.0-0' }}</p>
+          <p>Precio Total Con IVA: {{ pedido.precioFinalConIva | currency:'CLP':'symbol':'1.0-0' }}</p>
+        </div>
+        <div class="tabla">
+          
+          <table class="table-content" matSort (matSortChange)="sortData($event, pedido.seleccionProductos.productos)">
+            <tr>
+              <th mat-sort-header="producto">Producto</th>
+              <th mat-sort-header="cantidad">Cantidad</th>
+              <th mat-sort-header="unitario">Precio Unitario</th>
+              <th mat-sort-header="total">Precio Total</th>
+            </tr>   
+            
+            @for(producto of productosOrdenados; track producto){
+              <tr>
+                <td>{{producto.producto.nombre}}</td>
+                <td>{{producto.cantidad}}</td>
+                <td>{{producto.producto.precio | currency: 'CLP ':'symbol':'1.0-0'}}</td>
+                <td>{{producto.cantidad*producto.producto.precio | currency: 'CLP':'symbol':'1.0-0'}}</td>
+              </tr>
+            }
+            <tr>
+            </table>
+          </div>
+          
+        </div>
+        </mat-expansion-panel>
+      }
+    </mat-accordion>
   }
   @else{
   <p>No hay pedidos actuales en este momento.</p>
-  }
+}
 
 
 </div>
