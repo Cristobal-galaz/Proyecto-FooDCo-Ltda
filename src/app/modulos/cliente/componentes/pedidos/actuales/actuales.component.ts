@@ -40,15 +40,14 @@ export class ActualesComponent implements OnInit {
 productosOrdenados: CantidadProducto[] = [];
   readonly panelOpenState = signal(false);
 
-  constructor(private historial: ApiHistorialComprasService, private userService: UserService) {}
-
-  ngOnInit(): void {
+  constructor(private historial: ApiHistorialComprasService, private userService: UserService) {
     const userId = this.userService.getIdUser();
     if (userId) {
       this.cargarPedidosActuales(userId);
-    } else {
-      console.error('Error: No se encontró el ID del usuario.');
     }
+  }
+
+  ngOnInit(): void {
   }
 
   cargarPedidosActuales(userId: string): void {

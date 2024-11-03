@@ -67,6 +67,7 @@ h2 {
   flex-direction: row; /* Asegura que los elementos estén en línea horizontal */
   gap: 20px;
   align-items: flex-start; /* Alinea los elementos en la parte superior */
+  width: 100%; /* Asegura que ocupe el ancho completo */
 }
 
 .informacion {
@@ -99,6 +100,13 @@ h2 {
   position: sticky; /* Fija el encabezado cuando se hace scroll */
   top: 0; /* Mantiene el encabezado en la parte superior */
   z-index: 1; /* Asegura que el encabezado esté sobre el contenido */
+}
+
+.botones {
+  display: flex;
+  justify-content: flex-end; /* Alinea el botón a la derecha */
+  margin-top: 10px;
+  padding-right: 2rem;
 }
 
 @media (max-width: 768px) {

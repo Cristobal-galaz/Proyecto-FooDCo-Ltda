@@ -8,5 +8,6 @@ export interface Pedido {
   precioTotalOrden: number;
   precioFinalConIva: number;
   seleccionProductos: SeleccionProducto;
+  factura?: string | null;
 }
   

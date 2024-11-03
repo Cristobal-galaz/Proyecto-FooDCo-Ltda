@@ -39,7 +39,11 @@
             <tr>
             </table>
           </div>
-          
+        </div>
+        <div class="botones">
+          @if(pedido.factura != null){
+            <a mat-stroked-button [href]="pedido.factura" target="_blank">Factura</a>
+          }
         </div>
         </mat-expansion-panel>
       }
