@@ -1,6 +1,7 @@
 import { Routes } from "@angular/router";
-import { NavbarVentasComponent } from "./ventas/componentes/navbar-ventas/navbar-ventas.component";
 import { navBarVentas } from "./ventas/componentes/navbar-ventas/dashboard-venta.route";
+import { navBarCliente } from "./cliente/componentes/nav-bar-cliente/dashboard-cliente.routes";
+import { navBarDespacho } from "./Despacho/navbar-despacho/dashboard-despacho.routes";
 
 export const modulosRutas: Routes = [
     {
@@ -13,6 +14,20 @@ export const modulosRutas: Routes = [
         title: 'Inicio',
         children: [
             ...navBarVentas
+        ]
+    },
+    {
+        path: 'cliente',
+        title: 'Pedidos Actuales',
+        children: [
+            ...navBarCliente
+        ]
+    },
+    {
+        path: 'despacho',
+        title: 'Ordenes de despacho',
+        children: [
+            ...navBarDespacho
         ]
     }
 
