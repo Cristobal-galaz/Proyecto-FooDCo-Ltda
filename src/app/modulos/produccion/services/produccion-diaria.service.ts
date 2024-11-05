@@ -9,7 +9,8 @@ import { MateriaPrima } from '../interfaces/materia-prima.model';
   providedIn: 'root'
 })
 export class ProduccionDiariaService {
-  private apiUrl = 'https://localhost:3000/produccion_diaria'; 
+    //private apiUrl = 'https://localhost:3000/materias_primas';  
+  private apiUrl = '';
 
   constructor(private http: HttpClient, private materiasPrimasService: MateriasPrimasService) { }
 
