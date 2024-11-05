@@ -1,1 +1,14 @@
-<p>asignacion-despacho works!</p>
+<div *ngIf="ordenDespacho">
+  <h2>Orden de Despacho #{{ ordenDespacho.numero }}</h2>
+  <p><strong>Cliente:</strong> {{ ordenDespacho.cliente.contacto.nombre }}</p>
+  <p><strong>Email:</strong> {{ ordenDespacho.cliente.email }}</p>
+  
+  <h3>Productos</h3>
+  <ul>
+    <li *ngFor="let producto of ordenDespacho.ordenCompra.seleccionProductos.productos">
+      {{ producto.producto.nombre }} - Cantidad: {{ producto.cantidad }} - Total: {{ producto.precioTotal | currency }}
+    </li>
+  </ul>
+  <button (click)="irADetalleDespacho()">Asignar Despacho</button>
+</div>
+
