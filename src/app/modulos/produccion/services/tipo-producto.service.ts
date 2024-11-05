@@ -7,7 +7,7 @@ import { TipoProducto } from '../interfaces/tipo-producto.model';
   providedIn: 'root'
 })
 export class TipoProductoService {
-  private apiUrl = 'http://localhost:3000/tipos_producto';
+  private apiUrl = 'https://localhost:3000/tipos_producto';
 
   constructor(private http: HttpClient) { }
 
