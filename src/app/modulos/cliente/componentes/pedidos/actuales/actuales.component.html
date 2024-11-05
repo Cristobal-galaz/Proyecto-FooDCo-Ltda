@@ -1,18 +1,57 @@
 <div class="pedidos-container">
   <h2>Pedidos Actuales</h2>
+  @if(pedidos.length > 0){
+  <mat-accordion class="pedido-list">
+    @for(pedido of pedidos; track pedido.numero){
 
-  <div *ngIf="pedidos.length > 0; else noPedidos">
-    <ul class="pedido-list">
-      <li *ngFor="let pedido of pedidos" class="pedido-item">
-        <div class="pedido-info">
-          <span class="pedido-numero">Pedido #{{ pedido.numero }}</span>
-          <span class="pedido-estado">{{ pedido.estado }}</span>
+    <mat-expansion-panel hideToggle (opened)="setListaProducto(pedido.seleccionProductos.productos)">
+      <mat-expansion-panel-header class="pedido-info">
+        <mat-panel-title> Pedido #{{pedido.numero}} </mat-panel-title>
+        <mat-panel-description [ngClass]="getEstadoClass(pedido.estado)"> {{ajustarPalabra(pedido.estado)}} </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div class="informacion-tabla">
+
+        <div class="informacion">
+          
+          <p>Fecha de Creación: {{ pedido.fechaCreacion | date:'dd/MM/yyyy' }}</p>
+          <p>Fecha Requerida: {{ pedido.fechaRequerida | date:'dd/MM/yyyy' }}</p>
+          <p>Precio Total Sin IVA: {{ pedido.precioTotalOrden | currency:'CLP':'symbol':'1.0-0' }}</p>
+          <p>Precio Total Con IVA: {{ pedido.precioFinalConIva | currency:'CLP':'symbol':'1.0-0' }}</p>
         </div>
-      </li>
-    </ul>
-  </div>
+        <div class="tabla">
+          
+          <table class="table-content" matSort (matSortChange)="sortData($event, pedido.seleccionProductos.productos)">
+            <tr>
+              <th mat-sort-header="producto">Producto</th>
+              <th mat-sort-header="cantidad">Cantidad</th>
+              <th mat-sort-header="unitario">Precio Unitario</th>
+              <th mat-sort-header="total">Precio Total</th>
+            </tr>   
+            
+            @for(producto of productosOrdenados; track producto){
+              <tr>
+                <td>{{producto.producto.nombre}}</td>
+                <td>{{producto.cantidad}}</td>
+                <td>{{producto.producto.precio | currency: 'CLP ':'symbol':'1.0-0'}}</td>
+                <td>{{producto.cantidad*producto.producto.precio | currency: 'CLP':'symbol':'1.0-0'}}</td>
+              </tr>
+            }
+            <tr>
+            </table>
+          </div>
+        </div>
+        <div class="botones">
+          @if(pedido.factura != null){
+            <a mat-stroked-button [href]="pedido.factura" target="_blank">Factura</a>
+          }
+        </div>
+        </mat-expansion-panel>
+      }
+    </mat-accordion>
+  }
+  @else{
+  <p>No hay pedidos actuales en este momento.</p>
+}
 
-  <ng-template #noPedidos>
-    <p>No hay pedidos actuales en este momento.</p>
-  </ng-template>
+
 </div>

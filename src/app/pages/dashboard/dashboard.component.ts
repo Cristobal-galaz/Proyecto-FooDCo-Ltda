@@ -7,7 +7,6 @@ import { TodosPedidosComponent } from '../../modulos/cliente/componentes/pedidos
 import { ActualesComponent } from '../../modulos/cliente/componentes/pedidos/actuales/actuales.component';
 import { CompletadosComponent } from '../../modulos/cliente/componentes/pedidos/completados/completados.component';
 import { DatosEmpresaComponent } from '../../modulos/cliente/componentes/editar/datos-empresa/datos-empresa.component';
-import { DatosContactoComponent } from '../../modulos/cliente/componentes/editar/datos-contacto/datos-contacto.component';
 
 import { NavbarVentasComponent } from "../../modulos/ventas/componentes/navbar-ventas/navbar-ventas.component";
 import { EjeInicioComponent } from '../../modulos/ventas/componentes/Espanol-comp/eje-inicio/eje-inicio.component';
@@ -39,7 +38,6 @@ import { NavbarDespachoComponent } from '../../modulos/Despacho/navbar-despacho/
               ActualesComponent,
               CompletadosComponent,
               DatosEmpresaComponent,
-              DatosContactoComponent,
               MatIconModule,
               MatProgressSpinnerModule,
               OrdenCompraComponent,
