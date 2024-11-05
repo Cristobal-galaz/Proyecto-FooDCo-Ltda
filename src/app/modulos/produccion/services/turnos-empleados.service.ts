@@ -7,7 +7,8 @@ import { TurnoEmpleado } from '../interfaces/turno-empleado.model';
   providedIn: 'root'
 })
 export class TurnosEmpleadosService {
-  private apiUrl = 'https://localhost:3000/turnos_empleados';  // Asegúrate de que la URL sea correcta
+    //private apiUrl = 'https://localhost:3000/materias_primas';  
+  private apiUrl = '';  // Asegúrate de que la URL sea correcta
 
   constructor(private http: HttpClient) {}
 
