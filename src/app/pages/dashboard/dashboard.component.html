@@ -8,6 +8,32 @@
       @case ('Ejecutivo de Ventas') {
       <app-navbar-ventas class="nav-bar"></app-navbar-ventas>
       }
+      @case ('Desarrollador') {
+      <app-navbar-despacho class="nav-bar"></app-navbar-despacho>
+      }
+      }
+      
+    </div>
+  </mat-drawer>
+
+
+    <div class="contenido"
+    [style.backgroundColor]="drawer.opened ? 'transparent' : 'white'">
+      @if(isSmallScreen){
+        
+        <button mat-icon-button (click)="drawer.toggle()">
+          <mat-icon>{{ drawer.opened ? 'menu_open' : 'menu' }}</mat-icon>
+        </button>
+      }   
+        <router-outlet></router-outlet>
+
+      @if(isLoading){
+        <div class="spinner-container">
+          <mat-spinner></mat-spinner>
+        </div> 
+
+      }       
+
       }
     </div>
   </mat-drawer>
