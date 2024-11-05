@@ -7,8 +7,8 @@ import { MateriaPrima } from '../interfaces/materia-prima.model';
   providedIn: 'root'
 })
 export class MateriasPrimasService {
-  private apiUrl = 'https://localhost:3000/materias_primas';  
-
+  //private apiUrl = 'https://localhost:3000/materias_primas';  
+  private apiUrl = '';
   constructor(private http: HttpClient) {}
 
   // Obtener todas las materias primas
