@@ -29,7 +29,7 @@ export const navBarCliente: Routes = [
     {
         path: 'editarContacto',
         title: 'Editar Contacto',
-        loadComponent: ()=> import ('../editar/datos-contacto/datos-contacto.component').then(m => m.DatosContactoComponent)
+        loadComponent: ()=> import ('../editar/dato-contacto/dato-contacto.component').then(m => m.DatoContactoComponent)
     }
 
 ]

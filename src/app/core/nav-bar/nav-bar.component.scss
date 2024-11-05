@@ -60,6 +60,18 @@
         align-items: center;
         justify-content: center;
     }
+
+    .perfil img {
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        /* Hace que la imagen sea circular */
+        object-fit: cover;
+        /* Ajusta la imagen para cubrir el contenedor */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 }
 
 @media (max-width: 768px) {
