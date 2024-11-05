@@ -54,7 +54,6 @@ productosOrdenados: CantidadProducto[] = [];
     this.historial.getPedidos(userId, ['']).subscribe(
       (data: Pedido[]) => {
         this.pedidos = data;
-        console.log("Pedidos actuales: ", this.pedidos);
       },
       (error) => {
         console.error('Error al cargar los pedidos actuales:', error);
@@ -67,10 +66,18 @@ productosOrdenados: CantidadProducto[] = [];
     switch (estado.toLowerCase()) {
       case 'pendiente':
         return 'estado-pendiente';
+      case 'aprobado':
+        return 'estado-aprobado';
+      case 'rechazado':
+        return 'estado-rechazado';
       case 'en_produccion':
         return 'estado-en-proceso';
       case 'despachado':
         return 'despachado';
+      case 'entregado':
+        return 'estado-entregado';
+      case 'completado':
+        return 'estado-completado';
       default:
         return '';
     }
@@ -82,7 +89,6 @@ productosOrdenados: CantidadProducto[] = [];
   setListaProducto(productos: CantidadProducto[]): void {
     // Actualiza productosOrdenados cuando se expande un pedido
     this.productosOrdenados = productos.slice();
-    console.log('Productos ordenados:', this.productosOrdenados);
   
   }
   sortData(sort: Sort, productos: CantidadProducto[]) {

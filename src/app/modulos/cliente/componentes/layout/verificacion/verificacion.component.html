@@ -1,0 +1,20 @@
+<h2 mat-dialog-title>¿Es usted?</h2>
+<mat-dialog-content>
+  <p>Queremos asegurarnos que sea usted</p> 
+  <p>Porfavor ingrese su contraseña.</p>
+  <form [formGroup]="verificacionForm">
+    <div class="grid-form">
+        <mat-form-field appearance="fill">
+            <mat-label>Contraseña</mat-label>
+            <input matInput formControlName="password" placeholder="Ingresa contraseña" type="password" required />
+        </mat-form-field>
+    </div>
+    </form>
+    @if(error){
+      <p class="error">Contraseña incorrecta</p>
+    }
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>No</button>
+  <button mat-button cdkFocusInitial (click)="onSubmit()">Ok</button>
+</mat-dialog-actions>

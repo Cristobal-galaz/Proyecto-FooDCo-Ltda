@@ -11,7 +11,7 @@ import { ApiHistorialComprasService } from '../../../services/api-historial-comp
 import { UserService } from '../../../../../services/user.service';
 import { Pedido } from '../../../interfaces/pedido';
 import { provideNativeDateAdapter } from '@angular/material/core';
-import {MatSort ,Sort, MatSortModule} from '@angular/material/sort';
+import { MatSort, Sort, MatSortModule } from '@angular/material/sort';
 import { CantidadProducto } from '../../../interfaces/alimento';
 
 @Component({
@@ -37,7 +37,7 @@ export class ActualesComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
 
   pedidos: Pedido[] = [];
-productosOrdenados: CantidadProducto[] = [];
+  productosOrdenados: CantidadProducto[] = [];
   readonly panelOpenState = signal(false);
 
   constructor(private historial: ApiHistorialComprasService, private userService: UserService) {
@@ -54,7 +54,6 @@ productosOrdenados: CantidadProducto[] = [];
     this.historial.getPedidos(userId, ['no-completado']).subscribe(
       (data: Pedido[]) => {
         this.pedidos = data;
-        console.log("Pedidos actuales: ", this.pedidos);
       },
       (error) => {
         console.error('Error al cargar los pedidos actuales:', error);
@@ -67,23 +66,38 @@ productosOrdenados: CantidadProducto[] = [];
     switch (estado.toLowerCase()) {
       case 'pendiente':
         return 'estado-pendiente';
+      case 'aprobado':
+        return 'estado-aprobado';
+      case 'rechazado':
+        return 'estado-rechazado';
       case 'en_produccion':
         return 'estado-en-proceso';
       case 'despachado':
         return 'despachado';
+      case 'entregado':
+        return 'estado-entregado';
+      case 'completado':
+        return 'estado-completado';
       default:
         return '';
     }
   }
+
   ajustarPalabra(palabra: string): string {
     if (!palabra) return '';
-    return palabra.charAt(0).toUpperCase() + palabra.slice(1).toLowerCase();
+    // Si la palabra contiene guiones bajos, divídela y ajusta cada parte
+    const palabras = palabra.split('_').map(
+      (parte) => parte.charAt(0).toUpperCase() + parte.slice(1).toLowerCase()
+    );
+
+    // Une las partes ajustadas con espacios
+    return palabras.join(' ');
   }
+
   setListaProducto(productos: CantidadProducto[]): void {
     // Actualiza productosOrdenados cuando se expande un pedido
     this.productosOrdenados = productos.slice();
-    console.log('Productos ordenados:', this.productosOrdenados);
-  
+
   }
   sortData(sort: Sort, productos: CantidadProducto[]) {
     const data = productos.slice();
@@ -101,7 +115,7 @@ productosOrdenados: CantidadProducto[] = [];
         case 'unitario':
           return compare(a.producto.precio, b.producto.precio, isAsc);
         case 'total':
-          return compare(a.cantidad*a.producto.precio, b.cantidad*b.producto.precio, isAsc);
+          return compare(a.cantidad * a.producto.precio, b.cantidad * b.producto.precio, isAsc);
         default:
           return 0;
       }
@@ -114,5 +128,5 @@ productosOrdenados: CantidadProducto[] = [];
 function compare(a: number | string, b: number | string, isAsc: boolean) {
   return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
 }
-  
+
 

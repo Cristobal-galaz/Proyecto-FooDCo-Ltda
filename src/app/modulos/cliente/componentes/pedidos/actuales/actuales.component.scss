@@ -50,17 +50,36 @@ h2 {
   font-weight: bold;
 }
 
+
 .estado-pendiente {
-  color: #FFA500; /* Naranja */
+  color: #ffd900; /* Naranja */
 }
 
-.estado-produccion {
-  color: #0000FF; /* Azul */
+.estado-aprobado {
+  color: #4CAF50; /* Verde */
 }
 
-.despachado {
-  color: #008000; /* Verde */
+.estado-rechazado {
+  color: #ff3838; /* Rojo claro */
 }
+
+.estado-en-proceso {
+  color: #2196F3; /* Azul */
+}
+
+.estado-despachado {
+  color: #0787ff; /* Ámbar */
+}
+
+.estado-entregado {
+  color: #8BC34A; /* Verde claro */
+}
+
+.estado-completado {
+  color: #388E3C; /* Verde oscuro */
+}
+
+
 
 .informacion-tabla {
   display: flex;
