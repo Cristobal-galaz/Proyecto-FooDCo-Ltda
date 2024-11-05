@@ -20,6 +20,7 @@ import { OrdenCompraComponent } from '../../modulos/cliente/componentes/orden-co
 import { UserService } from '../../services/user.service';
 import { MatIconModule } from '@angular/material/icon';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { NavbarDespachoComponent } from '../../modulos/Despacho/navbar-despacho/navbar-despacho.component';
 
 
 
@@ -47,7 +48,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
               EjeInicioComponent,
               EjePersonalComponent,
               SubcontratosComponent,
-              NavbarVentasComponent           
+              NavbarVentasComponent,
+              NavbarDespachoComponent           
             ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
@@ -89,7 +91,7 @@ export class DashboardComponent {
       this.router.navigate(['/dashboard/cliente']);
     } else if (this.rol === 'Ejecutivo de Ventas') {
       this.router.navigate(['/dashboard/ventas']);
-    } else if (this.rol === 'Encargado de Despacho') {
+    } else if (this.rol === 'Desarrollador') {
       this.router.navigate(['/dashboard/despacho']);
     } else {
       this.router.navigate(['/dashboard']);

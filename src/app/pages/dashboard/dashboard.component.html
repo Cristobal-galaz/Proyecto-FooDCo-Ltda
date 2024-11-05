@@ -1,16 +1,20 @@
-  <mat-drawer-container class="dashboard" autosize>
-    <mat-drawer #drawer class="nav-bar" mode="side" [opened]="!isSmallScreen">
-      <div >
-        @switch (rol) {
-        @case ('Cliente') {
-        <app-nav-bar-cliente></app-nav-bar-cliente>
-        }
-        @case ('Ejecutivo de Ventas') {
-        <app-navbar-ventas class="nav-bar"></app-navbar-ventas>
-        }
-        }
-      </div>
-    </mat-drawer>
+<mat-drawer-container class="dashboard">
+  <mat-drawer #drawer class="nav-bar" mode="side" [opened]="!isSmallScreen">
+    <div >
+      @switch (rol) {
+      @case ('Cliente') {
+      <app-nav-bar-cliente></app-nav-bar-cliente>
+      }
+      @case ('Ejecutivo de Ventas') {
+      <app-navbar-ventas class="nav-bar"></app-navbar-ventas>
+      }
+      @case ('Desarrollador') {
+      <app-navbar-despacho class="nav-bar"></app-navbar-despacho>
+      }
+      }
+      
+    </div>
+  </mat-drawer>
 
 
     <div class="contenido"
