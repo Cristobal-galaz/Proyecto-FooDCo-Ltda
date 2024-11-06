@@ -29,6 +29,11 @@ export class DespachoService {
     return this.http.get<OrdenDespacho>(`${this.apiUrl}/${id}`);
   }
 
+    // Método para obtener todas las órdenes de despacho
+    obtenerOrdenesDespacho(): Observable<OrdenDespacho[]> {
+      return this.http.get<OrdenDespacho[]>(`${this.apiUrl}/list`);
+    }  
+
   // Mapea una OrdenCompra a una OrdenDespacho
   private mapearOrdenCompraADespacho(ordenCompra: OrdenCompra): OrdenDespacho {
     return {

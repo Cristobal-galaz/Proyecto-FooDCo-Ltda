@@ -27,9 +27,9 @@ export const Main: Links[] = [
         name: 'Despacho', 
         icon: 'local_shipping',
         children: [
-            { name: 'Ordenes de Despacho Actuales', icon: 'assignment', route: 'despacho/ordenesActuales' },
-            { name: 'Historial de Despachos', icon: 'history', route: 'despacho/historial' },
-            { name: 'Crear Orden de Despacho', icon: 'add_circle', route: 'despacho/crearOrden' }
+            { name: 'Tabla de Despachos', icon: 'assignment', route: 'despacho/tabla-despachos' },
+            { name: 'GPS', icon: 'gps_fixed', route: 'despacho/seguimiento' }
+
         ],
     },
 ];
