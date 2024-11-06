@@ -7,7 +7,6 @@ import { TodosPedidosComponent } from '../../modulos/cliente/componentes/pedidos
 import { ActualesComponent } from '../../modulos/cliente/componentes/pedidos/actuales/actuales.component';
 import { CompletadosComponent } from '../../modulos/cliente/componentes/pedidos/completados/completados.component';
 import { DatosEmpresaComponent } from '../../modulos/cliente/componentes/editar/datos-empresa/datos-empresa.component';
-import { DatosContactoComponent } from '../../modulos/cliente/componentes/editar/datos-contacto/datos-contacto.component';
 
 import { NavbarVentasComponent } from "../../modulos/ventas/componentes/navbar-ventas/navbar-ventas.component";
 import { EjeInicioComponent } from '../../modulos/ventas/componentes/Espanol-comp/eje-inicio/eje-inicio.component';
@@ -20,6 +19,7 @@ import { OrdenCompraComponent } from '../../modulos/cliente/componentes/orden-co
 import { UserService } from '../../services/user.service';
 import { MatIconModule } from '@angular/material/icon';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { NavbarDespachoComponent } from '../../modulos/Despacho/navbar-despacho/navbar-despacho.component';
 
 
 
@@ -38,7 +38,6 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
               ActualesComponent,
               CompletadosComponent,
               DatosEmpresaComponent,
-              DatosContactoComponent,
               MatIconModule,
               MatProgressSpinnerModule,
               OrdenCompraComponent,
@@ -47,7 +46,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
               EjeInicioComponent,
               EjePersonalComponent,
               SubcontratosComponent,
-              NavbarVentasComponent           
+              NavbarVentasComponent,
+              NavbarDespachoComponent           
             ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
@@ -89,7 +89,7 @@ export class DashboardComponent {
       this.router.navigate(['/dashboard/cliente']);
     } else if (this.rol === 'Ejecutivo de Ventas') {
       this.router.navigate(['/dashboard/ventas']);
-    } else if (this.rol === 'Encargado de Despacho') {
+    } else if (this.rol === 'Desarrollador') {
       this.router.navigate(['/dashboard/despacho']);
     } else {
       this.router.navigate(['/dashboard']);

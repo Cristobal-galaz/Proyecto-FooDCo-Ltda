@@ -1,0 +1,21 @@
+<div *ngIf="ordenDespacho">
+    <h2>Detalle de Despacho #{{ ordenDespacho._id }}</h2>
+  
+    <h3>Información de la Orden de Despacho</h3>
+    <p><strong>Cliente:</strong> {{ ordenDespacho.cliente.contacto.nombre }}</p>
+    <p><strong>Email:</strong> {{ ordenDespacho.cliente.email }}</p>
+    <p><strong>Estado:</strong> {{ ordenDespacho.estado }}</p>
+  
+    <!-- Formulario para añadir datos adicionales del despacho -->
+    <h3>Datos del Despacho</h3>
+    <form (ngSubmit)="asignarDatosDespacho()">
+      <label for="nombreCamionero">Nombre del Camionero:</label>
+      <input type="text" id="nombreCamionero" [(ngModel)]="nombreCamionero" name="nombreCamionero" required>
+  
+      <label for="patente">Patente del Vehículo:</label>
+      <input type="text" id="patente" [(ngModel)]="patente" name="patente" required>
+  
+      <button type="submit">Guardar</button>
+    </form>
+  </div>
+  

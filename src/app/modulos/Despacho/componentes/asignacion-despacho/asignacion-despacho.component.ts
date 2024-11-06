@@ -1,62 +1,55 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
-import { MatSort } from '@angular/material/sort';
-import { MatPaginator } from '@angular/material/paginator';
-import { PedidoService } from '../services/pedido.service';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { DespachoService } from '../../services/despacho.service';
+import { OrdenDespacho } from '../../interfaces/ordendespacho';
+import { OrdenCompra } from '../../../ventas/interface/ordendecompra';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-asignacion-despacho',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './asignacion-despacho.component.html',
-  styleUrl: './asignacion-despacho.component.scss'
+  styleUrls: ['./asignacion-despacho.component.scss']
 })
 export class AsignacionDespachoComponent implements OnInit {
-  displayedColumns: string[] = ['numeroPedido', 'cliente', 'fechaLlegada', 'estado', 'acciones'];
-  dataSource: MatTableDataSource<any>;
+  ordenCompra!: OrdenCompra;
+  ordenDespacho!: OrdenDespacho;
 
-  @ViewChild(MatSort) sort: MatSort;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-
-  constructor(private pedidoService: PedidoService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private despachoService: DespachoService
+  ) {}
 
   ngOnInit(): void {
-    this.cargarPedidos();
-  }
-
-  cargarPedidos() {
-    this.pedidoService.obtenerPedidos().subscribe(data => {
-      // Supongamos que 'data' es un array de pedidos
-      this.dataSource = new MatTableDataSource(data);
-      // Ordenar por fecha de llegada ascendente
-      this.dataSource.sort = this.sort;
-      this.dataSource.sortingDataAccessor = (item, property) => {
-        switch(property) {
-          case 'fechaLlegada': return new Date(item.fechaLlegada);
-          default: return item[property];
-        }
-      };
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort.active = 'fechaLlegada';
-      this.dataSource.sort.direction = 'asc';
-    });
-  }
-
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    // En caso de que el filtro afecte a los datos paginados
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.obtenerOrdenCompra(id);
     }
   }
 
-  asignarDespacho(pedido: any) {
-    // Lógica para asignar el despacho al pedido seleccionado
-    // Puedes abrir un diálogo para seleccionar el viaje o realizar la asignación directamente
-    console.log('Asignando despacho al pedido:', pedido);
-    // Por ejemplo, llamar a un servicio que realice la asignación
-    // this.pedidoService.asignarDespacho(pedido.id).subscribe(...)
+  obtenerOrdenCompra(id: string) {
+    this.despachoService.getOrdenCompra(id).subscribe({
+      next: (ordenCompra: OrdenCompra) => {
+        this.ordenCompra = ordenCompra;
+        this.crearOrdenDespacho();
+      },
+      error: (err) => console.error('Error al obtener la orden de compra:', err)
+    });
+  }
+
+  crearOrdenDespacho() {
+    this.despachoService.crearOrdenDespachoDesdeVenta(this.ordenCompra).subscribe({
+      next: (ordenDespacho: OrdenDespacho) => {
+        this.ordenDespacho = ordenDespacho;
+      },
+      error: (err) => console.error('Error al crear la orden de despacho:', err)
+    });
+  }
+
+  irADetalleDespacho() {
+    // Navega al componente de detalle de despacho con el ID de la orden de despacho
+    this.router.navigate([`/dashboard/despacho/detalle/${this.ordenDespacho._id}`]);
   }
 }

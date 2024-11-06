@@ -1,39 +1,41 @@
 <div class="nav-bar">
     <div class="logo">
-<p routerLink="">logo</p>
+        <p routerLink="">logo</p>
     </div>
     <div class="links">
-<a href="">Nosotros</a>
-<a routerLink="cliente/menus">Menus</a>
-<a href="">Contáctanos</a>
+        <a href="">Nosotros</a>
+        <a routerLink="cliente/menus">Menus</a>
+        <a href="">Contáctanos</a>
     </div>
     <div class="perfil">
         <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-            <mat-icon>account_circle</mat-icon>
+            <!-- Mostrar imagen de perfil si está disponible -->
+            <img *ngIf="user?.imagenPerfil" [src]="user.imagenPerfil" alt="Perfil"/>
+            <mat-icon *ngIf="!user?.imagenPerfil">account_circle</mat-icon>
         </button>
-        
+
         <mat-menu #menu="matMenu">
             @if(isLogged){
-                <button mat-menu-item routerLink="dashboard">
-                    <mat-icon>dialpad</mat-icon>
-                    <span>Panel de Control</span>
-                </button>
-                <button mat-menu-item (click)="logout()">
-                    <mat-icon>logout</mat-icon>
-                    <span>Salir</span>
-                </button>
+            <button mat-menu-item routerLink="dashboard">
+                <mat-icon>dialpad</mat-icon>
+                <span>Panel de Control</span>
+            </button>
+            <button mat-menu-item (click)="logout()">
+                <mat-icon>logout</mat-icon>
+                <span>Salir</span>
+            </button>
             }
             @else{
-                <button mat-menu-item routerLink="login">
-                    <mat-icon>login</mat-icon>
-                    <span>Iniciar Sesión</span>
-                </button>
-                <button mat-menu-item routerLink="registro">
-                    <mat-icon>person_add</mat-icon>
-                    <span>Registrarse</span>
-                </button>
+            <button mat-menu-item routerLink="login">
+                <mat-icon>login</mat-icon>
+                <span>Iniciar Sesión</span>
+            </button>
+            <button mat-menu-item routerLink="registro">
+                <mat-icon>person_add</mat-icon>
+                <span>Registrarse</span>
+            </button>
             }
-          </mat-menu>
+        </mat-menu>
 
     </div>
 </div>
