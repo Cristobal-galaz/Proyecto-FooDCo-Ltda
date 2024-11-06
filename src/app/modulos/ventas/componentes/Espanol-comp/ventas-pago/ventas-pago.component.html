@@ -1,19 +1,19 @@
+<!-- ventas-pago.component.html -->
 <div class="ventas-pago-container">
-    <div class="top-right-button">
-      <button (click)="switchLanguage()" class="btn btn-secondary">Switch to English</button>
-    </div>
-  
-    <p>Pagos realizados</p>
-    <h1>Pagos completados</h1>
-    
-    <div class="seccion">
-      <p><strong>Nombre cliente:</strong> [Nombre del Cliente]</p>
-      <p><strong>Rut cliente:</strong> [Rut del Cliente]</p>
-      <p><strong>Nombre Encargado:</strong> [Nombre del Encargado]</p>
-      <p><strong>Rut Encargado:</strong> [Rut del Encargado]</p>
-      <p><strong>Datos de factura:</strong> [Datos de Factura]</p>
-      <p><strong>Fecha de orden:</strong> [Fecha]</p>
-      <a href="/mostrarorden" class="btn btn-primary">Ir a orden-compra</a>
-    </div>
+  <div class="top-right-button">
+    <button (click)="switchLanguage()" class="btn btn-secondary">{{ texts['switchToEnglish'] }}</button>
   </div>
+
+  <p>{{ texts['pagosRealizados'] }}</p>
+  <h1>{{ texts['pagosCompletados'] }}</h1>
   
+  <div class="seccion">
+    <p><strong>{{ texts['nombreCliente'] }}</strong> [Nombre del Cliente]</p>
+    <p><strong>{{ texts['rutCliente'] }}</strong> [Rut del Cliente]</p>
+    <p><strong>{{ texts['nombreEncargado'] }}</strong> [Nombre del Encargado]</p>
+    <p><strong>{{ texts['rutEncargado'] }}</strong> [Rut del Encargado]</p>
+    <p><strong>{{ texts['datosFactura'] }}</strong> [Datos de Factura]</p>
+    <p><strong>{{ texts['fechaOrden'] }}</strong> [Fecha]</p>
+    <a href="/mostrarorden" class="btn btn-primary">{{ texts['irAOrdenCompra'] }}</a>
+  </div>
+</div>

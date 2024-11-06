@@ -190,7 +190,18 @@ export const routes: Routes = [
         path: 'inventario',
         loadComponent: () => import('./modulos/produccion/componentes/inventario/revision-inventario/revision-inventario.component').then(m => m.RevisionInventarioComponent),
         title: 'Revisión de Inventario'
-      }
+      },
+      {
+        path: 'inicio',
+        title: 'Inicio',
+        loadComponent: () => import('./modulos/ventas/componentes/Espanol-comp/inicio/inicio.component').then(m => m.InicioComponent),
+      },
+      {
+        path: 'inicio-en',
+        title: 'Inicio (EN)',
+        loadComponent: () => import('./modulos/ventas/componentes/English-comp/inicio-en/inicio-en.component').then(m => m.InicioEnComponent),
+      },
     ]
   }
 ];
+  
