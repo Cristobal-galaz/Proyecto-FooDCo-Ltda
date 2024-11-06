@@ -1,4 +1,6 @@
 export interface TipoProducto {
-  id: string;
+  _id: string;  
   nombre: string;
+  createdAt?: Date;
+  updatedAt?: Date;
 }

@@ -36,7 +36,7 @@ export class MateriasPrimasListComponent implements OnInit {
     });
   }
 
-  deleteMateriaPrima(id: number): void {
+  deleteMateriaPrima(id: string): void {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       width: '250px',
       data: { message: '¿Estás seguro de que deseas eliminar esta materia prima?' }
@@ -45,7 +45,7 @@ export class MateriasPrimasListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.materiasPrimasService.deleteMateriaPrima(id).subscribe(() => {
-          this.dataSource.data = this.dataSource.data.filter(item => item.id !== id);
+          this.dataSource.data = this.dataSource.data.filter(item => item._id !== id);
           this.snackBar.open('Materia prima eliminada', 'Cerrar', { duration: 3000 });
         });
       }

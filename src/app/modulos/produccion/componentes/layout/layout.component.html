@@ -1,0 +1,50 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" mode="side" opened>
+    <div class="container">
+      <h4>Panel de Control</h4>
+
+      <!-- Árbol principal -->
+      <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="navbar">
+        <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+          <div class="node-container" [routerLink]="node.route" routerLinkActive="active">
+            <mat-icon>{{ node.icon }}</mat-icon>
+            <span>{{ node.name }}</span>
+          </div>
+        </mat-tree-node>
+
+        <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding matTreeNodeToggle>
+          <div class="node-container parent-node">
+            <mat-icon>{{ node.icon }}</mat-icon>
+            <span>{{ node.name }}</span>
+          </div>
+        </mat-tree-node>
+      </mat-tree>
+      
+      <!-- Árbol para la sección "Otros" -->
+      <h4>Otros</h4>
+      <div *ngFor="let node of otros" class="node-container" [routerLink]="node.route" routerLinkActive="active">
+        <mat-icon>{{ node.icon }}</mat-icon>
+        <span>{{ node.name }}</span>
+      </div>
+      
+
+      <div class="node-container" (click)="logout()">
+        <mat-icon>exit_to_app</mat-icon>
+        <span>Cerrar Sesión</span>
+      </div>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button type="button" mat-icon-button (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>Dashboard</span>
+    </mat-toolbar>
+
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

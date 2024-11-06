@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { authGuard } from './guards/auth.guard';
 import { authenticatedGuard } from './guards/authenticated.guard';
 import { modulosRutas } from './modulos/modulos.routes';
-import { LayoutComponent } from './modulos/produccion/layout/layout.component'; // Asegúrate de que el path es correcto
+import { LayoutComponent } from './modulos/produccion/componentes/layout/layout.component'; 
 
 export const routes: Routes = [
   {

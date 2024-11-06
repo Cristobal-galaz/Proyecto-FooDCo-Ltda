@@ -9,29 +9,28 @@ import { TurnoEmpleado } from '../../../interfaces/turno-empleado.model';
 })
 export class TurnosEmpleadosListComponent implements OnInit {
   turnos: TurnoEmpleado[] = [];
-  turnosFiltrados: TurnoEmpleado[] = [];  // Para mostrar el resultado filtrado
-  filtro: string = '';  // Para el filtrado de empleados
+  turnosFiltrados: TurnoEmpleado[] = [];
+  filtro: string = '';
 
   constructor(private turnosEmpleadosService: TurnosEmpleadosService) {}
 
   ngOnInit(): void {
     this.turnosEmpleadosService.getTurnosEmpleados().subscribe((data: TurnoEmpleado[]) => {
       this.turnos = data;
-      this.turnosFiltrados = data;  // Inicializar turnos filtrados
+      this.turnosFiltrados = data;
     });
   }
 
-  // Método para filtrar los turnos por nombre del empleado
   filtrarTurnos(): void {
     this.turnosFiltrados = this.turnos.filter(turno => 
-      turno.nombre_empleado.toLowerCase().includes(this.filtro.toLowerCase()));
+      turno.empleado_id.toLowerCase().includes(this.filtro.toLowerCase()));
   }
 
-  eliminarTurno(id: number): void {
+  eliminarTurno(id: string): void {
     if (confirm('¿Está seguro de eliminar este turno?')) {
       this.turnosEmpleadosService.deleteTurnoEmpleado(id).subscribe(() => {
-        this.turnos = this.turnos.filter(turno => turno.id !== id);
-        this.filtrarTurnos();  // Actualizar la lista filtrada después de eliminar
+        this.turnos = this.turnos.filter(turno => turno._id !== id);
+        this.filtrarTurnos();
       });
     }
   }

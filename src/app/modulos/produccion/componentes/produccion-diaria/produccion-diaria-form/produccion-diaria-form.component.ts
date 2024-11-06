@@ -17,9 +17,9 @@ export class ProduccionDiariaFormComponent implements OnInit {
   produccionForm: FormGroup;
   tiposProducto: TipoProducto[] = [];
   materiasPrimas: MateriaPrima[] = [];
-  materiasPrimasUtilizadas: any[] = [];  // Lista para materias primas usadas
-  produccionId: number | null = null;
-  unidadSeleccionada: string = '';  // Almacenar la unidad de la materia prima seleccionada
+  materiasPrimasUtilizadas: any[] = [];  
+  produccionId: string | null = null;
+  unidadSeleccionada: string = '';  
 
   constructor(
     private fb: FormBuilder,
@@ -29,14 +29,14 @@ export class ProduccionDiariaFormComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router
   ) {
-    // Inicialización del formulario
+    
     this.produccionForm = this.fb.group({
       tipo_producto_id: ['', Validators.required],
-      materia_prima: [''],  // Ya no es requerida
-      cantidad_usada: [''],  // Ya no es requerida
+      materia_prima: [''],  
+      cantidad_usada: [''],  
       cantidad_producida: ['', [Validators.required, Validators.min(1)]],
       fecha_produccion: ['', [Validators.required, this.validateFechaProduccion]],
-      unidad_materia: [{value: '', disabled: true}]  // Campo solo lectura para la unidad
+      unidad_materia: [{value: '', disabled: true}]  
     });
   }
 
@@ -55,7 +55,7 @@ export class ProduccionDiariaFormComponent implements OnInit {
     this.produccionId = this.route.snapshot.params['id'];
     if (this.produccionId) {
       this.produccionDiariaService.getProduccionDiariaById(this.produccionId).subscribe(data => {
-        this.produccionForm.patchValue(data);  // Rellenar el formulario con los datos
+        this.produccionForm.patchValue(data);
         this.materiasPrimasUtilizadas = data.materiasPrimasUtilizadas || [];
       });
     }
@@ -68,7 +68,7 @@ export class ProduccionDiariaFormComponent implements OnInit {
 
   // Función para mostrar la unidad de la materia prima seleccionada
   mostrarUnidad(materiaId: number): void {
-    const materia = this.materiasPrimas.find(m => m.id === materiaId);
+    const materia = this.materiasPrimas.find(m => m._id === materiaId.toString());
     if (materia) {
       this.unidadSeleccionada = materia.unidad;
       this.produccionForm.get('unidad_materia')?.setValue(materia.unidad);  // Mostrar la unidad en el campo
@@ -80,10 +80,10 @@ export class ProduccionDiariaFormComponent implements OnInit {
     const materiaId = this.produccionForm.get('materia_prima')?.value;
     const cantidadUsada = this.produccionForm.get('cantidad_usada')?.value;
   
-    const materia = this.materiasPrimas.find(m => m.id === materiaId);
+    const materia = this.materiasPrimas.find(m => m._id === materiaId);
     if (materia && cantidadUsada > 0) {
       this.materiasPrimasUtilizadas.push({
-        id: materia.id,
+        id: materia._id,
         nombre: materia.nombre,
         cantidadUsada,
         unidad: materia.unidad
@@ -118,15 +118,14 @@ export class ProduccionDiariaFormComponent implements OnInit {
       };
   
       if (this.produccionId) {
-        // Obtener la producción original antes de actualizar
-        this.produccionDiariaService.getProduccionDiariaById(this.produccionId).subscribe(produccionOriginal => {
-          this.produccionDiariaService.updateProduccionDiaria(this.produccionId ?? 0, produccionData, produccionOriginal).subscribe(() => {
-            this.router.navigate(['/produccion-diaria']);
-          });
+        this.produccionDiariaService.updateProduccionDiaria(this.produccionId.toString(), produccionData).subscribe({
+          next: () => this.router.navigate(['/produccion/produccion-diaria']), // Ruta ajustada
+          error: error => console.error('Error al actualizar la producción diaria:', error)
         });
       } else {
-        this.produccionDiariaService.addProduccionDiaria(produccionData).subscribe(() => {
-          this.router.navigate(['/produccion-diaria']);
+        this.produccionDiariaService.addProduccionDiaria(produccionData).subscribe({
+          next: () => this.router.navigate(['/produccion/produccion-diaria']), // Ruta ajustada
+          error: error => console.error('Error al agregar la producción diaria:', error)
         });
       }
     }

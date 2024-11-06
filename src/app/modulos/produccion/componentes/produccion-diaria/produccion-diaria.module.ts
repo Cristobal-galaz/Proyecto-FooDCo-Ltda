@@ -5,7 +5,7 @@ import { ProduccionDiariaFormComponent } from './produccion-diaria-form/producci
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { MaterialModule } from '../../material/material.module';
+import { MaterialModule } from '../material/material.module';
 
 
 @NgModule({
