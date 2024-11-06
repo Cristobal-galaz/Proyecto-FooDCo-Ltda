@@ -30,7 +30,7 @@ export class DespachoService {
   }
 
     // Método para obtener todas las órdenes de despacho
-    obtenerOrdenesDespacho(): Observable<OrdenDespacho[]> {
+  obtenerOrdenesDespacho(): Observable<OrdenDespacho[]> {
       return this.http.get<OrdenDespacho[]>(`${this.apiUrl}/list`);
     }  
 

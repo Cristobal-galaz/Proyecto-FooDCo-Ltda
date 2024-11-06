@@ -51,7 +51,7 @@ import { DetalleDespachoComponent } from '../../modulos/Despacho/componentes/det
               NavbarVentasComponent,
               NavbarDespachoComponent,
               AsignacionDespachoComponent,
-              DetalleDespachoComponent 
+              DetalleDespachoComponent,
             ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'

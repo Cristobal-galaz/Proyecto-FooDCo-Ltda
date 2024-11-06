@@ -8,7 +8,7 @@ export const navBarDespacho: Routes = [
         pathMatch: 'full'
     },
     {
-        path: 'Tabla-de-Despachos',
+        path: 'tablaDespachos',
         title: 'Tabla de Despachos',
         loadComponent: () => import('../componentes/tabla-despachos/tabla-despachos.component').then(m => m.TablaDespachoComponent),
     },
