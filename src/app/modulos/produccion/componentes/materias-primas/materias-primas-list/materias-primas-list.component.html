@@ -40,10 +40,10 @@
           <ng-container matColumnDef="acciones">
             <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
             <mat-cell *matCellDef="let element">
-              <button mat-icon-button color="primary" [routerLink]="['/produccion/materias-primas/editar', element.id]">
+              <button mat-icon-button color="primary" [routerLink]="['/produccion/materias-primas/editar', element._id]">
                 <mat-icon>edit</mat-icon>
               </button>
-              <button mat-icon-button color="warn" (click)="deleteMateriaPrima(element.id)">
+              <button mat-icon-button color="warn" (click)="deleteMateriaPrima(element._id)">
                 <mat-icon>delete</mat-icon>
               </button>
             </mat-cell>

@@ -1,0 +1,78 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 280px;
+  padding-top: 20px;
+}
+
+.mat-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.content {
+  padding: 20px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  padding-left: 15px;
+}
+
+.container h4 {
+  color: #ACACAC;
+  font-size: 1.5em;
+  font-family: Inter;
+  font-weight: 500;
+  margin: 15px 0;
+}
+
+.node-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.node-container:hover {
+  background-color: #e0e0e0;
+}
+
+.node-container.active {
+  background-color: #f0f0f0;
+}
+
+.node-container mat-icon {
+  font-size: 20px;
+}
+
+.parent-node {
+  font-weight: bold;
+}
+
+.mat-tree-node {
+  padding-left: 20px;
+}
+
+.mat-tree-node .node-container {
+  margin-left: 15px;
+}
+
+.mat-tree-node .node-container span {
+  font-size: 0.95rem;
+  color: #556778;
+}
+
+.mat-tree-node .node-container mat-icon {
+  margin-right: 8px;
+  color: #757575;
+}

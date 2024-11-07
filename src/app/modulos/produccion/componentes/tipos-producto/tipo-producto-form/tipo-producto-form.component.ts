@@ -61,11 +61,12 @@ export class TipoProductoFormComponent implements OnInit {
   // Verifica si estamos editando el mismo registro para permitir el mismo nombre
   isEditandoElMismoRegistro(nombreIngresado: string): boolean {
     if (this.tipoProductoId !== null) {
-      const tipoProductoActual = this.tiposProducto.find(tp => tp.id === this.tipoProductoId);
+      const tipoProductoActual = this.tiposProducto.find(tp => tp._id === this.tipoProductoId);
       return tipoProductoActual?.nombre.trim().toLowerCase() === nombreIngresado;
     }
     return false;
   }
+  
 
   onSubmit(): void {
     if (this.tipoProductoForm.valid) {

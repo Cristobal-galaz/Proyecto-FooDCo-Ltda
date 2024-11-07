@@ -11,7 +11,7 @@ import { MateriaPrima } from '../../../interfaces/materia-prima.model';
 })
 export class MateriasPrimasFormComponent implements OnInit {
   materiaPrimaForm: FormGroup;
-  materiaPrimaId: number | null = null;
+  materiaPrimaId: string | null = null;
 
   constructor(
     private fb: FormBuilder,
@@ -28,7 +28,7 @@ export class MateriasPrimasFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.materiaPrimaId = this.route.snapshot.params['id'];
+    this.materiaPrimaId = this.route.snapshot.paramMap.get('id');
     if (this.materiaPrimaId) {
       this.materiasPrimasService.getMateriaPrimaById(this.materiaPrimaId).subscribe(data => {
         this.materiaPrimaForm.patchValue(data);
@@ -42,11 +42,11 @@ export class MateriasPrimasFormComponent implements OnInit {
 
       if (this.materiaPrimaId) {
         this.materiasPrimasService.updateMateriaPrima(this.materiaPrimaId, materiaPrima).subscribe(() => {
-          this.router.navigate(['/materias-primas']);
+          this.router.navigate(['/produccion/materias-primas']);
         });
       } else {
         this.materiasPrimasService.addMateriaPrima(materiaPrima).subscribe(() => {
-          this.router.navigate(['/materias-primas']);
+          this.router.navigate(['/produccion/materias-primas']);
         });
       }
     }
