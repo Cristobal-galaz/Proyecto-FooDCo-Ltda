@@ -22,5 +22,5 @@ export const navBarDespacho: Routes = [
         path: 'detalle/:id',
         title: 'Detalles del Despacho',
         loadComponent: () => import('../componentes/detalle-despacho/detalle-despacho.component').then(m => m.DetalleDespachoComponent),
-    }
+    },
 ];
