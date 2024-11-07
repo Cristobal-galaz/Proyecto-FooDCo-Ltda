@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './guia-despacho.component.scss'
 })
 export class GuiaDespachoComponent {
-
+// hacer funcionar el generar pdf
 }
