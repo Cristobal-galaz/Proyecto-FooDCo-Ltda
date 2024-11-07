@@ -23,7 +23,7 @@ export default class LoginEmpleadosComponent {
   login(): void{
     this.authService.login(this.email, this.password).subscribe({
       next: ()=> {
-        this.router.navigate(["cliente/menus"]);
+        this.router.navigate(["dashboard"]);
       },
       error: (err) => {
         this.error = err.error.message;
