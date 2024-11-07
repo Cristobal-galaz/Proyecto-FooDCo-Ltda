@@ -9,7 +9,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
-import { OrdenCompra } from '../../../ventas/interface/ordendecompra';
 
 
 @Component({

@@ -22,6 +22,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { NavbarDespachoComponent } from '../../modulos/Despacho/navbar-despacho/navbar-despacho.component';
 import { AsignacionDespachoComponent } from '../../modulos/Despacho/componentes/asignacion-despacho/asignacion-despacho.component';
 import { DetalleDespachoComponent } from '../../modulos/Despacho/componentes/detalle-despacho/detalle-despacho.component';
+import { TablaDespachosComponent } from '../../modulos/Despacho/componentes/tabla-despachos/tabla-despachos.component';
 
 
 
@@ -50,8 +51,6 @@ import { DetalleDespachoComponent } from '../../modulos/Despacho/componentes/det
               SubcontratosComponent,
               NavbarVentasComponent,
               NavbarDespachoComponent,
-              AsignacionDespachoComponent,
-              DetalleDespachoComponent,
             ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'

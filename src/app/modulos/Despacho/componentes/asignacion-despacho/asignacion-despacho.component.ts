@@ -4,11 +4,13 @@ import { DespachoService } from '../../services/despacho.service';
 import { Camion, OrdenDespacho } from '../../interfaces/ordendespacho';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-asignacion-despacho',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule,MatButtonModule, MatIconModule],
   templateUrl: './asignacion-despacho.component.html',
   styleUrls: ['./asignacion-despacho.component.scss']
 })

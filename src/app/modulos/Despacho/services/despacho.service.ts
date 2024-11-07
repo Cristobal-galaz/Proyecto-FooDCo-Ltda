@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { Camion, OrdenDespacho } from '../interfaces/ordendespacho';
-import { OrdenCompra } from '../../ventas/interface/ordendecompra';
 
 @Injectable({
   providedIn: 'root',
@@ -20,12 +19,12 @@ export class DespachoService {
 
   // Obtener una orden de despacho por ID
   getOrdenDespacho(id: string): Observable<OrdenDespacho> {
-    return this.http.get<OrdenDespacho>(`${this.apiUrl}/${id}`);
+    return this.http.get<OrdenDespacho>(`https://foodco.agroheladas.cl/api/v1/orden-compra/view/${id}`);
   }
 
   // Asignar un camión a una orden de despacho
   asignarCamion(id: string, camion: Camion): Observable<any> {
-    return this.http.put(`${this.apiUrl}orden-despacho/${id}/camion`, { camion });
+    return this.http.put(`${this.apiUrl}orden-compra/${id}/camion`, { camion });
 }
 
   // Actualizar el estado de una orden de despacho
@@ -37,4 +36,5 @@ export class DespachoService {
   obtenerOrdenesListasParaDespacho(): Observable<OrdenDespacho[]> {
     return this.http.get<OrdenDespacho[]>(`${environment.apiUrl}orden-compra/list/despacho`);
   }
+  
 }

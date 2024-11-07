@@ -33,7 +33,17 @@ export class DetalleDespachoComponent implements OnInit {
   obtenerOrdenDespacho(id: string) {
     this.despachoService.getOrdenDespacho(id).subscribe({
       next: (ordenDespacho: OrdenDespacho) => {
+        // Asigna la orden de despacho obtenida
         this.ordenDespacho = ordenDespacho;
+        
+        // Inicializa el objeto camion si es undefined
+        if (!this.ordenDespacho.camion) {
+          this.ordenDespacho.camion = {
+            nombreConductor: '',
+            patente: '',
+            tipoCamion: ''
+          };
+        }
       },
       error: (err) => console.error('Error al obtener la orden de despacho:', err)
     });
