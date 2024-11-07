@@ -1,0 +1,49 @@
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <!-- ID Despacho Column -->
+  <ng-container matColumnDef="id_despacho">
+    <th mat-header-cell *matHeaderCellDef> ID Despacho </th>
+    <td mat-cell *matCellDef="let orden"> {{orden._id}} </td>
+  </ng-container>
+
+  <!-- Nombre Empresa Column -->
+  <ng-container matColumnDef="nombre_empresa">
+    <th mat-header-cell *matHeaderCellDef> Nombre Empresa </th>
+    <td mat-cell *matCellDef="let orden"> {{orden.cliente.empresa.nombre_empresa}} </td>
+  </ng-container>
+
+  <!-- Teléfono Contacto Column -->
+  <ng-container matColumnDef="telefono_contacto">
+    <th mat-header-cell *matHeaderCellDef> Teléfono Contacto </th>
+    <td mat-cell *matCellDef="let orden"> {{orden.cliente.empresa.telefono_empresa}} </td>
+  </ng-container>
+
+  <!-- Email Contacto Column -->
+  <ng-container matColumnDef="email_contacto">
+    <th mat-header-cell *matHeaderCellDef> Email Contacto </th>
+    <td mat-cell *matCellDef="let orden"> {{orden.cliente.empresa.correo_contacto}} </td>
+  </ng-container>
+
+  <!-- Fecha Requerida Column -->
+  <ng-container matColumnDef="fecha_requerida">
+    <th mat-header-cell *matHeaderCellDef> Fecha Requerida </th>
+    <td mat-cell *matCellDef="let orden"> {{orden.fechaRequerida | date}} </td>
+  </ng-container>
+
+  <!-- Estado Column -->
+  <ng-container matColumnDef="estado">
+    <th mat-header-cell *matHeaderCellDef> Estado </th>
+    <td mat-cell *matCellDef="let orden"> {{orden.estado}} </td>
+  </ng-container>
+
+  <!-- Acciones Column -->
+  <ng-container matColumnDef="acciones">
+    <th mat-header-cell *matHeaderCellDef> Acciones </th>
+    <td mat-cell *matCellDef="let orden">
+      <button mat-button (click)="verDetallesDespacho(orden._id)">Ver Detalle</button>
+      <button mat-button (click)="asignarDespacho(orden._id)">Estado Despacho</button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</mat-table>

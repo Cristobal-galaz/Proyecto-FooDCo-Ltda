@@ -1,21 +1,40 @@
 <div *ngIf="ordenDespacho">
-    <h2>Detalle de Despacho #{{ ordenDespacho._id }}</h2>
-  
-    <h3>Información de la Orden de Despacho</h3>
-    <p><strong>Cliente:</strong> {{ ordenDespacho.cliente.contacto.nombre }}</p>
-    <p><strong>Email:</strong> {{ ordenDespacho.cliente.email }}</p>
-    <p><strong>Estado:</strong> {{ ordenDespacho.estado }}</p>
-  
-    <!-- Formulario para añadir datos adicionales del despacho -->
-    <h3>Datos del Despacho</h3>
-    <form (ngSubmit)="asignarDatosDespacho()">
-      <label for="nombreCamionero">Nombre del Camionero:</label>
-      <input type="text" id="nombreCamionero" [(ngModel)]="nombreCamionero" name="nombreCamionero" required>
-  
-      <label for="patente">Patente del Vehículo:</label>
-      <input type="text" id="patente" [(ngModel)]="patente" name="patente" required>
-  
-      <button type="submit">Guardar</button>
-    </form>
-  </div>
-  
+  <h2>Detalle de Despacho #{{ ordenDespacho.numero }}</h2>
+
+  <h3>Información de la Orden de Despacho</h3>
+  <p><strong>Cliente:</strong> {{ ordenDespacho.cliente.contacto.nombre }} {{ ordenDespacho.cliente.contacto.apellido }}</p>
+  <p><strong>Email:</strong> {{ ordenDespacho.cliente.email }}</p>
+  <p><strong>Estado:</strong> {{ ordenDespacho.estado }}</p>
+  <p><strong>Fecha Requerida:</strong> {{ ordenDespacho.fechaRequerida | date }}</p>
+  <p><strong>Fecha de Creación:</strong> {{ ordenDespacho.fecha | date }}</p>
+  <p><strong>Última Actualización:</strong> {{ ordenDespacho.updatedAt | date }}</p>
+
+  <!-- Historial de Estados -->
+  <h3>Historial de Estados</h3>
+  <ul>
+    <li *ngFor="let estado of ordenDespacho.historialEstados">
+      <strong>{{ estado.estado }}:</strong> {{ estado.fechaCambio | date:'medium' }}
+    </li>
+  </ul>
+
+  <!-- Información del Camión -->
+  <h3>Datos del Camión</h3>
+  <p><strong>Nombre del Conductor:</strong> {{ ordenDespacho.camion.nombreConductor || 'No asignado' }}</p>
+  <p><strong>Patente:</strong> {{ ordenDespacho.camion.patente || 'No asignado' }}</p>
+  <p><strong>Tipo de Camión:</strong> {{ ordenDespacho.camion.tipoCamion || 'No asignado' }}</p>
+
+  <!-- Formulario para añadir o actualizar datos del camión -->
+  <h3>Asignar o Actualizar Camión</h3>
+  <form (ngSubmit)="asignarDatosDespacho()">
+    <label for="nombreCamionero">Nombre del Conductor:</label>
+    <input type="text" id="nombreCamionero" [(ngModel)]="ordenDespacho.camion.nombreConductor" name="nombreCamionero" required>
+
+    <label for="patente">Patente del Vehículo:</label>
+    <input type="text" id="patente" [(ngModel)]="ordenDespacho.camion.patente" name="patente" required>
+
+    <label for="tipoCamion">Tipo de Camión:</label>
+    <input type="text" id="tipoCamion" [(ngModel)]="ordenDespacho.camion.tipoCamion" name="tipoCamion" required>
+
+    <button type="submit">Guardar</button>
+  </form>
+</div>

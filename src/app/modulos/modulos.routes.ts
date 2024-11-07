@@ -25,7 +25,7 @@ export const modulosRutas: Routes = [
     },
     {
         path: 'despacho',
-        title: 'Ordenes de despacho',
+        title: 'Despacho',
         children: [
             ...navBarDespacho
         ]

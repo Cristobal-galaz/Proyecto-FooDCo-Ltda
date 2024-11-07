@@ -45,9 +45,12 @@
 						</div>
 					</div>
 					<div>
-						<button (click)="login()" type="submit" class="w-full flex justify-center bg-cyan-600  hover:bg-blue-500 text-gray-100 p-3  rounded-lg tracking-wide font-semibold  cursor-pointer transition ease-in duration-500">
-                Sign in
-              </button>
+						<button mat-flat-button style="width: 290px;" (click)="login()" type="submit">
+							Sign in
+						  </button>
+						  <p *ngIf="error" class="error-alert" style="color: red">
+							{{ error }}
+						  </p>
 					</div>
 				</div>
 				<div class="mt-7 text-center text-gray-300 text-xs">
