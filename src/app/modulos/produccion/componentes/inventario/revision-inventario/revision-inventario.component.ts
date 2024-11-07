@@ -38,7 +38,6 @@ export class RevisionInventarioComponent implements OnInit {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
       
-      // Configurar el filtro para buscar por nombre
       this.dataSource.filterPredicate = (data: MateriaPrima, filter: string) => {
         return data.nombre.toLowerCase().includes(filter);
       };

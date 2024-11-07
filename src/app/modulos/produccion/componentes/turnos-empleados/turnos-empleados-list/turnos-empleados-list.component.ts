@@ -22,8 +22,9 @@ export class TurnosEmpleadosListComponent implements OnInit {
   }
 
   filtrarTurnos(): void {
-    this.turnosFiltrados = this.turnos.filter(turno => 
-      turno.empleado_id.toLowerCase().includes(this.filtro.toLowerCase()));
+    this.turnosFiltrados = this.turnos.filter(turno =>
+      turno.empleado_id.toLowerCase().includes(this.filtro.toLowerCase())
+    );
   }
 
   eliminarTurno(id: string): void {

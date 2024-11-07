@@ -13,7 +13,7 @@ export class TipoProductoFormComponent implements OnInit {
   tipoProductoForm: FormGroup;
   tipoProductoId: string | null = null;
   isEdit: boolean = false;
-  tiposProducto: TipoProducto[] = [];  // Lista para validar duplicados
+  tiposProducto: TipoProducto[] = []; 
 
   constructor(
     private fb: FormBuilder,
@@ -22,7 +22,7 @@ export class TipoProductoFormComponent implements OnInit {
     private router: Router
   ) {
     this.tipoProductoForm = this.fb.group({
-      nombre: ['', [Validators.required, this.validateNombreProducto.bind(this)]]
+      nombre: ['', [Validators.required, Validators.minLength(3), this.validateNombreProducto.bind(this)]]
     });
   }
 
@@ -71,14 +71,26 @@ export class TipoProductoFormComponent implements OnInit {
   onSubmit(): void {
     if (this.tipoProductoForm.valid) {
       const tipoProducto: TipoProducto = this.tipoProductoForm.value;
-
+  
       if (this.isEdit && this.tipoProductoId) {
-        this.tipoProductoService.updateTipoProducto(this.tipoProductoId, tipoProducto).subscribe(() => {
-          this.router.navigate(['/tipos-producto']);
+        // Si estamos en modo de edición
+        this.tipoProductoService.updateTipoProducto(this.tipoProductoId, tipoProducto).subscribe({
+          next: () => {
+            this.router.navigate(['/produccion/tipos-producto']); // Redirige a la lista de tipos de producto
+          },
+          error: (err) => {
+            console.error('Error al actualizar el tipo de producto:', err);
+          }
         });
       } else {
-        this.tipoProductoService.addTipoProducto(tipoProducto).subscribe(() => {
-          this.router.navigate(['/tipos-producto']);
+        // Si estamos creando un nuevo tipo de producto
+        this.tipoProductoService.addTipoProducto(tipoProducto).subscribe({
+          next: () => {
+            this.router.navigate(['/produccion/tipos-producto']); // Redirige a la lista de tipos de producto
+          },
+          error: (err) => {
+            console.error('Error al crear el tipo de producto:', err);
+          }
         });
       }
     }

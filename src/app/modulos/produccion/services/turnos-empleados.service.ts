@@ -8,7 +8,8 @@ import { TurnoEmpleado } from '../interfaces/turno-empleado.model';
   providedIn: 'root'
 })
 export class TurnosEmpleadosService {
-  private apiUrl = `${environment.apiUrl}turnos-empleados`;
+  
+  private apiUrl = `${environment.apiUrl}turnos-empleados`; 
 
   constructor(private http: HttpClient) {}
 
@@ -16,19 +17,19 @@ export class TurnosEmpleadosService {
     return this.http.get<TurnoEmpleado[]>(`${this.apiUrl}/list`);
   }
 
-  getTurnoEmpleadoById(id: string): Observable<TurnoEmpleado> {  
+  getTurnoEmpleadoById(id: string): Observable<TurnoEmpleado> {
     return this.http.get<TurnoEmpleado>(`${this.apiUrl}/${id}`);
   }
 
-  addTurnoEmpleado(turno: TurnoEmpleado): Observable<TurnoEmpleado> {  
-    return this.http.post<TurnoEmpleado>(`${this.apiUrl}/asignar`, turno);
+  addTurnoEmpleado(turno: TurnoEmpleado): Observable<TurnoEmpleado> {
+    return this.http.post<TurnoEmpleado>(`${this.apiUrl}/asignar`, turno); 
   }
 
-  updateTurnoEmpleado(id: string, turno: Partial<TurnoEmpleado>): Observable<TurnoEmpleado> {  
+  updateTurnoEmpleado(id: string, turno: Partial<TurnoEmpleado>): Observable<TurnoEmpleado> {
     return this.http.put<TurnoEmpleado>(`${this.apiUrl}/update/${id}`, turno);
   }
 
-  deleteTurnoEmpleado(id: string): Observable<void> {  
+  deleteTurnoEmpleado(id: string): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/delete/${id}`);
   }
 }

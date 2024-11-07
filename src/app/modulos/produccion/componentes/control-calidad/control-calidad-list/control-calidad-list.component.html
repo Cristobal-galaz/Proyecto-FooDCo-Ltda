@@ -1,0 +1,29 @@
+<mat-card>
+  <mat-card-title>Lista de Revisiones de Control de Calidad</mat-card-title>
+  <mat-card-content>
+    <table mat-table [dataSource]="registros">
+      <ng-container matColumnDef="produccion_id">
+        <mat-header-cell *matHeaderCellDef>ID de Producción</mat-header-cell>
+        <mat-cell *matCellDef="let registro"> {{ registro.produccion_id }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="estado">
+        <mat-header-cell *matHeaderCellDef>Estado</mat-header-cell>
+        <mat-cell *matCellDef="let registro"> {{ registro.estado }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="observaciones">
+        <mat-header-cell *matHeaderCellDef>Observaciones</mat-header-cell>
+        <mat-cell *matCellDef="let registro"> {{ registro.observaciones }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="inspector">
+        <mat-header-cell *matHeaderCellDef>Inspector</mat-header-cell>
+        <mat-cell *matCellDef="let registro"> {{ registro.inspector }} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="['produccion_id', 'estado', 'observaciones', 'inspector']"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: ['produccion_id', 'estado', 'observaciones', 'inspector']"></mat-row>
+    </table>
+  </mat-card-content>
+</mat-card>

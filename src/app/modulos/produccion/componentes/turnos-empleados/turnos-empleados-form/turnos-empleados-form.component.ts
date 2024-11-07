@@ -39,15 +39,18 @@ export class TurnosEmpleadosFormComponent implements OnInit {
   onSubmit(): void {
     if (this.turnoForm.valid) {
       const turno: TurnoEmpleado = this.turnoForm.value;
+  
       if (this.turnoId) {
-        this.turnosEmpleadosService.updateTurnoEmpleado(this.turnoId, turno).subscribe(() => {
-          this.router.navigate(['/produccion/turnos-empleados']);
+        this.turnosEmpleadosService.updateTurnoEmpleado(this.turnoId, turno).subscribe({
+          next: () => this.router.navigate(['/produccion/turnos-empleados']),
+          error: (error) => console.error('Error al actualizar el turno de empleado:', error)
         });
       } else {
-        this.turnosEmpleadosService.addTurnoEmpleado(turno).subscribe(() => {
-          this.router.navigate(['/produccion/turnos-empleados']);
+        this.turnosEmpleadosService.addTurnoEmpleado(turno).subscribe({
+          next: () => this.router.navigate(['/produccion/turnos-empleados']),
+          error: (error) => console.error('Error al asignar el turno de empleado:', error)
         });
       }
     }
-  }
+  }  
 }

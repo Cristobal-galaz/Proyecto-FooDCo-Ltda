@@ -37,7 +37,7 @@
         <!-- Columna Tipo de Producto -->
         <ng-container matColumnDef="tipo_producto_nombre">
           <mat-header-cell *matHeaderCellDef> Tipo de Producto </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{ element.tipo_producto_id.nombre }} </mat-cell>
+          <mat-cell *matCellDef="let element"> {{ element.tipo_producto_id?.nombre || 'No especificado' }} </mat-cell>
         </ng-container>
 
         <!-- Columna Materias Primas Utilizadas -->

@@ -14,6 +14,9 @@
         <mat-error *ngIf="tipoProductoForm.get('nombre')?.hasError('required')">
           El nombre es obligatorio.
         </mat-error>
+        <mat-error *ngIf="tipoProductoForm.get('nombre')?.hasError('minlength')">
+          El nombre debe tener al menos 3 caracteres.
+        </mat-error>
         <mat-error *ngIf="tipoProductoForm.get('nombre')?.hasError('nombreDuplicado')">
           Ya existe un tipo de producto con este nombre.
         </mat-error>

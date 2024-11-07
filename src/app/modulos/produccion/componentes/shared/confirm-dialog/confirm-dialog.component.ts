@@ -1,18 +1,11 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, ViewEncapsulation } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-confirm-dialog',
-  template: `
-    <h1 mat-dialog-title>Confirmación</h1>
-    <div mat-dialog-content>
-      <p>{{data.message}}</p>
-    </div>
-    <div mat-dialog-actions>
-      <button mat-button (click)="onCancel()">Cancelar</button>
-      <button mat-button color="primary" (click)="onConfirm()">Aceptar</button>
-    </div>
-  `
+  templateUrl: './confirm-dialog.component.html',
+  styleUrls: ['./confirm-dialog.component.css'],
+  encapsulation: ViewEncapsulation.None, // Desactiva el encapsulamiento de estilos
 })
 export class ConfirmDialogComponent {
   constructor(

@@ -1,1 +1,33 @@
-<p>reportes works!</p>
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>Resumen Diario de Producción</mat-card-title>
+    </mat-card-header>
+  
+    <mat-card-content>
+      <mat-form-field appearance="fill">
+        <mat-label>Seleccionar Fecha</mat-label>
+        <input matInput [matDatepicker]="picker" (dateChange)="onFechaSeleccionadaChange()" [(ngModel)]="fechaSeleccionada">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+  
+      <table mat-table [dataSource]="resumenDiario" class="mat-elevation-z8" *ngIf="resumenDiario.length > 0">
+        <ng-container matColumnDef="tipo_producto">
+          <mat-header-cell *matHeaderCellDef> Tipo de Producto </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{ element.tipo_producto }} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="total">
+          <mat-header-cell *matHeaderCellDef> Total Producido </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{ element.total }} </mat-cell>
+        </ng-container>
+  
+        <mat-header-row *matHeaderRowDef="['tipo_producto', 'total']"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: ['tipo_producto', 'total']"></mat-row>
+      </table>
+  
+      <div *ngIf="resumenDiario.length === 0">
+        <p>No hay datos de producción para la fecha seleccionada.</p>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  

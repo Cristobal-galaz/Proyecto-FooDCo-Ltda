@@ -29,7 +29,6 @@ export class ProduccionDiariaFormComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router
   ) {
-    
     this.produccionForm = this.fb.group({
       tipo_producto_id: ['', Validators.required],
       materia_prima: [''],  
@@ -41,17 +40,14 @@ export class ProduccionDiariaFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // Cargar tipos de producto
     this.tipoProductoService.getTiposProducto().subscribe(data => {
       this.tiposProducto = data;
     });
 
-    // Cargar materias primas
     this.materiasPrimasService.getMateriasPrimas().subscribe(data => {
       this.materiasPrimas = data;
     });
 
-    // Verificar si es edición (tiene un ID de producción)
     this.produccionId = this.route.snapshot.params['id'];
     if (this.produccionId) {
       this.produccionDiariaService.getProduccionDiariaById(this.produccionId).subscribe(data => {
@@ -60,26 +56,28 @@ export class ProduccionDiariaFormComponent implements OnInit {
       });
     }
 
-    // Escuchar cambios en la selección de materia prima
     this.produccionForm.get('materia_prima')?.valueChanges.subscribe(materiaId => {
       this.mostrarUnidad(materiaId);
     });
   }
 
-  // Función para mostrar la unidad de la materia prima seleccionada
-  mostrarUnidad(materiaId: number): void {
-    const materia = this.materiasPrimas.find(m => m._id === materiaId.toString());
-    if (materia) {
-      this.unidadSeleccionada = materia.unidad;
-      this.produccionForm.get('unidad_materia')?.setValue(materia.unidad);  // Mostrar la unidad en el campo
+  mostrarUnidad(materiaId: any): void {
+    if (materiaId) {
+      const materia = this.materiasPrimas.find(m => m._id === materiaId.toString());
+      if (materia) {
+        this.unidadSeleccionada = materia.unidad;
+        this.produccionForm.get('unidad_materia')?.setValue(materia.unidad);
+      }
+    } else {
+      this.unidadSeleccionada = '';
+      this.produccionForm.get('unidad_materia')?.setValue('');
     }
   }
 
-  // Función para añadir materia prima a la lista de utilizadas
   addMateriaPrima(): void {
     const materiaId = this.produccionForm.get('materia_prima')?.value;
     const cantidadUsada = this.produccionForm.get('cantidad_usada')?.value;
-  
+
     const materia = this.materiasPrimas.find(m => m._id === materiaId);
     if (materia && cantidadUsada > 0) {
       this.materiasPrimasUtilizadas.push({
@@ -88,28 +86,25 @@ export class ProduccionDiariaFormComponent implements OnInit {
         cantidadUsada,
         unidad: materia.unidad
       });
-  
-      // Limpiar los campos del formulario después de añadir
+
       this.produccionForm.get('materia_prima')?.reset();
       this.produccionForm.get('cantidad_usada')?.reset();
-      this.produccionForm.get('unidad_materia')?.reset();  // Limpiar el campo de la unidad
+      this.produccionForm.get('unidad_materia')?.reset();  
       this.unidadSeleccionada = '';
     }
   }
 
-  // Función para eliminar una materia prima de la lista
   removeMateriaPrima(index: number): void {
     this.materiasPrimasUtilizadas.splice(index, 1);
   }
 
-  // Validación de la fecha de producción
   validateFechaProduccion(control: FormControl) {
     const fechaSeleccionada = new Date(control.value);
     const hoy = new Date();
     return fechaSeleccionada > hoy ? { fechaInvalida: true } : null;
   }
 
-  // Método para manejar el envío del formulario
+  // produccion-diaria-form.component.ts
   onSubmit(): void {
     if (this.produccionForm.valid) {
       const produccionData = {
@@ -118,16 +113,28 @@ export class ProduccionDiariaFormComponent implements OnInit {
       };
   
       if (this.produccionId) {
+        // Si se está editando una producción diaria existente
         this.produccionDiariaService.updateProduccionDiaria(this.produccionId.toString(), produccionData).subscribe({
-          next: () => this.router.navigate(['/produccion/produccion-diaria']), // Ruta ajustada
+          next: () => this.router.navigate(['/produccion/produccion-diaria']), 
           error: error => console.error('Error al actualizar la producción diaria:', error)
         });
       } else {
+        // Creación de una nueva producción diaria
         this.produccionDiariaService.addProduccionDiaria(produccionData).subscribe({
-          next: () => this.router.navigate(['/produccion/produccion-diaria']), // Ruta ajustada
+          next: (nuevaProduccion) => {
+            // Redirige directamente al formulario de Control de Calidad con el ID de la nueva producción
+            this.router.navigate(['/produccion/control-calidad/evaluar'], {
+              queryParams: { produccionId: nuevaProduccion._id } // Pasa el ID de la producción recién creada
+            });
+          },
           error: error => console.error('Error al agregar la producción diaria:', error)
         });
       }
     }
+  }
+
+
+  onCancel(): void {
+    this.router.navigate(['/produccion/produccion-diaria']);
   }
 }

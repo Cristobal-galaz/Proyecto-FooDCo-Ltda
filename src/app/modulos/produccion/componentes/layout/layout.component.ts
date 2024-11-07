@@ -69,6 +69,11 @@ export class LayoutComponent {
   main: TreeNode[] = [
     { name: 'Dashboard', route: '/produccion/dashboard', icon: 'dashboard' },
     {
+      name: 'Control de Calidad',
+      route: '/produccion/control-calidad',
+      icon: 'check_circle'
+    },
+    {
       name: 'Gestión de Producción Diaria',
       route: '/produccion/produccion-diaria',
       icon: 'settings',

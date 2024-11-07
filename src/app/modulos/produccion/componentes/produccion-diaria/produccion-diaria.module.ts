@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from '../material/material.module';
 
 
+
 @NgModule({
   declarations: [
     ProduccionDiariaListComponent,
@@ -19,9 +20,9 @@ import { MaterialModule } from '../material/material.module';
     ReactiveFormsModule,
     MaterialModule,
     RouterModule.forChild([
-      { path: '', component: ProduccionDiariaListComponent }, // Ruta base para listar producción diaria
-      { path: 'nuevo', component: ProduccionDiariaFormComponent }, // Ruta para crear una nueva producción
-      { path: 'editar/:id', component: ProduccionDiariaFormComponent } // Ruta para editar una producción existente
+      { path: '', component: ProduccionDiariaListComponent }, 
+      { path: 'nuevo', component: ProduccionDiariaFormComponent }, 
+      { path: 'editar/:id', component: ProduccionDiariaFormComponent } 
     ])
   ]
 })

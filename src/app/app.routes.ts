@@ -157,6 +157,11 @@ export const routes: Routes = [
     component: LayoutComponent,  
     children: [
       {
+        path: 'control-calidad',
+        loadChildren: () => import('./modulos/produccion/componentes/control-calidad/control-calidad.module').then(m => m.ControlCalidadModule),
+        title: 'Control de Calidad'
+      },
+      {
         path: 'produccion-diaria',
         loadChildren: () => import('./modulos/produccion/componentes/produccion-diaria/produccion-diaria.module').then(m => m.ProduccionDiariaModule),
         title: 'Producción Diaria'
@@ -190,7 +195,7 @@ export const routes: Routes = [
         path: 'inventario',
         loadComponent: () => import('./modulos/produccion/componentes/inventario/revision-inventario/revision-inventario.component').then(m => m.RevisionInventarioComponent),
         title: 'Revisión de Inventario'
-      }
+      },
     ]
   }
 ];

@@ -30,7 +30,7 @@
       <mat-form-field class="full-width">
         <mat-label>Hora de Inicio</mat-label>
         <input matInput type="time" formControlName="hora_inicio" placeholder="Ingrese la hora de inicio">
-        <mat-error *ngIf="turnoForm.get('hora_inicio')?.hasError('required')">
+        <mat-error *ngIf="turnoForm.get('hora_inicio')?.invalid">
           La hora de inicio es requerida.
         </mat-error>
       </mat-form-field>
@@ -39,7 +39,7 @@
       <mat-form-field class="full-width">
         <mat-label>Hora de Fin</mat-label>
         <input matInput type="time" formControlName="hora_fin" placeholder="Ingrese la hora de fin">
-        <mat-error *ngIf="turnoForm.get('hora_fin')?.hasError('required')">
+        <mat-error *ngIf="turnoForm.get('hora_fin')?.invalid">
           La hora de fin es requerida.
         </mat-error>
       </mat-form-field>

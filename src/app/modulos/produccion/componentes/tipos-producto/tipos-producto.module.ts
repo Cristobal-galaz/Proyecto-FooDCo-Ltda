@@ -18,9 +18,9 @@ import { MaterialModule } from '../material/material.module';
     ReactiveFormsModule,
     MaterialModule,
     RouterModule.forChild([
-      { path: '', component: TiposProductoListComponent }, // Ruta base para listar tipos de producto
-      { path: 'nuevo', component: TipoProductoFormComponent }, // Ruta para crear un nuevo tipo de producto
-      { path: 'editar/:id', component: TipoProductoFormComponent } // Ruta para editar un tipo de producto existente
+      { path: '', component: TiposProductoListComponent }, 
+      { path: 'nuevo', component: TipoProductoFormComponent }, 
+      { path: 'editar/:id', component: TipoProductoFormComponent } 
     ])
   ]
 })
