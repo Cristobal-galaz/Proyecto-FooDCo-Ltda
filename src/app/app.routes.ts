@@ -197,5 +197,10 @@ export const routes: Routes = [
         title: 'Revisión de Inventario'
       },
     ]
+  },
+  {
+    path: 'guia-despacho',
+    title: 'Guia del despacho',
+    loadComponent: () => import('./modulos/Despacho/componentes/guia-despacho/guia-despacho.component').then(m=>m.GuiaDespachoComponent),
   }
 ];

@@ -55,6 +55,21 @@ export class NavBarComponent {
     }
   }
 
+  AbrirVentana(){
+    const newWindow = window.open('login',"_blank", "popup,width=500,height=600,left=100,top=100");
+    if (newWindow) {
+      const checkWindowClosed = setInterval(()=> {
+        if(newWindow.closed){
+          clearInterval(checkWindowClosed);
+          window.location.reload();
+        }
+      }, 1000);
+    } else {
+      console.error('No se pudo abrir la nueva ventana');
+    }
+
+  }
+
   logout() {
     this.auth.logout();
   }

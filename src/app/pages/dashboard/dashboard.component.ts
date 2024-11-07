@@ -20,6 +20,9 @@ import { UserService } from '../../services/user.service';
 import { MatIconModule } from '@angular/material/icon';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { NavbarDespachoComponent } from '../../modulos/Despacho/navbar-despacho/navbar-despacho.component';
+import { AsignacionDespachoComponent } from '../../modulos/Despacho/componentes/asignacion-despacho/asignacion-despacho.component';
+import { DetalleDespachoComponent } from '../../modulos/Despacho/componentes/detalle-despacho/detalle-despacho.component';
+import { TablaDespachosComponent } from '../../modulos/Despacho/componentes/tabla-despachos/tabla-despachos.component';
 
 
 
@@ -47,7 +50,7 @@ import { NavbarDespachoComponent } from '../../modulos/Despacho/navbar-despacho/
               EjePersonalComponent,
               SubcontratosComponent,
               NavbarVentasComponent,
-              NavbarDespachoComponent           
+              NavbarDespachoComponent,
             ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'

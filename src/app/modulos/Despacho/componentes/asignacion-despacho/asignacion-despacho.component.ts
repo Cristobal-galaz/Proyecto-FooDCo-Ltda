@@ -1,55 +1,50 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DespachoService } from '../../services/despacho.service';
-import { OrdenDespacho } from '../../interfaces/ordendespacho';
-import { OrdenCompra } from '../../../ventas/interface/ordendecompra';
+import { Camion, OrdenDespacho } from '../../interfaces/ordendespacho';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-asignacion-despacho',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule,MatButtonModule, MatIconModule],
   templateUrl: './asignacion-despacho.component.html',
   styleUrls: ['./asignacion-despacho.component.scss']
 })
 export class AsignacionDespachoComponent implements OnInit {
-  ordenCompra!: OrdenCompra;
-  ordenDespacho!: OrdenDespacho;
+  ordenDespacho: OrdenDespacho | undefined;
+  camion: Camion = { nombreConductor: '', patente: '', tipoCamion: '' };
 
   constructor(
+    private despachoService: DespachoService,
     private route: ActivatedRoute,
-    private router: Router,
-    private despachoService: DespachoService
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      this.obtenerOrdenCompra(id);
+      this.despachoService.getOrdenDespacho(id).subscribe({
+        next: (orden) => {
+          this.ordenDespacho = orden;
+        },
+        error: (err) => console.error('Error al obtener la orden de despacho', err)
+      });
     }
   }
 
-  obtenerOrdenCompra(id: string) {
-    this.despachoService.getOrdenCompra(id).subscribe({
-      next: (ordenCompra: OrdenCompra) => {
-        this.ordenCompra = ordenCompra;
-        this.crearOrdenDespacho();
-      },
-      error: (err) => console.error('Error al obtener la orden de compra:', err)
-    });
-  }
-
-  crearOrdenDespacho() {
-    this.despachoService.crearOrdenDespachoDesdeVenta(this.ordenCompra).subscribe({
-      next: (ordenDespacho: OrdenDespacho) => {
-        this.ordenDespacho = ordenDespacho;
-      },
-      error: (err) => console.error('Error al crear la orden de despacho:', err)
-    });
-  }
-
-  irADetalleDespacho() {
-    // Navega al componente de detalle de despacho con el ID de la orden de despacho
-    this.router.navigate([`/dashboard/despacho/detalle/${this.ordenDespacho._id}`]);
+  asignarCamion(): void {
+    if (this.ordenDespacho) {
+      this.despachoService.asignarCamion(this.ordenDespacho._id, this.camion).subscribe({
+        next: () => {
+          console.log('Camión asignado con éxito');
+          this.router.navigate(['/dashboard/despacho']);
+        },
+        error: (err) => console.error('Error al asignar el camión', err)
+      });
+    }
   }
 }
