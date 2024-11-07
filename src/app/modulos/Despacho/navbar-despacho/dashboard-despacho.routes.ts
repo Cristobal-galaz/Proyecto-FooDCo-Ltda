@@ -10,17 +10,17 @@ export const navBarDespacho: Routes = [
     {
         path: 'tablaDespachos',
         title: 'Tabla de Despachos',
-        loadComponent: () => import('../componentes/tabla-despachos/tabla-despachos.component').then(m => m.TablaDespachoComponent),
+        loadComponent: () => import('../componentes/tabla-despachos/tabla-despachos.component').then(m => m.TablaDespachosComponent)
     },
 
     {
         path: 'asignacion/:id',
-        title: 'Asignar despacho',
+        title: 'Asignar Camión',
         loadComponent: () => import('../componentes/asignacion-despacho/asignacion-despacho.component').then(m => m.AsignacionDespachoComponent),
     },
     {
         path: 'detalle/:id',
-        title: 'Detalles del Despacho',
+        title: 'Ver Detalle',
         loadComponent: () => import('../componentes/detalle-despacho/detalle-despacho.component').then(m => m.DetalleDespachoComponent),
     },
 ];

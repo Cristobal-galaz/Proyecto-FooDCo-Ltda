@@ -1,14 +1,14 @@
 <div *ngIf="ordenDespacho">
-  <h2>Orden de Despacho #{{ ordenDespacho.numero }}</h2>
-  <p><strong>Cliente:</strong> {{ ordenDespacho.cliente.contacto.nombre }}</p>
-  <p><strong>Email:</strong> {{ ordenDespacho.cliente.email }}</p>
+  <h2>Asignación de Camión para la Orden de Despacho #{{ ordenDespacho.numero }}</h2>
   
-  <h3>Productos</h3>
-  <ul>
-    <li *ngFor="let producto of ordenDespacho.ordenCompra.seleccionProductos.productos">
-      {{ producto.producto.nombre }} - Cantidad: {{ producto.cantidad }} - Total: {{ producto.precioTotal | currency }}
-    </li>
-  </ul>
-  <button (click)="irADetalleDespacho()">Asignar Despacho</button>
-</div>
+  <label>Nombre del Conductor:</label>
+  <input type="text" [(ngModel)]="camion.nombreConductor" name="nombreConductor" required />
 
+  <label>Patente del Camión:</label>
+  <input type="text" [(ngModel)]="camion.patente" name="patente" required />
+
+  <label>Tipo de Camión:</label>
+  <input type="text" [(ngModel)]="camion.tipoCamion" name="tipoCamion" required />
+
+  <button (click)="asignarCamion()">Asignar Camión</button>
+</div>

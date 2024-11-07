@@ -9,6 +9,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
+import { OrdenCompra } from '../../../ventas/interface/ordendecompra';
+
 
 @Component({
   selector: 'app-tabla-despachos',
@@ -17,25 +19,27 @@ import { CommonModule } from '@angular/common';
   templateUrl: './tabla-despachos.component.html',
   styleUrl: './tabla-despachos.component.scss'
 })
-export class TablaDespachoComponent implements OnInit {
-  displayedColumns: string[] = ['id_despacho', 'nombre_empresa', 'telefono_contacto', 'email_contacto', 'fecha_requerida', 'acciones'];
-  dataSource: MatTableDataSource<OrdenDespacho>;
+export class TablaDespachosComponent implements OnInit {
+  displayedColumns: string[] = ['id_despacho', 'nombre_empresa', 'telefono_contacto', 'email_contacto', 'fecha_requerida', 'estado', 'acciones'];
+  dataSource: MatTableDataSource<OrdenDespacho> = new MatTableDataSource<OrdenDespacho>(); // Cambia a OrdenDespacho
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private despachoService: DespachoService, private router: Router) {
-    this.dataSource = new MatTableDataSource();
-  }
+  private estadosPermitidos = ['listo_para_despachar', 'despachado', 'entregado', 'completado'];
+
+  constructor(private despachoService: DespachoService, private router: Router) {}
 
   ngOnInit(): void {
     this.cargarOrdenesDespacho();
   }
 
   cargarOrdenesDespacho() {
-    this.despachoService.obtenerOrdenesDespacho().subscribe({
-      next: (data) => {
-        this.dataSource.data = data;
+    this.despachoService.obtenerOrdenesListasParaDespacho().subscribe({ // Cambia el método si es necesario
+      next: (ordenes) => {
+        const ordenesFiltradas = ordenes.filter(orden => this.estadosPermitidos.includes(orden.estado));
+        console.log('Órdenes Filtradas:', ordenesFiltradas); 
+        this.dataSource.data = ordenesFiltradas;
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
       },
@@ -49,7 +53,7 @@ export class TablaDespachoComponent implements OnInit {
   }
 
   verDetallesDespacho(id: string) {
-    this.router.navigate(['/dashboard/despacho/detalle', id]);
+    this.router.navigate(['/dashboard/despacho/detalle',id]);
   }
 
   asignarDespacho(id: string) {

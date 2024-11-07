@@ -9,8 +9,15 @@ export interface OrdenDespacho {
     fecha: Date;
     ordenCompra: OrdenCompra;
     historialEstados: HistorialEstado[];
+    camion:Camion;
     createdAt: Date;
     updatedAt: Date;
+}
+
+export interface Camion{
+    nombreConductor: string;
+    patente: string;
+    tipoCamion: string;
 }
 
 export interface HistorialEstado {
