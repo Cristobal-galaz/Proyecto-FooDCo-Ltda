@@ -7,12 +7,12 @@ export interface Links {
 
 export const Main: Links[] = [
     {
-        name: 'Mis Pedidos', 
-        icon: 'shopping_cart',
+        name: 'Despacho', 
+        icon: 'local_shipping',
         children: [
-            { name: 'Pedidos Actuales', icon: 'shopping_cart', route: 'cliente/pedidosActuales' },
-            { name: 'Pedidos Completados', icon: 'done_all', route: 'cliente/pedidosCompletados' },
-            { name: 'Todos los Pedidos', icon: 'list_alt', route: 'cliente/todosPedidos' }
+            { name: 'Tabla de Despachos', icon: 'assignment', route: 'despacho/tablaDespachos' },
+            { name: 'GPS', icon: 'gps_fixed', route: 'despacho/seguimiento' }
+
         ],
     },
     {
@@ -21,15 +21,6 @@ export const Main: Links[] = [
         children: [
             { name: 'Datos Empresa', icon: 'business', route: 'cliente/editarEmpresa' },
             { name: 'Datos Contacto', icon: 'contact_mail', route: 'cliente/editarContacto' }
-        ],
-    },
-    {
-        name: 'Despacho', 
-        icon: 'local_shipping',
-        children: [
-            { name: 'Tabla de Despachos', icon: 'assignment', route: 'despacho/tablaDespachos' },
-            { name: 'GPS', icon: 'gps_fixed', route: 'despacho/seguimiento' }
-
         ],
     },
 ];
