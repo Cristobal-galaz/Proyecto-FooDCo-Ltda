@@ -1,0 +1,12 @@
+<form [formGroup]="preguntasForm" (ngSubmit)="onSubmit()">
+    <div formArrayName="respuestas">
+        @for(pregunta of preguntas; track $index){
+            <div [formGroupName]="$index">
+                <p>{{ $index + 1 }}. {{ pregunta.pregunta }}</p>
+                <app-valoracion formControlName="respuesta"></app-valoracion>
+            </div>
+        }     
+    </div>
+    <button type="submit">Enviar</button>
+  </form>
+  
