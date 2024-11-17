@@ -1,0 +1,90 @@
+    <div style="display: flex; justify-content: center; align-self: center; z-index: 10;">
+        <mat-tab-group>
+            <mat-tab label="Cliente" >
+              <div class="login-cliente mat-elevation-z4">
+                <div style="padding: 3rem; background-color: #ffffff; margin-left: auto; margin-right: auto; border-radius: 1.5rem; width: 24rem;">
+                    <div style="margin-bottom: 1.75rem;">
+                        <h3 style="font-weight: 600; font-size: 1.5rem; color: #1f2937;">Sign In </h3>
+                        <p style="color: #9ca3af;">Don't have an account? <a href="registro"
+                                style="font-size: 0.875rem; color: #4c1d95;">Sign Up</a></p>
+                    </div>
+                    <div style="margin-top: 1.5rem;">
+                        <div class="">
+                            <input [(ngModel)]="email" style="width: 100%; font-size: 0.875rem; padding-left: 1rem; padding-right: 1rem; padding-top: 0.75rem; padding-bottom: 0.75rem; background-color: #e5e7eb; border: 1px solid #e5e7eb; border-radius: 0.5rem;" onfocus="'this.style.backgroundColor= #f3f4f6'; 'this.style.borderColor= #7c3aed';" type="" placeholder="Email">
+                      </div>
+        
+        
+                            <div style="position: relative; margin-top: 1.5rem;" x-data="{ show: true }">
+                                <input [(ngModel)]="password" type="password" placeholder="Password" style="font-size: 0.875rem; color: #1f2937; padding-left: 1rem; padding-right: 1rem; padding-top: 0.75rem; padding-bottom: 0.75rem; border-radius: 0.5rem; width: 100%; background-color: #e5e7eb; border: 1px solid #e5e7eb; outline: none;" 
+                                onfocus="this.style.backgroundColor='#f3f4f6'; this.style.borderColor='#7c3aed';" 
+                                onblur="this.style.backgroundColor='#e5e7eb'; this.style.borderColor='#e5e7eb';">
+                                <div style="display: flex; align-items: center; position: absolute; top: 0; bottom: 0; right: 0; margin-right: 0.75rem; font-size: 0.875rem; line-height: 1.25rem;">
+                                </div>
+                            </div>
+        
+        
+                            <div style="display: flex; align-items: center; justify-content: space-between;">
+        
+                                <div style="font-size: 0.875rem; margin-left: auto;">
+                                    <a href="recovery" style="color: #6b21a8;" onmouseover="this.style.color='#4c1d95';" onmouseout="this.style.color='#6b21a8';">
+                                        Forgot your password?
+                                    </a>
+                                <br>
+                                </div>
+                            </div>
+                            <div>
+                                <button mat-flat-button style="width: 290px;" (click)="login()" type="submit">
+                                    Sign in
+                                  </button>
+                                  <p *ngIf="error" class="error-alert" style="color: red">
+                                    {{ error }}
+                                  </p>
+                            </div>
+                        </div>
+                    </div>
+              </div>
+            </mat-tab>
+            <mat-tab label="Empleado">
+                <div class="login-empleado mat-elevation-z4">
+                    <div style="padding: 3rem; background-color: #ffffff; margin-left: auto; margin-right: auto; border-radius: 1.5rem; width: 24rem;">
+                        <div style="margin-bottom: 1.75rem;">
+                            <h3 style="font-weight: 600; font-size: 1.5rem; color: #1f2937;">Sign In </h3>
+                        </div>
+                        <div style="margin-top: 1.5rem;">
+                            <div class="">
+                                <input [(ngModel)]="email" style="width: 100%; font-size: 0.875rem; padding-left: 1rem; padding-right: 1rem; padding-top: 0.75rem; padding-bottom: 0.75rem; background-color: #e5e7eb; border: 1px solid #e5e7eb; border-radius: 0.5rem;" onfocus="'this.style.backgroundColor= #f3f4f6'; 'this.style.borderColor= #7c3aed';" type="" placeholder="Email">
+                          </div>
+            
+            
+                                <div style="position: relative; margin-top: 1.5rem;" x-data="{ show: true }">
+                                    <input [(ngModel)]="password" type="password" placeholder="Password" style="font-size: 0.875rem; color: #1f2937; padding-left: 1rem; padding-right: 1rem; padding-top: 0.75rem; padding-bottom: 0.75rem; border-radius: 0.5rem; width: 100%; background-color: #e5e7eb; border: 1px solid #e5e7eb; outline: none;" 
+                                    onfocus="this.style.backgroundColor='#f3f4f6'; this.style.borderColor='#7c3aed';" 
+                                    onblur="this.style.backgroundColor='#e5e7eb'; this.style.borderColor='#e5e7eb';">
+                                    <div style="display: flex; align-items: center; position: absolute; top: 0; bottom: 0; right: 0; margin-right: 0.75rem; font-size: 0.875rem; line-height: 1.25rem;">
+                                    </div>
+                                </div>
+            
+            
+                                <div style="display: flex; align-items: center; justify-content: space-between;">
+            
+                                    <div style="font-size: 0.875rem; margin-left: auto;">
+                                        <a href="recovery" style="color: #6b21a8;" onmouseover="this.style.color='#4c1d95';" onmouseout="this.style.color='#6b21a8';">
+                                            Forgot your password?
+                                        </a>
+                                    <br>
+                                    </div>
+                                </div>
+                                <div>
+                                    <button mat-flat-button style="width: 290px;" (click)="loginEmpleado()" type="submit">
+                                        Sign in
+                                      </button>
+                                      <p *ngIf="error" class="error-alert" style="color: red">
+                                        {{ error }}
+                                      </p>
+                                </div>
+                            </div>
+                        </div>
+                  </div>
+            </mat-tab>
+          </mat-tab-group>
+    </div>

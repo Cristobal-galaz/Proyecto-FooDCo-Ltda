@@ -38,17 +38,13 @@ export const routes: Routes = [
   },
   {
     path: 'login',
-    loadComponent: () => import('./pages/clientes/login-clientes/login-clientes.component').then(m => m.LoginClientesComponent),
+    loadComponent: () => import('./pages/login/login.component').then(m => m.LoginComponent),
     canActivate: [authenticatedGuard]
   },
   {
     path: 'home',
     loadComponent: () => import('./pages/main/main.component').then(m => m.MainComponent),
   },
-    {
-        path: 'login-empleados',
-        loadComponent: ()=> import('./pages/empleados/login-empleados/login-empleados.component'),
-    },
   {
     path: 'registro',
     title: 'Registro Cliente',
