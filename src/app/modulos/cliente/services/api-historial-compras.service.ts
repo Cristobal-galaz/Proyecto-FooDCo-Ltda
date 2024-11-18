@@ -47,5 +47,6 @@ export class ApiHistorialComprasService {
         return of([]); // Si ocurre un error, devolver un array vacío
       })
     );
-  }  
+  }
+  
 }

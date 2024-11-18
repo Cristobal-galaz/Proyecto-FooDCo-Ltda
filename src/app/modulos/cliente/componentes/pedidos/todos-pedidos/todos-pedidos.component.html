@@ -44,6 +44,8 @@
           @if(pedido.factura != null){
             <a mat-stroked-button [href]="pedido.factura" target="_blank">Factura</a>
           }
+          <a mat-stroked-button (click)="openDialog()">Valorar Servicio</a>
+          
         </div>
         </mat-expansion-panel>
       }

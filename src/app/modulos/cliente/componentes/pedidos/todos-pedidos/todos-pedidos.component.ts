@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit, signal, viewChild } from '@angular/core';
+import { Component, ViewChild, OnInit, signal, viewChild, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -13,6 +13,8 @@ import { Pedido } from '../../../interfaces/pedido';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import {MatSort ,Sort, MatSortModule} from '@angular/material/sort';
 import { CantidadProducto } from '../../../interfaces/alimento';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { PreguntasValoracionComponent } from '../../layout/preguntas-valoracion/preguntas-valoracion.component';
 
 @Component({
   selector: 'app-todos-pedidos',
@@ -26,7 +28,8 @@ import { CantidadProducto } from '../../../interfaces/alimento';
     MatInputModule,
     MatDatepickerModule,
     MatCardModule,
-    MatSortModule
+    MatSortModule,
+    MatDialogModule
   ],
   templateUrl: './todos-pedidos.component.html',
   styleUrl: '../actuales/actuales.component.scss',
@@ -35,6 +38,8 @@ import { CantidadProducto } from '../../../interfaces/alimento';
 export class TodosPedidosComponent implements OnInit {
   @ViewChild(MatAccordion) accordion!: MatAccordion;
   @ViewChild(MatSort) sort!: MatSort;
+
+  readonly dialog = inject(MatDialog);
 
   pedidos: Pedido[] = [];
 productosOrdenados: CantidadProducto[] = [];
@@ -111,6 +116,17 @@ productosOrdenados: CantidadProducto[] = [];
         default:
           return 0;
       }
+    });
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(PreguntasValoracionComponent, {
+      width: '1200px',
+      height: '100vh',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
     });
   }
 
