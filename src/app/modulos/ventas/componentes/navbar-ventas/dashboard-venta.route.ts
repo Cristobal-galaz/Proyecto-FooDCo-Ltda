@@ -87,6 +87,11 @@ export const navBarVentas: Routes = [
                 title: 'Payments Made',
                 loadComponent: () => import('../English-comp/ventas-pago-en/ventas-pago-en.component').then(m => m.VentasPagoEnComponent),
             },
+            {
+                path: 'pedidos',
+                title: 'Pedidos',
+                loadComponent: () => import('../Espanol-comp/pedido-aceptar/pedido-aceptar.component').then(m => m.PedidoAceptarComponent),
+            },
         ]
     }
 

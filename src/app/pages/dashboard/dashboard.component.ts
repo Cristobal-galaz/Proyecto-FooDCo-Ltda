@@ -12,7 +12,7 @@ import { NavbarVentasComponent } from "../../modulos/ventas/componentes/navbar-v
 import { EjeInicioComponent } from '../../modulos/ventas/componentes/Espanol-comp/eje-inicio/eje-inicio.component';
 import { EjePersonalComponent } from '../../modulos/ventas/componentes/Espanol-comp/eje-personal/eje-personal.component';
 import { SubcontratosComponent } from '../../modulos/ventas/componentes/Espanol-comp/subcontratos/subcontratos.component';
-
+import { PedidoAceptarComponent } from '../../modulos/ventas/componentes/Espanol-comp/pedido-aceptar/pedido-aceptar.component';
 import { MostrarordenComponent } from '../../modulos/ventas/componentes/Espanol-comp/mostrarorden/mostrarorden.component';
 import { OrdenCompraComponent } from '../../modulos/cliente/componentes/orden-compra/orden-compra.component';
 
@@ -44,6 +44,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
               EjeInicioComponent,
               EjePersonalComponent,
               SubcontratosComponent,
+              PedidoAceptarComponent,
               NavbarVentasComponent           
             ],
   templateUrl: './dashboard.component.html',
