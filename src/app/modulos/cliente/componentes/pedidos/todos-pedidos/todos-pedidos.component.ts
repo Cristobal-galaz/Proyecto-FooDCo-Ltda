@@ -59,6 +59,7 @@ productosOrdenados: CantidadProducto[] = [];
     this.historial.getPedidos(userId, ['']).subscribe(
       (data: Pedido[]) => {
         this.pedidos = data;
+        console.log(this.pedidos[0].factura);
       },
       (error) => {
         console.error('Error al cargar los pedidos actuales:', error);
@@ -119,12 +120,16 @@ productosOrdenados: CantidadProducto[] = [];
     });
   }
 
-  openDialog() {
+  openDialog(idPedido: string) {
     const dialogRef = this.dialog.open(PreguntasValoracionComponent, {
-      width: '1200px',
-      height: '100vh',
+      maxWidth: 'none',
+      width: '80%', // Ajusta el ancho
+      maxHeight: '90vh', // Altura máxima relativa al viewport
+      panelClass: 'custom-dialog-container',
+      autoFocus: false, // Clase personalizada para estilos
+      data: { idPedido }
     });
-
+  
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });

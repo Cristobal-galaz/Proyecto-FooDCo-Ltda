@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators,  FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import preguntasData from '../../../../../../../public/assets/preguntas/valoracion-completa.json';
 import { ValoracionComponent } from './valoracion/valoracion.component';
@@ -8,20 +8,26 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-preguntas-valoracion',
   standalone: true,
-  imports: [MatDialogModule, ValoracionComponent, MatFormFieldModule, FormsModule, ReactiveFormsModule, MatInputModule, MatButtonModule, MatDividerModule, MatIconModule],
+  imports: [MatSelectModule,MatDialogModule, ValoracionComponent, MatFormFieldModule, FormsModule, ReactiveFormsModule, MatInputModule, MatButtonModule, MatDividerModule, MatIconModule],
   templateUrl: './preguntas-valoracion.component.html',
   styleUrls: ['./preguntas-valoracion.component.scss']
 })
 export class PreguntasValoracionComponent implements OnInit {
   preguntasForm!: FormGroup;
   preguntas = preguntasData.preguntas;
+  idPedido: string = '';
+  private _snackBar = inject(MatSnackBar);
 
-  constructor(private fb: FormBuilder, private valoracion: ValoracionService) {}
+  constructor(private fb: FormBuilder, private valoracion: ValoracionService, @Inject(MAT_DIALOG_DATA) private data: any,  private dialogRef: MatDialogRef<PreguntasValoracionComponent>) {
+    this.idPedido = data.idPedido;
+  }
 
   ngOnInit() {
     this.preguntasForm = this.fb.group({
@@ -53,17 +59,24 @@ export class PreguntasValoracionComponent implements OnInit {
   
       // Obtén el comentario general
       const comentario = this.preguntasForm.get('comentario')?.value;
-  
+      const ordenCompra = this.idPedido;
       // Crea el payload para enviar al backend
       const payload = {
         respuestas,
-        comentario
+        comentario,
+        ordenCompra
       };
   
       // Llama al servicio para enviar los datos
       this.valoracion.setValoracion(payload).subscribe({
         next: (response) => {
           console.log('Valoración enviada correctamente:', response);
+          this.dialogRef.close();
+          this._snackBar.open('Valoración enviada correctamente', 'Cerrar', {
+            duration: 3000,
+            horizontalPosition: 'right',
+            verticalPosition: 'top',
+          });
           // Aquí puedes realizar cualquier acción adicional tras el éxito
         },
         error: (err) => {

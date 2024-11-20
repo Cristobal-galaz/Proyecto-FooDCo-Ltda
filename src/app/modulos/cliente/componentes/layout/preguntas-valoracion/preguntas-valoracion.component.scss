@@ -3,8 +3,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%; /* Asegura que ocupe todo el ancho */
     gap: 1rem; /* Espacio entre las filas de preguntas */
+ 
 }
 
 .pregunta {
@@ -16,8 +16,7 @@
     margin-bottom: 0; /* Elimina márgenes extra */
     padding-bottom: 1rem; /* Espaciado interno adicional */
     border-bottom: 1px solid #e0e0e0; /* Línea separadora opcional */
-    width: 100%;
-    max-width: 800px; /* Limita el ancho máximo */
+    width: 100%; /* Limita el ancho máximo */
     padding-top: 1rem;
 }
 

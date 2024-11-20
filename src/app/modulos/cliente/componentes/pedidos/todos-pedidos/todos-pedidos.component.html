@@ -17,6 +17,9 @@
           <p>Fecha Requerida: {{ pedido.fechaRequerida | date:'dd/MM/yyyy' }}</p>
           <p>Precio Total Sin IVA: {{ pedido.precioTotalOrden | currency:'CLP':'symbol':'1.0-0' }}</p>
           <p>Precio Total Con IVA: {{ pedido.precioFinalConIva | currency:'CLP':'symbol':'1.0-0' }}</p>
+          @if(pedido.valoracion?.success){
+            <p>Valoración: {{pedido.valoracion?.data?.[0]?.totalScore}}</p>
+          }
         </div>
         <div class="tabla">
           
@@ -44,7 +47,9 @@
           @if(pedido.factura != null){
             <a mat-stroked-button [href]="pedido.factura" target="_blank">Factura</a>
           }
-          <a mat-stroked-button (click)="openDialog()">Valorar Servicio</a>
+          @if(!pedido.valoracion?.success){
+            <a mat-stroked-button (click)="openDialog(pedido._id)">Valorar Servicio</a>
+          }
           
         </div>
         </mat-expansion-panel>
