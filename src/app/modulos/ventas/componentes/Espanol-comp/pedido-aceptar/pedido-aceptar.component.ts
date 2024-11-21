@@ -1,15 +1,17 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-pedido-aceptar',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './pedido-aceptar.component.html',
-  styleUrl: './pedido-aceptar.component.scss'
+  styleUrls: ['./pedido-aceptar.component.scss'],
 })
 export class PedidoAceptarComponent {
-  data = [
+  // Declaración de 'quota' como propiedad opcional
+  data: { name: string; quota?: string }[] = [
     { name: 'Pedido 1' },
     { name: 'Pedido 2' },
     { name: 'Pedido 3' }

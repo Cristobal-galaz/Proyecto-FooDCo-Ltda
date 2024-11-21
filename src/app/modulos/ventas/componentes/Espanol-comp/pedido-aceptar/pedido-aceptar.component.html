@@ -1,11 +1,17 @@
 <div class="container">
     <h2>Lista de Pedidos</h2>
     <div class="item" *ngFor="let item of data">
-    <span class="item-name">{{ item.name }}</span>
-    <div class="actions">
-        <button class="accept-btn" (click)="accept(item)">Aceptar</button>
-        <button class="reject-btn" (click)="reject(item)">Rechazar</button>
-    </div>
+        <span class="item-name">{{ item.name }}</span>
+        <div class="actions">
+            <input 
+                type="text" 
+                class="quota-input" 
+                placeholder="Cuota" 
+                [(ngModel)]="item.quota" 
+                name="quota-{{item.name}}" 
+            />
+            <button class="accept-btn" (click)="accept(item)">Aceptar</button>
+            <button class="reject-btn" (click)="reject(item)">Rechazar</button>
+        </div>
     </div>
 </div>
-
