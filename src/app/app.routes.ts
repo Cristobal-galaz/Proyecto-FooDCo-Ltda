@@ -38,17 +38,13 @@ export const routes: Routes = [
   },
   {
     path: 'login',
-    loadComponent: () => import('./pages/clientes/login-clientes/login-clientes.component').then(m => m.LoginClientesComponent),
+    loadComponent: () => import('./pages/login/login.component').then(m => m.LoginComponent),
     canActivate: [authenticatedGuard]
   },
   {
     path: 'home',
     loadComponent: () => import('./pages/main/main.component').then(m => m.MainComponent),
   },
-    {
-        path: 'login-empleados',
-        loadComponent: ()=> import('./pages/empleados/login-empleados/login-empleados.component'),
-    },
   {
     path: 'registro',
     title: 'Registro Cliente',
@@ -63,87 +59,6 @@ export const routes: Routes = [
         path: 'change-password',
         loadComponent: ()=> import('./pages/clientes/change-password/change-password.component').then(m => m.ChangePasswordComponent)
     },
-  {
-    path: 'inicio',
-    title: 'Inicio',
-    loadComponent: () => import('./modulos/ventas/componentes/Espanol-comp/inicio/inicio.component').then(m => m.InicioComponent),
-  },
-  {
-    path: 'inicio-en',
-    title: 'Inicio (EN)',
-    loadComponent: () => import('./modulos/ventas/componentes/English-comp/inicio-en/inicio-en.component').then(m => m.InicioEnComponent),
-  },
-  {
-    path: 'mostrarorden',
-    title: 'Mostrar Orden',
-    loadComponent: () => import('./modulos/ventas/componentes/Espanol-comp/mostrarorden/mostrarorden.component').then(m => m.MostrarordenComponent),
-  },
-  {
-    path: 'mostrarorden-en',
-    title: 'Mostrar Orden (EN)',
-    loadComponent: () => import('./modulos/ventas/componentes/English-comp/mostrarorden-en/mostrarorden-en.component').then(m => m.MostrarordenEnComponent),
-  },
-  {
-    path: 'personal',
-    title: 'Personal',
-    loadComponent: () => import('./modulos/ventas/componentes/Espanol-comp/personal/personal.component').then(m => m.PersonalComponent),
-  },
-  {
-    path: 'pago',
-    title: 'Pagos Realizados',
-    loadComponent: () => import('./modulos/ventas/componentes/Espanol-comp/ventas-pago/ventas-pago.component').then(m => m.VentasPagoComponent),
-  },
-  {
-    path: 'pago-en',
-    title: 'Payments Made',
-    loadComponent: () => import('./modulos/ventas/componentes/English-comp/ventas-pago-en/ventas-pago-en.component').then(m => m.VentasPagoEnComponent),
-  },
-  {
-    path: 'subcontratos',
-    title: 'Subcontratos Activos',
-    loadComponent: () => import('./modulos/ventas/componentes/Espanol-comp/subcontratos/subcontratos.component').then(m => m.SubcontratosComponent),
-  },
-  {
-    path: 'subcontratos-en',
-    title: 'Active Subcontracts (EN)',
-    loadComponent: () => import('./modulos/ventas/componentes/English-comp/subcontratos-en/subcontratos-en.component').then(m => m.SubcontratosEnComponent),
-  },
-  {
-    path: 'orden-compra',
-    title: 'Orden de Compra',
-    loadComponent: () => import('./modulos/ventas/componentes/Espanol-comp/orden-compra/orden-compra.component').then(m => m.OrdenCompraComponent),
-  },
-  {
-    path: 'orden-compra-en',
-    title: 'Orden de Compra (EN)',
-    loadComponent: () => import('./modulos/ventas/componentes/English-comp/orden-compra-en/orden-compra-en.component').then(m => m.OrdenCompraEnComponent),
-  },
-  {
-    path: 'ejecutivo',
-    title: 'Ejecutivo',
-    children: [
-      {
-        path: 'personal',
-        title: 'Ejecutivo Personal',
-        loadComponent: () => import('./modulos/ventas/componentes/Espanol-comp/eje-personal/eje-personal.component').then(m => m.EjePersonalComponent),
-      },
-      {
-        path: 'personal-en',
-        title: 'Executive Personnel (EN)',
-        loadComponent: () => import('./modulos/ventas/componentes/English-comp/eje-personal-en/eje-personal-en.component').then(m => m.EjePersonalEnComponent),
-      },
-      {
-        path: 'inicio',
-        title: 'Ejecutivo Inicio',
-        loadComponent: () => import('./modulos/ventas/componentes/Espanol-comp/eje-inicio/eje-inicio.component').then(m => m.EjeInicioComponent),
-      },
-      {
-        path: 'inicio-en',
-        title: 'Executive Home (EN)',
-        loadComponent: () => import('./modulos/ventas/componentes/English-comp/eje-inicio-en/eje-inicio-en.component').then(m => m.EjeInicioEnComponent),
-      }
-    ]
-  },
   {
     path: 'dashboard',
     title: 'Dashboard',
@@ -202,5 +117,10 @@ export const routes: Routes = [
     path: 'guia-despacho',
     title: 'Guia del despacho',
     loadComponent: () => import('./modulos/Despacho/componentes/guia-despacho/guia-despacho.component').then(m=>m.GuiaDespachoComponent),
+  },
+  {
+    path: 'contacto',
+    title: 'Contactanos',
+    loadComponent: () => import('./pages/contacto/contacto.component').then(m => m.ContactoComponent)
   }
 ];
