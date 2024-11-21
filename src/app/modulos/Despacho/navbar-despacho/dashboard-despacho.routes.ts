@@ -23,4 +23,10 @@ export const navBarDespacho: Routes = [
         title: 'Ver Detalle',
         loadComponent: () => import('../componentes/detalle-despacho/detalle-despacho.component').then(m => m.DetalleDespachoComponent),
     },
+    {
+        path: 'guia/:id',
+        title: 'Ver Guia Despacho',
+        loadComponent: () => import('../componentes/guia-despacho/guia-despacho.component').then(m => m.GuiaDespachoComponent),
+    },
+
 ];

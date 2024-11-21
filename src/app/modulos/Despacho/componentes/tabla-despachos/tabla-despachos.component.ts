@@ -58,4 +58,8 @@ export class TablaDespachosComponent implements OnInit {
   asignarDespacho(id: string) {
     this.router.navigate(['/dashboard/despacho/asignacion', id]);
   }
+
+  verGuiaDespacho(id: string) {
+    this.router.navigate(['/dashboard/despacho/guia', id]);
+  }
 }
