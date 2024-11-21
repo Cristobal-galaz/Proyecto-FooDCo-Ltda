@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EjeInicioComponent } from './eje-inicio.component';
+import { FacturaComponent } from './factura.component';
 
-describe('EjeInicioComponent', () => {
-  let component: EjeInicioComponent;
-  let fixture: ComponentFixture<EjeInicioComponent>;
+describe('FacturaComponent', () => {
+  let component: FacturaComponent;
+  let fixture: ComponentFixture<FacturaComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [EjeInicioComponent]
+      imports: [FacturaComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(EjeInicioComponent);
+    fixture = TestBed.createComponent(FacturaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,48 +1,32 @@
 import { Component, OnInit } from '@angular/core';
-import { ConexionService } from '../../../Service/conexion/conexion.service';
-import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common'; // Importa CommonModule
+import { ApiserviceService } from '../../../Service/apiservice.service';
 
 @Component({
   selector: 'app-eje-personal',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule], // Importa CommonModule
   templateUrl: './eje-personal.component.html',
   styleUrls: ['./eje-personal.component.scss']
 })
 export class EjePersonalComponent implements OnInit {
-  message: string | null = null;
-  isEnglish: boolean = false;  // Nueva propiedad para manejar el idioma
+  personal: any = null; // Cambia a un único objeto
 
-  constructor(private router: Router, private conexionService: ConexionService) {}
+  constructor(private apiService: ApiserviceService) {}
 
   ngOnInit() {
-    this.conexionService.buttonClicked$.subscribe(() => {
-      this.message = '¡El botón en el componente Personal fue clickeado!';
+    this.cargarPersonal();
+  }
+
+  cargarPersonal() {
+    this.apiService.getPersonal().subscribe({
+      next: (data) => {
+        console.log('Respuesta de la API:', data); // Inspecciona la respuesta
+        this.personal = data; // Asigna directamente el objeto
+      },
+      error: (err) => {
+        console.error('Error al cargar datos del personal:', err);
+      }
     });
-    
-    // Establecer el idioma inicial basado en la URL
-    this.isEnglish = this.router.url.includes('-en');
-  }
-
-  sendNotification() {
-    this.conexionService.notifyButtonClicked();
-  }
-
-  goToInicio() {
-    this.router.navigate(['/inicio']);
-  }
-
-  toggleLanguage() {
-    const currentUrl = this.router.url;
-    
-    // Cambiar la URL y el valor de isEnglish
-    if (currentUrl.includes('-en')) {
-      this.router.navigate([currentUrl.replace('-en', '')]);
-      this.isEnglish = false;
-    } else {
-      this.router.navigate([`${currentUrl}-en`]);
-      this.isEnglish = true;
-    }
   }
 }
