@@ -1,0 +1,50 @@
+.estado-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 20px;
+  }
+  
+  .estado {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 80px;
+  }
+  
+  .icono-estado {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #ccc; /* Color de los estados no completados */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+  
+  .estado.completado .icono-estado {
+    background-color: #4CAF50; /* Color de los estados completados */
+  }
+  
+  .estado p {
+    margin-top: 5px;
+    text-align: center;
+    font-size: 12px;
+    color: #333;
+  }
+  
+  .estado:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    right: -40px;
+    width: 80px;
+    height: 4px;
+    background-color: #ccc; /* Línea entre estados no completados */
+  }
+  
+  .estado.completado:not(:last-child)::after {
+    background-color: #4CAF50; /* Línea entre estados completados */
+  }

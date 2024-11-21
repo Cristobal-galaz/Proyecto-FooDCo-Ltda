@@ -43,23 +43,19 @@ export class TiposProductoListComponent implements OnInit {
       width: '250px',
       data: { message: '¿Estás seguro de que deseas eliminar este tipo de producto?' }
     });
-
+  
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.tipoProductoService.deleteTipoProducto(id).subscribe({
           next: () => {
-            this.dataSource.data = this.dataSource.data.filter(item => item.id !== id);
-            this.snackBar.open('Tipo de producto eliminado', 'Cerrar', {
-              duration: 3000
-            });
+            this.dataSource.data = this.dataSource.data.filter(item => item._id !== id);
+            this.snackBar.open('Tipo de producto eliminado', 'Cerrar', { duration: 3000 });
           },
           error: () => {
-            this.snackBar.open('Error al eliminar el tipo de producto', 'Cerrar', {
-              duration: 3000
-            });
+            this.snackBar.open('Error al eliminar el tipo de producto', 'Cerrar', { duration: 3000 });
           }
         });
       }
     });
   }
-}
+}  

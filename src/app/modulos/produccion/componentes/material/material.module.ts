@@ -17,6 +17,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatTreeModule } from '@angular/material/tree';
 
 @NgModule({
   imports: [
@@ -35,7 +37,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatNativeDateModule,
     MatProgressSpinnerModule,
     MatDialogModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatDividerModule,
+    MatTreeModule
   ],
   exports: [
     MatSidenavModule,
@@ -53,7 +57,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatProgressSpinnerModule,
     MatDialogModule,
     MatExpansionModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatDividerModule,
+    MatTreeModule
   ]
 })
 export class MaterialModule { }

@@ -1,0 +1,168 @@
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+    .container {
+        width: 100%;
+        max-width: 800px;
+        margin: auto;
+        border: 1px solid #333;
+        padding: 20px;
+    }
+    .header, .footer {
+        text-align: center;
+    }
+    .header {
+    display: flex;
+    justify-content: space-between; /* Deja espacio entre las secciones */
+    align-items: center; /* Alinea los elementos verticalmente */
+    padding: 10px;
+}
+
+.left-section {
+    flex: 1;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.left-section table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .left-section table th, .left-section table td {
+        border: 1px solid #333;
+        padding: 8px;
+        text-align: left;
+    }
+
+.right-section {
+    flex: 1; /* Ocupará la mitad derecha */
+    text-align: right; /* Alinea el texto a la derecha */
+}
+
+.right-section table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .right-section table th, .right-section table td {
+        border: 1px solid #333;
+        padding: 8px;
+        text-align: left;
+    }
+    .section {
+        margin-bottom: 20px;
+    }
+    .section h2 {
+        margin: 0 0 10px 0;
+        font-size: 1.2em;
+        color: #333;
+    }
+    .section table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .section table th, .section table td {
+        border: 1px solid #333;
+        padding: 8px;
+        text-align: left;
+    }
+  </style>
+  <body>
+  
+    <div class="container" id="theContent">
+        <div class="header">
+            <div class="left-section">
+                <h1>Guía de Despacho</h1>
+                <table>
+                    <tr>
+                        <th>Cliente</th>
+                        <td>Juan Pérez</td>
+                    </tr>
+                    <tr>
+                        <th>Rut</th>
+                        <td>12345678-9</td>
+                    </tr>
+                    <tr>
+                        <th>Dirección</th>
+                        <td>Calle Falsa 123, Santiago</td>
+                    </tr>
+                    <tr>
+                        <th>Teléfono</th>
+                        <td>+56 9 1234 5678</td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td>juan.perez</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="right-section">
+                <table>
+                    <tr>
+                        <th>Factura N°</th>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <th>Fecha</th>
+                        <td>04/02/2024</td>
+                    </tr>
+                    <tr>
+                        <th>Nombre</th>
+                        <td>FoodCo</td>
+                    </tr>
+                    <tr>
+                        <th>Rut</th>
+                        <td>5678-4</td>
+                    </tr>
+                    <tr>
+                        <th>Dirección</th>
+                        <td>Calle 123, Santiago</td>
+                    </tr>
+                    <tr>
+                        <th>Teléfono</th>
+                        <td>+56 9 7634 5678</td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td>foodco</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    
+        <div class="section">
+            <h2>Detalles de los Productos</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Descripción</th>
+                        <th>Cantidad</th>
+                        <th>Precio Unitario</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Producto A</td>
+                        <td>2</td>
+                        <td>$10,000</td>
+                        <td>$20,000</td>
+                    </tr>
+                    <tr>
+                        <td>Producto B</td>
+                        <td>3</td>
+                        <td>$15,000</td>
+                        <td>$45,000</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="text-align: right;"><strong>Total</strong></td>
+                        <td><strong>$65,000</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+  </body>

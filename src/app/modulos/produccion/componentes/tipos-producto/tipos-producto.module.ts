@@ -5,7 +5,7 @@ import { TipoProductoFormComponent } from './tipo-producto-form/tipo-producto-fo
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { MaterialModule } from '../../material/material.module';
+import { MaterialModule } from '../material/material.module';
 
 @NgModule({
   declarations: [
@@ -18,9 +18,9 @@ import { MaterialModule } from '../../material/material.module';
     ReactiveFormsModule,
     MaterialModule,
     RouterModule.forChild([
-      { path: '', component: TiposProductoListComponent }, // Ruta base para listar tipos de producto
-      { path: 'nuevo', component: TipoProductoFormComponent }, // Ruta para crear un nuevo tipo de producto
-      { path: 'editar/:id', component: TipoProductoFormComponent } // Ruta para editar un tipo de producto existente
+      { path: '', component: TiposProductoListComponent }, 
+      { path: 'nuevo', component: TipoProductoFormComponent }, 
+      { path: 'editar/:id', component: TipoProductoFormComponent } 
     ])
   ]
 })

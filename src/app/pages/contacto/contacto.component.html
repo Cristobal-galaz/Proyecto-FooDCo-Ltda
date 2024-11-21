@@ -1,0 +1,90 @@
+<div class="page">
+    <div class="titulo-principal">
+
+        <h1>Contáctanos</h1>
+        <h2>¡Estamos aquí para ayudarte! No dudes en contactarnos con tus preguntas o inquietudes</h2>
+    </div>
+
+    <div class="contact-info">
+        <div class="box-izquierdo">
+
+            <div class="titulo-izquierdo">
+                <h3>Informacion de Contacto</h3>
+                <h4>No dudes en contactarnos en cualquier momento. Nuestro objetivo es responder en un plazo de 24
+                    horas.</h4>
+            </div>
+
+            <div class="datos-empresa">
+                <div class="datos">
+                    <mat-icon fontIcon="phone_in_talk"></mat-icon>
+                    <p>Telefono</p>
+                </div>
+                <div class="datos">
+                    <mat-icon fontIcon="mail"></mat-icon>
+                    <p>correo</p>
+                </div>
+                <div class="datos">
+                    <mat-icon fontIcon="location_on"></mat-icon>
+                    <p>Direccion</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="box-derecho">
+            <form [formGroup]="contactoForm" (ngSubmit)="onSubmit()">
+
+                <div class="datos-contacto">
+
+                    <div class="campos">
+
+                        <mat-form-field appearance="outline">
+                            <mat-label>Nombre</mat-label>
+                            <input matInput formControlName="nombre">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Apellido</mat-label>
+                            <input matInput formControlName="apellido">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="campos">
+
+                        <mat-form-field appearance="outline">
+                            <mat-label>Correo</mat-label>
+                            <input matInput formControlName="email">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Teléfono</mat-label>
+                            <input matInput formControlName="telefono">
+                        </mat-form-field>
+                    </div>
+
+
+
+                    <section class="asunto">
+                        <p>Asunto:</p>
+                        <mat-radio-group formControlName="asunto">
+                            <mat-radio-button value="general"><span>Consulta General</span> </mat-radio-button>
+                            <mat-radio-button value="servicio"><span>Consulta Servicios</span></mat-radio-button>
+                            <mat-radio-button value="sugerencias"><span>Sugerencias</span></mat-radio-button>
+                            <mat-radio-button value="soporte_tecnico"><span>Soporte Tecnico</span></mat-radio-button>
+                            <mat-radio-button value="otros"><span>Otros</span></mat-radio-button>
+                        </mat-radio-group>
+                    </section>
+
+                    <div class="texto">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Mensaje</mat-label>
+                            <textarea matInput formControlName="mensaje"></textarea>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="botones">
+                        <button type="submit">Enviar</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

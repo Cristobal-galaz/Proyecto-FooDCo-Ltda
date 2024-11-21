@@ -12,7 +12,7 @@
         <mat-form-field appearance="fill" class="full-width">
           <mat-label>Tipo de Producto</mat-label>
           <mat-select formControlName="tipo_producto_id">
-            <mat-option *ngFor="let tipo of tiposProducto" [value]="tipo.id">{{ tipo.nombre }}</mat-option>
+            <mat-option *ngFor="let tipo of tiposProducto" [value]="tipo._id">{{ tipo.nombre }}</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
@@ -37,7 +37,7 @@
         <mat-form-field appearance="fill" class="full-width">
           <mat-label>Materia Prima</mat-label>
           <mat-select formControlName="materia_prima">
-            <mat-option *ngFor="let materia of materiasPrimas" [value]="materia.id">{{ materia.nombre }}</mat-option>
+            <mat-option *ngFor="let materia of materiasPrimas" [value]="materia._id">{{ materia.nombre }}</mat-option>
           </mat-select>
         </mat-form-field>
 

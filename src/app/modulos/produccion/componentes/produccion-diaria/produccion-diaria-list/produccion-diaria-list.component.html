@@ -16,7 +16,7 @@
       <mat-form-field appearance="fill">
         <mat-label>Filtrar por Tipo de Producto</mat-label>
         <mat-select [(value)]="selectedTiposProducto" (selectionChange)="applyFilter()" multiple>
-          <mat-option *ngFor="let tipo of tiposProducto" [value]="tipo.id">
+          <mat-option *ngFor="let tipo of tiposProducto" [value]="tipo._id">
             {{ tipo.nombre }}
           </mat-option>
         </mat-select>
@@ -37,7 +37,7 @@
         <!-- Columna Tipo de Producto -->
         <ng-container matColumnDef="tipo_producto_nombre">
           <mat-header-cell *matHeaderCellDef> Tipo de Producto </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.tipo_producto_nombre}} </mat-cell>
+          <mat-cell *matCellDef="let element"> {{ element.tipo_producto_id?.nombre || 'No especificado' }} </mat-cell>
         </ng-container>
 
         <!-- Columna Materias Primas Utilizadas -->
@@ -63,10 +63,10 @@
         <ng-container matColumnDef="acciones">
           <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
           <mat-cell *matCellDef="let element">
-            <button mat-icon-button color="primary" [routerLink]="['/produccion/produccion-diaria/editar', element.id]">
+            <button mat-icon-button color="primary" [routerLink]="['/produccion/produccion-diaria/editar', element._id]">
               <mat-icon>edit</mat-icon>
             </button>
-            <button mat-icon-button color="warn" (click)="deleteProduccion(element.id)">
+            <button mat-icon-button color="warn" (click)="deleteProduccion(element._id)">
               <mat-icon>delete</mat-icon>
             </button>
           </mat-cell>

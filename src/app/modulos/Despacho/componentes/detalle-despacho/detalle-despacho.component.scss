@@ -1,0 +1,97 @@
+$color-fondo-contenedor: #e0f7fa; // Azul claro
+$color-titulo-principal: #00796b; // Verde oscuro
+$color-subtitulo: #01579b; // Azul medio
+$color-texto: #37474f; // Gris oscuro
+$color-historial-fondo: #fff9c4; // Amarillo claro
+$color-historial-texto: #f57f17; // Amarillo más oscuro
+$color-borde-input: #b0bec5; // Gris claro
+$color-fondo-input: #e3f2fd; // Azul claro
+$color-boton: #00796b; // Verde oscuro
+$color-boton-hover: #004d40; // Verde más oscuro
+
+#detalle-despacho-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: $color-fondo-contenedor;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  h2 {
+    font-size: 1.8em;
+    font-weight: 600;
+    color: $color-titulo-principal;
+    margin-bottom: 10px;
+  }
+
+  h3 {
+    font-size: 1.5em;
+    font-weight: 500;
+    color: $color-subtitulo;
+    margin-top: 20px;
+  }
+
+  p, li {
+    font-size: 1em;
+    color: $color-texto;
+    margin: 5px 0;
+  }
+
+  strong {
+    font-weight: 600;
+    color: $color-texto;
+  }
+
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+
+    li {
+      margin: 5px 0;
+      padding: 8px;
+      background-color: $color-historial-fondo;
+      border-radius: 5px;
+      color: $color-historial-texto;
+    }
+  }
+
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+
+    label {
+      flex: 1 1 100%;
+      font-weight: 500;
+      color: $color-texto;
+      margin-top: 10px;
+    }
+
+    input[type="text"] {
+      flex: 1 1 calc(33.333% - 10px);
+      padding: 8px;
+      border: 1px solid $color-borde-input;
+      border-radius: 4px;
+      font-size: 1em;
+      margin-top: 5px;
+      background-color: $color-fondo-input;
+    }
+
+    button[type="submit"] {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: $color-boton;
+      color: #ffffff;
+      border: none;
+      border-radius: 4px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: $color-boton-hover;
+      }
+    }
+  }
+}

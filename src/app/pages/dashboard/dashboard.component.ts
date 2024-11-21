@@ -23,6 +23,10 @@ import { FacturaComponent } from '../../modulos/ventas/componentes/Espanol-comp/
 import { UserService } from '../../services/user.service';
 import { MatIconModule } from '@angular/material/icon';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { NavbarDespachoComponent } from '../../modulos/Despacho/navbar-despacho/navbar-despacho.component';
+import { AsignacionDespachoComponent } from '../../modulos/Despacho/componentes/asignacion-despacho/asignacion-despacho.component';
+import { DetalleDespachoComponent } from '../../modulos/Despacho/componentes/detalle-despacho/detalle-despacho.component';
+import { TablaDespachosComponent } from '../../modulos/Despacho/componentes/tabla-despachos/tabla-despachos.component';
 
 
 
@@ -48,6 +52,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
               EjeInicioComponent,
               EjePersonalComponent,
               SubcontratosComponent,
+              NavbarVentasComponent,
+              NavbarDespachoComponent,
               PedidoAceptarComponent,
               NavbarVentasComponent,
               FacturaComponent           
@@ -92,7 +98,7 @@ export class DashboardComponent {
       this.router.navigate(['/dashboard/cliente']);
     } else if (this.rol === 'Ejecutivo de Ventas') {
       this.router.navigate(['/dashboard/ventas']);
-    } else if (this.rol === 'Encargado de Despacho') {
+    } else if (this.rol === 'Desarrollador') {
       this.router.navigate(['/dashboard/despacho']);
     } else {
       this.router.navigate(['/dashboard']);

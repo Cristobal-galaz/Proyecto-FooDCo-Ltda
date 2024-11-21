@@ -8,25 +8,19 @@ export const navBarDespacho: Routes = [
         pathMatch: 'full'
     },
     {
-        path: 'asignacionDespacho',
-        title: 'Asignar despacho',
+        path: 'tablaDespachos',
+        title: 'Tabla de Despachos',
+        loadComponent: () => import('../componentes/tabla-despachos/tabla-despachos.component').then(m => m.TablaDespachosComponent)
+    },
+
+    {
+        path: 'asignacion/:id',
+        title: 'Asignar Camión',
         loadComponent: () => import('../componentes/asignacion-despacho/asignacion-despacho.component').then(m => m.AsignacionDespachoComponent),
     },
     {
         path: 'detalle/:id',
-        title: 'Detalles del Despacho',
+        title: 'Ver Detalle',
         loadComponent: () => import('../componentes/detalle-despacho/detalle-despacho.component').then(m => m.DetalleDespachoComponent),
-    }
-    
-    /*,
-    {
-        path: 'historial',
-        title: 'Historial de Despachos',
-        loadComponent: () => import('../despacho/historial/historial-despacho.component').then(m => m.HistorialDespachoComponent),
     },
-    {
-        path: 'crearOrden',
-        title: 'Crear Orden de Despacho',
-        loadComponent: () => import('../despacho/crear-orden/crear-orden.component').then(m => m.CrearOrdenComponent),
-    }*/
 ];

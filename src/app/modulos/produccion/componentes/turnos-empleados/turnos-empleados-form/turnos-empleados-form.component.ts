@@ -11,7 +11,7 @@ import { TurnoEmpleado } from '../../../interfaces/turno-empleado.model';
 })
 export class TurnosEmpleadosFormComponent implements OnInit {
   turnoForm: FormGroup;
-  turnoId: number | null = null;  // Para saber si estamos creando o editando
+  turnoId: string | null = null;
 
   constructor(
     private fb: FormBuilder,
@@ -20,19 +20,18 @@ export class TurnosEmpleadosFormComponent implements OnInit {
     private router: Router
   ) {
     this.turnoForm = this.fb.group({
-      nombre_empleado: ['', Validators.required],
-      turno: ['', Validators.required],
+      empleado_id: ['', Validators.required],
       fecha: ['', Validators.required],
-      horas_trabajadas: ['', [Validators.required, Validators.min(1), Validators.max(12)]], // Las horas deben ser entre 1 y 12
+      hora_inicio: ['', Validators.required],
+      hora_fin: ['', Validators.required],
     });
-    
   }
 
   ngOnInit(): void {
     this.turnoId = this.route.snapshot.params['id'];
     if (this.turnoId) {
       this.turnosEmpleadosService.getTurnoEmpleadoById(this.turnoId).subscribe((data: TurnoEmpleado) => {
-        this.turnoForm.patchValue(data);  // Llenar el formulario si es edición
+        this.turnoForm.patchValue(data);
       });
     }
   }
@@ -40,17 +39,18 @@ export class TurnosEmpleadosFormComponent implements OnInit {
   onSubmit(): void {
     if (this.turnoForm.valid) {
       const turno: TurnoEmpleado = this.turnoForm.value;
+  
       if (this.turnoId) {
-        // Si existe un ID, es una edición
-        this.turnosEmpleadosService.updateTurnoEmpleado(this.turnoId, turno).subscribe(() => {
-          this.router.navigate(['/turnos-empleados']);
+        this.turnosEmpleadosService.updateTurnoEmpleado(this.turnoId, turno).subscribe({
+          next: () => this.router.navigate(['/produccion/turnos-empleados']),
+          error: (error) => console.error('Error al actualizar el turno de empleado:', error)
         });
       } else {
-        // Si no hay ID, es una creación de un nuevo turno
-        this.turnosEmpleadosService.addTurnoEmpleado(turno).subscribe(() => {
-          this.router.navigate(['/turnos-empleados']);
+        this.turnosEmpleadosService.addTurnoEmpleado(turno).subscribe({
+          next: () => this.router.navigate(['/produccion/turnos-empleados']),
+          error: (error) => console.error('Error al asignar el turno de empleado:', error)
         });
       }
     }
-  }
+  }  
 }

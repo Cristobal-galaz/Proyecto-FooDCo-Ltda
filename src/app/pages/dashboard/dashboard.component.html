@@ -1,6 +1,7 @@
 <mat-drawer-container class="dashboard">
   <mat-drawer #drawer class="nav-bar" mode="side" [opened]="!isSmallScreen">
-    <div >
+    <div>
+      <!-- @switch (rol) Estructura de selección de rol -->
       @switch (rol) {
       @case ('Cliente') {
       <app-nav-bar-cliente></app-nav-bar-cliente>
@@ -8,24 +9,48 @@
       @case ('Ejecutivo de Ventas') {
       <app-navbar-ventas class="nav-bar"></app-navbar-ventas>
       }
+      @case ('Desarrollador') {
+      <app-navbar-despacho class="nav-bar"></app-navbar-despacho>
       }
+    }
+      
+    </div>
+
+
+    <div class="contenido"
+    [style.backgroundColor]="drawer.opened ? 'transparent' : 'white'">
+      @if(isSmallScreen){
+        
+        <button mat-icon-button (click)="drawer.toggle()">
+          <mat-icon>{{ drawer.opened ? 'menu_open' : 'menu' }}</mat-icon>
+        </button>
+      }   
+        <router-outlet></router-outlet>
+
+      @if(isLoading){
+        <div class="spinner-container">
+          <mat-spinner></mat-spinner>
+        </div> 
+
+      }       
     </div>
   </mat-drawer>
 
   <mat-drawer-content class="contenido">
-
-    @if(isSmallScreen){
+    <!-- @if(isSmallScreen) Condicional para mostrar el botón en pantallas pequeñas -->
+    @if(isSmallScreen) {
       <button mat-icon-button (click)="drawer.toggle()">
         <mat-icon>{{ drawer.opened ? 'menu_open' : 'menu' }}</mat-icon>
       </button>
-
     }
+
     <router-outlet></router-outlet>
-    @if(isLoading){
+
+    <!-- @if(isLoading) Condicional para mostrar el spinner de carga -->
+    @if(isLoading) {
       <div class="spinner-container">
         <mat-spinner></mat-spinner>
       </div>
-
     }
   </mat-drawer-content>
 </mat-drawer-container>

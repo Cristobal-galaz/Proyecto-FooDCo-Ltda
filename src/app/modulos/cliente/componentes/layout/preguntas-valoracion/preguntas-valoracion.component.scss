@@ -1,0 +1,46 @@
+.preguntas {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem; /* Espacio entre las filas de preguntas */
+ 
+}
+
+.pregunta {
+    display: flex;
+    flex-direction: row; /* Asegura que los elementos estén en fila */
+    align-items: center; /* Centra verticalmente el texto y las estrellas */
+    justify-content: space-between; /* Espaciado uniforme entre la pregunta y las estrellas */
+    gap: 0.5rem; /* Reduce el espacio entre la pregunta y las estrellas */
+    margin-bottom: 0; /* Elimina márgenes extra */
+    padding-bottom: 1rem; /* Espaciado interno adicional */
+    border-bottom: 1px solid #e0e0e0; /* Línea separadora opcional */
+    width: 100%; /* Limita el ancho máximo */
+    padding-top: 1rem;
+}
+
+.pregunta p {
+    font-size: 1rem; /* Tamaño de fuente */
+    text-align: left; /* Alinea el texto a la izquierda */
+    word-wrap: break-word; /* Ajusta el texto si es muy largo */
+    width: 70%; /* Ancho fijo para alinear las preguntas */
+    margin: 0; /* Elimina márgenes extra */
+}
+
+app-valoracion {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end; /* Alinea las estrellas a la derecha */
+    align-items: center; /* Centra verticalmente las estrellas */
+}
+
+.comentario {
+    width: 70%; /* Igual al ancho definido para las preguntas */
+    max-width: 800px; /* Limita el ancho máximo */
+    margin-top: 1rem; /* Añade espacio superior */
+}
+
+.comentario mat-form-field {
+    width: 100%; /* Asegura que el mat-form-field ocupe todo el ancho disponible */
+}

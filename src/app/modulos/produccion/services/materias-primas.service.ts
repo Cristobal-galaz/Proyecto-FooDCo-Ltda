@@ -1,42 +1,34 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment';
 import { MateriaPrima } from '../interfaces/materia-prima.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MateriasPrimasService {
-  private apiUrl = 'https://localhost:3000/materias_primas';  
+  private apiUrl = `${environment.apiUrl}materia-prima`;
 
   constructor(private http: HttpClient) {}
 
-  // Obtener todas las materias primas
   getMateriasPrimas(): Observable<MateriaPrima[]> {
-    return this.http.get<MateriaPrima[]>(this.apiUrl);
+    return this.http.get<MateriaPrima[]>(`${this.apiUrl}/list`);
   }
 
-  // Obtener una materia prima por su ID
-  getMateriaPrimaById(id: number): Observable<MateriaPrima> {
+  getMateriaPrimaById(id: string): Observable<MateriaPrima> {
     return this.http.get<MateriaPrima>(`${this.apiUrl}/${id}`);
   }
 
-  // Añadir una nueva materia prima
   addMateriaPrima(materiaPrima: MateriaPrima): Observable<MateriaPrima> {
     return this.http.post<MateriaPrima>(this.apiUrl, materiaPrima);
   }
 
-  // Actualizar una materia prima existente
-  updateMateriaPrima(id: number, materiaPrima: MateriaPrima): Observable<MateriaPrima> {
-    if (materiaPrima.cantidad < materiaPrima.stock_minimo) {
-      console.warn(`Stock bajo de ${materiaPrima.nombre}: ${materiaPrima.cantidad} unidades`);
-      // Aquí podemos añadir una alerta visual o lógica adicional
-    }
-    return this.http.put<MateriaPrima>(`${this.apiUrl}/${id}`, materiaPrima);
+  updateMateriaPrima(id: string, materiaPrima: Partial<MateriaPrima>): Observable<MateriaPrima> {
+    return this.http.put<MateriaPrima>(`${this.apiUrl}/update/${id}`, materiaPrima);
   }
-  
-  // Eliminar una materia prima
-  deleteMateriaPrima(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+
+  deleteMateriaPrima(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/delete/${id}`);
   }
 }

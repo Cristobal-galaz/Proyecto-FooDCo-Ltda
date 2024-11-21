@@ -1,0 +1,28 @@
+<div class="preguntas">
+
+    
+    <form [formGroup]="preguntasForm" (ngSubmit)="onSubmit()">
+        <div formArrayName="respuestas">
+            @for(pregunta of preguntas; track $index){
+                <div [formGroupName]="$index">
+                    <div class="pregunta">
+
+                        <p>{{ $index + 1 }}. {{ pregunta.pregunta }}</p>
+                        <app-valoracion formControlName="respuesta"></app-valoracion>
+                    </div>
+                </div>
+            }     
+        </div>
+        <div class="comentario">
+
+            <mat-form-field appearance="outline">
+                <mat-label>Danos tu comentario</mat-label>
+                <textarea matInput formControlName="comentario"></textarea>
+            </mat-form-field>
+        </div>
+         <div class="botones">
+             <button mat-raised-button>Enviar</button>
+        </div>   
+    </form>
+
+</div>
