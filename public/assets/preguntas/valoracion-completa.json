@@ -1,0 +1,54 @@
+{
+  "preguntas": [
+    {
+      "titulo": "Calidad de la comida",
+      "pregunta": "¿La comida ofreció cumplió con sus expectativas de sabor, frescura y presentación?",
+      "ponderacion": 20
+    },
+    {
+      "titulo": "Variedad del menú",
+      "pregunta": "¿El menú ofrecido tenía opciones adecuadas para todos los gustos y necesidades dietéticas?",
+      "ponderacion": 10
+    },
+    {
+      "titulo": "Tiempo de entrega",
+      "pregunta": "¿El servicio cumplió con los tiempos prometidos para la entrega?",
+      "ponderacion": 15
+    },
+    {
+      "titulo": "Amabilidad del personal",
+      "pregunta": "¿El equipo fue amable, profesional y servicial durante el servicio?",
+      "ponderacion": 10
+    },
+    {
+      "titulo": "Limpieza y presentación",
+      "pregunta": "¿La presentación de los alimentos y el equipo cumplió con los estándares de higiene y estética?",
+      "ponderacion": 15
+    },
+    {
+      "titulo": "Cumplimiento de solicitudes especiales",
+      "pregunta": "¿Se atendieron adecuadamente las solicitudes específicas, como requerimientos dietéticos o preferencias particulares?",
+      "ponderacion": 10
+    },
+    {
+      "titulo": "Relación calidad-precio",
+      "pregunta": "¿Considera que el servicio ofrecido tiene un buen equilibrio entre calidad y precio?",
+      "ponderacion": 10
+    },
+    {
+      "titulo": "Facilidad de contacto",
+      "pregunta": "¿Fue fácil comunicarse con el equipo para consultas o cambios en el pedido?",
+      "ponderacion": 5
+    },
+    {
+      "titulo": "Innovación y creatividad",
+      "pregunta": "¿El servicio ofreció algo diferente o creativo que destacara frente a otros servicios similares?",
+      "ponderacion": 5
+    },
+    {
+      "titulo": "Satisfacción general",
+      "pregunta": "¿Cómo evaluaría su experiencia general con el servicio de catering?",
+      "ponderacion": 20
+    }
+  ]
+}
