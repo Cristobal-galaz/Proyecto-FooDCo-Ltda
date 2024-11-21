@@ -37,6 +37,9 @@ export const Main: Links[] = [
     {
         name: 'SubContratos', icon: 'supervised_user_circle', route:'ventas/ejecutivo/subcontratos'
         },
+    {
+        name: 'Factura', icon: 'supervised_user_circle', route:'ventas/ejecutivo/factura'
+        },
 ];
 
 export const Otros: Links[] = [

@@ -92,6 +92,12 @@ export const navBarVentas: Routes = [
                 title: 'Pedidos',
                 loadComponent: () => import('../Espanol-comp/pedido-aceptar/pedido-aceptar.component').then(m => m.PedidoAceptarComponent),
             },
+            {
+            path: 'factura',
+            title: 'Factura',
+            loadComponent: () => import('../Espanol-comp/factura/factura.component').then(m => m.FacturaComponent),
+            },
+
         ]
     }
 

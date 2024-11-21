@@ -15,6 +15,10 @@ import { SubcontratosComponent } from '../../modulos/ventas/componentes/Espanol-
 import { PedidoAceptarComponent } from '../../modulos/ventas/componentes/Espanol-comp/pedido-aceptar/pedido-aceptar.component';
 import { MostrarordenComponent } from '../../modulos/ventas/componentes/Espanol-comp/mostrarorden/mostrarorden.component';
 import { OrdenCompraComponent } from '../../modulos/cliente/componentes/orden-compra/orden-compra.component';
+import { FacturaComponent } from '../../modulos/ventas/componentes/Espanol-comp/factura/factura.component';
+
+
+
 
 import { UserService } from '../../services/user.service';
 import { MatIconModule } from '@angular/material/icon';
@@ -45,7 +49,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
               EjePersonalComponent,
               SubcontratosComponent,
               PedidoAceptarComponent,
-              NavbarVentasComponent           
+              NavbarVentasComponent,
+              FacturaComponent           
             ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
