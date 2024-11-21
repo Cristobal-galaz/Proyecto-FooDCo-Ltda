@@ -23,4 +23,10 @@ getOrdenComprajefedeventa(){
   return this.http.get<any>(`${this.apiurl}orden-compra/view/670476cf9669bd78f83bdc77`);
 }
 
+getSubcontratos() {
+  return this.http.get<{ subcontratos: any[] }>(`${this.apiurl}sub-contrato/list`);
+}
+
+
+
 }
