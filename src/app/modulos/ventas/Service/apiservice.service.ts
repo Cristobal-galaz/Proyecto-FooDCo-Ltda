@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { UserService } from '../../../services/user.service';
 import { OrdenCompra } from '../interface/ordendecompra';
+import { tap } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root',
@@ -48,7 +50,14 @@ getSubcontratos() {
     return this.http.get<{ personal: any[] }>(`${this.apiurl}auth/empleado/view/${userId}`);
   }
 
-
+  getDatosOrdenCompra() {
+    return this.http.get<any>('https://foodco.agroheladas.cl/api/v1/orden-compra/list').pipe(
+      tap(data => {
+        console.log('Respuesta de getDatosOrdenCompra:', data); // Mostrar los datos en consola
+      })
+    );
+  }
+  
 
   
 }
