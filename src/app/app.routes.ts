@@ -204,8 +204,8 @@ export const routes: Routes = [
     loadComponent: () => import('./modulos/Despacho/componentes/guia-despacho/guia-despacho.component').then(m=>m.GuiaDespachoComponent),
   },
   {
-    path: 'estrellas',
-    title: 'Estrellas',
-    loadComponent: () => import('./modulos/cliente/componentes/layout/preguntas-valoracion/preguntas-valoracion.component').then(m => m.PreguntasValoracionComponent)
+    path: 'contacto',
+    title: 'Contactanos',
+    loadComponent: () => import('./pages/contacto/contacto.component').then(m => m.ContactoComponent)
   }
 ];
