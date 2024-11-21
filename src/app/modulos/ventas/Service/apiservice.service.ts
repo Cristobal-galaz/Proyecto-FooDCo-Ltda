@@ -27,6 +27,9 @@ getSubcontratos() {
   return this.http.get<{ subcontratos: any[] }>(`${this.apiurl}sub-contrato/list`);
 }
 
+getPersonal() {
+  return this.http.get<{ personal: any[] }>(`${this.apiurl}auth/empleado/view/67200f241dc3f7bb3a32e903`);
+}
 
 
 }

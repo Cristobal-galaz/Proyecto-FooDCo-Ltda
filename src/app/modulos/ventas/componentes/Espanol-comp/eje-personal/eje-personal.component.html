@@ -1,42 +1,35 @@
-<div class="eje-personal-en-container">
-    <div class="top-right-button">
-      <button (click)="toggleLanguage()" class="btn btn-secondary">
-        {{ languageService.currentLanguage === 'es' ? 'Cambiar a Inglés' : 'Switch to Spanish' }}
-      </button>
-    </div>
-  
-    <h2>{{ languageService.currentLanguage === 'es' ? 'PERSONAL' : 'STAFF' }}</h2>
-  
-    <div class="header">
-      <input type="text" placeholder="{{ languageService.currentLanguage === 'es' ? 'Buscar...' : 'Search...' }}">
-      <button>{{ languageService.currentLanguage === 'es' ? 'Filtros' : 'Filters' }}</button>
-    </div>
-  
-    <div class="content-wrapper">
-      <table>
-        <thead>
-          <tr>
-            <th>{{ languageService.currentLanguage === 'es' ? 'Nombre' : 'Name' }}</th>
-            <th>{{ languageService.currentLanguage === 'es' ? 'Labor' : 'Role' }}</th>
-            <th>{{ languageService.currentLanguage === 'es' ? 'IMAGEN' : 'IMAGE' }}</th>
-            <th>{{ languageService.currentLanguage === 'es' ? 'Teléfono' : 'Phone' }}</th>
-            <th>{{ languageService.currentLanguage === 'es' ? 'Email' : 'Email' }}</th>
-            <th>{{ languageService.currentLanguage === 'es' ? 'Contratos Activos' : 'Active Contracts' }}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let person of people">
-            <td>{{ person.name }}</td>
-            <td><span class="label">{{ person.role }}</span></td>
-            <td>
-              <img [src]="person.image" height="40" alt="{{ person.name }} Image" />
-            </td>
-            <td>{{ person.phone }}</td>
-            <td>{{ person.email }}</td>
-            <td>{{ person.activeContracts }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-  
+<div class="eje-personal-container" *ngIf="personal; else noData">
+  <h1>Datos del Personal</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Imagen</th>
+        <th>Nombre</th>
+        <th>RUT</th>
+        <th>Email</th>
+        <th>Departamento</th>
+        <th>Rol</th>
+        <th>Sucursal</th>
+        <th>Creado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <img [src]="personal.imagenPerfil" alt="Imagen de perfil" class="profile-image" />
+        </td>
+        <td>{{ personal.nombre }}</td>
+        <td>{{ personal.rut }}</td>
+        <td>{{ personal.email }}</td>
+        <td>{{ personal.departamento?.nombre }}</td>
+        <td>{{ personal.role?.nombre }}</td>
+        <td>{{ personal.sucursal?.nombre }}</td>
+        <td>{{ personal.createdAt | date: 'short' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #noData>
+  <p>No se encontraron datos del personal.</p>
+</ng-template>
