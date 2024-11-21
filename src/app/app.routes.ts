@@ -202,5 +202,10 @@ export const routes: Routes = [
     path: 'guia-despacho',
     title: 'Guia del despacho',
     loadComponent: () => import('./modulos/Despacho/componentes/guia-despacho/guia-despacho.component').then(m=>m.GuiaDespachoComponent),
+  },
+  {
+    path: 'contacto',
+    title: 'Contactanos',
+    loadComponent: () => import('./pages/contacto/contacto.component').then(m => m.ContactoComponent)
   }
 ];
