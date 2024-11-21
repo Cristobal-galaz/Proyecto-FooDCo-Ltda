@@ -17,13 +17,20 @@ export class PedidoAceptarComponent {
     { name: 'Pedido 3' }
   ];
 
+  // Propiedad para el idioma actual
+  language: string = 'es';
+
+  toggleLanguage(): void {
+    this.language = this.language === 'es' ? 'en' : 'es';
+  }
+
   accept(item: any): void {
-    console.log('Aceptado:', item);
+    console.log(this.language === 'es' ? 'Aceptado:' : 'Accepted:', item);
     this.data = this.data.filter(d => d !== item);
   }
 
   reject(item: any): void {
-    console.log('Rechazado:', item);
+    console.log(this.language === 'es' ? 'Rechazado:' : 'Rejected:', item);
     this.data = this.data.filter(d => d !== item);
   }
 }

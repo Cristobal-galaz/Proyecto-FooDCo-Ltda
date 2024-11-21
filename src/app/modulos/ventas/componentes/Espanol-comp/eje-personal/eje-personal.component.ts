@@ -11,6 +11,7 @@ import { ApiserviceService } from '../../../Service/apiservice.service';
 })
 export class EjePersonalComponent implements OnInit {
   personal: any = null; // Cambia a un único objeto
+  language: string = 'es'; // Añadido para el cambio de idioma
 
   constructor(private apiService: ApiserviceService) {}
 
@@ -28,5 +29,9 @@ export class EjePersonalComponent implements OnInit {
         console.error('Error al cargar datos del personal:', err);
       }
     });
+  }
+
+  toggleLanguage(): void {
+    this.language = this.language === 'es' ? 'en' : 'es';
   }
 }

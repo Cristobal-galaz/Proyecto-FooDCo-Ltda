@@ -1,17 +1,26 @@
+<button class="btn language-switch" (click)="toggleLanguage()">
+    {{ language === 'es' ? 'Switch to English' : 'Cambiar a Español' }}
+</button>
+
 <div class="container">
-    <h2>Lista de Pedidos</h2>
+    <h2>{{ language === 'es' ? 'Lista de Pedidos' : 'Order List' }}</h2>
+
     <div class="item" *ngFor="let item of data">
-        <span class="item-name">{{ item.name }}</span>
+        <span class="item-name">{{ language === 'es' ? item.name : 'Order ' + item.name.split(' ')[1] }}</span>
         <div class="actions">
             <input 
                 type="text" 
                 class="quota-input" 
-                placeholder="Cuota" 
+                [placeholder]="language === 'es' ? 'Cuota' : 'Quota'" 
                 [(ngModel)]="item.quota" 
                 name="quota-{{item.name}}" 
             />
-            <button class="accept-btn" (click)="accept(item)">Aceptar</button>
-            <button class="reject-btn" (click)="reject(item)">Rechazar</button>
+            <button class="btn accept-btn" (click)="accept(item)">
+                {{ language === 'es' ? 'Aceptar' : 'Accept' }}
+            </button>
+            <button class="btn reject-btn" (click)="reject(item)">
+                {{ language === 'es' ? 'Rechazar' : 'Reject' }}
+            </button>
         </div>
     </div>
 </div>
