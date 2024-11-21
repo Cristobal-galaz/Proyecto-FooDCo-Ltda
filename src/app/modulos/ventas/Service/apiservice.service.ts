@@ -5,13 +5,24 @@ import { UserService } from '../../../services/user.service';
 import { OrdenCompra } from '../interface/ordendecompra';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ApiserviceService {
+  apiurl = environment.apiUrl;
+  idjefedeventa: string = '';
 
-  apiurl= environment.apiUrl;
-  idjefedeventa:string='';
-  constructor(private http:HttpClient,private user:UserService) { }
+  constructor(private http: HttpClient, private user: UserService) {}
+
+  private loadUserProfile(): string | null {
+    const userId = this.user.getIdUser();
+    if (!userId) {
+      console.log('No se encontró el ID del usuario');
+      return null;
+    }
+    // ESTO DEBE BORRARSE DESPUES
+    console.log('Este es userID: ',userId)
+    return userId;
+  }
 
 
 getOrdenCompra(){
@@ -27,9 +38,19 @@ getSubcontratos() {
   return this.http.get<{ subcontratos: any[] }>(`${this.apiurl}sub-contrato/list`);
 }
 
-getPersonal() {
-  return this.http.get<{ personal: any[] }>(`${this.apiurl}auth/empleado/view/67200f241dc3f7bb3a32e903`);
+  // Obtener el personal usando el userId dinámico
+  getPersonal() {
+    const userId = this.loadUserProfile();
+    if (!userId) {
+      throw new Error('No se puede obtener el ID del usuario');
+    }
+    return this.http.get<{ personal: any[] }>(`${this.apiurl}auth/empleado/view/${userId}`);
+  }
+
+
+
+  
 }
 
 
-}
+
