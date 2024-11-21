@@ -7,23 +7,6 @@ export const navBarVentas: Routes = [
         pathMatch: 'full'
     },
     {
-        path: 'inicio',
-        title: 'Inicio',
-        loadComponent: () => import('../Espanol-comp/inicio/inicio.component').then(m => m.InicioComponent),
-    },
-    {
-        path: 'inicio-en',
-        title: 'Inicio (EN)',
-        loadComponent: () => import('../English-comp/inicio-en/inicio-en.component').then(m => m.InicioEnComponent),
-    },
-    {
-        path: 'personal',
-        title: 'Personal',
-        loadComponent: () => import('../Espanol-comp/personal/personal.component').then(m => m.PersonalComponent),
-    },
-    
-    
-    {
         path: 'ejecutivo',
         title: 'Ejecutivo',
         children: [
@@ -36,17 +19,7 @@ export const navBarVentas: Routes = [
                 path: 'personal-en',
                 title: 'Executive Personnel (EN)',
                 loadComponent: () => import('../English-comp/eje-personal-en/eje-personal-en.component').then(m => m.EjePersonalEnComponent),
-            },
-            {
-                path: 'inicio',
-                title: 'Ejecutivo Inicio',
-                loadComponent: () => import('../Espanol-comp/eje-inicio/eje-inicio.component').then(m => m.EjeInicioComponent),
-            },
-            {
-                path: 'inicio-en',
-                title: 'Executive Home (EN)',
-                loadComponent: () => import('../English-comp/eje-inicio-en/eje-inicio-en.component').then(m => m.EjeInicioEnComponent),
-            },    
+            },   
             {
                 path: 'subcontratos',
                 title: 'Subcontratos Activos',
@@ -56,16 +29,6 @@ export const navBarVentas: Routes = [
                 path: 'subcontratos-en',
                 title: 'Active Subcontracts (EN)',
                 loadComponent: () => import('../English-comp/subcontratos-en/subcontratos-en.component').then(m => m.SubcontratosEnComponent),
-            },
-            {
-                path: 'mostrarorden',
-                title: 'Mostrar Orden',
-                loadComponent: () => import('../Espanol-comp/mostrarorden/mostrarorden.component').then(m => m.MostrarordenComponent),
-            },
-            {
-                path: 'mostrarorden-en',
-                title: 'Mostrar Orden (EN)',
-                loadComponent: () => import('../English-comp/mostrarorden-en/mostrarorden-en.component').then(m => m.MostrarordenEnComponent),
             },
             {
                 path: 'orden-compra',
@@ -97,7 +60,6 @@ export const navBarVentas: Routes = [
             title: 'Factura',
             loadComponent: () => import('../Espanol-comp/factura/factura.component').then(m => m.FacturaComponent),
             },
-
         ]
     }
 
