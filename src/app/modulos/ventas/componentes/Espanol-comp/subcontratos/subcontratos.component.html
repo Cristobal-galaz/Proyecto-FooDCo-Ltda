@@ -1,59 +1,38 @@
 <div class="subcontratos-container">
-  <div class="top-right-button">
-    <button (click)="switchLanguage()" class="btn btn-primary">Cambiar a Inglés</button>
-  </div>
-
-
-  <div class="subcontratos-activos">
-    <h1>Listado de Subcontratos Activos</h1>
-
-    <div class="seccion">
-      <p><strong>Empresa:</strong> [Nombre de la Empresa]</p>
-      <p><strong>Contacto:</strong> [Nombre del Contacto]</p>
-      <p><strong>Teléfono:</strong> [Teléfono]</p>
-      <p><strong>Email:</strong> [Email]</p>
-      <p><strong>Fecha de Inicio:</strong> [Fecha de Inicio]</p>
-      <p><strong>Fecha de Finalización:</strong> [Fecha de Finalización]</p>
-    </div>
-
-    <h3>Detalles de Subcontratos:</h3>
-    <table>
-      <thead>
-        <tr>
-          <th>ID de Subcontrato</th>
-          <th>Descripción</th>
-          <th>Monto</th>
-          <th>Estado</th>
-          <th>Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>001</td>
-          <td>Apoyo en logística para pedidos</td>
-          <td>$1,000</td>
-          <td>Activo</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>002</td>
-          <td>Servicio de atención al cliente</td>
-          <td>$1,500</td>
-          <td>Activo</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>003</td>
-          <td>Gestión de inventarios</td>
-          <td>$800</td>
-          <td>Activo</td>
-          <td></td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div class="resumen">
-      <p><strong>Total Subcontratos Activos:</strong> [Total]</p>
-    </div>
-  </div>
+  <h1>Lista de Subcontratos</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Empresa</th>
+        <th>Contacto</th>
+        <th>Teléfono</th>
+        <th>Email</th>
+        <th>Fecha Inicio</th>
+        <th>Fecha Finalización</th>
+        <th>Precio Total (Con IVA)</th>
+        <th>Detalles</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let subcontrato of subcontratos">
+        <td>{{ subcontrato.empresa }}</td>
+        <td>{{ subcontrato.contacto }}</td>
+        <td>{{ subcontrato.telefono }}</td>
+        <td>{{ subcontrato.email }}</td>
+        <td>{{ subcontrato.fechaInicio | date: 'shortDate' }}</td>
+        <td>{{ subcontrato.fechaFinalizacion | date: 'shortDate' }}</td>
+        <td>{{ subcontrato.precioTotalConIVA | currency }}</td>
+        <td>
+          <button (click)="subcontrato.mostrarDetalles = !subcontrato.mostrarDetalles">
+            {{ subcontrato.mostrarDetalles ? 'Ocultar' : 'Ver' }} Detalles
+          </button>
+          <ul *ngIf="subcontrato.mostrarDetalles">
+            <li *ngFor="let detalle of subcontrato.detalles">
+              {{ detalle.descripcion }} - {{ detalle.precio | currency }} ({{ detalle.estado }})
+            </li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
