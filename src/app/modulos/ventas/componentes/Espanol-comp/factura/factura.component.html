@@ -1,1 +1,19 @@
-<p>factura works!</p>
+<div class="container">
+    <h2>Subir Factura</h2>
+    <form (submit)="onSubmit()">
+      <label for="fileInput">Selecciona tu factura (PDF):</label>
+      <input 
+        type="file" 
+        id="fileInput" 
+        accept="application/pdf" 
+        (change)="onFileSelected($event)" 
+        required 
+      />
+      <button type="submit" [disabled]="!selectedFile">Subir</button>
+    </form>
+  
+    <div *ngIf="uploadMessage" class="message">
+      {{ uploadMessage }}
+    </div>
+  </div>
+  
