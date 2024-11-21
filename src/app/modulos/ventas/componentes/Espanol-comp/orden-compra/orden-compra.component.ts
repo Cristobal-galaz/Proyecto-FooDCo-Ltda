@@ -20,28 +20,27 @@ export class OrdenCompraComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.ordenCompra.getDatosOrdenCompra().pipe(
+    this.ordenCompra.getOrdenComprajefedeventa().pipe(
       map((data: any) => {
-        console.log( data); // Imprime la respuesta completa
         return {
           _id: data._id,
           cliente: data.cliente,
           estado: data.estado,
           seleccionProductos: data.seleccionProductos,
-          precioTotalOrden: data.precioTotalOrden,
-          iva: data.iva,
-          precioFinalConIva: data.precioFinalConIva,
+          precioTotalOrden:data.precioTotalOrden,
+          iva:data.iva,
+          precioFinalConIva:data.precioFinalConIva,
         } as OrdenCompra;
       })
     ).subscribe(
       (ordenCompra: OrdenCompra) => {
         this.orden = ordenCompra;
-        console.log('Orden de compra procesada:', this.orden);
-        console.log('Descuento del primer producto:', this.orden.seleccionProductos.productos[0]?.descuento);
+        console.log(this.orden);
+        console.log(this.orden.seleccionProductos.productos[0].descuento);
       },
       (error) => {
         console.error('Error al cargar la orden de compra', error);
       }
     );
   }
-}  
+}

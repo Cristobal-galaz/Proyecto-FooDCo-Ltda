@@ -33,8 +33,8 @@ getOrdenCompra(){
 getOrdenComprajefedeventa(){
 
   //return this.http.get<[]>(`${this.apiurl}orden-compra/view/${this.user.getIdUser()}`);
-  //return this.http.get<any>(`${this.apiurl}orden-compra/view/670476cf9669bd78f83bdc77`);
-  return this.http.get<any>(`${this.apiurl}orden-compra/view/67200f241dc3f7bb3a32e903`);
+  return this.http.get<any>(`${this.apiurl}orden-compra/view/670476cf9669bd78f83bdc77`);
+  //return this.http.get<any>(`${this.apiurl}orden-compra/view/67200f241dc3f7bb3a32e903`);
 }
 
 getSubcontratos() {
