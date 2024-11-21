@@ -1,0 +1,11 @@
+@for(star of stars; track star){
+    <app-estrella
+        [starId]="star"
+        [rating]="hoverState || rating"
+        (enter)="enter($event)"
+        (leave)="leave()"
+        (bigClick)="updateRating(star)"
+        >
+    </app-estrella>
+
+}
