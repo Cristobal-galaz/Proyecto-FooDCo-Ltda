@@ -38,7 +38,7 @@ export const Main: Links[] = [
         name: 'SubContratos', icon: 'supervised_user_circle', route:'ventas/ejecutivo/subcontratos'
         },
     {
-        name: 'Factura', icon: 'supervised_user_circle', route:'ventas/ejecutivo/factura'
+        name: 'Factura', icon: 'dataset', route:'ventas/ejecutivo/factura'
         },
 ];
 
