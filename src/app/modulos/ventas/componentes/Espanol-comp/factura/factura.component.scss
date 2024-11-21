@@ -1,37 +1,54 @@
+.language-switch {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: #00bfff; // Color celeste
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.language-switch:hover {
+  background-color: #b8860b; // Color dorado al pasar el cursor
+}
+
 .container {
-    width: 50%;
-    margin: auto;
-    text-align: center;
-  }
-  
-  label {
-    display: block;
-    margin: 10px 0;
-    font-weight: bold;
-  }
-  
-  input[type="file"] {
-    display: block;
-    margin: 10px auto;
-  }
-  
-  button {
-    margin-top: 10px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  button:disabled {
-    background-color: #cccccc;
-  }
-  
-  .message {
-    margin-top: 15px;
-    font-weight: bold;
-    color: green;
-  }
-  
+  width: 50%;
+  margin: auto;
+  text-align: center;
+  margin-top: 80px; // Ajuste para evitar que el contenedor se superponga con el botón
+}
+
+label {
+  display: block;
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+input[type="file"] {
+  display: block;
+  margin: 10px auto;
+}
+
+button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #cccccc;
+}
+
+.message {
+  margin-top: 15px;
+  font-weight: bold;
+  color: green;
+}
