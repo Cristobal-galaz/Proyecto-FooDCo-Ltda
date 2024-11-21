@@ -1,6 +1,18 @@
 <div class="top-right-button">
     <button class="btn btn-outline-primary" (click)="switchToEnglish()">Switch to English</button>
   </div>
+  <div class="buscador">
+    <label for="ordenId">ID de la Orden:</label>
+    <input
+      type="text"
+      id="ordenId"
+      [(ngModel)]="ordenId"
+      placeholder="Ingresa el ID de la orden"
+      class="form-control"
+    />
+    <button class="btn btn-primary mt-2" (click)="buscarOrden()">Buscar Orden</button>
+  </div>
+
   
   <div class="orden-compra">
     <h1>Orden de compra N° X</h1>

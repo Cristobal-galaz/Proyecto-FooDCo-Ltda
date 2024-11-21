@@ -30,6 +30,9 @@ export class ApiserviceService {
 getOrdenCompra(){
   return this.http.get<[]>(`${this.apiurl}orden-compra/list`);
 }
+getOrdenComprajefedeventa2(id: string) {
+  return this.http.get<any>(`${this.apiurl}orden-compra/view/${id}`);
+}
 getOrdenComprajefedeventa(){
 
   //return this.http.get<[]>(`${this.apiurl}orden-compra/view/${this.user.getIdUser()}`);
