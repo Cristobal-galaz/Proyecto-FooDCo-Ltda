@@ -56,3 +56,16 @@
     text-align: center;
   }
 }
+.botones{
+  display: flex;
+  flex-direction: column;
+  
+}
+::ng-deep .custom-dialog-container {
+  max-height: 90vh; /* Altura máxima del 90% del viewport */
+  overflow-y: auto; /* Habilita el scroll vertical */
+  max-width: 70vh;
+  padding: 1rem; /* Espaciado interno */
+  border-radius: 8px; /* Bordes redondeados opcionales */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra opcional */
+}
