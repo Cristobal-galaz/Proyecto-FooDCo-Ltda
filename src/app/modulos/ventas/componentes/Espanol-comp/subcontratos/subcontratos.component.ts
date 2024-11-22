@@ -1,17 +1,31 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common'; // Importa CommonModule
+import { ApiserviceService } from '../../../Service/apiservice.service';
 
 @Component({
   selector: 'app-subcontratos',
   standalone: true,
-  imports: [],
+  imports: [CommonModule], // Agrega CommonModule aquí
   templateUrl: './subcontratos.component.html',
   styleUrls: ['./subcontratos.component.scss']
 })
-export class SubcontratosComponent {
-  constructor(private router: Router) {}
+export class SubcontratosComponent implements OnInit {
+  subcontratos: any[] = [];
 
-  switchLanguage() {
-    this.router.navigate(['/subcontratos-en']);
+  constructor(private apiService: ApiserviceService) {}
+
+  ngOnInit() {
+    this.cargarSubcontratos();
+  }
+
+  cargarSubcontratos() {
+    this.apiService.getSubcontratos().subscribe({
+      next: (data) => {
+        this.subcontratos = data.subcontratos;
+      },
+      error: (err) => {
+        console.error('Error al cargar subcontratos:', err);
+      }
+    });
   }
 }
