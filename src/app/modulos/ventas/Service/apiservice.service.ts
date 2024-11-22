@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { UserService } from '../../../services/user.service';
 import { OrdenCompra } from '../interface/ordendecompra';
-import { tap } from 'rxjs/operators';
+import { switchMap, tap } from 'rxjs/operators';
 
 
 @Injectable({
@@ -58,6 +58,28 @@ getSubcontratos() {
       tap(data => {
         console.log('Respuesta de getDatosOrdenCompra:', data); // Mostrar los datos en consola
       })
+    );
+  }
+  getOrdenPorUsuario() {
+    const userId = this.loadUserProfile();
+    if (!userId) {
+      throw new Error('No se puede obtener el ID del usuario para realizar la solicitud.');
+    }
+  
+    // Llamar a getPersonal para asegurarse de que el userId es válido y obtener datos adicionales si es necesario
+    return this.getPersonal().pipe(
+      tap(personalData => {
+        console.log('Datos recibidos de getPersonal:', personalData); // Registro de los datos recibidos de getPersonal
+        console.log('Generando URL con userId:', userId); // Registro del userId usado en la URL
+      }),
+      // Realizar la solicitud con el userId dinámico
+      switchMap(() => 
+        this.http.get<any>(`${this.apiurl}orden-compra/list/empleado/${userId}`).pipe(
+          tap(response => {
+            console.log('Respuesta de GetOrdenPorUsuario:', response); // Registro de la respuesta recibida
+          })
+        )
+      )
     );
   }
   
