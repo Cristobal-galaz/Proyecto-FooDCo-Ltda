@@ -14,18 +14,20 @@
     <button class="btn btn-primary mt-2" (click)="buscarOrden()">Buscar Orden</button>
   </div>
   
-  <div class="orden-compra">
-    <h1>Orden de compra N° X</h1>
+  <div class="orden-compra" *ngIf="orden">
+    <h1>Orden de compra N° {{orden._id}}</h1>
   
     <div class="seccion">
-      <p><strong>Nombre cliente:</strong> {{orden.cliente.username}} {{orden.cliente.contacto.apellido}}</p>
-
-      <p><strong>Datos de factura:</strong> Nombre: {{orden.cliente.empresa.nombre_empresa}} | 
+      <p *ngIf="orden.cliente"><strong>Nombre cliente:</strong> {{orden.cliente.username}} {{orden.cliente.contacto.apellido}}</p>
+  
+      <p *ngIf="orden.cliente?.empresa">
+        <strong>Datos de factura:</strong> Nombre: {{orden.cliente.empresa.nombre_empresa}} |
         Direccion: {{orden.cliente.empresa.direccion}} |
-        Giro: {{orden.cliente.empresa.giro}} | 
+        Giro: {{orden.cliente.empresa.giro}} |
         Rut: {{orden.cliente.empresa.rut_empresa}} |
-        Fono: {{orden.cliente.empresa.telefono_empresa}} | 
-        Correo: {{orden.cliente.empresa.correo_contacto}}</p>
+        Fono: {{orden.cliente.empresa.telefono_empresa}} |
+        Correo: {{orden.cliente.empresa.correo_contacto}}
+      </p>
       <p><strong>Fecha de orden:</strong> {{orden.seleccionProductos.fechaCreacion}}</p>
     </div>
   
@@ -42,9 +44,8 @@
         </tr>
       </thead>
       <tbody>
-        <!-- Usamos *ngFor para iterar sobre los productos -->
         <tr *ngFor="let producto of orden.seleccionProductos.productos; let i = index">
-          <td>{{ i + 1 }}</td> <!-- Muestra el ID como el índice + 1 -->
+          <td>{{ i + 1 }}</td>
           <td>{{ producto.producto.nombre }}</td>
           <td>{{ producto.cantidad }}</td>
           <td>${{ producto.precioUnitario }}</td>
@@ -63,5 +64,10 @@
       <p><strong>Lugar de entrega:</strong> {{orden.seleccionProductos.direccion}}</p>
       <p><strong>Fecha de entrega:</strong> {{orden.seleccionProductos.fechaRequerida}}</p>
     </div>
+  </div>
+  
+  <!-- En caso de que no haya una orden cargada -->
+  <div *ngIf="!orden">
+    <p>No se ha encontrado una orden. Por favor, ingresa un ID válido.</p>
   </div>
   
