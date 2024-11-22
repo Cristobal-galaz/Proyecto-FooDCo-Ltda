@@ -1,4 +1,3 @@
-<!-- ventas-pago.component.html -->
 <div class="ventas-pago-container">
   <div class="top-right-button">
     <button (click)="switchLanguage()" class="btn btn-secondary">{{ texts['switchToEnglish'] }}</button>
@@ -6,13 +5,22 @@
 
   <p>{{ texts['pagosRealizados'] }}</p>
   <h1>{{ texts['pagosCompletados'] }}</h1>
-  
-  <div class="seccion">
-    <p><strong>{{ texts['nombreCliente'] }}</strong> [Nombre del Cliente]</p>
-    <p><strong>{{ texts['rutCliente'] }}</strong> [Rut del Cliente]</p>
-    <p><strong>{{ texts['nombreEncargado'] }}</strong> [Nombre del Encargado]</p>
-    <p><strong>{{ texts['rutEncargado'] }}</strong> [Rut del Encargado]</p>
-    <p><strong>{{ texts['datosFactura'] }}</strong> [Datos de Factura]</p>
-    <p><strong>{{ texts['fechaOrden'] }}</strong> [Fecha]</p>
+
+  <div class="seccion" *ngFor="let order of orders">
+    <p><strong>{{ texts['nombreCliente'] }}</strong> {{ order.cliente.nombre }}</p>
+    <p><strong>{{ texts['rutCliente'] }}</strong> {{ order.cliente._id }}</p>
+    <p><strong>{{ texts['nombreEncargado'] }}</strong> {{ order.cliente.nombre }}</p>
+    <p><strong>{{ texts['rutEncargado'] }}</strong> {{ order.cliente._id }}</p>
+    <p><strong>{{ texts['datosFactura'] }}</strong> {{ order.seleccionProductos.precio | currency }}</p>
+    <p><strong>{{ texts['fechaOrden'] }}</strong> {{ order.seleccionProductos.fecha | date }}</p>
+
+    <div *ngIf="order.cuotas.length > 0">
+      <h3>Cuotas:</h3>
+      <ul>
+        <li *ngFor="let cuota of order.cuotas">
+          {{ cuota | json }} <!-- Muestra la cuota completa (ajusta según sea necesario) -->
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
