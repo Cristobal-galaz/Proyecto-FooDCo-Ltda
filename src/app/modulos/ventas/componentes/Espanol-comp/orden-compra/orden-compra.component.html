@@ -1,6 +1,7 @@
 <div class="top-right-button">
     <button class="btn btn-outline-primary" (click)="switchToEnglish()">Switch to English</button>
   </div>
+  
   <div class="buscador">
     <label for="ordenId">ID de la Orden:</label>
     <input
@@ -12,16 +13,13 @@
     />
     <button class="btn btn-primary mt-2" (click)="buscarOrden()">Buscar Orden</button>
   </div>
-
   
   <div class="orden-compra">
     <h1>Orden de compra N° X</h1>
   
     <div class="seccion">
       <p><strong>Nombre cliente:</strong> {{orden.cliente.username}} {{orden.cliente.contacto.apellido}}</p>
-      <p><strong>Rut cliente:</strong> [Rut del Cliente]</p>
-      <p><strong>Nombre Encargado:</strong> [Nombre del Encargado]</p>
-      <p><strong>Rut Encargado:</strong> [Rut del Encargado]</p>
+
       <p><strong>Datos de factura:</strong> Nombre: {{orden.cliente.empresa.nombre_empresa}} | 
         Direccion: {{orden.cliente.empresa.direccion}} |
         Giro: {{orden.cliente.empresa.giro}} | 
@@ -44,29 +42,14 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>001</td>
-          <td>{{orden.seleccionProductos.productos[0].producto.nombre}}</td>
-          <td>{{orden.seleccionProductos.productos[0].cantidad}}</td>
-          <td>${{orden.seleccionProductos.productos[0].precioUnitario}}</td>
-          <td>${{orden.seleccionProductos.productos[0].precioTotal}}</td>
-          <td>${{orden.seleccionProductos.productos[0].descuento}}</td>
-        </tr>
-        <tr>
-          <td>002</td>
-          <td>Producto 2</td>
-          <td>2</td>
-          <td>$15</td>
-          <td>$30</td>
-          <td>$5</td>
-        </tr>
-        <tr>
-          <td>003</td>
-          <td>Producto 3</td>
-          <td>3</td>
-          <td>$20</td>
-          <td>$60</td>
-          <td>$10</td>
+        <!-- Usamos *ngFor para iterar sobre los productos -->
+        <tr *ngFor="let producto of orden.seleccionProductos.productos; let i = index">
+          <td>{{ i + 1 }}</td> <!-- Muestra el ID como el índice + 1 -->
+          <td>{{ producto.producto.nombre }}</td>
+          <td>{{ producto.cantidad }}</td>
+          <td>${{ producto.precioUnitario }}</td>
+          <td>${{ producto.precioTotal }}</td>
+          <td>${{ producto.descuento }}</td>
         </tr>
       </tbody>
     </table>
