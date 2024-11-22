@@ -58,6 +58,13 @@ export class OrdenCompraComponent implements OnInit {
     this.obtenerOrdenes();
   }
 
+  activeButton: number | null = null;
+
+  setActiveButton(buttonNumber: number): void {
+    this.activeButton = buttonNumber;
+    console.log(`Botón ${buttonNumber} activado`);
+  }
+
   button1Action() {
     console.log('Botón 1 presionado');
   }

@@ -73,6 +73,23 @@ th {
   font-weight: bold;
 }
 
+.top-right-buttons .btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  background-color: #f8f9fa; /* Color por defecto */
+  color: #000;
+  border: 1px solid #ccc;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.top-right-buttons .btn.active-button {
+  background-color: #E3F2FD; /* Azul para botón activo */
+  color: #a7a7a7;
+  border-color: #f8f8f8;
+}
+
+
 .top-right-buttons {
   display: flex;
   justify-content: flex-start; /* Cambia según la ubicación deseada: center, flex-end, etc. */
@@ -91,7 +108,7 @@ th {
 /* Colores específicos para cada botón */
 .top-right-buttons button:nth-child(1) {
   background-color: #FFF9C4; /* Azul */
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 .top-right-buttons button:nth-child(2) {
