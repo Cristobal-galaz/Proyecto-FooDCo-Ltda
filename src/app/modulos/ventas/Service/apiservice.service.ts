@@ -3,7 +3,8 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { UserService } from '../../../services/user.service';
 import { OrdenCompra } from '../interface/ordendecompra';
-import { switchMap, tap } from 'rxjs/operators';
+import { map, switchMap, tap } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 
 @Injectable({
@@ -82,9 +83,27 @@ getSubcontratos() {
       )
     );
   }
+  getCuotasPorOrdenes() {
+    return this.getOrdenPorUsuario().pipe(
+      map((ordenes: any[]) => ordenes.map(orden => orden._id)), // Extraer los IDs de las órdenes
+      switchMap(ids => {
+        if (ids.length === 0) {
+          console.warn('No se encontraron órdenes para el usuario.');
+          return of([]);
+        }
+        // Construir la URL con los IDs concatenados
+        const idsConcatenados = ids.join(',');
+        const url = `${this.apiurl}orden-compra/${idsConcatenados}/cuotas`;
+        return this.http.get<any>(url); // Realizar la llamada a la nueva API
+      }),
+      tap(cuotas => {
+        console.log('Cuotas obtenidas:', cuotas); // Mostrar cuotas en consola
+      })
+    );
   
 
   
+}
 }
 
 
