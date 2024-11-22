@@ -1,3 +1,50 @@
+<div class="top-right-buttons">
+  <h1>Filtro por fecha</h1>
+  <button
+    class="btn"
+    [ngClass]="{ 'active-button': activeButton === 1 }"
+    (click)="setActiveButton(1)"
+  >
+    Diario
+  </button>
+  <button
+    class="btn"
+    [ngClass]="{ 'active-button': activeButton === 2 }"
+    (click)="setActiveButton(2)"
+  >
+    Semanal
+  </button>
+  <button
+    class="btn"
+    [ngClass]="{ 'active-button': activeButton === 3 }"
+    (click)="setActiveButton(3)"
+  >
+    Bisemanal
+  </button>
+  <button
+    class="btn"
+    [ngClass]="{ 'active-button': activeButton === 4 }"
+    (click)="setActiveButton(4)"
+  >
+    Mensual
+  </button>
+  <button
+    class="btn"
+    [ngClass]="{ 'active-button': activeButton === 5 }"
+    (click)="setActiveButton(5)"
+  >
+    Trimestral
+  </button>
+  <button
+    class="btn"
+    [ngClass]="{ 'active-button': activeButton === 6 }"
+    (click)="setActiveButton(6)"
+  >
+    Semestral
+  </button>
+</div>
+
+
 <div class="top-right-button">
   <button class="btn btn-outline-primary" (click)="switchToEnglish()">Switch to English</button>
 </div>

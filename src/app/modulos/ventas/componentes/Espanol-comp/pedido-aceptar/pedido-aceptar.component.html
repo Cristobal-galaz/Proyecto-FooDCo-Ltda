@@ -1,3 +1,28 @@
+<div class="top-right-buttons">
+    <p>Filtro por estado </p>
+    <button
+      class="btn"
+      [ngClass]="{ 'active-button': activeButton === 1 }"
+      (click)="setActiveButton(1)"
+    >
+      Pendientes
+    </button>
+    <button
+      class="btn"
+      [ngClass]="{ 'active-button': activeButton === 2 }"
+      (click)="setActiveButton(2)"
+    >
+      Aprobados
+    </button>
+    <button
+      class="btn"
+      [ngClass]="{ 'active-button': activeButton === 3 }"
+      (click)="setActiveButton(3)"
+    >
+      Rechazados
+    </button>
+</div>
+
 <button class="btn language-switch" (click)="toggleLanguage()">
     {{ language === 'es' ? 'Switch to English' : 'Cambiar a Español' }}
 </button>

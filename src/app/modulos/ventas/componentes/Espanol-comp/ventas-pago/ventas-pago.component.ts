@@ -1,18 +1,37 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { LanguageService } from '../../../Service/idioma/lan.service';
+import { CommonModule } from '@angular/common';
 import { ApiserviceService } from '../../../Service/apiservice.service';
 
 @Component({
   selector: 'app-ventas-pago',
   templateUrl: './ventas-pago.component.html',
   styleUrls: ['./ventas-pago.component.scss'],
+  standalone:true, 
+  imports: [CommonModule] 
   standalone: true,
 })
 export class VentasPagoComponent {
   currentLanguage: string;
   texts: { [key: string]: string } = {};
   cuotas: any[] = []; // Aquí se almacenarán las cuotas obtenidas
+
+
+  activeButton: number | null = null;
+
+  setActiveButton(buttonNumber: number): void {
+    this.activeButton = buttonNumber;
+    console.log(`Botón ${buttonNumber} activado`);
+  }
+
+  button1Action() {
+    console.log('Botón 1 presionado');
+  }
+  
+  button2Action() {
+    console.log('Botón 2 presionado');
+  }
 
   constructor(
     private router: Router,
@@ -82,4 +101,5 @@ export class VentasPagoComponent {
       }
     );
   }
+  
 }
