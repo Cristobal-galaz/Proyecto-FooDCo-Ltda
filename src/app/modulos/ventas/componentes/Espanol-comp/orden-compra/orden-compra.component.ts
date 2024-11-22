@@ -3,44 +3,89 @@ import { Router } from '@angular/router';
 import { ApiserviceService } from '../../../Service/apiservice.service';
 import { OrdenCompra } from '../../../interface/ordendecompra';
 import { map } from 'rxjs/operators';
-
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-orden-compra',
   standalone: true,
   templateUrl: './orden-compra.component.html',
-  styleUrls: ['./orden-compra.component.css']
+  styleUrls: ['./orden-compra.component.css'],
+  imports: [CommonModule, FormsModule],
 })
+
 export class OrdenCompraComponent implements OnInit {
-  orden!: OrdenCompra;
+  ordenes: OrdenCompra[] = []; // Almacena las órdenes obtenidas
+
   constructor(private router: Router, private ordenCompra: ApiserviceService) {}
 
+  // Cambiar idioma
   switchToEnglish() {
     this.router.navigate(['/orden-compra-en']);
   }
 
-  ngOnInit(): void {
-    this.ordenCompra.getOrdenComprajefedeventa().pipe(
+  // Buscar todas las órdenes del usuario
+  obtenerOrdenes(): void {
+    this.ordenCompra.getOrdenPorUsuario().pipe(
       map((data: any) => {
-        return {
-          _id: data._id,
-          cliente: data.cliente,
-          estado: data.estado,
-          seleccionProductos: data.seleccionProductos,
-          precioTotalOrden:data.precioTotalOrden,
-          iva:data.iva,
-          precioFinalConIva:data.precioFinalConIva,
-        } as OrdenCompra;
+        return data.map((orden: any) => {
+          // Mapear cada orden de la respuesta a la estructura de la interfaz
+          return {
+            _id: orden._id,
+            cliente: orden.cliente,
+            estado: orden.estado,
+            seleccionProductos: orden.seleccionProductos,
+            precioTotalOrden: orden.precioTotalOrden,
+            iva: orden.iva,
+            precioFinalConIva: orden.precioFinalConIva,
+          } as OrdenCompra;
+        });
       })
     ).subscribe(
-      (ordenCompra: OrdenCompra) => {
-        this.orden = ordenCompra;
-        console.log(this.orden);
-        console.log(this.orden.seleccionProductos.productos[0].descuento);
+      (ordenes: OrdenCompra[]) => {
+        this.ordenes = ordenes; // Guardar las órdenes recibidas
+        console.log('Órdenes cargadas:', this.ordenes);
       },
       (error) => {
-        console.error('Error al cargar la orden de compra', error);
+        console.error('Error al cargar las órdenes de compra:', error);
+        alert('No se encontraron órdenes.');
       }
     );
+  }
+
+  ngOnInit(): void {
+    // Obtener las órdenes al inicializar el componente
+    this.obtenerOrdenes();
+  }
+
+  activeButton: number | null = null;
+
+  setActiveButton(buttonNumber: number): void {
+    this.activeButton = buttonNumber;
+    console.log(`Botón ${buttonNumber} activado`);
+  }
+
+  button1Action() {
+    console.log('Botón 1 presionado');
+  }
+  
+  button2Action() {
+    console.log('Botón 2 presionado');
+  }
+  
+  button3Action() {
+    console.log('Botón 3 presionado');
+  }
+  
+  button4Action() {
+    console.log('Botón 4 presionado');
+  }
+  
+  button5Action() {
+    console.log('Botón 5 presionado');
+  }
+  
+  button6Action() {
+    console.log('Botón 6 presionado');
   }
 }

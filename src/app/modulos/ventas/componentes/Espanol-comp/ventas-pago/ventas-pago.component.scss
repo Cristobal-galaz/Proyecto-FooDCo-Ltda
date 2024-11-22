@@ -35,4 +35,59 @@
   a.btn-primary:hover {
     background-color: #b39e00; /* Color hover */
   }
+
+.top-right-buttons .btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  background-color: #f8f9fa; /* Color por defecto */
+  color: #000;
+  border: 1px solid #ccc;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+  
+.top-right-buttons .btn.active-button {
+  background-color: #E3F2FD; /* Azul para botón activo */
+  color: #a7a7a7;
+  border-color: #f8f8f8;
+}
+  
+  
+.top-right-buttons {
+  display: flex;
+  justify-content: flex-start; /* Cambia según la ubicación deseada: center, flex-end, etc. */
+  gap: 10px; /* Espaciado entre botones */
+  margin-bottom: 20px; /* Espacio entre los botones y el resto del contenido */
+}
+  
+.top-right-buttons button {
+  padding: 10px 20px; /* Tamaño del botón */
+  font-size: 15px; /* Tamaño del texto */
+  border-radius: 5px; /* Bordes redondeados */
+  border: 1px solid transparent; /* Personalización de bordes */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave */
+}
+  
+/* Colores específicos para cada botón */
+.top-right-buttons button:nth-child(1) {
+  background-color: #FFF9C4; /* Azul */
+  color: rgb(0, 0, 0);
+}
+  
+.top-right-buttons button:nth-child(2) {
+  background-color: #BBDEFB; /* Gris */
+  color: #000000;
+}
+  
+.top-right-buttons button:nth-child(3) {
+  background-color: #C8E6C9; /* Verde */
+  color: rgb(0, 0, 0);
+}
+   
+/* Efectos hover para todos los botones */
+.top-right-buttons button:hover {
+  background-color: #E3F2FD; /* Negro al pasar el mouse */
+  color: #a7a7a7; /* Texto blanco al pasar el mouse */
+  border-color: #000000; /* Borde blanco al pasar el mouse */
+}
   

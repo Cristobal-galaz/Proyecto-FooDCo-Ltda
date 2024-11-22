@@ -1,21 +1,69 @@
+<div class="top-right-buttons">
+  <h1>Filtro por fecha</h1>
+  <button
+    class="btn"
+    [ngClass]="{ 'active-button': activeButton === 1 }"
+    (click)="setActiveButton(1)"
+  >
+    Diario
+  </button>
+  <button
+    class="btn"
+    [ngClass]="{ 'active-button': activeButton === 2 }"
+    (click)="setActiveButton(2)"
+  >
+    Semanal
+  </button>
+  <button
+    class="btn"
+    [ngClass]="{ 'active-button': activeButton === 3 }"
+    (click)="setActiveButton(3)"
+  >
+    Bisemanal
+  </button>
+  <button
+    class="btn"
+    [ngClass]="{ 'active-button': activeButton === 4 }"
+    (click)="setActiveButton(4)"
+  >
+    Mensual
+  </button>
+  <button
+    class="btn"
+    [ngClass]="{ 'active-button': activeButton === 5 }"
+    (click)="setActiveButton(5)"
+  >
+    Trimestral
+  </button>
+  <button
+    class="btn"
+    [ngClass]="{ 'active-button': activeButton === 6 }"
+    (click)="setActiveButton(6)"
+  >
+    Semestral
+  </button>
+</div>
+
+
 <div class="top-right-button">
   <button class="btn btn-outline-primary" (click)="switchToEnglish()">Switch to English</button>
 </div>
 
-<div class="orden-compra">
-  <h1>Orden de compra N° X</h1>
+<div *ngIf="ordenes.length > 0" class="ordenes-list">
+<div *ngFor="let orden of ordenes">
+  <h1>Orden de compra N° {{orden._id}}</h1>
 
   <div class="seccion">
-    <p><strong>Nombre cliente:</strong> {{orden.cliente.username}} {{orden.cliente.contacto.apellido}}</p>
-    <p><strong>Rut cliente:</strong> [Rut del Cliente]</p>
-    <p><strong>Nombre Encargado:</strong> [Nombre del Encargado]</p>
-    <p><strong>Rut Encargado:</strong> [Rut del Encargado]</p>
-    <p><strong>Datos de factura:</strong> Nombre: {{orden.cliente.empresa.nombre_empresa}} | 
+    <p *ngIf="orden.cliente"><strong>Nombre cliente:</strong> {{orden.cliente.username}} {{orden.cliente.contacto.apellido}}</p>
+
+    <p *ngIf="orden.cliente?.empresa">
+      <strong>Datos de factura:</strong> Nombre: {{orden.cliente.empresa.nombre_empresa}} |
       Direccion: {{orden.cliente.empresa.direccion}} |
-      Giro: {{orden.cliente.empresa.giro}} | 
+      Giro: {{orden.cliente.empresa.giro}} |
       Rut: {{orden.cliente.empresa.rut_empresa}} |
-      Fono: {{orden.cliente.empresa.telefono_empresa}} | 
-      Correo: {{orden.cliente.empresa.correo_contacto}}</p>
+      Fono: {{orden.cliente.empresa.telefono_empresa}} |
+      Correo: {{orden.cliente.empresa.correo_contacto}}
+    </p>
     <p><strong>Fecha de orden:</strong> {{orden.seleccionProductos.fechaCreacion}}</p>
   </div>
 
@@ -32,29 +80,13 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>001</td>
-        <td>{{orden.seleccionProductos.productos[0].producto.nombre}}</td>
-        <td>{{orden.seleccionProductos.productos[0].cantidad}}</td>
-        <td>${{orden.seleccionProductos.productos[0].precioUnitario}}</td>
-        <td>${{orden.seleccionProductos.productos[0].precioTotal}}</td>
-        <td>${{orden.seleccionProductos.productos[0].descuento}}</td>
-      </tr>
-      <tr>
-        <td>002</td>
-        <td>Producto 2</td>
-        <td>2</td>
-        <td>$15</td>
-        <td>$30</td>
-        <td>$5</td>
-      </tr>
-      <tr>
-        <td>003</td>
-        <td>Producto 3</td>
-        <td>3</td>
-        <td>$20</td>
-        <td>$60</td>
-        <td>$10</td>
+      <tr *ngFor="let producto of orden.seleccionProductos.productos; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ producto.producto.nombre }}</td>
+        <td>{{ producto.cantidad }}</td>
+        <td>${{ producto.precioUnitario }}</td>
+        <td>${{ producto.precioTotal }}</td>
+        <td>${{ producto.descuento }}</td>
       </tr>
     </tbody>
   </table>
@@ -68,4 +100,10 @@
     <p><strong>Lugar de entrega:</strong> {{orden.seleccionProductos.direccion}}</p>
     <p><strong>Fecha de entrega:</strong> {{orden.seleccionProductos.fechaRequerida}}</p>
   </div>
+</div>
+</div>
+
+<!-- En caso de que no haya órdenes cargadas -->
+<div *ngIf="ordenes.length === 0">
+<p>No se ha encontrado ninguna orden.</p>
 </div>

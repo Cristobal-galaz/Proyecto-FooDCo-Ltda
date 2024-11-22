@@ -1,0 +1,51 @@
+<div class="top-right-buttons">
+    <p>Filtro por estado </p>
+    <button
+      class="btn"
+      [ngClass]="{ 'active-button': activeButton === 1 }"
+      (click)="setActiveButton(1)"
+    >
+      Pendientes
+    </button>
+    <button
+      class="btn"
+      [ngClass]="{ 'active-button': activeButton === 2 }"
+      (click)="setActiveButton(2)"
+    >
+      Aprobados
+    </button>
+    <button
+      class="btn"
+      [ngClass]="{ 'active-button': activeButton === 3 }"
+      (click)="setActiveButton(3)"
+    >
+      Rechazados
+    </button>
+</div>
+
+<button class="btn language-switch" (click)="toggleLanguage()">
+    {{ language === 'es' ? 'Switch to English' : 'Cambiar a Español' }}
+</button>
+
+<div class="container">
+    <h2>{{ language === 'es' ? 'Lista de Pedidos' : 'Order List' }}</h2>
+
+    <div class="item" *ngFor="let item of data">
+        <span class="item-name">{{ language === 'es' ? item.name : 'Order ' + item.name.split(' ')[1] }}</span>
+        <div class="actions">
+            <input 
+                type="text" 
+                class="quota-input" 
+                [placeholder]="language === 'es' ? 'Cuota' : 'Quota'" 
+                [(ngModel)]="item.quota" 
+                name="quota-{{item.name}}" 
+            />
+            <button class="btn accept-btn" (click)="accept(item)">
+                {{ language === 'es' ? 'Aceptar' : 'Accept' }}
+            </button>
+            <button class="btn reject-btn" (click)="reject(item)">
+                {{ language === 'es' ? 'Rechazar' : 'Reject' }}
+            </button>
+        </div>
+    </div>
+</div>
