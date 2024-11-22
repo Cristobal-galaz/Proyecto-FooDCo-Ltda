@@ -32,5 +32,25 @@ export class PedidoAceptarComponent {
   reject(item: any): void {
     console.log(this.language === 'es' ? 'Rechazado:' : 'Rejected:', item);
     this.data = this.data.filter(d => d !== item);
+  }  
+
+  activeButton: number | null = null;
+
+  setActiveButton(buttonNumber: number): void {
+    this.activeButton = buttonNumber;
+    console.log(`Botón ${buttonNumber} activado`);
   }
+
+  button1Action() {
+    console.log('Botón 1 presionado');
+  }
+  
+  button2Action() {
+    console.log('Botón 2 presionado');
+  }
+  
+  button3Action() {
+    console.log('Botón 3 presionado');
+  }
+
 }

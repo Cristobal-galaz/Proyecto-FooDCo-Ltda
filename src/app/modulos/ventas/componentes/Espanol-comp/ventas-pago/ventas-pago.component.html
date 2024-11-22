@@ -1,4 +1,22 @@
 <!-- ventas-pago.component.html -->
+<div class="top-right-buttons">
+  <p>Filtro estado de pago </p>
+  <button
+    class="btn"
+    [ngClass]="{ 'active-button': activeButton === 1 }"
+    (click)="setActiveButton(1)"
+  >
+    Pendientes
+  </button>
+  <button
+    class="btn"
+    [ngClass]="{ 'active-button': activeButton === 2 }"
+    (click)="setActiveButton(2)"
+  >
+    Completados
+  </button>
+</div>
+
 <div class="ventas-pago-container">
   <div class="top-right-button">
     <button (click)="switchLanguage()" class="btn btn-secondary">{{ texts['switchToEnglish'] }}</button>
