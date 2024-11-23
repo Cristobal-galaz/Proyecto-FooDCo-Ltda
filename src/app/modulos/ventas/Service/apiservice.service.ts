@@ -4,7 +4,7 @@ import { environment } from '../../../environments/environment';
 import { UserService } from '../../../services/user.service';
 import { OrdenCompra } from '../interface/ordendecompra';
 import { map, switchMap, tap } from 'rxjs/operators';
-import { forkJoin, of } from 'rxjs';
+import { forkJoin, Observable, of } from 'rxjs';
 
 
 @Injectable({
@@ -120,6 +120,10 @@ getOrdenesPorPeriodo(periodo: string) {
   );
 }
 
+uploadFactura(formData: FormData): Observable<any> {
+  const uploadUrl = `${this.apiurl}factura/upload`;
+  return this.http.post<any>(uploadUrl, formData);
+}
 
 
 }
