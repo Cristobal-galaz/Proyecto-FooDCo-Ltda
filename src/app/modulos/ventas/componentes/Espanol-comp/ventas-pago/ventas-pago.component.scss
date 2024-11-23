@@ -91,3 +91,89 @@
   border-color: #000000; /* Borde blanco al pasar el mouse */
 }
   
+.cuotas-box {
+  border: 2px solid #ccc;  /* Borde gris claro */
+  padding: 10px;  /* Espaciado interno */
+  margin-top: 10px;  /* Espacio encima del recuadro */
+  border-radius: 8px;  /* Bordes redondeados */
+  background-color: #f9f9f9;  /* Fondo suave */
+}
+
+.cuotas-box {
+  border: 2px solid #ddd;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: #fff;
+  margin-top: 15px;
+}
+
+.cuotas-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.cuota-item {
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+
+.cuota-item:last-child {
+  border-bottom: none;
+}
+
+.cuota-item p {
+  margin: 0;
+  padding: 5px 0;
+}
+
+.ventas-pago {
+  margin: 20px;
+}
+
+.order-details {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+}
+
+.order-box {
+  border: 1px solid #d0d0d0;
+  border-radius: 8px;
+  margin-top: 10px;
+  padding: 15px;
+  background-color: #ffffff;
+}
+
+.cuotas-list {
+  margin-top: 20px;
+}
+
+.cuotas-box table {
+  width: 100%;
+  border-collapse: collapse; /* Para que las celdas se junten sin espacio entre ellas */
+}
+
+.cuotas-box th, .cuotas-box td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #d0d0d0;
+}
+
+.cuotas-box th {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+.cuotas-box td {
+  background-color: #fff;
+}
+
+.cuotas-box tr:nth-child(even) td {
+  background-color: #f9f9f9; /* Alterna el color de las filas */
+}
+
+.cuotas-box tr:hover {
+  background-color: #f0f0f0; /* Resalta la fila cuando el mouse pasa por encima */
+}
