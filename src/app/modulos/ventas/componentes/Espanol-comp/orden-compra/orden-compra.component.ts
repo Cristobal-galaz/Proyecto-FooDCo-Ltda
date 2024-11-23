@@ -18,6 +18,8 @@ export class OrdenCompraComponent implements OnInit {
   activeButton: number | null = null; // Botón activo para resaltar el período seleccionado
   activeOrdenId: string | null = null; // Controla cuál orden está activa
 
+  
+
   constructor(private router: Router, private ordenCompra: ApiserviceService) {}
 
   // Cambiar idioma
@@ -107,4 +109,5 @@ export class OrdenCompraComponent implements OnInit {
     // Obtener las órdenes al inicializar el componente
     this.obtenerOrdenes();
   }
+
 }
