@@ -30,7 +30,7 @@ export class OrdenCompraComponent implements OnInit {
     this.ordenCompra.getOrdenesPorPeriodo(periodo).subscribe(
       (ordenes: OrdenCompra[]) => {
         if (Array.isArray(ordenes)) {
-          this.ordenes = ordenes; // Actualiza las órdenes mostradas
+          this.procesarOrdenes(ordenes); // Procesar las órdenes
           console.log(`Órdenes cargadas para el período ${periodo}:`, this.ordenes);
         } else {
           console.warn(`El endpoint devolvió un formato inesperado para ${periodo}:`, ordenes);
@@ -43,7 +43,6 @@ export class OrdenCompraComponent implements OnInit {
       }
     );
   }
-  
 
   // Obtener el número del botón según el período
   getButtonNumberByPeriodo(periodo: string): number | null {
@@ -58,27 +57,33 @@ export class OrdenCompraComponent implements OnInit {
     return mapping[periodo] || null;
   }
 
+  // Procesar órdenes y filtrar productos nulos
+  procesarOrdenes(data: any[]): void {
+    this.ordenes = data
+      .map((orden: any) => {
+        return {
+          ...orden,
+          seleccionProductos: {
+            ...orden.seleccionProductos,
+            productos: orden.seleccionProductos.productos.filter(
+              (producto: any) => producto.producto !== null
+            ),
+          },
+        } as OrdenCompra;
+      })
+      .filter((orden: OrdenCompra) => 
+        orden.seleccionProductos.productos.length > 0
+      ); // Filtra órdenes que tengan productos no vacíos
+  }
+  
+
   // Obtener todas las órdenes del usuario (por defecto al cargar el componente)
   obtenerOrdenes(): void {
-    this.ordenCompra.getOrdenPorUsuario().pipe(
-      map((data: any) => {
-        return data.map((orden: any) => {
-          // Mapear cada orden de la respuesta a la estructura de la interfaz
-          return {
-            _id: orden._id,
-            cliente: orden.cliente,
-            estado: orden.estado,
-            seleccionProductos: orden.seleccionProductos,
-            precioTotalOrden: orden.precioTotalOrden,
-            iva: orden.iva,
-            precioFinalConIva: orden.precioFinalConIva,
-          } as OrdenCompra;
-        });
-      })
-    ).subscribe(
-      (ordenes: OrdenCompra[]) => {
-        this.ordenes = ordenes; // Guardar las órdenes recibidas
-        console.log('Órdenes cargadas:', this.ordenes);
+    this.ordenCompra.getOrdenPorUsuario().subscribe(
+      (data: any[]) => {
+        console.log('Datos de la API:', data);
+        this.procesarOrdenes(data); // Procesar las órdenes y filtrar productos nulos
+        console.log('Órdenes procesadas:', this.ordenes);
       },
       (error) => {
         console.error('Error al cargar las órdenes de compra:', error);

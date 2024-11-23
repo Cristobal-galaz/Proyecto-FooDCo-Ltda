@@ -55,9 +55,10 @@
   <h1>Orden de compra N° {{orden._id}}</h1>
 
   <div class="seccion">
-    <p *ngIf="orden.cliente">
+    <p *ngIf="orden.cliente?.contacto?.apellido">
       <strong>Nombre cliente:</strong> {{orden.cliente.username}} {{orden.cliente.contacto.apellido}}
     </p>
+    
     
   
     <p *ngIf="orden.cliente?.empresa">
@@ -87,12 +88,13 @@
     <tbody>
       <tr *ngFor="let producto of orden.seleccionProductos.productos; let i = index">
         <td>{{ i + 1 }}</td>
-        <td>{{ producto.producto.nombre }}</td>
+        <td>{{ producto?.producto?.nombre || 'Sin nombre' }}</td>
         <td>{{ producto.cantidad }}</td>
         <td>${{ producto.precioUnitario }}</td>
-        <td>${{ producto.precioTotal }}</td>
+        <td>${{ producto.precioTotal || 0 }}</td>
         <td>${{ producto.descuento }}</td>
       </tr>
+      
     </tbody>
   </table>
 
