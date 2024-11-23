@@ -133,20 +133,6 @@ export class OrdenCompraComponent implements OnInit {
       ); // Filtra órdenes que tengan productos no vacíos
   }
 
-  // Obtener todas las órdenes del usuario (por defecto al cargar el componente)
-  obtenerOrdenes(): void {
-    this.ordenCompra.getOrdenPorUsuario().subscribe(
-      (data: any[]) => {
-        console.log('Datos de la API:', data);
-        this.procesarOrdenes(data); // Procesar las órdenes y filtrar productos nulos
-        console.log('Órdenes procesadas:', this.ordenes);
-      },
-      (error) => {
-        console.error('Error al cargar las órdenes de compra:', error);
-        alert('No se encontraron órdenes.');
-      }
-    );
-  }
 
   // Método para cambiar el estado de visualización de una orden
   toggleOrdenDetails(ordenId: string): void {
@@ -160,6 +146,6 @@ export class OrdenCompraComponent implements OnInit {
 
   ngOnInit(): void {
     // Obtener las órdenes al inicializar el componente
-    this.obtenerOrdenes();
+
   }
 }
