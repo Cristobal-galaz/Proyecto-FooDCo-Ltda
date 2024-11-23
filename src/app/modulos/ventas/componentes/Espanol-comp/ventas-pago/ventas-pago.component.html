@@ -1,36 +1,20 @@
-<!-- ventas-pago.component.html -->
-<div class="top-right-buttons">
-  <p>Filtro estado de pago </p>
-  <button
-    class="btn"
-    [ngClass]="{ 'active-button': activeButton === 1 }"
-    (click)="setActiveButton(1)"
-  >
-    Pendientes
-  </button>
-  <button
-    class="btn"
-    [ngClass]="{ 'active-button': activeButton === 2 }"
-    (click)="setActiveButton(2)"
-  >
-    Completados
-  </button>
-</div>
+<div class="ventas-pago">
+  <h1>Detalles de Pago</h1>
 
-<div class="ventas-pago-container">
-  <div class="top-right-button">
-    <button (click)="switchLanguage()" class="btn btn-secondary">{{ texts['switchToEnglish'] }}</button>
-  </div>
+  <div class="order-details" *ngFor="let order of orders">
+    <p><strong>Username:</strong> {{ order.username }}</p>
+    <p><strong>Email:</strong> {{ order.email }}</p> <!-- Mostrar el email -->
+    <p><strong>Número de Orden:</strong> {{ order.numeroOrden }}</p>
 
-  <p>{{ texts['pagosRealizados'] }}</p>
-  <h1>{{ texts['pagosCompletados'] }}</h1>
-  
-  <div class="seccion">
-    <p><strong>{{ texts['nombreCliente'] }}</strong> [Nombre del Cliente]</p>
-    <p><strong>{{ texts['rutCliente'] }}</strong> [Rut del Cliente]</p>
-    <p><strong>{{ texts['nombreEncargado'] }}</strong> [Nombre del Encargado]</p>
-    <p><strong>{{ texts['rutEncargado'] }}</strong> [Rut del Encargado]</p>
-    <p><strong>{{ texts['datosFactura'] }}</strong> [Datos de Factura]</p>
-    <p><strong>{{ texts['fechaOrden'] }}</strong> [Fecha]</p>
+    <div class="cuotas-list">
+      <h2>Cuotas</h2>
+      <ul>
+        <li *ngFor="let cuota of order.cuotas">
+          <p><strong>Cuota {{ cuota.numeroCuota }}:</strong></p>
+          <p>Estado: {{ cuota.estado }}</p>
+          <p>Monto: {{ cuota.monto | currency }}</p> <!-- Mostrar monto con formato de moneda -->
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
