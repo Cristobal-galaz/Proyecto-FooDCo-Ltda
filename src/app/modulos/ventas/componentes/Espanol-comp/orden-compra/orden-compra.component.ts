@@ -13,9 +13,9 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./orden-compra.component.css'],
   imports: [CommonModule, FormsModule],
 })
-
 export class OrdenCompraComponent implements OnInit {
   ordenes: OrdenCompra[] = []; // Almacena las órdenes obtenidas
+  activeButton: number | null = null; // Botón activo para resaltar el período seleccionado
 
   constructor(private router: Router, private ordenCompra: ApiserviceService) {}
 
@@ -24,7 +24,41 @@ export class OrdenCompraComponent implements OnInit {
     this.router.navigate(['/orden-compra-en']);
   }
 
-  // Buscar todas las órdenes del usuario
+  // Manejar el filtrado de órdenes por período
+  filtrarPorPeriodo(periodo: string): void {
+    this.activeButton = this.getButtonNumberByPeriodo(periodo); // Actualiza el botón activo
+    this.ordenCompra.getOrdenesPorPeriodo(periodo).subscribe(
+      (ordenes: OrdenCompra[]) => {
+        if (Array.isArray(ordenes)) {
+          this.ordenes = ordenes; // Actualiza las órdenes mostradas
+          console.log(`Órdenes cargadas para el período ${periodo}:`, this.ordenes);
+        } else {
+          console.warn(`El endpoint devolvió un formato inesperado para ${periodo}:`, ordenes);
+          this.ordenes = [];
+        }
+      },
+      (error) => {
+        console.error(`Error al cargar las órdenes para el período ${periodo}:`, error);
+        alert(`No se encontraron órdenes para el período ${periodo}.`);
+      }
+    );
+  }
+  
+
+  // Obtener el número del botón según el período
+  getButtonNumberByPeriodo(periodo: string): number | null {
+    const mapping: { [key: string]: number } = {
+      diario: 1,
+      semanal: 2,
+      bisemanal: 3,
+      mensual: 4,
+      trimestral: 5,
+      semestral: 6,
+    };
+    return mapping[periodo] || null;
+  }
+
+  // Obtener todas las órdenes del usuario (por defecto al cargar el componente)
   obtenerOrdenes(): void {
     this.ordenCompra.getOrdenPorUsuario().pipe(
       map((data: any) => {
@@ -56,36 +90,5 @@ export class OrdenCompraComponent implements OnInit {
   ngOnInit(): void {
     // Obtener las órdenes al inicializar el componente
     this.obtenerOrdenes();
-  }
-
-  activeButton: number | null = null;
-
-  setActiveButton(buttonNumber: number): void {
-    this.activeButton = buttonNumber;
-    console.log(`Botón ${buttonNumber} activado`);
-  }
-
-  button1Action() {
-    console.log('Botón 1 presionado');
-  }
-  
-  button2Action() {
-    console.log('Botón 2 presionado');
-  }
-  
-  button3Action() {
-    console.log('Botón 3 presionado');
-  }
-  
-  button4Action() {
-    console.log('Botón 4 presionado');
-  }
-  
-  button5Action() {
-    console.log('Botón 5 presionado');
-  }
-  
-  button6Action() {
-    console.log('Botón 6 presionado');
   }
 }

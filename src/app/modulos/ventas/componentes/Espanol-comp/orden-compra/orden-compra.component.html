@@ -3,46 +3,47 @@
   <button
     class="btn"
     [ngClass]="{ 'active-button': activeButton === 1 }"
-    (click)="setActiveButton(1)"
+    (click)="filtrarPorPeriodo('diario')"
   >
     Diario
   </button>
   <button
     class="btn"
     [ngClass]="{ 'active-button': activeButton === 2 }"
-    (click)="setActiveButton(2)"
+    (click)="filtrarPorPeriodo('semanal')"
   >
     Semanal
   </button>
   <button
     class="btn"
     [ngClass]="{ 'active-button': activeButton === 3 }"
-    (click)="setActiveButton(3)"
+    (click)="filtrarPorPeriodo('bisemanal')"
   >
     Bisemanal
   </button>
   <button
     class="btn"
     [ngClass]="{ 'active-button': activeButton === 4 }"
-    (click)="setActiveButton(4)"
+    (click)="filtrarPorPeriodo('mensual')"
   >
     Mensual
   </button>
   <button
     class="btn"
     [ngClass]="{ 'active-button': activeButton === 5 }"
-    (click)="setActiveButton(5)"
+    (click)="filtrarPorPeriodo('trimestral')"
   >
     Trimestral
   </button>
   <button
     class="btn"
     [ngClass]="{ 'active-button': activeButton === 6 }"
-    (click)="setActiveButton(6)"
+    (click)="filtrarPorPeriodo('semestral')"
   >
     Semestral
   </button>
 </div>
+
 
 
 <div class="top-right-button">
@@ -54,8 +55,11 @@
   <h1>Orden de compra N° {{orden._id}}</h1>
 
   <div class="seccion">
-    <p *ngIf="orden.cliente"><strong>Nombre cliente:</strong> {{orden.cliente.username}} {{orden.cliente.contacto.apellido}}</p>
-
+    <p *ngIf="orden.cliente">
+      <strong>Nombre cliente:</strong> {{orden.cliente.username}} {{orden.cliente.contacto.apellido}}
+    </p>
+    
+  
     <p *ngIf="orden.cliente?.empresa">
       <strong>Datos de factura:</strong> Nombre: {{orden.cliente.empresa.nombre_empresa}} |
       Direccion: {{orden.cliente.empresa.direccion}} |
@@ -64,8 +68,9 @@
       Fono: {{orden.cliente.empresa.telefono_empresa}} |
       Correo: {{orden.cliente.empresa.correo_contacto}}
     </p>
-    <p><strong>Fecha de orden:</strong> {{orden.seleccionProductos.fechaCreacion}}</p>
+    <p *ngIf="orden.seleccionProductos?.fechaCreacion"><strong>Fecha de orden:</strong> {{orden.seleccionProductos.fechaCreacion}}</p>
   </div>
+  
 
   <h3>Productos:</h3>
   <table>

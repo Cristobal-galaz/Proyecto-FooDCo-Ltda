@@ -109,7 +109,17 @@ getSubcontratos() {
     );
   }
   
-  
+getOrdenesPorPeriodo(periodo: string) {
+  const validPeriodos = ['semanal', 'bisemanal', 'mensual', 'diario', 'trimestral', 'semestral'];
+  if (!validPeriodos.includes(periodo)) {
+    throw new Error(`Período inválido: ${periodo}`);
+  }
+
+  return this.http.get<OrdenCompra[]>(`${this.apiurl}orden-compra/list/periodo/${periodo}`).pipe(
+    tap((data) => console.log(`Órdenes obtenidas para el período ${periodo}:`, data))
+  );
+}
+
 
 
 }
