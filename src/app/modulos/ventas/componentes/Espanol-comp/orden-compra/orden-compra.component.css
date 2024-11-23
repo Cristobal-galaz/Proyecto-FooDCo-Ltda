@@ -1,47 +1,31 @@
-.orden-compra {
-  font-family: Arial, sans-serif;
-  margin: 20px;
-  max-width: 800px;
-  background-color: #f9f9f9;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  position: relative; /* Permite la posición relativa del botón */
-  padding-top: 60px; /* Espacio suficiente para el botón */
-}
-
-.top-right-button {
-  position: absolute;
-  top: 60px; /* Ajusta el botón más cerca del borde superior */
-  right: 20px;
-}
-
-.top-right-button button {
-  padding: 10px 20px;
-  font-size: 1rem;
-  background-color: #1b79f5b0; /* Mismo color que en el componente inicio */
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.top-right-button button:hover {
-  background-color: #b39e00; /* Mismo color de hover que en el componente inicio */
-}
-
-h1 {
-  text-align: center;
-  font-size: 24px;
+.orden-container {
   margin-bottom: 20px;
 }
 
-h3 {
-  margin-top: 20px;
+.orden-btn {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  text-align: left;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 8px;
   margin-bottom: 10px;
+  transition: background-color 0.3s ease;
 }
 
-.seccion {
+.orden-btn:hover {
+  background-color: #0056b3;
+}
+
+.orden-details {
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
 }
 
@@ -51,12 +35,9 @@ table {
   margin-bottom: 20px;
 }
 
-table, th, td {
-  border: 1px solid #ddd;
-}
-
 th, td {
-  padding: 8px;
+  padding: 10px;
+  border: 1px solid #ddd;
   text-align: left;
 }
 
@@ -73,39 +54,43 @@ th {
   font-weight: bold;
 }
 
-.top-right-buttons .btn {
-  padding: 10px 20px;
+.seccion p {
   font-size: 16px;
-  border-radius: 5px;
-  background-color: #f8f9fa; /* Color por defecto */
-  color: #000;
-  border: 1px solid #ccc;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  margin: 5px 0;
 }
-
-.top-right-buttons .btn.active-button {
-  background-color: #E3F2FD; /* Azul para botón activo */
-  color: #a7a7a7;
-  border-color: #f8f8f8;
-}
-
 
 .top-right-buttons {
   display: flex;
-  justify-content: flex-start; /* Cambia según la ubicación deseada: center, flex-end, etc. */
-  gap: 10px; /* Espaciado entre botones */
-  margin-bottom: 20px; /* Espacio entre los botones y el resto del contenido */
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
-.top-right-buttons button {
-  padding: 10px 20px; /* Tamaño del botón */
-  font-size: 15px; /* Tamaño del texto */
-  border-radius: 5px; /* Bordes redondeados */
-  border: 1px solid transparent; /* Personalización de bordes */
-  transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave */
+.top-right-button {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
 }
 
-/* Colores específicos para cada botón */
+.btn {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+.active-button {
+  background-color: #0056b3;
+}
+
 .top-right-buttons button:nth-child(1) {
   background-color: #FFF9C4; /* Azul */
   color: rgb(0, 0, 0);
@@ -140,11 +125,3 @@ th {
   background-color: #FFF9C4; /* Cian */
   color: rgb(0, 0, 0);
 }
-
-/* Efectos hover para todos los botones */
-.top-right-buttons button:hover {
-  background-color: #E3F2FD; /* Negro al pasar el mouse */
-  color: #a7a7a7; /* Texto blanco al pasar el mouse */
-  border-color: #000000; /* Borde blanco al pasar el mouse */
-}
-

@@ -16,6 +16,7 @@ import { FormsModule } from '@angular/forms';
 export class OrdenCompraComponent implements OnInit {
   ordenes: OrdenCompra[] = []; // Almacena las órdenes obtenidas
   activeButton: number | null = null; // Botón activo para resaltar el período seleccionado
+  activeOrdenId: string | null = null; // Controla cuál orden está activa
 
   constructor(private router: Router, private ordenCompra: ApiserviceService) {}
 
@@ -90,6 +91,16 @@ export class OrdenCompraComponent implements OnInit {
         alert('No se encontraron órdenes.');
       }
     );
+  }
+
+  // Método para cambiar el estado de visualización de una orden
+  toggleOrdenDetails(ordenId: string): void {
+    this.activeOrdenId = this.activeOrdenId === ordenId ? null : ordenId;
+  }
+
+  // Método para verificar si una orden está activa
+  isOrdenActive(ordenId: string): boolean {
+    return this.activeOrdenId === ordenId;
   }
 
   ngOnInit(): void {
