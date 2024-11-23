@@ -9,8 +9,7 @@ import { ApiserviceService } from '../../../Service/apiservice.service';
   templateUrl: './ventas-pago.component.html',
   styleUrls: ['./ventas-pago.component.scss'],
   standalone:true, 
-  imports: [CommonModule] 
-  standalone: true,
+  imports: [CommonModule],
 })
 export class VentasPagoComponent {
   currentLanguage: string;

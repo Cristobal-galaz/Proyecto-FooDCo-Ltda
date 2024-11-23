@@ -4,7 +4,7 @@ import { environment } from '../../../environments/environment';
 import { UserService } from '../../../services/user.service';
 import { OrdenCompra } from '../interface/ordendecompra';
 import { map, switchMap, tap } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { forkJoin, of } from 'rxjs';
 
 
 @Injectable({
@@ -89,21 +89,29 @@ getSubcontratos() {
       switchMap(ids => {
         if (ids.length === 0) {
           console.warn('No se encontraron órdenes para el usuario.');
-          return of([]);
+          return of([]); // Retorna un array vacío si no hay órdenes
         }
-        // Construir la URL con los IDs concatenados
-        const idsConcatenados = ids.join(',');
-        const url = `${this.apiurl}orden-compra/${idsConcatenados}/cuotas`;
-        return this.http.get<any>(url); // Realizar la llamada a la nueva API
+        console.log('IDs individuales:', ids); // Mostrar cada ID por separado en consola
+  
+        // Crear una llamada API para cada ID
+        const requests = ids.map(id => {
+          const url = `${this.apiurl}orden-compra/${id}/cuotas`;
+          console.log('URL individual construida:', url); // Mostrar cada URL individual en consola
+          return this.http.get<any>(url); // Realizar la llamada para cada ID
+        });
+  
+        // Ejecutar todas las llamadas en paralelo
+        return forkJoin(requests);
       }),
       tap(cuotas => {
-        console.log('Cuotas obtenidas:', cuotas); // Mostrar cuotas en consola
+        console.log('Cuotas obtenidas para todos los IDs:', cuotas); // Mostrar cuotas en consola
       })
     );
+  }
+  
   
 
-  
-}
+
 }
 
 
