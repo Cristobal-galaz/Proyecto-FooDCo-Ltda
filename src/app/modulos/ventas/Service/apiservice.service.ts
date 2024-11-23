@@ -16,7 +16,7 @@ export class ApiserviceService {
 
   constructor(private http: HttpClient, private user: UserService) {}
 
-  private loadUserProfile(): string | null {
+  public loadUserProfile(): string | null {
     const userId = this.user.getIdUser();
     if (!userId) {
       console.log('No se encontró el ID del usuario');
