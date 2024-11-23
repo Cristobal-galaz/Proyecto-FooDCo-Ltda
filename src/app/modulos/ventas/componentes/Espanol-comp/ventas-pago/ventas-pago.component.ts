@@ -11,52 +11,57 @@ import { ApiserviceService } from '../../../Service/apiservice.service';
   imports: [CommonModule],
 })
 export class VentasPagoComponent {
-  orders: any[] = []; // Array para almacenar los detalles de todas las órdenes
-  activeButton: number | null = null;
-
-  setActiveButton(buttonNumber: number): void {
-    this.activeButton = buttonNumber;
-    console.log(`Botón ${buttonNumber} activado`);
-  }
-
-  button1Action() {
-    console.log('Botón 1 presionado');
-  }
-  
-  button2Action() {
-    console.log('Botón 2 presionado');
-  }
+  orders: any[] = []; // Array para almacenar las órdenes completas
+  filteredOrders: any[] = []; // Array para almacenar las órdenes filtradas
+  activeButton: number | null = null; // Estado del botón activo
 
   constructor(
     private router: Router,
-    private apiService: ApiserviceService // Importa el servicio
+    private apiService: ApiserviceService
   ) {
-    // Realiza la llamada para obtener las cuotas
-    this.loadCuotas();
+    this.loadCuotas(); // Llamada inicial para cargar las órdenes
   }
 
-  // Cargar cuotas llamando al servicio
+  // Función que se ejecuta cuando un botón es presionado
+  setActiveButton(buttonNumber: number): void {
+    this.activeButton = buttonNumber;
+    console.log(`Botón ${buttonNumber} activado`);
+    this.filterOrders(); // Filtra las órdenes según el estado del botón
+  }
+
+  // Función para filtrar las órdenes
+  filterOrders(): void {
+    if (this.activeButton === 1) {
+      // Filtra las órdenes con cuotas por pagar
+      this.filteredOrders = this.orders.filter(order => order.detallesCuotas.cuotasPorPagar > 0);
+    } else if (this.activeButton === 2) {
+      // Filtra las órdenes completadas (sin cuotas por pagar)
+      this.filteredOrders = this.orders.filter(order => order.detallesCuotas.cuotasPorPagar === 0);
+    } else {
+      // Si no hay filtro, muestra todas las órdenes
+      this.filteredOrders = this.orders;
+    }
+  }
+
+  // Llamada al servicio para cargar las órdenes y cuotas
   loadCuotas(): void {
     this.apiService.getCuotasPorOrdenes().subscribe(
       (cuotas) => {
-        // Asignar los valores necesarios para cada orden, incluyendo email y cuotas
+        // Asigna los datos de las cuotas a las órdenes
         this.orders = cuotas.map((cuota) => ({
           username: cuota.cliente.username,
-          email: cuota.cliente.email, // Agregar el email
+          email: cuota.cliente.email, // Email del cliente
           numeroOrden: cuota.numeroOrden,
-          cuotas: cuota.detallesCuotas.listaCuotas.map((cuotaDetalle: any) => ({ // Usar `any`
-            numeroCuota: cuotaDetalle.numeroCuota,
-            estado: cuotaDetalle.estado,
-            monto: cuotaDetalle.monto
-          }))
+          detallesCuotas: cuota.detallesCuotas,
         }));
-  
-        console.log('Órdenes obtenidas:', this.orders); // Depuración
+
+        // Filtra las órdenes después de cargarlas
+        this.filterOrders();
+        console.log('Órdenes obtenidas:', this.filteredOrders);
       },
       (error) => {
         console.error('Error al obtener las cuotas:', error);
       }
     );
   }
-  
 }

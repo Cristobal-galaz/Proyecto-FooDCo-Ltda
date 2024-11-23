@@ -1,4 +1,3 @@
-<!-- ventas-pago.component.html -->
 <div class="top-right-buttons">
   <p>Filtro estado de pago </p>
   <button
@@ -20,9 +19,9 @@
 <div class="ventas-pago">
   <h1>Detalles de Pago</h1>
 
-  <div class="order-details" *ngFor="let order of orders">
+  <div class="order-details" *ngFor="let order of filteredOrders">
     <p><strong>Username:</strong> {{ order.username }}</p>
-    <p><strong>Email:</strong> {{ order.email }}</p> <!-- Mostrar el email -->
+    <p><strong>Email:</strong> {{ order.email }}</p>
     <p><strong>Número de Orden:</strong> {{ order.numeroOrden }}</p>
 
     <div class="order-box">
@@ -39,10 +38,10 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let cuota of order.cuotas">
+              <tr *ngFor="let cuota of order.detallesCuotas.listaCuotas">
                 <td><strong>{{ cuota.numeroCuota }}</strong></td>
                 <td>{{ cuota.estado }}</td>
-                <td>{{ cuota.monto | currency }}</td> <!-- Mostrar monto con formato de moneda -->
+                <td>{{ cuota.monto | currency }}</td>
               </tr>
             </tbody>
           </table>
@@ -51,4 +50,3 @@
     </div>
   </div>
 </div>
-
