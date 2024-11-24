@@ -3,12 +3,10 @@
   <button (click)="filtrarPendientes()">Pendiente</button>
   <button (click)="filtrarAprobadas()">Aprobado</button>
   <button (click)="filtrarRechazadas()">Rechazado</button>
+  <button (click)="mostrarFormulario()">Modificar Estado de una Orden</button>
+  <button (click)="mostrarFormularioCuotas()">Modificar Cuotas</button>
 </div>
 
-<!-- Botón siempre visible -->
-<div>
-  <button (click)="mostrarFormulario()" *ngIf="!mostrarSeccionModificar">Modificar Estado de una Orden</button>
-</div>
 
 <div *ngIf="mostrarSeccionModificar">
   <h3>Actualizar estado de una orden</h3>
@@ -30,6 +28,21 @@
 
     <button type="submit">Actualizar Estado</button>
     <button type="button" (click)="cerrarFormulario()">Cancelar</button>
+  </form>
+</div>
+
+<!-- Formulario para editar las cuotas -->
+<div *ngIf="mostrarSeccionCuotas">
+  <h3>Actualizar Cuotas de una Orden</h3>
+  <form (ngSubmit)="actualizarCuotas()">
+    <label for="ordenIdCuotas">ID de la Orden:</label>
+    <input type="text" id="ordenIdCuotas" [(ngModel)]="ordenIdCuotas" name="ordenIdCuotas" required />
+
+    <label for="numeroDeCuotas">Número de Cuotas:</label>
+    <input type="number" id="numeroDeCuotas" [(ngModel)]="numeroDeCuotas" name="numeroDeCuotas" min="1" required />
+
+    <button type="submit">Actualizar Cuotas</button>
+    <button type="button" (click)="cerrarFormularioCuotas()">Cancelar</button>
   </form>
 </div>
 

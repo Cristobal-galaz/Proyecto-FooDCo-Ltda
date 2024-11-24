@@ -19,6 +19,11 @@ export class PedidoAceptarComponent implements OnInit {
   ordenId: string = ''; // ID de la orden que se desea modificar
   empleadoId: string | null = null; // ID del empleado autenticado
 
+  // Variables adicionales para la edición de cuotas
+  mostrarSeccionCuotas: boolean = false; // Controla la visibilidad del formulario de cuotas
+  ordenIdCuotas: string = ''; // Almacena el ID de la orden para editar las cuotas
+  numeroDeCuotas: number = 1; // Almacena el número de cuotas
+
   constructor(private apiService: ApiserviceService) {}
 
   ngOnInit() {
@@ -69,6 +74,7 @@ export class PedidoAceptarComponent implements OnInit {
   // Método para mostrar el formulario y ocultar los filtros
   mostrarFormulario() {
     this.mostrarSeccionModificar = true;
+    this.mostrarSeccionCuotas = false; // Cerrar el formulario de cuotas
   }
 
   // Método para ocultar el formulario
@@ -100,6 +106,43 @@ export class PedidoAceptarComponent implements OnInit {
       (error) => {
         console.error('Error al actualizar el estado:', error);
         alert('Hubo un error al actualizar el estado.');
+      }
+    );
+  }
+
+  // Método para mostrar el formulario de edición de cuotas
+  mostrarFormularioCuotas() {
+    this.mostrarSeccionCuotas = true;
+    this.mostrarSeccionModificar = false; // Cerrar el formulario de estado
+  }
+
+  // Método para cerrar el formulario de edición de cuotas
+  cerrarFormularioCuotas() {
+    this.mostrarSeccionCuotas = false;
+    this.ordenIdCuotas = ''; // Limpiar el campo de ID
+    this.numeroDeCuotas = 1; // Restaurar el valor inicial de cuotas
+  }
+
+  // Método para actualizar las cuotas de una orden
+  actualizarCuotas() {
+    if (!this.ordenIdCuotas || !this.numeroDeCuotas || this.numeroDeCuotas <= 0) {
+      alert('Debe ingresar un ID de orden válido y un número de cuotas.');
+      return;
+    }
+
+    const url = `https://foodco.agroheladas.cl/api/v1/orden-compra/${this.ordenIdCuotas}/cuotas`;
+    const payload = {
+      numeroDeCuotas: this.numeroDeCuotas,
+    };
+
+    this.apiService.actualizarCuotasOrden(url, payload).subscribe(
+      (response) => {
+        alert('Cuotas de la orden actualizadas correctamente.');
+        this.cerrarFormularioCuotas(); // Ocultar el formulario después de la actualización
+      },
+      (error) => {
+        console.error('Error al actualizar las cuotas:', error);
+        alert('Hubo un error al actualizar las cuotas.');
       }
     );
   }

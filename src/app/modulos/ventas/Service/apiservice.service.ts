@@ -141,7 +141,9 @@ actualizarEstadoOrden(url: string, payload: { nuevoEstado: string; empleadoId: s
   return this.http.put(url, payload);
 }
 
-
+actualizarCuotasOrden(url: string, payload: { numeroDeCuotas: number }) {
+  return this.http.put(url, payload);
+}
 
 }
 
