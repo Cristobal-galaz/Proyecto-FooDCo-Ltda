@@ -5,6 +5,34 @@
   <button (click)="filtrarRechazadas()">Rechazado</button>
 </div>
 
+<!-- Botón siempre visible -->
+<div>
+  <button (click)="mostrarFormulario()" *ngIf="!mostrarSeccionModificar">Modificar Estado de una Orden</button>
+</div>
+
+<div *ngIf="mostrarSeccionModificar">
+  <h3>Actualizar estado de una orden</h3>
+  <form (ngSubmit)="actualizarEstadoOrden()">
+    <label for="ordenId">ID de la Orden:</label>
+    <input type="text" id="ordenId" [(ngModel)]="ordenId" name="ordenId" required />
+
+    <label for="nuevoEstado">Nuevo Estado:</label>
+    <select id="nuevoEstado" [(ngModel)]="nuevoEstado" name="nuevoEstado">
+      <option value="pendiente">Pendiente</option>
+      <option value="aprobado">Aprobado</option>
+      <option value="rechazado">Rechazado</option>
+      <option value="en_produccion">En Producción</option>
+      <option value="listo_para_despachar">Listo para Despachar</option>
+      <option value="despachado">Despachado</option>
+      <option value="entregado">Entregado</option>
+      <option value="completado">Completado</option>
+    </select>
+
+    <button type="submit">Actualizar Estado</button>
+    <button type="button" (click)="cerrarFormulario()">Cancelar</button>
+  </form>
+</div>
+
 <div *ngFor="let orden of ordenesFiltradas">
   <div>
     <h4>Orden ID: {{ orden._id }}</h4>

@@ -136,6 +136,13 @@ getOrdenCompra2() {
 }
 
 
+
+actualizarEstadoOrden(url: string, payload: { nuevoEstado: string; empleadoId: string }) {
+  return this.http.put(url, payload);
+}
+
+
+
 }
 
 
