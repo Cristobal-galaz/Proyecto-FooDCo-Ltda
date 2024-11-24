@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ApiserviceService } from '../../../Service/apiservice.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -9,48 +10,48 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './pedido-aceptar.component.html',
   styleUrls: ['./pedido-aceptar.component.scss'],
 })
-export class PedidoAceptarComponent {
-  // Declaración de 'quota' como propiedad opcional
-  data: { name: string; quota?: string }[] = [
-    { name: 'Pedido 1' },
-    { name: 'Pedido 2' },
-    { name: 'Pedido 3' }
-  ];
+export class PedidoAceptarComponent implements OnInit {
+  ordenes: any[] = []; // Almacena las órdenes completas
+  ordenesFiltradas: any[] = []; // Almacena las órdenes filtradas por estado
+  estadoSeleccionado: string = 'todos'; // Estado inicial que muestra todas las órdenes
 
-  // Propiedad para el idioma actual
-  language: string = 'es';
+  constructor(private apiService: ApiserviceService) {}
 
-  toggleLanguage(): void {
-    this.language = this.language === 'es' ? 'en' : 'es';
+  ngOnInit() {
+    // Obtener todas las órdenes cuando se inicia el componente
+    this.apiService.getOrdenCompra2().subscribe((data: any[]) => {
+      this.ordenes = data; // Guardamos todas las órdenes
+      this.ordenesFiltradas = [...this.ordenes]; // Mostrar todas inicialmente
+    });
   }
 
-  accept(item: any): void {
-    console.log(this.language === 'es' ? 'Aceptado:' : 'Accepted:', item);
-    this.data = this.data.filter(d => d !== item);
+  // Método para filtrar las órdenes por estado
+  filtrarOrdenes() {
+    if (this.estadoSeleccionado === 'todos') {
+      this.ordenesFiltradas = [...this.ordenes]; // Mostrar todas
+    } else {
+      this.ordenesFiltradas = this.ordenes.filter(orden => orden.estado === this.estadoSeleccionado);
+    }
   }
 
-  reject(item: any): void {
-    console.log(this.language === 'es' ? 'Rechazado:' : 'Rejected:', item);
-    this.data = this.data.filter(d => d !== item);
-  }  
-
-  activeButton: number | null = null;
-
-  setActiveButton(buttonNumber: number): void {
-    this.activeButton = buttonNumber;
-    console.log(`Botón ${buttonNumber} activado`);
+  // Métodos para cambiar el filtro de estado
+  filtrarPendientes() {
+    this.estadoSeleccionado = 'pendiente';
+    this.filtrarOrdenes();
   }
 
-  button1Action() {
-    console.log('Botón 1 presionado');
-  }
-  
-  button2Action() {
-    console.log('Botón 2 presionado');
-  }
-  
-  button3Action() {
-    console.log('Botón 3 presionado');
+  filtrarAprobadas() {
+    this.estadoSeleccionado = 'aprobado';
+    this.filtrarOrdenes();
   }
 
+  filtrarRechazadas() {
+    this.estadoSeleccionado = 'rechazado';
+    this.filtrarOrdenes();
+  }
+
+  mostrarTodas() {
+    this.estadoSeleccionado = 'todos';
+    this.filtrarOrdenes();
+  }
 }

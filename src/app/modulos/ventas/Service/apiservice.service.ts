@@ -124,6 +124,16 @@ uploadFactura(formData: FormData): Observable<any> {
   const uploadUrl = `${this.apiurl}factura/upload`;
   return this.http.post<any>(uploadUrl, formData);
 }
+getOrdenesPorEstado(estado: string) {
+  return this.http.get<OrdenCompra[]>(`${this.apiurl}orden-compra/list/estado/${estado}`).pipe(
+    tap((data) => console.log(`Órdenes obtenidas con estado ${estado}:`, data))
+  );
+}
+
+
+getOrdenCompra2() {
+  return this.http.get<[]>(`${this.apiurl}orden-compra/list`);
+}
 
 
 }
