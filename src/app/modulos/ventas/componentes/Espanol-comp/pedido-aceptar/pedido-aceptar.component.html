@@ -1,17 +1,64 @@
-<div class="container">
-    <h2>Lista de Pedidos</h2>
-    <div class="item" *ngFor="let item of data">
-        <span class="item-name">{{ item.name }}</span>
-        <div class="actions">
-            <input 
-                type="text" 
-                class="quota-input" 
-                placeholder="Cuota" 
-                [(ngModel)]="item.quota" 
-                name="quota-{{item.name}}" 
-            />
-            <button class="accept-btn" (click)="accept(item)">Aceptar</button>
-            <button class="reject-btn" (click)="reject(item)">Rechazar</button>
-        </div>
-    </div>
+<div>
+  <button (click)="mostrarTodas()">Todas</button>
+  <button (click)="filtrarPendientes()">Pendiente</button>
+  <button (click)="filtrarAprobadas()">Aprobado</button>
+  <button (click)="filtrarRechazadas()">Rechazado</button>
+  <button (click)="mostrarFormulario()">Modificar Estado de una Orden</button>
+  <button (click)="mostrarFormularioCuotas()">Modificar Cuotas</button>
+</div>
+
+
+<div *ngIf="mostrarSeccionModificar">
+  <h3>Actualizar estado de una orden</h3>
+  <form (ngSubmit)="actualizarEstadoOrden()">
+    <label for="ordenId">ID de la Orden:</label>
+    <input type="text" id="ordenId" [(ngModel)]="ordenId" name="ordenId" required />
+
+    <label for="nuevoEstado">Nuevo Estado:</label>
+    <select id="nuevoEstado" [(ngModel)]="nuevoEstado" name="nuevoEstado">
+      <option value="pendiente">Pendiente</option>
+      <option value="aprobado">Aprobado</option>
+      <option value="rechazado">Rechazado</option>
+      <option value="en_produccion">En Producción</option>
+      <option value="listo_para_despachar">Listo para Despachar</option>
+      <option value="despachado">Despachado</option>
+      <option value="entregado">Entregado</option>
+      <option value="completado">Completado</option>
+    </select>
+
+    <button type="submit">Actualizar Estado</button>
+    <button type="button" (click)="cerrarFormulario()">Cancelar</button>
+  </form>
+</div>
+
+<!-- Formulario para editar las cuotas -->
+<div *ngIf="mostrarSeccionCuotas">
+  <h3>Actualizar Cuotas de una Orden</h3>
+  <form (ngSubmit)="actualizarCuotas()">
+    <label for="ordenIdCuotas">ID de la Orden:</label>
+    <input type="text" id="ordenIdCuotas" [(ngModel)]="ordenIdCuotas" name="ordenIdCuotas" required />
+
+    <label for="numeroDeCuotas">Número de Cuotas:</label>
+    <input type="number" id="numeroDeCuotas" [(ngModel)]="numeroDeCuotas" name="numeroDeCuotas" min="1" required />
+
+    <button type="submit">Actualizar Cuotas</button>
+    <button type="button" (click)="cerrarFormularioCuotas()">Cancelar</button>
+  </form>
+</div>
+
+<div *ngFor="let orden of ordenesFiltradas">
+  <div>
+    <h4>Orden ID: {{ orden._id }}</h4>
+    <p>Estado: {{ orden.estado }}</p>
+    <p>Precio Total: {{ orden.precioTotalOrden }}</p>
+    <h5>Productos:</h5>
+    <ul>
+      <li *ngFor="let producto of orden.seleccionProductos?.productos || []">
+        <p>Producto: {{ producto?.producto?.nombre || 'Sin nombre' }}</p>
+        <p>Cantidad: {{ producto?.cantidad || 0 }}</p>
+        <p>Precio Unitario: {{ producto?.precioUnitario || 0 }}</p>
+        <p>Total: {{ producto?.precioTotal || 0 }}</p>
+      </li>
+    </ul>
+  </div>
 </div>
