@@ -177,3 +177,33 @@
 .cuotas-box tr:hover {
   background-color: #f0f0f0; /* Resalta la fila cuando el mouse pasa por encima */
 }
+
+
+.pago {
+  transition: all 0.3s ease-in-out;
+  opacity: 1;
+}
+.pago.ng-hide {
+  opacity: 0;
+  display: none;
+}
+
+.pago {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  background-color: #666f88;
+  color: white;
+  border: none;
+  text-align: center;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.pago:hover {
+  background-color: #E3F2FD;
+  color: #a7a7a7; /* Texto blanco al pasar el mouse */
+  border-color: #000000; /* Borde blanco al pasar el mouse */
+}

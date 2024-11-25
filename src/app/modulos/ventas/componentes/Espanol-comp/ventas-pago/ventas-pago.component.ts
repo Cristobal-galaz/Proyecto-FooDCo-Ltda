@@ -64,4 +64,8 @@ export class VentasPagoComponent {
       }
     );
   }
+
+  toggleVisibility(order: any): void {
+    order.isVisible = !order.isVisible;
+  }
 }
