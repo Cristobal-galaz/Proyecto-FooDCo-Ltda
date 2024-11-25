@@ -146,4 +146,15 @@ export class PedidoAceptarComponent implements OnInit {
       }
     );
   }
+
+  botonActivo: string = ''; // Variable para rastrear el botón activo
+
+  seleccionarBoton(boton: string) {
+    this.botonActivo = boton; // Establece el botón activo según el clic
+  }
+
+  esActivo(boton: string): boolean {
+    return this.botonActivo === boton; // Devuelve true si el botón está activo
+  }
+
 }

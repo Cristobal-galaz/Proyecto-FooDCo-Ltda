@@ -1,11 +1,30 @@
-<div>
-  <button (click)="mostrarTodas()">Todas</button>
-  <button (click)="filtrarPendientes()">Pendiente</button>
-  <button (click)="filtrarAprobadas()">Aprobado</button>
-  <button (click)="filtrarRechazadas()">Rechazado</button>
-  <button (click)="mostrarFormulario()">Modificar Estado de una Orden</button>
-  <button (click)="mostrarFormularioCuotas()">Modificar Cuotas</button>
+<div class="botones-container">Filtros estado orden
+  <button 
+    class="btn btn-todas" 
+    [class.active-button]="esActivo('todas')" 
+    (click)="seleccionarBoton('todas')">Todas</button>
+  <button 
+    class="btn btn-pendientes" 
+    [class.active-button]="esActivo('pendientes')" 
+    (click)="seleccionarBoton('pendientes')">Pendiente</button>
+  <button 
+    class="btn btn-aprobadas" 
+    [class.active-button]="esActivo('aprobadas')" 
+    (click)="seleccionarBoton('aprobadas')">Aprobado</button>
+  <button 
+    class="btn btn-rechazadas" 
+    [class.active-button]="esActivo('rechazadas')" 
+    (click)="seleccionarBoton('rechazadas')">Rechazado</button>
+  <button 
+    class="btn btn-modificar-estado" 
+    [class.active-button]="esActivo('modificarEstado')" 
+    (click)="seleccionarBoton('modificarEstado')">Modificar Estado de una Orden</button>
+  <button 
+    class="btn btn-modificar-cuotas" 
+    [class.active-button]="esActivo('modificarCuotas')" 
+    (click)="seleccionarBoton('modificarCuotas')">Modificar Cuotas</button>
 </div>
+
 
 
 <div *ngIf="mostrarSeccionModificar">
