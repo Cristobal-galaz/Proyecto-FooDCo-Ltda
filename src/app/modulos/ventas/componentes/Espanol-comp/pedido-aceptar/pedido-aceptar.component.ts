@@ -157,4 +157,8 @@ export class PedidoAceptarComponent implements OnInit {
     return this.botonActivo === boton; // Devuelve true si el botón está activo
   }
 
+  toggleVisibility(orden: any): void {
+    orden.isVisible = !orden.isVisible;
+  }
+
 }

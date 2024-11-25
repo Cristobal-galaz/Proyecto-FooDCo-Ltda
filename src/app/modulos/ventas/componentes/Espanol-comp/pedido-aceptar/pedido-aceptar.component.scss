@@ -134,3 +134,54 @@ h2 {
   color: #a7a7a7; /* Texto gris */
   border-color: #f8f8f8; /* Borde claro */
 }
+
+.pedido {
+  transition: all 0.3s ease-in-out;
+  opacity: 1;
+}
+.pago.ng-hide {
+  opacity: 0;
+  display: none;
+}
+
+.pedido {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  background-color: #666f88;
+  color: white;
+  border: none;
+  text-align: center;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.pedido:hover {
+  background-color: #E3F2FD;
+  color: #a7a7a7; /* Texto blanco al pasar el mouse */
+  border-color: #000000; /* Borde blanco al pasar el mouse */
+}
+
+.actualizar {
+  background-color: #C8E6C9; /* Verde claro */
+  color: #000; /* Texto negro */
+}
+
+.actualizar:hover {
+  background-color: #E3F2FD;
+  color: #a7a7a7; /* Texto blanco al pasar el mouse */
+  border-color: #000000; /* Borde blanco al pasar el mouse */
+}
+
+.cancelar {
+  background-color: #FFCDD2; /* Rojo claro */
+  color: #000; /* Texto negro */
+}
+
+.cancelar:hover {
+  background-color: #E3F2FD;
+  color: #a7a7a7; /* Texto blanco al pasar el mouse */
+  border-color: #000000; /* Borde blanco al pasar el mouse */
+}

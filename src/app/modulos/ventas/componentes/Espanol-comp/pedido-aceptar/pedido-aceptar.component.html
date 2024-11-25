@@ -2,27 +2,27 @@
   <button 
     class="btn btn-todas" 
     [class.active-button]="esActivo('todas')" 
-    (click)="seleccionarBoton('todas')">Todas</button>
+    (click)="mostrarTodas()">Todas</button>
   <button 
     class="btn btn-pendientes" 
     [class.active-button]="esActivo('pendientes')" 
-    (click)="seleccionarBoton('pendientes')">Pendiente</button>
+    (click)="filtrarPendientes()">Pendiente</button>
   <button 
     class="btn btn-aprobadas" 
     [class.active-button]="esActivo('aprobadas')" 
-    (click)="seleccionarBoton('aprobadas')">Aprobado</button>
+    (click)="filtrarAprobadas()">Aprobado</button>
   <button 
     class="btn btn-rechazadas" 
     [class.active-button]="esActivo('rechazadas')" 
-    (click)="seleccionarBoton('rechazadas')">Rechazado</button>
+    (click)="filtrarRechazadas()">Rechazado</button>
   <button 
     class="btn btn-modificar-estado" 
     [class.active-button]="esActivo('modificarEstado')" 
-    (click)="seleccionarBoton('modificarEstado')">Modificar Estado de una Orden</button>
+    (click)="mostrarFormulario()">Modificar Estado de una Orden</button>
   <button 
     class="btn btn-modificar-cuotas" 
     [class.active-button]="esActivo('modificarCuotas')" 
-    (click)="seleccionarBoton('modificarCuotas')">Modificar Cuotas</button>
+    (click)="mostrarFormularioCuotas()">Modificar Cuotas</button>
 </div>
 
 
@@ -45,8 +45,8 @@
       <option value="completado">Completado</option>
     </select>
 
-    <button type="submit">Actualizar Estado</button>
-    <button type="button" (click)="cerrarFormulario()">Cancelar</button>
+    <button class="actualizar" type="submit">Actualizar Estado</button>
+    <button class="cancelar" type="button" (click)="cerrarFormulario()">Cancelar</button>
   </form>
 </div>
 
@@ -60,13 +60,19 @@
     <label for="numeroDeCuotas">Número de Cuotas:</label>
     <input type="number" id="numeroDeCuotas" [(ngModel)]="numeroDeCuotas" name="numeroDeCuotas" min="1" required />
 
-    <button type="submit">Actualizar Cuotas</button>
-    <button type="button" (click)="cerrarFormularioCuotas()">Cancelar</button>
+    <button class="actualizar" type="submit">Actualizar Cuotas</button>
+    <button class="cancelar" type="button" (click)="cerrarFormularioCuotas()">Cancelar</button>
   </form>
 </div>
-
+<h1>Ordenes</h1>
 <div *ngFor="let orden of ordenesFiltradas">
-  <div>
+  <!-- Botón para alternar la visibilidad -->
+  <button class="pedido" (click)="toggleVisibility(orden)">
+    Orden ID: {{ orden._id }}
+  </button>
+
+  <!-- Contenido controlado por orden.isVisible -->
+  <div *ngIf="orden.isVisible">
     <h4>Orden ID: {{ orden._id }}</h4>
     <p>Estado: {{ orden.estado }}</p>
     <p>Precio Total: {{ orden.precioTotalOrden }}</p>
@@ -81,3 +87,4 @@
     </ul>
   </div>
 </div>
+
