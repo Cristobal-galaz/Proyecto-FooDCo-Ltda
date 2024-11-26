@@ -58,7 +58,7 @@
       <button class="orden-btn" 
       
       (click)="toggleOrdenDetails(orden._id)">
-        Orden de compra N° {{ orden._id }}
+        Orden de compra N° {{ orden.numero }}
       </button>
 
       <!-- Información de la orden, se muestra solo si la orden está activa -->
@@ -76,6 +76,7 @@
             Fono: {{ orden.cliente.empresa.telefono_empresa }} |
             Correo: {{ orden.cliente.empresa.correo_contacto }}
           </p>
+          <p><strong>ID Orden: </strong>{{ orden._id }}</p>
           <p *ngIf="orden.seleccionProductos?.fechaCreacion"><strong>Fecha de orden:</strong> {{ orden.seleccionProductos.fechaCreacion }}</p>
         </div>
 

@@ -22,7 +22,7 @@
   <div class="order-details" *ngFor="let order of filteredOrders">
     <!-- Botón para alternar la visibilidad de este cuadro -->
     <button class="pago" (click)="toggleVisibility(order)">
-      Número de Orden {{ order.numeroOrden }}
+      Orden de compra N° {{ order.numeroOrden }}
     </button>
 
     <!-- Contenido controlado por order.isVisible -->
@@ -30,7 +30,7 @@
       <p><strong>Username:</strong> {{ order.username }}</p>
       <p><strong>Email:</strong> {{ order.email }}</p>
       <p><strong>Número de Orden:</strong> {{ order.numeroOrden }}</p>
-      
+      <p><strong>ID orden: </strong></p>
 
       <div class="order-box">
         <h2>Detalles de la Orden</h2>

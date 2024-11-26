@@ -68,7 +68,7 @@
 <div *ngFor="let orden of ordenesFiltradas">
   <!-- Botón para alternar la visibilidad -->
   <button class="pedido" (click)="toggleVisibility(orden)">
-    Orden ID: {{ orden._id }}
+    Orden de compra N° {{orden.numero}}
   </button>
 
   <!-- Contenido controlado por orden.isVisible -->

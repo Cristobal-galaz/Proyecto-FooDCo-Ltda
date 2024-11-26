@@ -148,7 +148,6 @@ export class OrdenCompraComponent implements OnInit {
 
   ngOnInit(): void {
     // Obtener las órdenes al inicializar el componente
-
   }
 
 }
