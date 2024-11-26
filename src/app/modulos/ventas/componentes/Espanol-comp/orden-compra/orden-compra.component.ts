@@ -24,6 +24,7 @@ export class OrdenCompraComponent implements OnInit {
   // Alternar idioma
   toggleLanguage(): void {
     this.language = this.language === 'es' ? 'en' : 'es';
+    localStorage.setItem('language', this.language); // Guardar el idioma seleccionado en LocalStorage
   }
 
   // Manejar el filtrado de órdenes por período
@@ -59,7 +60,7 @@ export class OrdenCompraComponent implements OnInit {
 
   // Validación de órdenes
   validarOrden(orden: any): boolean {
-    return orden.empleado?._id === this.userId && orden.seleccionProductos?.productos?.length > 0;
+    return orden?.empleado?._id === this.userId && orden?.seleccionProductos?.productos?.length > 0;
   }
 
   // Procesar órdenes
@@ -94,5 +95,10 @@ export class OrdenCompraComponent implements OnInit {
     return mapping[periodo] || null;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    const savedLanguage = localStorage.getItem('language');
+    if (savedLanguage) {
+      this.language = savedLanguage; // Recupera el idioma guardado
+    }
+  }
 }
