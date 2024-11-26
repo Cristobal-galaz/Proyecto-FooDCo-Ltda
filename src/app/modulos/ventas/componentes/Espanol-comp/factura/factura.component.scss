@@ -1,54 +1,99 @@
+.upload-container {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+}
+
+/* Botón de cambio de idioma */
 .language-switch {
   position: absolute;
   top: 20px;
   right: 20px;
-  background-color: #00bfff; // Color celeste
+  background-color: #00bfff;
   color: white;
-  border: none;
   padding: 10px 20px;
+  border: none;
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
+  transition: background-color 0.3s ease;
 }
 
 .language-switch:hover {
-  background-color: #b8860b; // Color dorado al pasar el cursor
+  background-color: #b39e00;
 }
 
-.container {
-  width: 50%;
-  margin: auto;
+/* Formulario */
+.form-container {
+  background: #ffffff;
+  padding: 30px 40px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  width: 100%;
   text-align: center;
-  margin-top: 80px; // Ajuste para evitar que el contenedor se superponga con el botón
+}
+
+h2 {
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 24px;
 }
 
 label {
-  display: block;
-  margin: 10px 0;
   font-weight: bold;
-}
-
-input[type="file"] {
   display: block;
-  margin: 10px auto;
+  margin-bottom: 5px;
+  text-align: left;
 }
 
-button {
-  margin-top: 10px;
-  padding: 10px 20px;
+input[type="text"],
+input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Botón de envío */
+.submit-btn {
+  margin-top: 20px;
+  padding: 12px 20px;
   background-color: #007bff;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
 }
 
-button:disabled {
-  background-color: #cccccc;
+.submit-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }
 
+.submit-btn:hover:enabled {
+  background-color: #0056b3;
+}
+
+/* Mensaje */
 .message {
-  margin-top: 15px;
+  margin-top: 20px;
+  font-size: 14px;
   font-weight: bold;
   color: green;
 }

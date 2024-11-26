@@ -1,124 +1,81 @@
 <div class="top-right-button">
-  <button class="btn btn-outline-primary" (click)="switchToEnglish()">Switch to English</button>
+  <button class="btn btn-outline-primary" (click)="toggleLanguage()">
+    {{ language === 'es' ? 'Switch to English' : 'Cambiar a Español' }}
+  </button>
 </div>
 
-
 <div class="top-right-buttons">
-  <h1>Filtro por fecha</h1>
+  <h1>{{ language === 'es' ? 'Filtro por fecha' : 'Filter by Date' }}</h1>
   <button
     class="btn"
     [ngClass]="{ 'active-button': activeButton === 1 }"
     (click)="filtrarPorPeriodo('diario')"
   >
-    Diario
+    {{ language === 'es' ? 'Diario' : 'Daily' }}
   </button>
   <button
     class="btn"
     [ngClass]="{ 'active-button': activeButton === 2 }"
     (click)="filtrarPorPeriodo('semanal')"
   >
-    Semanal
+    {{ language === 'es' ? 'Semanal' : 'Weekly' }}
   </button>
   <button
     class="btn"
     [ngClass]="{ 'active-button': activeButton === 3 }"
     (click)="filtrarPorPeriodo('bisemanal')"
   >
-    Bisemanal
+    {{ language === 'es' ? 'Bisemanal' : 'Biweekly' }}
   </button>
   <button
     class="btn"
     [ngClass]="{ 'active-button': activeButton === 4 }"
     (click)="filtrarPorPeriodo('mensual')"
   >
-    Mensual
+    {{ language === 'es' ? 'Mensual' : 'Monthly' }}
   </button>
   <button
     class="btn"
     [ngClass]="{ 'active-button': activeButton === 5 }"
     (click)="filtrarPorPeriodo('trimestral')"
   >
-    Trimestral
+    {{ language === 'es' ? 'Trimestral' : 'Quarterly' }}
   </button>
   <button
     class="btn"
     [ngClass]="{ 'active-button': activeButton === 6 }"
     (click)="filtrarPorPeriodo('semestral')"
   >
-    Semestral
+    {{ language === 'es' ? 'Semestral' : 'Semiannual' }}
   </button>
 </div>
-
-
 
 <div *ngIf="ordenes.length > 0" class="ordenes-list">
   <div *ngFor="let orden of ordenes">
     <div class="orden-container">
-      <!-- Botón que controla el desplegable -->
-      <button class="orden-btn" 
-      
-      (click)="toggleOrdenDetails(orden._id)">
-        Orden de compra N° {{ orden.numero }}
+      <button class="orden-btn" (click)="toggleOrdenDetails(orden._id)">
+        {{ language === 'es' ? 'Orden de compra N°' : 'Purchase Order No.' }} {{ orden.numero }}
       </button>
-
-      <!-- Información de la orden, se muestra solo si la orden está activa -->
       <div *ngIf="isOrdenActive(orden._id)" class="orden-details">
         <div class="seccion">
-          <p *ngIf="orden.cliente?.contacto?.apellido">
-            <strong>Nombre cliente:</strong> {{ orden.cliente.username }} {{ orden.cliente.contacto.apellido }}
+          <p>
+            <strong>{{ language === 'es' ? 'Nombre cliente:' : 'Customer Name:' }}</strong>
+            {{ orden.cliente.username }} {{ orden.cliente.contacto?.apellido }}
           </p>
-
           <p *ngIf="orden.cliente?.empresa">
-            <strong>Datos de factura:</strong> Nombre: {{ orden.cliente.empresa.nombre_empresa }} |
-            Direccion: {{ orden.cliente.empresa.direccion }} |
-            Giro: {{ orden.cliente.empresa.giro }} |
-            Rut: {{ orden.cliente.empresa.rut_empresa }} |
-            Fono: {{ orden.cliente.empresa.telefono_empresa }} |
-            Correo: {{ orden.cliente.empresa.correo_contacto }}
+            <strong>{{ language === 'es' ? 'Datos de factura:' : 'Billing Info:' }}</strong>
+            {{ orden.cliente.empresa.nombre_empresa }}
           </p>
-          <p><strong>ID Orden: </strong>{{ orden._id }}</p>
-          <p *ngIf="orden.seleccionProductos?.fechaCreacion"><strong>Fecha de orden:</strong> {{ orden.seleccionProductos.fechaCreacion }}</p>
-        </div>
-
-        <h3>Productos:</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Nombre</th>
-              <th>Cantidad</th>
-              <th>Precio unitario</th>
-              <th>Precio</th>
-              <th>Descuento</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let producto of orden.seleccionProductos.productos; let i = index">
-              <td>{{ i + 1 }}</td>
-              <td>{{ producto?.producto?.nombre || 'Sin nombre' }}</td>
-              <td>{{ producto.cantidad }}</td>
-              <td>${{ producto.precioUnitario }}</td>
-              <td>${{ producto.precioTotal || 0 }}</td>
-              <td>${{ producto.descuento }}</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <div class="resumen">
-          <p><strong>IVA:</strong> {{ orden.iva }}</p>
-          <p class="precio-final"><strong>Precio final:</strong> {{ orden.precioFinalConIva }}</p>
-        </div>
-
-        <div class="seccion">
-          <p><strong>Lugar de entrega:</strong> {{ orden.seleccionProductos.direccion }}</p>
-          <p><strong>Fecha de entrega:</strong> {{ orden.seleccionProductos.fechaRequerida }}</p>
+          <p>
+            <strong>{{ language === 'es' ? 'Fecha de orden:' : 'Order Date:' }}</strong>
+            {{ orden.seleccionProductos?.fechaCreacion }}
+          </p>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- En caso de que no haya órdenes cargadas -->
 <div *ngIf="ordenes.length === 0">
-  <p>No se ha encontrado ninguna orden.</p>
+  <p>{{ language === 'es' ? 'No se ha encontrado ninguna orden.' : 'No orders found.' }}</p>
 </div>
