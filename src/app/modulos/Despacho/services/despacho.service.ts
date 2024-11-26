@@ -36,5 +36,5 @@ export class DespachoService {
   obtenerOrdenesListasParaDespacho(): Observable<OrdenDespacho[]> {
     return this.http.get<OrdenDespacho[]>(`${environment.apiUrl}orden-compra/list/despacho`);
   }
-  
+
 }
