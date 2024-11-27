@@ -9,13 +9,11 @@ export const routes: Routes = [
     path: 'cliente',
     title: 'Cliente',
     loadComponent: () => import('./pages/clientes/dashboard-cliente/dashboard-cliente.component').then(m => m.DashboardClienteComponent),
-    canActivate: [authGuard],
     children: [
       {
         path: 'menus',
         title: 'Menus',
         loadComponent: () => import('./pages/clientes/menus/menus.component').then(m => m.MenusComponent),
-        canActivate: [authGuard],
       },
       {
         path: 'orden',

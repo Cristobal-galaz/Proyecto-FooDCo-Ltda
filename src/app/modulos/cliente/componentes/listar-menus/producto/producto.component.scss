@@ -1,57 +1,100 @@
-.product {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
-  }
-  
-  .product img {
-    background-size: cover; /* Asegura que la imagen cubra todo el contenedor sin distorsionarse */
-    background-position: center; /* Centra la imagen en el contenedor */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
-    width: 100%; /* Asegura que ocupe el 100% del ancho del contenedor */
-    height: 45%;
-  }
-  
-  .product .description {
-    flex-grow: 1;
-  }
-  
-  .product .actions {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .buttons {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centra horizontalmente los elementos dentro de "buttons" */
-  }
-  
-  .input-group {
-    display: flex;
-    flex-direction: column; /* Coloca el input de cantidad y los botones en una columna */
-    align-items: center; /* Centra los elementos horizontalmente */
+
+mat-card.product {
+  display: flex;
+  flex-direction: column; /* Asegura que los elementos de la tarjeta estén en columna */
+  align-items: center; /* Centra los elementos en la tarjeta */
+  justify-content: space-between; /* Distribuye los elementos uniformemente */
+  max-width: 300px;
+   /* Evita que las tarjetas sobrepasen el ancho del contenedor */
+  width: 100%; /* Para que las tarjetas se expandan dentro del grid */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Animación para interacción */
 }
-  
-  .cantidad {
-    width: 100%; /* El input de cantidad será responsivo */
-    margin-bottom: 10px; /* Espacio inferior para separar el input de los botones */
+
+mat-card-title {
+  font-size: clamp(0.9rem, 1.0vw, 1rem); /* Tamaño mínimo, adaptativo y máximo */
+  font-weight: bold;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: block;
+}
+
+mat-card-actions .buttons {
+  display: flex;
+  flex-direction: row; /* Coloca los elementos en fila */
+  justify-content: space-between; /* Espacio uniforme entre los elementos */
+  align-items: center; /* Alinea verticalmente los elementos */
+  width: 100%;
+  gap: 1rem; /* Espaciado entre precio y botones */
+  padding: 0 1rem; /* Espaciado interno horizontal */
+}
+
+/* Estilo para el precio */
+mat-card-actions .price {
+  font-size: 1rem;
+  font-weight: bold;
+  white-space: nowrap;
+  margin-right: auto; /* Empuja el precio hacia la izquierda */
+}
+
+/* Botones */
+mat-card-actions button {
+  font-size: 0.9rem;
+  color: #1976d2;
+  min-width: 80px; /* Asegura que los botones tengan un tamaño uniforme */
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-self: center;
+}
+.button-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  mat-card-actions .buttons {
+    flex-direction: column; /* Cambia a disposición vertical en pantallas pequeñas */
+    align-items: center; /* Centra los elementos verticalmente */
+    gap: 0.5rem;
   }
-  
-  .button-group {
-    display: flex;
-    justify-content: center; /* Centra los botones debajo del input */
-    gap: 5px; /* Espacio entre los botones */
+
+  mat-card-actions .price {
+    margin-right: 0; /* Elimina el margen en dispositivos pequeños */
   }
-  
-  .mat-card {
-    flex-grow: 1;
-    width: 100%;
-    height: 100%; /* Evita que los botones modifiquen el tamaño del card */
+}
+
+
+
+mat-card.product img {
+  max-width: 100%; /* Imagen responsiva */
+  height: 30%; /* Mantiene proporción */
+  object-fit: cover; /* Recorta la imagen si es necesario */
+}
+
+mat-card.product:hover {
+  transform: translateY(-5px); /* Efecto al pasar el cursor */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Ajustes para pantallas más pequeñas */
+@media (max-width: 768px) {
+  .card-container {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Reduce el ancho mínimo */
+    padding: 0.5rem; /* Menos espacio en pantallas pequeñas */
   }
-  
-  .mat-card-actions {
-    flex-grow: 0;
-    flex-shrink: 0; /* Asegura que las acciones no afecten el tamaño del card */
+
+  mat-card.product {
+    padding: 0.5rem; /* Ajusta el padding de la tarjeta */
   }
+}
