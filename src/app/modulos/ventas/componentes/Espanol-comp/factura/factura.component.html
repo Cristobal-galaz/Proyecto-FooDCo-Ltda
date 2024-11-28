@@ -1,39 +1,51 @@
-<button class="btn language-switch" (click)="toggleLanguage()">
+<div class="upload-container">
+  <!-- Botón de cambio de idioma -->
+  <button class="btn language-switch" (click)="toggleLanguage()">
     {{ language === 'es' ? 'Switch to English' : 'Cambiar a Español' }}
   </button>
-  
-  <div class="container">
+
+  <!-- Contenedor principal -->
+  <div class="form-container">
     <h2>{{ language === 'es' ? 'Subir Factura' : 'Upload Invoice' }}</h2>
-    <form (submit)="onSubmit()">
-      <label for="orderId">
-        {{ language === 'es' ? 'ID de la Orden de Compra:' : 'Order ID:' }}
-      </label>
-      <input 
-        type="text" 
-        id="orderId" 
-        [(ngModel)]="orderId" 
-        name="orderId" 
-        required
-      />
-  
-      <label for="fileInput">
-        {{ language === 'es' ? 'Selecciona tu factura (PDF):' : 'Select your invoice (PDF):' }}
-      </label>
-      <input 
-        type="file" 
-        id="fileInput" 
-        accept="application/pdf" 
-        (change)="onFileSelected($event)" 
-        required 
-      />
-      
-      <button type="submit" [disabled]="!selectedFile || !orderId">
+    <form (ngSubmit)="onSubmit()">
+      <!-- Campo de ID -->
+      <div class="form-group">
+        <label for="orderId">
+          {{ language === 'es' ? 'ID de la Orden de Compra:' : 'Order ID:' }}
+        </label>
+        <input
+          type="text"
+          id="orderId"
+          [(ngModel)]="orderId"
+          name="orderId"
+          placeholder="{{ language === 'es' ? 'Ingrese el ID de la orden...' : 'Enter order ID...' }}"
+          required
+        />
+      </div>
+
+      <!-- Campo de archivo -->
+      <div class="form-group">
+        <label for="fileInput">
+          {{ language === 'es' ? 'Selecciona tu factura (PDF):' : 'Select your invoice (PDF):' }}
+        </label>
+        <input
+          type="file"
+          id="fileInput"
+          accept="application/pdf"
+          (change)="onFileSelected($event)"
+          required
+        />
+      </div>
+
+      <!-- Botón de envío -->
+      <button class="submit-btn" type="submit" [disabled]="!selectedFile || !orderId">
         {{ language === 'es' ? 'Subir' : 'Upload' }}
       </button>
     </form>
-  
+
+    <!-- Mensaje -->
     <div *ngIf="uploadMessage" class="message">
       {{ uploadMessage }}
     </div>
   </div>
-  
+</div>

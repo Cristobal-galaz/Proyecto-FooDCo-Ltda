@@ -1,39 +1,47 @@
-<button class="btn language-switch" (click)="toggleLanguage()">
-  {{ language === 'es' ? 'Switch to English' : 'Cambiar a Español' }}
-</button>
+<div class="eje-personal-container">
+  <!-- Botón de cambio de idioma -->
+  <button class="btn language-switch" (click)="toggleLanguage()">
+    {{ language === 'es' ? 'Switch to English' : 'Cambiar a Español' }}
+  </button>
 
-<div class="eje-personal-container" *ngIf="personal; else noData">
-<h1>{{ language === 'es' ? 'Datos del Personal' : 'Personal Data' }}</h1>
-<table>
-  <thead>
-    <tr>
-      <th>{{ language === 'es' ? 'Imagen' : 'Image' }}</th>
-      <th>{{ language === 'es' ? 'Nombre' : 'Name' }}</th>
-      <th>{{ language === 'es' ? 'RUT' : 'ID' }}</th>
-      <th>{{ language === 'es' ? 'Email' : 'Email' }}</th>
-      <th>{{ language === 'es' ? 'Departamento' : 'Department' }}</th>
-      <th>{{ language === 'es' ? 'Rol' : 'Role' }}</th>
-      <th>{{ language === 'es' ? 'Sucursal' : 'Branch' }}</th>
-      <th>{{ language === 'es' ? 'Creado' : 'Created' }}</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-        <img [src]="personal.imagenPerfil" alt="{{ language === 'es' ? 'Imagen de perfil' : 'Profile image' }}" class="profile-image" />
-      </td>
-      <td>{{ personal.nombre }}</td>
-      <td>{{ personal.rut }}</td>
-      <td>{{ personal.email }}</td>
-      <td>{{ personal.departamento?.nombre }}</td>
-      <td>{{ personal.role?.nombre }}</td>
-      <td>{{ personal.sucursal?.nombre }}</td>
-      <td>{{ personal.createdAt | date: 'short' }}</td>
-    </tr>
-  </tbody>
-</table>
+  <!-- Contenido principal -->
+  <h1>{{ language === 'es' ? 'Datos del Personal' : 'Personal Data' }}</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>{{ language === 'es' ? 'Imagen' : 'Image' }}</th>
+        <th>{{ language === 'es' ? 'Nombre' : 'Name' }}</th>
+        <th>{{ language === 'es' ? 'RUT' : 'ID' }}</th>
+        <th>{{ language === 'es' ? 'Email' : 'Email' }}</th>
+        <th>{{ language === 'es' ? 'Departamento' : 'Department' }}</th>
+        <th>{{ language === 'es' ? 'Rol' : 'Role' }}</th>
+        <th>{{ language === 'es' ? 'Sucursal' : 'Branch' }}</th>
+        <th>{{ language === 'es' ? 'Creado' : 'Created' }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <img
+            [src]="personal.imagenPerfil"
+            alt="{{ language === 'es' ? 'Imagen de perfil' : 'Profile image' }}"
+            class="profile-image"
+          />
+        </td>
+        <td>{{ personal.nombre }}</td>
+        <td>{{ personal.rut }}</td>
+        <td>{{ personal.email }}</td>
+        <td>{{ personal.departamento?.nombre }}</td>
+        <td>{{ personal.role?.nombre }}</td>
+        <td>{{ personal.sucursal?.nombre }}</td>
+        <td>{{ personal.createdAt | date: 'short' }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Sin datos -->
+  <ng-template #noData>
+    <p>{{ language === 'es' ? 'No se encontraron datos del personal.' : 'No personal data found.' }}</p>
+  </ng-template>
 </div>
-
-<ng-template #noData>
-<p>{{ language === 'es' ? 'No se encontraron datos del personal.' : 'No personal data found.' }}</p>
-</ng-template>

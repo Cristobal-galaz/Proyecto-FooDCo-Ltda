@@ -1,90 +1,88 @@
-<div class="botones-container">Filtros estado orden
-  <button 
-    class="btn btn-todas" 
-    [class.active-button]="esActivo('todas')" 
-    (click)="mostrarTodas()">Todas</button>
-  <button 
-    class="btn btn-pendientes" 
-    [class.active-button]="esActivo('pendientes')" 
-    (click)="filtrarPendientes()">Pendiente</button>
-  <button 
-    class="btn btn-aprobadas" 
-    [class.active-button]="esActivo('aprobadas')" 
-    (click)="filtrarAprobadas()">Aprobado</button>
-  <button 
-    class="btn btn-rechazadas" 
-    [class.active-button]="esActivo('rechazadas')" 
-    (click)="filtrarRechazadas()">Rechazado</button>
-  <button 
-    class="btn btn-modificar-estado" 
-    [class.active-button]="esActivo('modificarEstado')" 
-    (click)="mostrarFormulario()">Modificar Estado de una Orden</button>
-  <button 
-    class="btn btn-modificar-cuotas" 
-    [class.active-button]="esActivo('modificarCuotas')" 
-    (click)="mostrarFormularioCuotas()">Modificar Cuotas</button>
+<!-- Botón para cambiar de idioma -->
+<button class="language-switch" (click)="cambiarIdioma()">
+  {{ idioma === 'es' ? 'Cambiar a Inglés' : 'Switch to Spanish' }}
+</button>
+
+<!-- Contenedor de botones -->
+<div class="botones-container">
+  <p>{{ idioma === 'es' ? 'Filtro estado orden' : 'Order Status Filters' }}</p>
+  <button class="btn" [class.active-button]="esActivo('todas')" (click)="mostrarTodas()">
+    {{ idioma === 'es' ? 'Todas' : 'All' }}
+  </button>
+  <button class="btn" [class.active-button]="esActivo('pendientes')" (click)="filtrarPendientes()">
+    {{ idioma === 'es' ? 'Pendiente' : 'Pending' }}
+  </button>
+  <button class="btn" [class.active-button]="esActivo('aprobadas')" (click)="filtrarAprobadas()">
+    {{ idioma === 'es' ? 'Aprobado' : 'Approved' }}
+  </button>
+  <button class="btn" [class.active-button]="esActivo('rechazadas')" (click)="filtrarRechazadas()">
+    {{ idioma === 'es' ? 'Rechazado' : 'Rejected' }}
+  </button>
+  <button class="btn" [class.active-button]="esActivo('modificarEstado')" (click)="mostrarFormulario()">
+    {{ idioma === 'es' ? 'Modificar Estado de una Orden' : 'Modify Order Status' }}
+  </button>
+  <button class="btn" [class.active-button]="esActivo('modificarCuotas')" (click)="mostrarFormularioCuotas()">
+    {{ idioma === 'es' ? 'Modificar Cuotas' : 'Modify Installments' }}
+  </button>
 </div>
 
-
-
+<!-- Actualizar estado de una orden -->
 <div *ngIf="mostrarSeccionModificar">
-  <h3>Actualizar estado de una orden</h3>
+  <h3>{{ idioma === 'es' ? 'Actualizar estado de una orden' : 'Update Order Status' }}</h3>
   <form (ngSubmit)="actualizarEstadoOrden()">
-    <label for="ordenId">ID de la Orden:</label>
+    <label for="ordenId">{{ idioma === 'es' ? 'ID de la Orden:' : 'Order ID:' }}</label>
     <input type="text" id="ordenId" [(ngModel)]="ordenId" name="ordenId" required />
 
-    <label for="nuevoEstado">Nuevo Estado:</label>
+    <label for="nuevoEstado">{{ idioma === 'es' ? 'Nuevo Estado:' : 'New Status:' }}</label>
     <select id="nuevoEstado" [(ngModel)]="nuevoEstado" name="nuevoEstado">
-      <option value="pendiente">Pendiente</option>
-      <option value="aprobado">Aprobado</option>
-      <option value="rechazado">Rechazado</option>
-      <option value="en_produccion">En Producción</option>
-      <option value="listo_para_despachar">Listo para Despachar</option>
-      <option value="despachado">Despachado</option>
-      <option value="entregado">Entregado</option>
-      <option value="completado">Completado</option>
+      <option value="pendiente">{{ idioma === 'es' ? 'Pendiente' : 'Pending' }}</option>
+      <option value="aprobado">{{ idioma === 'es' ? 'Aprobado' : 'Approved' }}</option>
+      <option value="rechazado">{{ idioma === 'es' ? 'Rechazado' : 'Rejected' }}</option>
+      <option value="en_produccion">{{ idioma === 'es' ? 'En Producción' : 'In Production' }}</option>
+      <option value="listo_para_despachar">{{ idioma === 'es' ? 'Listo para Despachar' : 'Ready to Ship' }}</option>
+      <option value="despachado">{{ idioma === 'es' ? 'Despachado' : 'Shipped' }}</option>
+      <option value="entregado">{{ idioma === 'es' ? 'Entregado' : 'Delivered' }}</option>
+      <option value="completado">{{ idioma === 'es' ? 'Completado' : 'Completed' }}</option>
     </select>
 
-    <button class="actualizar" type="submit">Actualizar Estado</button>
-    <button class="cancelar" type="button" (click)="cerrarFormulario()">Cancelar</button>
+    <button class="actualizar" type="submit">{{ idioma === 'es' ? 'Actualizar Estado' : 'Update Status' }}</button>
+    <button class="cancelar" type="button" (click)="cerrarFormulario()">{{ idioma === 'es' ? 'Cancelar' : 'Cancel' }}</button>
   </form>
 </div>
 
-<!-- Formulario para editar las cuotas -->
+<!-- Actualizar cuotas de una orden -->
 <div *ngIf="mostrarSeccionCuotas">
-  <h3>Actualizar Cuotas de una Orden</h3>
+  <h3>{{ idioma === 'es' ? 'Actualizar Cuotas de una Orden' : 'Update Order Installments' }}</h3>
   <form (ngSubmit)="actualizarCuotas()">
-    <label for="ordenIdCuotas">ID de la Orden:</label>
+    <label for="ordenIdCuotas">{{ idioma === 'es' ? 'ID de la Orden:' : 'Order ID:' }}</label>
     <input type="text" id="ordenIdCuotas" [(ngModel)]="ordenIdCuotas" name="ordenIdCuotas" required />
 
-    <label for="numeroDeCuotas">Número de Cuotas:</label>
+    <label for="numeroDeCuotas">{{ idioma === 'es' ? 'Número de Cuotas:' : 'Number of Installments:' }}</label>
     <input type="number" id="numeroDeCuotas" [(ngModel)]="numeroDeCuotas" name="numeroDeCuotas" min="1" required />
 
-    <button class="actualizar" type="submit">Actualizar Cuotas</button>
-    <button class="cancelar" type="button" (click)="cerrarFormularioCuotas()">Cancelar</button>
+    <button class="actualizar" type="submit">{{ idioma === 'es' ? 'Actualizar Cuotas' : 'Update Installments' }}</button>
+    <button class="cancelar" type="button" (click)="cerrarFormularioCuotas()">{{ idioma === 'es' ? 'Cancelar' : 'Cancel' }}</button>
   </form>
 </div>
-<h1>Ordenes</h1>
-<div *ngFor="let orden of ordenesFiltradas">
-  <!-- Botón para alternar la visibilidad -->
-  <button class="pedido" (click)="toggleVisibility(orden)">
-    Orden de compra N° {{orden.numero}}
-  </button>
 
-  <!-- Contenido controlado por orden.isVisible -->
+<!-- Listado de órdenes -->
+<h1>{{ idioma === 'es' ? 'Órdenes' : 'Orders' }}</h1>
+<div *ngFor="let orden of ordenesFiltradas">
+  <button class="pedido" (click)="toggleVisibility(orden)">
+    Orden ID: {{ orden._id }}
+  </button>
   <div *ngIf="orden.isVisible">
-    <h4>Orden ID: {{ orden._id }}</h4>
-    <p>Estado: {{ orden.estado }}</p>
-    <p>Precio Total: {{ orden.precioTotalOrden }}</p>
-    <h5>Productos:</h5>
+    <h4>{{ idioma === 'es' ? 'Orden ID:' : 'Order ID:' }} {{ orden._id }}</h4>
+    <p>{{ idioma === 'es' ? 'Estado:' : 'Status:' }} {{ orden.estado }}</p>
+    <p>{{ idioma === 'es' ? 'Precio Total:' : 'Total Price:' }} {{ orden.precioTotalOrden }}</p>
+    <h5>{{ idioma === 'es' ? 'Productos:' : 'Products:' }}</h5>
     <ul>
       <li *ngFor="let producto of orden.seleccionProductos?.productos || []">
-        <p>Producto: {{ producto?.producto?.nombre || 'Sin nombre' }}</p>
-        <p>Cantidad: {{ producto?.cantidad || 0 }}</p>
-        <p>Precio Unitario: {{ producto?.precioUnitario || 0 }}</p>
-        <p>Total: {{ producto?.precioTotal || 0 }}</p>
+        <p>{{ idioma === 'es' ? 'Producto:' : 'Product:' }} {{ producto?.producto?.nombre || 'Sin nombre' }}</p>
+        <p>{{ idioma === 'es' ? 'Cantidad:' : 'Quantity:' }} {{ producto?.cantidad || 0 }}</p>
+        <p>{{ idioma === 'es' ? 'Precio Unitario:' : 'Unit Price:' }} {{ producto?.precioUnitario || 0 }}</p>
+        <p>{{ idioma === 'es' ? 'Total:' : 'Total:' }} {{ producto?.precioTotal || 0 }}</p>
       </li>
     </ul>
   </div>
 </div>
-

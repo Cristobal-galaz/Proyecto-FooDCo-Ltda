@@ -1,61 +1,66 @@
 .subcontratos-container {
-    position: relative;
-    padding-top: 60px; /* Añadir espacio suficiente para que el botón no se superponga con el contenido */
-  }
-  
-  .top-right-button {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-  
-    button {
-      padding: 10px 20px;
-      font-size: 1rem;
-      background-color: #1b79f5b0; /* Color igual que los otros componentes */
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-  
-    button:hover {
-      background-color: #b39e00; /* Cambia de color al hacer hover */
-    }
-  }
-  
-  .subcontratos-activos {
-    margin: 20px;
-  }
-  
-  .seccion {
-    margin-bottom: 20px;
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  
-    th, td {
-      border: 1px solid #ddd;
-      padding: 8px;
-      text-align: left;
-    }
-  
-    th {
-      background-color: #f2f2f2;
-    }
-  }
-  
-  .resumen {
-    margin-top: 20px;
-  }
-  
-  a.btn-primary {
-    background-color: #1b79f5b0; /* Color del botón */
-    border: none;
-  }
-  
-  a.btn-primary:hover {
-    background-color: #b39e00; /* Color hover del botón */
-  }
-  
+  position: relative;
+  padding-top: 60px; /* Espacio para el botón de idioma */
+}
+
+/* Botón de cambio de idioma */
+.language-switch {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: #00bfff; /* Celeste */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.language-switch:hover {
+  background-color: #b39e00; /* Dorado */
+  color: white;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+button {
+  padding: 5px 10px;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  background-color: #1b79f5b0; /* Azul */
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #b39e00; /* Dorado */
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 10px 0 0 0;
+}
+
+li {
+  margin: 5px 0;
+}
