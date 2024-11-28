@@ -1,0 +1,11 @@
+<body>
+    <div class="busqueda">
+        <label for="codigo">Codigo de Seguimiento: </label>
+        <input type="text" id="codigo" name="codigo" required placeholder="Introduce tu codigo de seguimiento">
+        <button class="buscar-pedido" (click)="BuscarPedido()">Buscar</button>
+    </div>
+    <!-- Hay que añadir tambien en caso de error diga codigo no encontrado, algo de ese estilo -->
+    <div *ngIf="" class="mostrar-seguimiento">
+        <!-- En el ngif este la variable que muestre el seguimiento -->
+    </div>
+</body>

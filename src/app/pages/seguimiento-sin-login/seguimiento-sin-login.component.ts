@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SeguimientoComponent } from '../../modulos/Despacho/seguimiento/seguimiento.component';
+import { SeguimientoComponent } from '../../modulos/Despacho/componentes/seguimiento/seguimiento.component';
 
 @Component({
   selector: 'app-seguimiento-sin-login',

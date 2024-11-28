@@ -117,5 +117,10 @@ export const routes: Routes = [
     path: 'contacto',
     title: 'Contactanos',
     loadComponent: () => import('./pages/contacto/contacto.component').then(m => m.ContactoComponent)
+  },
+  {
+    path: 'seguimiento',
+    title: 'Seguimiento',
+    loadComponent: () => import('./pages/seguimiento-sin-login/seguimiento-sin-login.component').then(m => m.SeguimientoSinLoginComponent) 
   }
 ];
