@@ -27,17 +27,18 @@
   <div class="ventas-pago">
     <h1>{{ idioma === 'es' ? 'Detalles de Pago' : 'Payment Details' }}</h1>
 
-    <div class="order-details" *ngFor="let order of filteredOrders">
-      <!-- Botón para alternar visibilidad -->
-      <button class="pago" (click)="toggleVisibility(order)">
-        {{ idioma === 'es' ? 'Orden de compra N°' : 'Purchase Order No.' }} {{ order.numeroOrden }}
-      </button>
+  <div class="order-details" *ngFor="let order of filteredOrders">
+    <!-- Botón para alternar la visibilidad de este cuadro -->
+    <button class="pago" (click)="toggleVisibility(order)">
+      Número de Orden {{ order.numeroOrden }}
+    </button>
 
-      <!-- Contenido controlado por visibilidad -->
-      <div *ngIf="order.isVisible">
-        <p><strong>{{ idioma === 'es' ? 'Usuario:' : 'Username:' }}</strong> {{ order.username }}</p>
-        <p><strong>{{ idioma === 'es' ? 'Correo Electrónico:' : 'Email:' }}</strong> {{ order.email }}</p>
-        <p><strong>{{ idioma === 'es' ? 'Número de Orden:' : 'Order Number:' }}</strong> {{ order.numeroOrden }}</p>
+    <!-- Contenido controlado por order.isVisible -->
+    <div *ngIf="order.isVisible">
+      <p><strong>Username:</strong> {{ order.username }}</p>
+      <p><strong>Email:</strong> {{ order.email }}</p>
+      <p><strong>Número de Orden:</strong> {{ order.numeroOrden }}</p>
+      
 
         <div class="order-box">
           <h2>{{ idioma === 'es' ? 'Detalles de la Orden' : 'Order Details' }}</h2>

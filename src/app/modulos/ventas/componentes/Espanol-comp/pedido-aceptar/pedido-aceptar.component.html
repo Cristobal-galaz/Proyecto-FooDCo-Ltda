@@ -69,7 +69,7 @@
 <h1>{{ idioma === 'es' ? 'Órdenes' : 'Orders' }}</h1>
 <div *ngFor="let orden of ordenesFiltradas">
   <button class="pedido" (click)="toggleVisibility(orden)">
-    {{ idioma === 'es' ? 'Orden de compra N°' : 'Purchase Order No.' }} {{ orden.numero }}
+    Orden ID: {{ orden._id }}
   </button>
   <div *ngIf="orden.isVisible">
     <h4>{{ idioma === 'es' ? 'Orden ID:' : 'Order ID:' }} {{ orden._id }}</h4>

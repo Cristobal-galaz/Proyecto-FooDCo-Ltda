@@ -96,9 +96,7 @@ export class OrdenCompraComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const savedLanguage = localStorage.getItem('language');
-    if (savedLanguage) {
-      this.language = savedLanguage; // Recupera el idioma guardado
-    }
+    // Obtener las órdenes al inicializar el componente
+
   }
 }
