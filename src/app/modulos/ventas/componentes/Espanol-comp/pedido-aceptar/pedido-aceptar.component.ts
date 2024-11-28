@@ -89,11 +89,64 @@ export class PedidoAceptarComponent implements OnInit {
   }
 
   actualizarEstadoOrden() {
-    // Implementación del método
+    if (!this.ordenId || !this.empleadoId) {
+      alert('Debe ingresar un ID de orden válido y asegurarse de que el empleado esté autenticado.');
+      return;
+    }
+
+    const url = `https://foodco.agroheladas.cl/api/v1/orden-compra/actualizar-estado/${this.ordenId}`;
+    const payload = {
+      nuevoEstado: this.nuevoEstado,
+      empleadoId: this.empleadoId,
+    };
+
+    this.apiService.actualizarEstadoOrden(url, payload).subscribe(
+      (response) => {
+        alert('Estado de la orden actualizado correctamente.');
+        this.cerrarFormulario(); // Ocultar el formulario después de la actualización
+        this.filtrarOrdenes(); // Actualizar la lista de órdenes
+      },
+      (error) => {
+        console.error('Error al actualizar el estado:', error);
+        alert('Hubo un error al actualizar el estado.');
+      }
+    );
   }
 
+  // Método para mostrar el formulario de edición de cuotas
+
+
+  // Método para mostrar el formulario de edición de cuotas
+
+
+  // Método para actualizar las cuotas de una orden
   actualizarCuotas() {
-    // Implementación del método
+    if (!this.ordenIdCuotas || !this.numeroDeCuotas || this.numeroDeCuotas <= 0) {
+      alert('Debe ingresar un ID de orden válido y un número de cuotas.');
+      return;
+    }
+
+    const url = `https://foodco.agroheladas.cl/api/v1/orden-compra/${this.ordenIdCuotas}/cuotas`;
+    const payload = {
+      numeroDeCuotas: this.numeroDeCuotas,
+    };
+
+    this.apiService.actualizarCuotasOrden(url, payload).subscribe(
+      (response) => {
+        alert('Cuotas de la orden actualizadas correctamente.');
+        this.cerrarFormularioCuotas(); // Ocultar el formulario después de la actualización
+      },
+      (error) => {
+        console.error('Error al actualizar las cuotas:', error);
+        alert('Hubo un error al actualizar las cuotas.');
+      }
+    );
+  }
+
+  botonActivo: string = ''; // Variable para rastrear el botón activo
+
+  seleccionarBoton(boton: string) {
+    this.botonActivo = boton; // Establece el botón activo según el clic
   }
 
   esActivo(boton: string): boolean {

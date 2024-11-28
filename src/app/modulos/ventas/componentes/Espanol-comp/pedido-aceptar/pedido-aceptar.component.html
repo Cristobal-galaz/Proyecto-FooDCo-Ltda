@@ -60,7 +60,7 @@
     <label for="numeroDeCuotas">{{ idioma === 'es' ? 'Número de Cuotas:' : 'Number of Installments:' }}</label>
     <input type="number" id="numeroDeCuotas" [(ngModel)]="numeroDeCuotas" name="numeroDeCuotas" min="1" required />
 
-    <button class="actualizar" type="submit">{{ idioma === 'es' ? 'Actualizar Cuotas' : 'Update Installments' }}</button>
+    <button class="actualizar" type="submit" (click)="actualizarCuotas">{{ idioma === 'es' ? 'Actualizar Cuotas' : 'Update Installments' }}</button>
     <button class="cancelar" type="button" (click)="cerrarFormularioCuotas()">{{ idioma === 'es' ? 'Cancelar' : 'Cancel' }}</button>
   </form>
 </div>
