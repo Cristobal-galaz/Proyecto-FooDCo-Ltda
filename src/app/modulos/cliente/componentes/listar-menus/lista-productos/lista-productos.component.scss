@@ -1,12 +1,102 @@
-.productos-lista {
-    max-height: 300px; /* Ajusta el tamaño según lo que necesites */
-    overflow-y: auto;
-    margin-bottom: 10px;
+.card {
+  width: 400px; /* Ancho fijo para pantallas grandes */
+  max-width: 100%; /* Asegura que no exceda el ancho del contenedor */
+  margin: 0 auto; /* Centra horizontalmente */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  border-radius: 8px; /* Bordes redondeados */
+  transition: all 0.3s ease; /* Suaviza los cambios de tamaño */
+}
+.editMode {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.card p {
+  font-size: 1rem; /* Tamaño de texto estándar */
+  margin: 0.5rem 0; /* Espaciado entre párrafos */
+}
+.sin-producto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; 
+  gap: 1rem;
+}
+
+.con-producto {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-top: 1rem;
+}
+
+.encabezado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.fila {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem; /* Espaciado entre los elementos */
+  width: 100%; /* Ocupa todo el ancho del contenedor */
+  padding-left: 0.7rem;
+  padding-right: 0.7rem;
+  height: 2rem;
+}
+
+.fila mat-checkbox {
+  flex-shrink: 0; /* Asegura que el checkbox no cambie de tamaño */
+}
+
+.fila p {
+  margin: 0;
+  flex: 1; /* Permite que el nombre del producto ocupe espacio restante */
+  font-size: 1rem;
+}
+
+.fila span {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.condicion span {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: bold;
+}
+mat-card-title span {
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+.sin-producto span {
+  font-size: 1rem;
+  font-weight: bold;
+}
+.botones{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+
+}
+.botones button{
+  width: 80%;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .card {
+    width: 90%; /* Ocupa el 90% del ancho disponible en pantallas pequeñas */
   }
-  
-  .acciones {
-    display: flex;
-    justify-content: flex-end;
-    padding-top: 10px;
+}
+
+@media (max-width: 480px) {
+  .card {
+    width: 100%; /* Ocupa todo el ancho en pantallas muy pequeñas */
   }
-  
+}

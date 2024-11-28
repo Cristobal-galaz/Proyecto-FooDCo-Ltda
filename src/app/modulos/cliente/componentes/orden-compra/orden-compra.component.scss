@@ -1,106 +1,79 @@
-.flex-container {
+/* Contenedor de la página */
+.page {
   display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  gap: 15px;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem;
 }
 
-.formulario {
-  width: 60%;
-  margin: auto;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+/* Sección del carro */
+.carro {
+  flex: 0 0 40%;
 }
 
-@media (max-width: 768px) {
-  .formulario {
-    width: 95%;
-  }
+/* Detalles */
+.detalle {
+  flex: 0 0 60%;
+  background-color: #f4f4f4;
+  padding: 1rem;
 }
 
-@media (max-width: 480px) {
-  .formulario {
-    width: 100%;
-  }
+/* Tarjeta responsiva */
+.responsive-card {
+  margin-bottom: 1rem;
 }
 
-.mat-form-field {
-  width: 100%;
-}
-
-.inputs, .table {
-  padding: 10px;
-}
-
-.button-row {
-  display: flex;
-  justify-content: center;
-}
-
-.quantity {
-  text-align: right;
-  padding-right: 20px;
-}
-
-th, td {
-  vertical-align: middle;
-  text-align: center;
-  padding: 10px;
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 70%;
-  margin: 0 auto;
-}
-
-.horizontal-inputs {
+/* Contenedor del contenido de la tarjeta */
+.contenido-card {
   display: flex;
   justify-content: space-between;
-  width: 100%;
-  gap: 20px;
+  align-items: center;
+  gap: 1rem;
 }
 
-.info-input {
-  width: 100%;
-  margin: 10px 0;
+/* Imagen */
+.columna.imagen img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
-.info-input.direccion {
-  width: 100%;
+/* Título */
+.columna.titulo {
+  flex-grow: 1;
+  text-align: left;
+  font-size: 1rem;
+  font-weight: bold;
 }
 
-@media (max-width: 600px) {
-  .horizontal-inputs {
-    flex-direction: column;
-  }
-}
-
-.table {
-  width: 100%;
-  overflow-x: auto;
-}
-
-.button-container {
+/* Botones */
+.columna.botones {
   display: flex;
-  justify-content: flex-end; /* Alinea los botones a la derecha */
-  gap: 10px; /* Añade espacio entre los botones */
+  flex-direction: column; /* Organiza los botones en columna */
+  justify-content: space-between; /* Distribuye los botones */
+  align-items: center;
+  height: 100%; /* Hace que ocupen toda la columna */
+  gap: 1.5rem;
 }
 
-.enviar-btn, .atras-btn {
-  margin-top: 20px;
+/* Botón Eliminar */
+.columna.botones .btn-eliminar {
+  align-self: flex-start; /* Alinea el botón de Eliminar en la parte superior */
 }
 
-@media (max-width: 600px) {
-  .enviar-btn, .atras-btn {
-    margin: 10px auto;
-    display: block;
-  }
+/* Botones Editar */
+.columna.botones .btn-editar {
+  display: flex;
+  flex-direction: row; /* Organiza los botones en fila */
+  justify-content: space-between; /* Espaciado uniforme entre los botones */
+  align-items: center; /* Centra verticalmente */
+  margin-top: auto; /* Lleva este grupo de botones hacia abajo */
+  gap: 0.5rem;
 }
 
-.form::after {
-  content: "";
-  display: table;
-  clear: both;
+.btn-editar mat-form-field {
+  flex-grow: 1; /* Hace que el input ocupe el espacio restante */
+  max-width: 80px; /* Limita el tamaño del input */
 }

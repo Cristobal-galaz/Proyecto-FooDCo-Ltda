@@ -40,6 +40,7 @@ export interface Producto {
 export interface CantidadProducto{
     producto: Producto;
     cantidad: number;
+    seleccionado?: boolean;
 }
 
 export interface SeleccionProducto{

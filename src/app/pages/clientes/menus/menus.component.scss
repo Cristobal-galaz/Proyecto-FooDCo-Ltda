@@ -1,48 +1,56 @@
 .catalogo {
-    display: flex; /* Activa Flexbox */
-    flex-direction: row; /* Dispone las secciones en una fila */
-    height: 100vh; /* Usa toda la altura de la pantalla */
-    width: 100%; /* Usa todo el ancho de la pantalla */
-    overflow: hidden; /* Evita desbordes */
-    margin-bottom: 2rem;
+  display: flex; /* Activa Flexbox */
+  flex-direction: row; /* Dispone las secciones en una fila */
+  height: 100vh; /* Usa toda la altura de la pantalla */
+  width: 100%; /* Usa todo el ancho de la pantalla */
+  overflow: hidden; /* Evita desbordes */
+  margin-bottom: 2rem;
+}
+
+/* Columna izquierda (20% del ancho) */
+.catalogo .izquierda {
+  flex: 0 0 20%; /* Fija el ancho en 20% */
+  background-color: #f4f4f4; /* Cambia el color de fondo si es necesario */
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  box-shadow: inset -1px 0 0 #e0e0e0; /* Línea divisoria opcional */
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding: 1rem;
+}
+
+/* Columna centro (60% del ancho) */
+.catalogo .centro {
+  flex: 0 0 55%; /* Fija el ancho en 60% */
+  display: flex;
+  flex-direction: column; /* Organiza contenido en columna */
+  background-color: #ffffff; /* Cambia el color de fondo si es necesario */
+  padding: 1rem; /* Espaciado interno */
+  overflow-y: auto; /* Permite scroll si el contenido es más grande que la pantalla */
+}
+
+/* Columna derecha (20% del ancho) */
+.catalogo .derecha {
+  flex: 0 0 25%; /* Fija el ancho en 20% */
+  background-color: #f4f4f4; /* Cambia el color de fondo si es necesario */
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding: 1rem;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .catalogo {
+    flex-direction: column; /* Cambia a diseño en columna */
   }
-  
-  /* Columna izquierda (30% del ancho) */
-  .catalogo .izquierda {
-    flex: 0 0 20%; /* Fija el ancho en 30% */
-    background-color: #f4f4f4; /* Cambia el color de fondo si es necesario */
-    display: flex;
-    justify-content: center; /* Centra horizontalmente */
-    box-shadow: inset -1px 0 0 #e0e0e0; /* Línea divisoria opcional */
-    overflow-y: auto;
-    box-sizing: border-box;
-    padding-top: 1rem;
-    padding-left: 1.5rem;    
-    padding-right: 1rem;
-    
-  }
-  
-  /* Columna derecha (70% del ancho) */
+
+  .catalogo .izquierda,
+  .catalogo .centro,
   .catalogo .derecha {
-    flex: 1; /* Ocupa el resto del espacio (70%) */
-    display: flex;
-    flex-direction: column; /* Organiza contenido en columna */
-    background-color: #ffffff; /* Cambia el color de fondo si es necesario */
-    padding: 1rem; /* Espaciado interno */
-    overflow-y: auto; /* Permite scroll si el contenido es más grande que la pantalla */
+    flex: none; /* Elimina la proporción fija */
+    width: 100%; /* Ocupa el 100% del ancho */
+    height: auto; /* Ajusta la altura automáticamente */
   }
-  
-  /* Responsividad */
-  @media (max-width: 768px) {
-    .catalogo {
-      flex-direction: column; /* Cambia a diseño en columna */
-    }
-  
-    .catalogo .izquierda,
-    .catalogo .derecha {
-      flex: none; /* Elimina la proporción fija */
-      width: 100%; /* Ocupa el 100% del ancho */
-      height: 50%; /* Ocupa el 50% de la altura en diseño vertical */
-    }
-  }
-  
+}
