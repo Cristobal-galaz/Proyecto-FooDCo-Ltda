@@ -4,11 +4,14 @@ import { DespachoService } from '../../services/despacho.service';
 import { OnInit } from '@angular/core';
 import { OrdenDespacho } from '../../interfaces/ordendespacho';
 import { CommonModule } from '@angular/common';
+import { jsPDF } from "jspdf";
+import html2canvas from 'html2canvas';
+import { MatButton } from '@angular/material/button';
 
 @Component({
   selector: 'app-guia-despacho',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MatButton],
   templateUrl: './guia-despacho.component.html',
   styleUrl: './guia-despacho.component.scss'
 })
@@ -34,7 +37,6 @@ export class GuiaDespachoComponent implements OnInit{
       next: (ordenDespacho: OrdenDespacho) => {
         // Asigna la orden de despacho obtenida
         this.ordenDespacho = ordenDespacho;
-        console.log(this.ordenDespacho.seleccionProductos);
         // Inicializa el objeto camion si es undefined
         if (!this.ordenDespacho.camion) {
           this.ordenDespacho.camion = {
@@ -51,4 +53,16 @@ export class GuiaDespachoComponent implements OnInit{
 
   
 // hacer funcionar el generar pdf
+  desgargarGuia(): void {
+    let DATA: any = document.getElementById('theContent');
+    html2canvas(DATA).then((canvas) => {
+      let fileWitdth = 208;
+      let fileHeight = (canvas.height * fileWitdth) / canvas.width;
+      const FILEURI = canvas.toDataURL('image/png');
+      let PDF = new jsPDF('p', 'mm', 'a4');
+      let position = 0;
+      PDF.addImage(FILEURI, 'PNG', 0, position, fileWitdth, fileHeight);
+      PDF.save(`guiaN${this.ordenDespacho.numero}.pdf`);
+    })
+  }
 }

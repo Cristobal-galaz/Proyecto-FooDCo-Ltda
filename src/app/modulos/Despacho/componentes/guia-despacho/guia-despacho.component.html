@@ -1,78 +1,5 @@
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 20px;
-    }
-    .container {
-        width: 100%;
-        max-width: 800px;
-        margin: auto;
-        border: 1px solid #333;
-        padding: 20px;
-    }
-    .header, .footer {
-        text-align: center;
-    }
-    .header {
-    display: flex;
-    justify-content: space-between; /* Deja espacio entre las secciones */
-    align-items: center; /* Alinea los elementos verticalmente */
-    padding: 10px;
-}
-
-.left-section {
-    flex: 1;
-    text-align: left;
-    margin-bottom: 20px;
-}
-
-.left-section table {
-        width: 100%;
-        border-collapse: collapse;
-    }
-
-    .left-section table th, .left-section table td {
-        border: 1px solid #333;
-        padding: 8px;
-        text-align: left;
-    }
-
-.right-section {
-    flex: 1; /* Ocupará la mitad derecha */
-    text-align: right; /* Alinea el texto a la derecha */
-}
-
-.right-section table {
-        width: 100%;
-        border-collapse: collapse;
-    }
-
-    .right-section table th, .right-section table td {
-        border: 1px solid #333;
-        padding: 8px;
-        text-align: left;
-    }
-    .section {
-        margin-bottom: 20px;
-    }
-    .section h2 {
-        margin: 0 0 10px 0;
-        font-size: 1.2em;
-        color: #333;
-    }
-    .section table {
-        width: 100%;
-        border-collapse: collapse;
-    }
-    .section table th, .section table td {
-        border: 1px solid #333;
-        padding: 8px;
-        text-align: left;
-    }
-  </style>
-  <body>
-  
-    <div class="container" id="theContent">
+<body>
+    <div class="container" id="theContent" #theContent>
         <div class="header">
             <div class="left-section">
                 <h1>Guía de Despacho</h1>
@@ -157,5 +84,8 @@
                 </tbody>
             </table>
         </div>
+    </div>
+    <div>
+        <button mat-stroked-button (click)="desgargarGuia()">Descargar Guia</button> 
     </div>
   </body>

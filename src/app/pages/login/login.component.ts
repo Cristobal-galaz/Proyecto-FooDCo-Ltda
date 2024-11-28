@@ -38,6 +38,7 @@ export class LoginComponent {
   loginEmpleado(): void{
     this.authServices.login(this.email, this.password).subscribe({
       next: ()=> {
+        window.close();
         this.router.navigate(["dashboard"]);
       },
       error: (err) => {
