@@ -7,6 +7,7 @@ export interface OrdenCompra{
     precioTotalOrden:number,
     iva:number,
     precioFinalConIva:number,
+    numero:string,
 }
 
 export interface Cliente{

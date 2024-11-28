@@ -57,7 +57,7 @@
       <button class="orden-btn" 
       
       (click)="toggleOrdenDetails(orden._id)">
-        Orden de compra N° {{ orden._id }}
+        Orden de compra N° {{ orden.numero }}
       </button>
       <div *ngIf="isOrdenActive(orden._id)" class="orden-details">
         <div class="seccion">
