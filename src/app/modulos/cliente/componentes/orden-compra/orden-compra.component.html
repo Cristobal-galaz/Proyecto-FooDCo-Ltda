@@ -1,37 +1,37 @@
 <div class="page">
-  <div class="carro" [formGroup]="form">
-    @for (producto of productos.value; track $index) {
+  <div class="carro">
+    @for (producto of listaProductos; track $index) {
     <mat-card class="responsive-card">
       <mat-card-content>
         <div class="contenido-card">
           <!-- Columna 1: Imagen -->
           <div class="columna imagen">
-            <img mat-card-image [src]="producto.imagen">
+            <img mat-card-image [src]="producto.producto.imagenes[0]">
           </div>
           <!-- Columna 2: Título -->
           <div class="columna titulo">
-            <span>{{producto.nombre}}</span><br>
-            <span>${{producto.precio}}</span>
+            <span>{{producto.producto.nombre}}</span><br>
+            <span>${{producto.producto.precio}}</span>
           </div>
           <!-- Columna 3: Botones -->
           <div class="columna botones">
-            <button mat-icon-button class="btn-eliminar">
+            <button mat-icon-button class="btn-eliminar" (click)="deleteProducto($index)">
               <mat-icon>delete</mat-icon>
             </button>
             <div class="btn-editar">
-              <button mat-icon-button>
+              <button mat-icon-button (click)="editarProducto($index, producto.cantidad - 1)">
                 <mat-icon>remove</mat-icon>
               </button>
               <mat-form-field appearance="outline" class="input-cantidad">
                 <input 
                   matInput
                   type="number"
-                  placeholder="Cantidad"
-                  [formControlName]="$index"
                   [value]="producto.cantidad"
+                  [(ngModel)]="producto.cantidad"
+                  (ngModelChange)="editarProducto($index, producto.cantidad)"
                 >
               </mat-form-field>
-              <button mat-icon-button>
+              <button mat-icon-button (click)="editarProducto($index, producto.cantidad + 1)">
                 <mat-icon>add</mat-icon>
               </button>
             </div>
@@ -43,6 +43,94 @@
   </div>
 
   <div class="detalle">
-    Aquí hay detalle
-  </div>
+@if(!abrirFormulario){
+
+  <mat-card>
+    <mat-card-content>
+      <mat-card-title class="detalle-titulo">Detalle del Pedido</mat-card-title>
+      <div class="detalle-linea">
+          <p>SubTotal:</p>
+          <span class="valores">${{subTotalCompra}}</span>
+        </div>
+        <div class="detalle-linea">
+          <p>Descuento ({{100 * descuento}}%):</p>
+          <span class="valores descuento">-${{descuentoCompra}}</span>
+        </div>
+        <div class="detalle-linea">
+          <p>Envio:</p>
+          <span class="valores">${{envio}}</span>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="detalle-linea">
+          <p>Total:</p>
+          <span class="valores">${{totalCompra}}</span>
+        </div>
+        <div class="boton-centro">
+          <button class="btn-continuar" mat-flat-button color="primary" (click)="manejarFormulario()">Continuar</button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  }
+  @else {
+    <mat-card [formGroup]="form">
+      <mat-card-content>
+        <div class="formulario">
+
+          <mat-card-title class="detalle-titulo">Informacion de envío</mat-card-title>
+          
+          <div class="direccion">
+            
+            <mat-form-field appearance="outline" class="calle">
+              <mat-label>Calle</mat-label>
+              <input matInput placeholder="Calle" #calle (input)="actualizarDireccion(calle.value, numero.value, departamento.value)">
+            </mat-form-field>
+            
+            <mat-form-field appearance="outline" class="numero">
+              <mat-label>Número</mat-label>
+              <input matInput placeholder="Número" type="number" #numero (input)="actualizarDireccion(calle.value, numero.value, departamento.value)">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="departamneto">
+              <mat-label>Departamento</mat-label>
+              <input matInput placeholder="Departamento" #departamento (input)="actualizarDireccion(calle.value, numero.value, departamento.value)">
+              <mat-hint>Opcional</mat-hint>
+            </mat-form-field>
+          </div>
+
+          <div class="pais">
+            
+            <mat-form-field appearance="outline" class="input-pais">
+              <mat-label>País</mat-label>
+              <input matInput placeholder="País" formControlName="pais">
+            </mat-form-field>
+            
+            <mat-form-field appearance="outline" class="input-ciudad">
+              <mat-label>Ciudad</mat-label>
+              <input matInput placeholder="Ciudad" formControlName="ciudad">
+            </mat-form-field>
+            </div> 
+            
+            
+            
+            <mat-form-field appearance="outline" class="fecha">
+              <mat-label>Fecha de entrega</mat-label>
+              <input 
+              matInput 
+              [matDatepicker]="datepicker" 
+              (dateChange)="onFechaChange($event)"
+              [matDatepickerFilter]="dateFilter">
+              <mat-datepicker #datepicker/>
+              <mat-datepicker-toggle [for]="datepicker" matSuffix/>
+              <mat-hint>La fecha de entrega deben ser 15 dias después del crear la solicitud</mat-hint>
+            </mat-form-field>
+          </div>
+            <div class="boton-centro">
+          <button class="btn-continuar" mat-flat-button color="primary" (click)="onSubmit()">Enviar</button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    
+  }
+  
+</div>
 </div>

@@ -110,30 +110,16 @@ export class ApiMenusService {
     const allProductos = currentMenus.flatMap(menu => menu.productos);
     this.filteredProductos.next(allProductos);
   }
-  
-
 
   updatefiltros( newFiltros: FiltroMenus) {
     this.filtros.next(newFiltros);
   }
-
-  
-
-  
-
-  
-  
-  
-  
-  
-  
-  
+    
   sendOrdenCompra(ordenCompra: any){
-    this.http.post(this.apiUrl+"seleccion-productos/new",ordenCompra).
-    subscribe(response => {
-      console.log('Registro exitoso', response);
-    }, error => {
-      console.error('Error en el registro', error);
-    });
+    this.http.post(this.apiUrl+"seleccion-productos/new",ordenCompra).subscribe(
+      (response) => {
+        console.log(response);
+      }
+    )
   }
 }

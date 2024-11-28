@@ -3,8 +3,10 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 3rem;
   padding: 1rem;
+  margin-left: 10rem;
+  margin-right: 10rem;
 }
 
 /* Sección del carro */
@@ -15,8 +17,8 @@
 /* Detalles */
 .detalle {
   flex: 0 0 60%;
-  background-color: #f4f4f4;
   padding: 1rem;
+  gap: 2rem;
 }
 
 /* Tarjeta responsiva */
@@ -26,8 +28,8 @@
 
 /* Contenedor del contenido de la tarjeta */
 .contenido-card {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 2fr auto; /* Imagen, Título y Botones */
   align-items: center;
   gap: 1rem;
 }
@@ -42,7 +44,6 @@
 
 /* Título */
 .columna.titulo {
-  flex-grow: 1;
   text-align: left;
   font-size: 1rem;
   font-weight: bold;
@@ -52,28 +53,131 @@
 .columna.botones {
   display: flex;
   flex-direction: column; /* Organiza los botones en columna */
-  justify-content: space-between; /* Distribuye los botones */
-  align-items: center;
-  height: 100%; /* Hace que ocupen toda la columna */
+  justify-content: space-between;
+  align-items: flex-end; /* Alinea los botones al extremo derecho */
   gap: 1.5rem;
 }
 
 /* Botón Eliminar */
 .columna.botones .btn-eliminar {
-  align-self: flex-start; /* Alinea el botón de Eliminar en la parte superior */
+  align-self: flex-end; /* Alinea el botón de eliminar en la parte superior derecha */
 }
 
 /* Botones Editar */
-.columna.botones .btn-editar {
+.btn-editar {
   display: flex;
-  flex-direction: row; /* Organiza los botones en fila */
-  justify-content: space-between; /* Espaciado uniforme entre los botones */
-  align-items: center; /* Centra verticalmente */
-  margin-top: auto; /* Lleva este grupo de botones hacia abajo */
-  gap: 0.5rem;
+  align-items: center; /* Alinea todos los elementos verticalmente al centro */
+  gap: 0.5rem; /* Espaciado entre botones e input */
+}
+
+.input-cantidad {
+  max-width: 90px; /* Ajusta el ancho máximo del input */
+  flex-grow: 1; /* Permite que el input ocupe más espacio si es necesario */
+}
+
+.btn-restar,
+.btn-aumentar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0; /* Opcional: elimina el padding por defecto para botones más pequeños */
 }
 
 .btn-editar mat-form-field {
   flex-grow: 1; /* Hace que el input ocupe el espacio restante */
-  max-width: 80px; /* Limita el tamaño del input */
+  max-width: 70px; /* Limita el tamaño del input */
 }
+
+.input-cantidad input[type="number"]::-webkit-inner-spin-button, 
+.input-cantidad input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none; /* Desactiva las flechas en navegadores basados en WebKit */
+  margin: 0; /* Elimina cualquier margen residual */
+}
+
+.input-cantidad input[type="number"] {
+  -moz-appearance: textfield; /* Desactiva las flechas en Firefox */
+}
+.detalle-linea {
+  display: flex;
+  justify-content: space-between; /* Alinea el texto a izquierda y derecha */
+  align-items: center; /* Centra verticalmente el texto */
+  margin: 0.5rem 0; /* Espaciado entre líneas */
+}
+
+.detalle-linea p {
+  margin: 0; /* Elimina márgenes de los párrafos */
+  font-weight: bold; /* Opcional: resalta los textos de la izquierda */
+}
+
+.detalle-linea .valores {
+  text-align: right; /* Asegura que el texto del span esté alineado a la derecha */
+  font-weight: bold; /* Opcional: resalta los valores */
+}
+
+.detalle-linea .descuento {
+  color: #FF3333;
+}
+
+.detalle-titulo {
+  margin-bottom: 1.5rem;
+}
+
+.boton-centro {
+  display: flex;
+  justify-content: center; /* Centra el botón horizontalmente */
+  align-items: center; /* Centra el botón verticalmente (si es necesario) */
+  margin-top: 3rem; /* Espaciado superior opcional */
+}
+
+.btn-continuar {
+  width: 80%;
+  padding: 0.5rem 1rem; /* Espaciado interno del botón */
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: left;
+  gap: 0.5rem;
+  margin: 1rem;
+}
+
+.direccion {
+  display: flex;
+  flex-direction: row;
+  gap: 0.25rem;
+  width: 100%;
+
+}
+
+.calle {
+  width: 60%;
+}
+.numero {
+  width: 20%;
+}
+.departamento {
+  width: 20%;
+}
+
+.pais {
+  display: flex;
+  flex-direction: row;
+  gap: 0.25rem;
+  width: 100%;
+}
+.input-pais {
+  width: 50%;
+}
+.input-ciudad {
+  width: 50%;
+}
+.fecha {
+  width: 100%;
+}
+
+
+
+
+

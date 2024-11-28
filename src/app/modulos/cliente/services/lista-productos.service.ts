@@ -56,12 +56,17 @@ export class ListaProductosService {
   
     if (index >= 0 && index < productosActuales.length) {
       // Verifica que el índice sea válido
-      productosActuales[index].cantidad = cantidad; // Actualiza la cantidad del producto
-      this._productos.next([...productosActuales]); // Notifica con una nueva copia de la lista
+      if (cantidad > 0) {
+        productosActuales[index].cantidad = cantidad; // Actualiza la cantidad del producto
+        this._productos.next([...productosActuales]); // Notifica con una nueva copia de la lista
+      } else {
+        console.error('La cantidad debe ser mayor a 0'); // Manejo de errores para cantidad inválida
+      }
     } else {
       console.error('Índice fuera de rango'); // Manejo de errores para índices inválidos
     }
   }
+  
   
 
   actualizarLista(nuevaLista: CantidadProducto[]){

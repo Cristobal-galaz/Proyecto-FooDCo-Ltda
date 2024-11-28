@@ -15,9 +15,9 @@ export class DetalleProductoComponent {
 
 
   constructor(public _matDialogRef: MatDialogRef<DetalleProductoComponent>,  
-              @Inject(MAT_DIALOG_DATA) public data: {producto: Producto}) { 
+    
+    @Inject(MAT_DIALOG_DATA) public data: {producto: Producto}) { 
                 
-
   }
 
 

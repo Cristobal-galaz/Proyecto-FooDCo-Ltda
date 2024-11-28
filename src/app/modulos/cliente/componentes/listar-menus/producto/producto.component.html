@@ -10,9 +10,11 @@
     <mat-card-actions>
       <div class="buttons">
         @if(!showInput){
-          <label class="price">${{cardProduct.precio}}</label>
-          <button mat-button (click)="abrirModal()">Detalle</button>
-          <button mat-button (click)= "onSelect()" >Seleccionar</button>
+          <div class="botton-primero">
+            <label class="price">${{cardProduct.precio}}</label>
+            <button mat-button (click)="abrirModal()">Detalle</button>
+            <button mat-button (click)= "onSelect()" >Seleccionar</button>
+          </div>
         }        
         @else{
           <div class="input-group">

@@ -19,25 +19,33 @@
   padding: 1rem;
 }
 
-/* Columna centro (60% del ancho) */
-.catalogo .centro {
-  flex: 0 0 55%; /* Fija el ancho en 60% */
+/* Nueva columna centro-derecha (80% del ancho) */
+.catalogo .centro-derecha {
+  flex: 0 0 80%; /* Ocupa el resto del espacio */
   display: flex;
-  flex-direction: column; /* Organiza contenido en columna */
-  background-color: #ffffff; /* Cambia el color de fondo si es necesario */
-  padding: 1rem; /* Espaciado interno */
-  overflow-y: auto; /* Permite scroll si el contenido es más grande que la pantalla */
-}
-
-/* Columna derecha (20% del ancho) */
-.catalogo .derecha {
-  flex: 0 0 25%; /* Fija el ancho en 20% */
-  background-color: #f4f4f4; /* Cambia el color de fondo si es necesario */
-  display: flex;
-  justify-content: center; /* Centra horizontalmente */
+  flex-direction: row; /* Organiza las subcolumnas en columna */
   overflow-y: auto;
   box-sizing: border-box;
+}
+
+/* Columna centro (70% del ancho de centro-derecha) */
+.catalogo .centro {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff; /* Cambia el color de fondo si es necesario */
+  padding: 1rem; /* Espaciado interno */
+}
+
+/* Columna derecha fija */
+.catalogo .derecha.fija {
+  flex: 0 0 auto; /* Tamaño automático basado en el contenido */
+  background-color: #f4f4f4; /* Cambia el color de fondo si es necesario */
+  box-shadow: inset -1px 0 0 #e0e0e0; /* Línea divisoria opcional */
   padding: 1rem;
+  position: sticky; /* Hace que permanezca visible en la pantalla */
+  top: 0; /* Se fija al tope de la pantalla */
+  height: auto; /* Se ajusta al contenido */
 }
 
 /* Responsividad */
@@ -47,10 +55,13 @@
   }
 
   .catalogo .izquierda,
-  .catalogo .centro,
-  .catalogo .derecha {
+  .catalogo .centro-derecha {
     flex: none; /* Elimina la proporción fija */
     width: 100%; /* Ocupa el 100% del ancho */
     height: auto; /* Ajusta la altura automáticamente */
+  }
+
+  .catalogo .centro-derecha {
+    flex-direction: column; /* Ajusta las subcolumnas */
   }
 }
