@@ -1,122 +1,136 @@
-<form class="formulario" [formGroup]="formOrdenCompra" (ngSubmit)="onSubmit()">
-<div class="form">
-  <h1>Envío orden de solicitud de compra</h1>
-  <div class="inputs">
+<div class="page">
+  <div class="carro">
+    @for (producto of listaProductos; track $index) {
+    <mat-card class="responsive-card">
+      <mat-card-content>
+        <div class="contenido-card">
+          <!-- Columna 1: Imagen -->
+          <div class="columna imagen">
+            <img mat-card-image [src]="producto.producto.imagenes[0]">
+          </div>
+          <!-- Columna 2: Título -->
+          <div class="columna titulo">
+            <span>{{producto.producto.nombre}}</span><br>
+            <span>${{producto.producto.precio}}</span>
+          </div>
+          <!-- Columna 3: Botones -->
+          <div class="columna botones">
+            <button mat-icon-button class="btn-eliminar" (click)="deleteProducto($index)">
+              <mat-icon>delete</mat-icon>
+            </button>
+            <div class="btn-editar">
+              <button mat-icon-button (click)="editarProducto($index, producto.cantidad - 1)">
+                <mat-icon>remove</mat-icon>
+              </button>
+              <mat-form-field appearance="outline" class="input-cantidad">
+                <input 
+                  matInput
+                  type="number"
+                  [value]="producto.cantidad"
+                  [(ngModel)]="producto.cantidad"
+                  (ngModelChange)="editarProducto($index, producto.cantidad)"
+                >
+              </mat-form-field>
+              <button mat-icon-button (click)="editarProducto($index, producto.cantidad + 1)">
+                <mat-icon>add</mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    }
+  </div>
 
-    <mat-form-field  class = "info-input" >
-      <mat-label> Direccion </mat-label> 
-      <input  matInput  placeholder = "Direccion"  value = "" formControlName="direccion" required> 
-    </mat-form-field>
-    <div class="horizontal-inputs">
+  <div class="detalle">
+@if(!abrirFormulario){
 
-      <mat-form-field  class = "info-input" > 
-        <mat-label> Ciudad </mat-label> 
-        <input  matInput  placeholder = "Ciudad"  value = "" formControlName="ciudad" required> 
-      </mat-form-field>
- 
-      <mat-form-field  class = "info-input" > 
-        <mat-label> Pais </mat-label> 
-        <input  matInput  placeholder = "Pais"  value = "" formControlName="pais" required> 
-      </mat-form-field>
-    </div>
-    
-    <mat-form-field class="info-input">
-      <mat-label>Choose a date</mat-label>
-      <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker" formControlName="fechaRequerida" required>
-    <mat-hint>MM/DD/YYYY</mat-hint>
-    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
-</div>
-  
-  <div class="mat-elevation-z8 table">
-      
-      <table mat-table [dataSource]="dataSource">
-        
-        
-        
-        
-        
-        <ng-container formArrayName="productos">
+  <mat-card>
+    <mat-card-content>
+      <mat-card-title class="detalle-titulo">Detalle del Pedido</mat-card-title>
+      <div class="detalle-linea">
+          <p>SubTotal:</p>
+          <span class="valores">${{subTotalCompra}}</span>
+        </div>
+        <div class="detalle-linea">
+          <p>Descuento ({{100 * descuento}}%):</p>
+          <span class="valores descuento">-${{descuentoCompra}}</span>
+        </div>
+        <div class="detalle-linea">
+          <p>Envio:</p>
+          <span class="valores">${{envio}}</span>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="detalle-linea">
+          <p>Total:</p>
+          <span class="valores">${{totalCompra}}</span>
+        </div>
+        <div class="boton-centro">
+          <button class="btn-continuar" mat-flat-button color="primary" (click)="manejarFormulario()">Continuar</button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  }
+  @else {
+    <mat-card [formGroup]="form">
+      <mat-card-content>
+        <div class="formulario">
+
+          <mat-card-title class="detalle-titulo">Informacion de envío</mat-card-title>
           
-          <ng-container matColumnDef="producto">
-            <th mat-header-cell *matHeaderCellDef> <h2>Producto</h2> </th>
-            <td mat-cell *matCellDef="let element; let i = index" [formGroupName]="i" class=product-name>
-             <p>
-              {{ productosForm.at(i).get('productoNombre')?.value }}
-             </p> 
-            </td>
-          </ng-container>
-          <ng-container matColumnDef="cantidad">
-                    <th mat-header-cell *matHeaderCellDef> <h2>Cantidad</h2> </th>
-                    <td mat-cell *matCellDef="let element; let i = index" [formGroupName]="i" class="quantity">
-                        @if(!editMode[i]){
-                          <p>
-                            {{ productosForm.at(i).get('cantidad')?.value }}
+          <div class="direccion">
+            
+            <mat-form-field appearance="outline" class="calle">
+              <mat-label>Calle</mat-label>
+              <input matInput placeholder="Calle" #calle (input)="actualizarDireccion(calle.value, numero.value, departamento.value)">
+            </mat-form-field>
+            
+            <mat-form-field appearance="outline" class="numero">
+              <mat-label>Número</mat-label>
+              <input matInput placeholder="Número" type="number" #numero (input)="actualizarDireccion(calle.value, numero.value, departamento.value)">
+            </mat-form-field>
 
-                          </p>
-                        }
-                        @else{
-                          
-                          <mat-form-field class="full-width">
-                            <!-- Asegúrate de que el objeto producto dentro de la array tiene una propiedad nombre -->
-                            <input matInput placeholder="cantidad" [value]="element.cantidad" formControlName="cantidad" required>
-                          </mat-form-field>
-                        }
-                      </td>
-                    </ng-container>
-                    <ng-container matColumnDef="acciones">
-                    <th mat-header-cell *matHeaderCellDef style="width: 80px;"></th>
-                    <td mat-cell *matCellDef="let element; let i = index">
-                      <div class="button-row">
-                        <div class="flex-container">
-                          @if(!editMode[i]){
-                            <div class="button-container">
-                                <button mat-mini-fab aria-label="Editar producto" (click)="onEdit(i)" type="button">
-                                  <mat-icon>edit</mat-icon>
-                                </button>
-                              </div>
-                              <div class="button-container">
-                                <button mat-mini-fab aria-label="Eliminar Producto" (click)="onDelete(i)"type="button">
-                                  <mat-icon>delete</mat-icon>
-                                </button>
-                              </div>
-                            }
-                              @else{
-                                <div class="button-container">
-                                <button mat-mini-fab aria-label="Guardar producto" (click)="onSave(i)" type="button">
-                                  <mat-icon>save</mat-icon>
-                                </button>
-                              </div>
-                            }
-              
-                          </div>
-                        </div>
-                    </td>
-                </ng-container>
-                
-                
-                
-                
-                
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                
-                
-                
-                
-                
-                
-                
-              </ng-container>
+            <mat-form-field appearance="outline" class="departamneto">
+              <mat-label>Departamento</mat-label>
+              <input matInput placeholder="Departamento" #departamento (input)="actualizarDireccion(calle.value, numero.value, departamento.value)">
+              <mat-hint>Opcional</mat-hint>
+            </mat-form-field>
+          </div>
+
+          <div class="pais">
+            
+            <mat-form-field appearance="outline" class="input-pais">
+              <mat-label>País</mat-label>
+              <input matInput placeholder="País" formControlName="pais">
+            </mat-form-field>
+            
+            <mat-form-field appearance="outline" class="input-ciudad">
+              <mat-label>Ciudad</mat-label>
+              <input matInput placeholder="Ciudad" formControlName="ciudad">
+            </mat-form-field>
+            </div> 
             
             
             
-            </table>
-    </div>
-    <div class="button-container">
-    <button mat-stroked-button type="submit" class="enviar-btn">Enviar</button>
-    <button mat-stroked-button (click)="onBack()" type="button" class="enviar-btn">Atras</button>
-  </div>
-  </div>
-  </form>
+            <mat-form-field appearance="outline" class="fecha">
+              <mat-label>Fecha de entrega</mat-label>
+              <input 
+              matInput 
+              [matDatepicker]="datepicker" 
+              (dateChange)="onFechaChange($event)"
+              [matDatepickerFilter]="dateFilter">
+              <mat-datepicker #datepicker/>
+              <mat-datepicker-toggle [for]="datepicker" matSuffix/>
+              <mat-hint>La fecha de entrega deben ser 15 dias después del crear la solicitud</mat-hint>
+            </mat-form-field>
+          </div>
+            <div class="boton-centro">
+          <button class="btn-continuar" mat-flat-button color="primary" (click)="onSubmit()">Enviar</button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    
+  }
+  
+</div>
+</div>

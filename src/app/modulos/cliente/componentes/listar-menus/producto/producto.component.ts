@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, Input, ChangeDetectorRef } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input, ChangeDetectorRef, inject } from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import { Producto, CantidadProducto } from '../../../interfaces/alimento';
@@ -9,6 +9,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import{ MatDialog } from '@angular/material/dialog';
 import { DetalleProductoComponent } from './detalle-producto/detalle-producto.component';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-producto',
   standalone: true,
@@ -20,10 +21,14 @@ import { DetalleProductoComponent } from './detalle-producto/detalle-producto.co
 export class ProductoComponent {
 constructor(private listaProductosService: ListaProductosService, private _matDialog: MatDialog,
   private cdr: ChangeDetectorRef
+  
 ){}
 
   @Input() cardProduct!: Producto;
   showInput = false;
+  horizontalPosition: MatSnackBarHorizontalPosition = 'end';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
+  private _snackBar = inject(MatSnackBar);
 
   onSelect(){
     this.showInput = true;
@@ -40,19 +45,28 @@ constructor(private listaProductosService: ListaProductosService, private _matDi
     });
   }
 
-  onClick(cantidadProduct:number) {
-    const cantidadProducto: CantidadProducto = {
-      producto: this.cardProduct,
-      cantidad: cantidadProduct
-    };
-    this.listaProductosService.addProductos(cantidadProducto);
-    this.closeSelect();
-
-    this.cdr.detectChanges();
+  onClick(cantidadProduct: number | null) {
+    // Verifica si la cantidad es válida (mayor a 0 y no nula)
+    if (cantidadProduct && cantidadProduct > 0) {
+      const cantidadProducto: CantidadProducto = {
+        producto: this.cardProduct,
+        cantidad: cantidadProduct
+      };
+  
+      this.listaProductosService.addProductos(cantidadProducto);
+      this.closeSelect();
+      this.cdr.detectChanges();
+    } else {
+      this.openSnackBar('Se debe agregar por lo menos 1 producto.');
+    }
   }
 
-
-
-
-
+  openSnackBar(mensaje: string) {
+    this._snackBar.open(mensaje, 'Cerrar', {
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+    });
+  }
 }
+
+

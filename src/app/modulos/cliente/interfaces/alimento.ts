@@ -20,7 +20,7 @@ export interface Producto {
     tipoDeServicio: string,
   }
 
-  export interface IngredienteConCantidad {
+  export interface IngredienteConCantidad {//interface
     cantidadRequerida: number;  // Nueva propiedad para la cantidad requerida
     ingrediente: Ingrediente;  // Referencia al objeto Ingrediente
   }
@@ -40,6 +40,7 @@ export interface Producto {
 export interface CantidadProducto{
     producto: Producto;
     cantidad: number;
+    seleccionado?: boolean;
 }
 
 export interface SeleccionProducto{
