@@ -24,7 +24,7 @@ export class PedidoAceptarComponent implements OnInit {
   ordenIdCuotas: string = '';
   numeroDeCuotas: number = 1;
 
-  idioma: string = 'es'; // Idioma actual
+  idioma: string | null = 'es'; // Idioma actual
 
   panelOpenState: boolean = true;
 
@@ -37,6 +37,7 @@ export class PedidoAceptarComponent implements OnInit {
       this.ordenesFiltradas = [...this.ordenes];
     });
     this.empleadoId = this.apiService.loadUserProfile();
+    this.idioma = localStorage.getItem("selectedLang");
   }
 
   cambiarIdioma() {

@@ -14,7 +14,7 @@ export class FacturaComponent {
   selectedFile: File | null = null;
   uploadMessage: string | null = null;
   orderId: string = '';
-  language: string = 'es';
+  language: string | null = 'es';
 
   constructor(private apiService: ApiserviceService) {}
 
@@ -74,5 +74,9 @@ export class FacturaComponent {
   resetForm(): void {
     this.selectedFile = null;
     this.orderId = '';
+  }
+
+  ngOnInit() {
+    this.language = localStorage.getItem("selectedLang");
   }
 }

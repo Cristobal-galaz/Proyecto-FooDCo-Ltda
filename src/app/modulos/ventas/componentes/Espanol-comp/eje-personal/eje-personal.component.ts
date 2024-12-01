@@ -11,12 +11,13 @@ import { ApiserviceService } from '../../../Service/apiservice.service';
 })
 export class EjePersonalComponent implements OnInit {
   personal: any = null; // Cambia a un único objeto
-  language: string = 'es'; // Añadido para el cambio de idioma
+  language: string | null = 'es'; // Añadido para el cambio de idioma
 
   constructor(private apiService: ApiserviceService) {}
 
   ngOnInit() {
     this.cargarPersonal();
+    this.language = localStorage.getItem("selectedLang");
   }
 
   cargarPersonal() {

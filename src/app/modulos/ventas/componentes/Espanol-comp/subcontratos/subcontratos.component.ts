@@ -11,12 +11,13 @@ import { ApiserviceService } from '../../../Service/apiservice.service';
 })
 export class SubcontratosComponent implements OnInit {
   subcontratos: any[] = [];
-  idioma: string = 'es'; // Idioma predeterminado (Español)
+  idioma: string | null = 'es'; // Idioma predeterminado (Español)
 
   constructor(private apiService: ApiserviceService) {}
 
   ngOnInit() {
     this.cargarSubcontratos();
+    this.idioma = localStorage.getItem("selectedLang");
   }
 
   cargarSubcontratos() {

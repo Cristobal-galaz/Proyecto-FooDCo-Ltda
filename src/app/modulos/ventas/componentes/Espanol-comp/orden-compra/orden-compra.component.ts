@@ -18,7 +18,7 @@ export class OrdenCompraComponent implements OnInit {
   activeButton: number | null = null;
   activeOrdenId: string | null = null;
   userId: string | null = '';
-  language: string = 'es';
+  language: string | null = 'es';
   panelOpenState: boolean = false;
   hasFiltered: boolean = false; // Variable para rastrear si se ha intentado filtrar
 
@@ -101,5 +101,6 @@ export class OrdenCompraComponent implements OnInit {
 
   ngOnInit(): void {
     this.panelOpenState = true;
+    this.language = localStorage.getItem("selectedLang");
   }
 }

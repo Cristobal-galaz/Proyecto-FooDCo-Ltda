@@ -16,13 +16,14 @@ export class VentasPagoComponent {
   orders: any[] = [];
   filteredOrders: any[] = [];
   activeButton: number | null = null;
-  idioma: string = 'es'; // Idioma actual
+  idioma: string | null = 'es'; // Idioma actual
   panelOpenState: boolean = true;
 
 
 
   constructor(private router: Router, private apiService: ApiserviceService) {
     this.loadCuotas();
+    this.idioma = localStorage.getItem("selectedLang");
   }
 
   // Cambiar idioma entre español e inglés
