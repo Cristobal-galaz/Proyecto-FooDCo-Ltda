@@ -8,11 +8,13 @@ import { MatIconModule} from '@angular/material/icon';
 import { MatBadgeModule } from '@angular/material/badge'
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
+
 
 @Component({
   selector: 'app-lista-productos',
   standalone: true,
-  imports: [FormsModule, MatCheckboxModule, MatCardModule, MatButtonModule, RouterLink, MatBadgeModule, MatButtonModule, MatIconModule],
+  imports: [TranslateModule, FormsModule, MatCheckboxModule, MatCardModule, MatButtonModule, RouterLink, MatBadgeModule, MatButtonModule, MatIconModule],
   templateUrl: './lista-productos.component.html',
   styleUrl: './lista-productos.component.scss',
 })

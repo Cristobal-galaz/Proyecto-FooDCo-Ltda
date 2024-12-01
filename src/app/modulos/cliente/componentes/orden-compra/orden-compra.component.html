@@ -43,94 +43,107 @@
   </div>
 
   <div class="detalle">
-@if(!abrirFormulario){
-
-  <mat-card>
-    <mat-card-content>
-      <mat-card-title class="detalle-titulo">Detalle del Pedido</mat-card-title>
-      <div class="detalle-linea">
-          <p>SubTotal:</p>
-          <span class="valores">${{subTotalCompra}}</span>
-        </div>
-        <div class="detalle-linea">
-          <p>Descuento ({{100 * descuento}}%):</p>
-          <span class="valores descuento">-${{descuentoCompra}}</span>
-        </div>
-        <div class="detalle-linea">
-          <p>Envio:</p>
-          <span class="valores">${{envio}}</span>
-        </div>
-        <mat-divider></mat-divider>
-        <div class="detalle-linea">
-          <p>Total:</p>
-          <span class="valores">${{totalCompra}}</span>
-        </div>
-        <div class="boton-centro">
-          <button class="btn-continuar" mat-flat-button color="primary" (click)="manejarFormulario()">Continuar</button>
-        </div>
-      </mat-card-content>
-    </mat-card>
-  }
-  @else {
-    <mat-card [formGroup]="form">
-      <mat-card-content>
-        <div class="formulario">
-
-          <mat-card-title class="detalle-titulo">Informacion de envío</mat-card-title>
-          
-          <div class="direccion">
-            
-            <mat-form-field appearance="outline" class="calle">
-              <mat-label>Calle</mat-label>
-              <input matInput placeholder="Calle" #calle (input)="actualizarDireccion(calle.value, numero.value, departamento.value)">
-            </mat-form-field>
-            
-            <mat-form-field appearance="outline" class="numero">
-              <mat-label>Número</mat-label>
-              <input matInput placeholder="Número" type="number" #numero (input)="actualizarDireccion(calle.value, numero.value, departamento.value)">
-            </mat-form-field>
-
-            <mat-form-field appearance="outline" class="departamneto">
-              <mat-label>Departamento</mat-label>
-              <input matInput placeholder="Departamento" #departamento (input)="actualizarDireccion(calle.value, numero.value, departamento.value)">
-              <mat-hint>Opcional</mat-hint>
-            </mat-form-field>
+    @if(!abrirFormulario) {
+      <mat-card>
+        <mat-card-content>
+          <mat-card-title class="detalle-titulo">{{ 'ORDER_SEND.DETAILS_TITLE' | translate }}</mat-card-title>
+          <div class="detalle-linea">
+            <p>{{ 'ORDER_SEND.SUBTOTAL' | translate }}:</p>
+            <span class="valores">${{ subTotalCompra }}</span>
           </div>
-
-          <div class="pais">
-            
-            <mat-form-field appearance="outline" class="input-pais">
-              <mat-label>País</mat-label>
-              <input matInput placeholder="País" formControlName="pais">
-            </mat-form-field>
-            
-            <mat-form-field appearance="outline" class="input-ciudad">
-              <mat-label>Ciudad</mat-label>
-              <input matInput placeholder="Ciudad" formControlName="ciudad">
-            </mat-form-field>
-            </div> 
-            
-            
-            
-            <mat-form-field appearance="outline" class="fecha">
-              <mat-label>Fecha de entrega</mat-label>
-              <input 
-              matInput 
-              [matDatepicker]="datepicker" 
-              (dateChange)="onFechaChange($event)"
-              [matDatepickerFilter]="dateFilter">
-              <mat-datepicker #datepicker/>
-              <mat-datepicker-toggle [for]="datepicker" matSuffix/>
-              <mat-hint>La fecha de entrega deben ser 15 dias después del crear la solicitud</mat-hint>
-            </mat-form-field>
+          <div class="detalle-linea">
+            <p>{{ 'ORDER_SEND.DISCOUNT' | translate }} ({{ 100 * descuento }}%):</p>
+            <span class="valores descuento">-${{ descuentoCompra }}</span>
           </div>
-            <div class="boton-centro">
-          <button class="btn-continuar" mat-flat-button color="primary" (click)="onSubmit()">Enviar</button>
-        </div>
-      </mat-card-content>
-    </mat-card>
-    
-  }
+          <div class="detalle-linea">
+            <p>{{ 'ORDER_SEND.SHIPPING' | translate }}:</p>
+            <span class="valores">${{ envio }}</span>
+          </div>
+          <mat-divider></mat-divider>
+          <div class="detalle-linea">
+            <p>{{ 'ORDER_SEND.TOTAL' | translate }}:</p>
+            <span class="valores">${{ totalCompra }}</span>
+          </div>
+          <div class="boton-centro">
+            <button class="btn-continuar" mat-flat-button color="primary" (click)="manejarFormulario()">
+              {{ 'ORDER_SEND.CONTINUE_BUTTON' | translate }}
+            </button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    }
+    @else {
+      <mat-card [formGroup]="form">
+        <mat-card-content>
+          <div class="formulario">
+            <mat-card-title class="detalle-titulo">{{ 'ORDER_SEND.FORM_TITLE' | translate }}</mat-card-title>
   
-</div>
+            <div class="direccion">
+              <mat-form-field appearance="outline" class="calle">
+                <mat-label>{{ 'ORDER_SEND.ADDRESS' | translate }}</mat-label>
+                <input
+                  matInput
+                  placeholder="{{ 'ORDER_SEND.ADDRESS' | translate }}"
+                  #calle
+                  (input)="actualizarDireccion(calle.value, numero.value, departamento.value)"
+                />
+              </mat-form-field>
+  
+              <mat-form-field appearance="outline" class="numero">
+                <mat-label>{{ 'ORDER_SEND.NUMBER' | translate }}</mat-label>
+                <input
+                  matInput
+                  placeholder="{{ 'ORDER_SEND.NUMBER' | translate }}"
+                  type="number"
+                  #numero
+                  (input)="actualizarDireccion(calle.value, numero.value, departamento.value)"
+                />
+              </mat-form-field>
+  
+              <mat-form-field appearance="outline" class="departamneto">
+                <mat-label>{{ 'ORDER_SEND.APARTMENT' | translate }}</mat-label>
+                <input
+                  matInput
+                  placeholder="{{ 'ORDER_SEND.DEPARTMENT' | translate }}"
+                  #departamento
+                  (input)="actualizarDireccion(calle.value, numero.value, departamento.value)"
+                />
+                <mat-hint>{{ 'ORDER_SEND.APARTMENT_HINT' | translate }}</mat-hint>
+              </mat-form-field>
+            </div>
+  
+            <div class="pais">
+              <mat-form-field appearance="outline" class="input-pais">
+                <mat-label>{{ 'ORDER_SEND.COUNTRY' | translate }}</mat-label>
+                <input matInput placeholder="{{ 'ORDER_SEND.COUNTRY' | translate }}" formControlName="pais" />
+              </mat-form-field>
+  
+              <mat-form-field appearance="outline" class="input-ciudad">
+                <mat-label>{{ 'ORDER_SEND.CITY' | translate }}</mat-label>
+                <input matInput placeholder="{{ 'ORDER_SEND.CITY' | translate }}" formControlName="ciudad" />
+              </mat-form-field>
+            </div>
+  
+            <mat-form-field appearance="outline" class="fecha">
+              <mat-label>{{ 'ORDER_SEND.DATE_LABEL' | translate }}</mat-label>
+              <input
+                matInput
+                [matDatepicker]="datepicker"
+                (dateChange)="onFechaChange($event)"
+                [matDatepickerFilter]="dateFilter"
+              />
+              <mat-datepicker #datepicker></mat-datepicker>
+              <mat-datepicker-toggle [for]="datepicker" matSuffix></mat-datepicker-toggle>
+              <mat-hint>{{ 'ORDER_SEND.DATE_HINT' | translate }}</mat-hint>
+            </mat-form-field>
+          </div>
+          <div class="boton-centro">
+            <button class="btn-continuar" mat-flat-button color="primary" (click)="onSubmit()">
+              {{ 'ORDER_SEND.SUBMIT_BUTTON' | translate }}
+            </button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    }
+  </div>
 </div>

@@ -8,11 +8,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import {MatRadioModule} from '@angular/material/radio';
 import { ExternService } from '../../services/extern.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-contacto',
   standalone: true,
-  imports: [MatRadioModule, MatCheckboxModule , MatSelectModule, MatInputModule, MatIconModule, FormsModule, MatFormFieldModule, ReactiveFormsModule, MatButtonModule],
+  imports: [TranslateModule, MatRadioModule, MatCheckboxModule , MatSelectModule, MatInputModule, MatIconModule, FormsModule, MatFormFieldModule, ReactiveFormsModule, MatButtonModule],
   templateUrl: './contacto.component.html',
   styleUrl: './contacto.component.scss'
 })

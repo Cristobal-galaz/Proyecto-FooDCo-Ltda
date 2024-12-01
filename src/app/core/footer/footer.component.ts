@@ -12,6 +12,7 @@ import {
 import {ErrorStateMatcher} from '@angular/material/core';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 const svgFacebook = 
@@ -40,7 +41,7 @@ const svgFlecha =
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [MatIconModule, FormsModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule],
+  imports: [TranslateModule, MatIconModule, FormsModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss'
 })

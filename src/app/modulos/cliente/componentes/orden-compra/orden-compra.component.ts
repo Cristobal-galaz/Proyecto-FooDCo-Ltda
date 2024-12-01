@@ -26,6 +26,7 @@ import {
   MatSnackBarHorizontalPosition,
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
+import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-orden-compra',
   standalone: true,
@@ -41,7 +42,8 @@ import {
     ConfirmComponent,
     MatDatepickerModule,
     MatButtonToggleModule,
-  MatDividerModule],
+  MatDividerModule,
+TranslateModule],
   templateUrl: './orden-compra.component.html',
   styleUrl: './orden-compra.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

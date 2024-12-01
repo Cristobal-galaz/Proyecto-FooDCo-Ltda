@@ -12,8 +12,8 @@
         @if(!showInput){
           <div class="botton-primero">
             <label class="price">${{cardProduct.precio}}</label>
-            <button mat-button (click)="abrirModal()">Detalle</button>
-            <button mat-button (click)= "onSelect()" >Seleccionar</button>
+            <button mat-button (click)="abrirModal()">{{'PRODUCT_CARD.DETAIL' | translate}}</button>
+            <button mat-button (click)= "onSelect()" >{{'PRODUCT_CARD.SELECTION' | translate}}</button>
           </div>
         }        
         @else{
@@ -24,8 +24,8 @@
               <input matInput #cantidadProducto maxlength="6" placeholder="Ex. 10000" type="number">
             </mat-form-field>
             <div class="button-group">
-              <button  mat-raised-button (click)="onClick(cantidadProducto.valueAsNumber)">Aceptar</button>
-              <button  mat-raised-button (click)="closeSelect()">Cancelar</button>
+              <button  mat-raised-button (click)="onClick(cantidadProducto.valueAsNumber)">{{'PRODUCT_CARD.ACCEPT' | translate}}</button>
+              <button  mat-raised-button (click)="closeSelect()">{{'PRODUCT_CARD.CANCEL' | translate}}</button>
             </div>
           </div>
         }

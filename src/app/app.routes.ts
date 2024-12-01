@@ -4,6 +4,9 @@ import { authenticatedGuard } from './guards/authenticated.guard';
 import { modulosRutas } from './modulos/modulos.routes';
 import { LayoutComponent } from './modulos/produccion/componentes/layout/layout.component'; 
 
+
+
+
 export const routes: Routes = [
   {
     path: 'cliente',
