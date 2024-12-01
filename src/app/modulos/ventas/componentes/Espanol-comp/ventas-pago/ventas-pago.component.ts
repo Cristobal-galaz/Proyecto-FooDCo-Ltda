@@ -69,4 +69,12 @@ export class VentasPagoComponent {
   toggleVisibility(order: any): void {
     order.isVisible = !order.isVisible;
   }
+
+  // Formatear el estado de las cuotas
+  formatEstado(estado: string): string {
+    if (estado === 'por_pagar') {
+      return this.idioma === 'es' ? 'Pago pendiente' : 'Pending payment';
+    }
+    return estado;
+  }
 }

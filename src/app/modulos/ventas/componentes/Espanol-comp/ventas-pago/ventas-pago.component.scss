@@ -140,7 +140,7 @@
   display: none;
 }
 
-.top-right-buttons .btn {
+.btn {
   padding: 10px 20px;
   font-size: 16px;
   border-radius: 5px;
@@ -150,7 +150,7 @@
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.top-right-buttons .btn.active-button {
+.btn.active-button {
   background-color: #E3F2FD; /* Azul para botón activo */
   color: #a7a7a7;
   border-color: #f8f8f8;
@@ -177,18 +177,18 @@
   color: rgb(0, 0, 0);
 }
 
-.top-right-buttons button:nth-child(2) {
+.btn-pendiente {
   background-color: #BBDEFB; /* Gris */
   color: #000000;
 }
 
-.top-right-buttons button:nth-child(3) {
+.btn-completado {
   background-color: #C8E6C9; /* Verde */
   color: rgb(0, 0, 0);
 }
 
 /* Efectos hover para todos los botones */
-.top-right-buttons button:hover {
+.btn:hover {
   background-color: #E3F2FD; /* Negro al pasar el mouse */
   color: #a7a7a7; /* Texto blanco al pasar el mouse */
   border-color: #000000; /* Borde blanco al pasar el mouse */
