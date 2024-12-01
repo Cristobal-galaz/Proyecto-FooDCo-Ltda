@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ChangeDetectorRef } from '@angular/core';
 import { ApiserviceService } from '../../../Service/apiservice.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatExpansionModule } from '@angular/material/expansion';
+
 
 @Component({
   selector: 'app-pedido-aceptar',
@@ -40,6 +41,7 @@ export class PedidoAceptarComponent implements OnInit {
 
   cambiarIdioma() {
     this.idioma = this.idioma === 'es' ? 'en' : 'es';
+    
   }
 
   filtrarPendientes() {

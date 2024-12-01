@@ -199,3 +199,32 @@ h2 {
   color: #a7a7a7; /* Texto blanco al pasar el mouse */
   border-color: #000000; /* Borde blanco al pasar el mouse */
 }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+thead {
+  background-color: #f4f4f4;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+}
+
+th {
+  font-weight: bold;
+  text-transform: uppercase;
+}
