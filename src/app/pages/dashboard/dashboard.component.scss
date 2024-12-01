@@ -1,50 +1,28 @@
-.dashboard {
-  height: 100vh; /* Ocupa toda la altura de la ventana */
+.page {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100vh; /* Asegura que ocupe todo el alto de la ventana */
+  overflow: hidden; /* Evita que el navbar o el contenido se salgan */
 }
 
-.nav-bar {
-  width: 35vh;
-  background-color: white;
-  flex-shrink: 0; /* Evita que el nav-bar se reduzca */
-}
-
-@media (max-width: 1260px) {
-  .nav-bar {
-    width: 30vh;
-  }
-}
-
-@media (max-width: 380px) {
-  .nav-bar {
-    width: 30vh;
-  }
+.navbar {
+  width: 15%; /* Tamaño fijo relativo del navbar */
+  box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1); /* Añade un poco de diseño */
+  align-items: flex-start;
 }
 
 .contenido {
-  display: flex;
-  flex-direction: column;
-  height: 100%; /* Asegura que ocupe toda la altura disponible */
-  background-color: #F0F4F7;
-  padding: 1rem;
-  overflow-y: auto; /* Permite desplazamiento si el contenido excede la altura */
-}
-
-button {
-  background-color: transparent;
-  border: none;
-  padding: 0;
-}
-
-mat-icon {
-  background-color: #F0F4F7 !important;
-  box-shadow: none;
-  border: none;
+  width: 75%; /* Ocupa el resto del espacio disponible */
+  overflow-y: auto; /* Permite scroll si el contenido es demasiado grande */
+  padding: 16px; /* Espaciado interno para el contenido */
+  box-sizing: border-box; /* Incluye el padding en el cálculo del ancho */
 }
 
 .spinner-container {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh; /* Ocupa todo el alto de la ventana */
 }
