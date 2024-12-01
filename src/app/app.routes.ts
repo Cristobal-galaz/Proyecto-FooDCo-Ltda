@@ -55,10 +55,6 @@ export const routes: Routes = [
         path: 'recovery',
         loadComponent: ()=> import('./pages/clientes/recovery-password/recovery-password.component').then(m => m.RecoveryPasswordComponent)
     },
-    {
-        path: 'change-password',
-        loadComponent: ()=> import('./pages/clientes/change-password/change-password.component').then(m => m.ChangePasswordComponent)
-    },
   {
     path: 'dashboard',
     title: 'Dashboard',

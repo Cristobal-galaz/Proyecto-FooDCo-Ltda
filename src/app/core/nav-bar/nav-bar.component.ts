@@ -56,7 +56,7 @@ export class NavBarComponent {
   }
 
   AbrirVentana(){
-    const newWindow = window.open('login',"_blank", "popup,width=500,height=600,left=100,top=100");
+    const newWindow = window.open('login',"_blank", "popup,width=850,height=800,left=100,top=100");
     if (newWindow) {
       const checkWindowClosed = setInterval(()=> {
         if(newWindow.closed){
