@@ -22,7 +22,7 @@ export class EjePersonalComponent implements OnInit {
   cargarPersonal() {
     this.apiService.getPersonal().subscribe({
       next: (data) => {
-        console.log('Respuesta de la API:', data); // Inspecciona la respuesta
+        //console.log('Respuesta de la API:', data); // Inspecciona la respuesta
         this.personal = data; // Asigna directamente el objeto
       },
       error: (err) => {

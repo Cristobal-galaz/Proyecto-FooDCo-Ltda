@@ -1,7 +1,7 @@
 
 .top-right-button {
-  position: fixed; /* Fijado en la ventana */
-  top: 160px;       /* Distancia desde la parte superior */
+  position: absolute; /* Fijado en la ventana */
+  top: 60px;       /* Distancia desde la parte superior */
   right: 20px;     /* Distancia desde el borde derecho */
   z-index: 1000;   /* Asegura que el botón esté encima de otros elementos */
   padding: 10px 20px;
