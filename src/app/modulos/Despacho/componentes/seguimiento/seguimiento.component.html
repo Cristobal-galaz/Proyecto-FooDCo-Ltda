@@ -1,11 +1,90 @@
-<body>
-    <div class="busqueda">
-        <label for="codigo">Codigo de Seguimiento: </label>
-        <input type="text" id="codigo" name="codigo" required placeholder="Introduce tu codigo de seguimiento">
-        <button class="buscar-pedido" (click)="BuscarPedido()">Buscar</button>
+<div class="seguimiento-container">
+    <h1 class="titulo">Seguimiento de Pedido</h1>
+  
+    <!-- Formulario de búsqueda -->
+    <div class="formulario-busqueda">
+      <label for="idSeguimiento">Ingrese el ID del Pedido</label>
+      <input
+        id="idSeguimiento"
+        type="text"
+        [(ngModel)]="idSeguimiento"
+        placeholder="Ejemplo: 67084a8e3a920cc00e64c9d4"
+      />
+      <button (click)="verificarSeguimiento()">Verificar</button>
     </div>
-    <!-- Hay que añadir tambien en caso de error diga codigo no encontrado, algo de ese estilo -->
-    <div *ngIf="" class="mostrar-seguimiento">
-        <!-- En el ngif este la variable que muestre el seguimiento -->
+  
+    <!-- Mostrar resultados -->
+    <div *ngIf="orden; else noResult" class="detalles-pedido">
+      <h2>Detalles del Pedido</h2>
+  
+      <!-- Información del cliente -->
+      <div class="tabla-container">
+        <table class="tabla">
+          <tr>
+            <th>Nombre Empresa</th>
+            <td>{{ orden.cliente.empresa.nombre_empresa }}</td>
+          </tr>
+          <tr>
+            <th>RUT</th>
+            <td>{{ orden.cliente.empresa.rut_empresa }}</td>
+          </tr>
+          <tr>
+            <th>Dirección</th>
+            <td>{{ orden.cliente.empresa.direccion }}</td>
+          </tr>
+          <tr>
+            <th>Teléfono</th>
+            <td>{{ orden.cliente.contacto.telefono }}</td>
+          </tr>
+          <tr>
+            <th>Email</th>
+            <td>{{ orden.cliente.contacto.email }}</td>
+          </tr>
+        </table>
+      </div>
+  
+      <!-- Información del pedido -->
+      <div class="estado-container">
+        <h3>Estado: {{ orden.estado }}</h3>
+        <p><strong>Fecha Requerida:</strong> {{ orden.fechaRequerida | date }}</p>
+        <p><strong>Última Actualización:</strong> {{ orden.updatedAt | date }}</p>
+      </div>
+  
+      <!-- Detalles de los productos -->
+      <div class="tabla-container">
+        <h3>Productos en el Pedido</h3>
+        <table class="tabla">
+          <thead>
+            <tr>
+              <th>Descripción</th>
+              <th>Cantidad</th>
+              <th>Precio Unitario</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let producto of orden.seleccionProductos.productos">
+              <td>{{ producto.producto.nombre }}</td>
+              <td>{{ producto.cantidad }}</td>
+              <td>{{ producto.precioUnitario | currency:'CLP':'symbol':'1.0-0' }}</td>
+              <td>{{ producto.cantidad * producto.precioUnitario | currency:'CLP':'symbol':'1.0-0' }}</td>
+            </tr>
+            <tr>
+              <td colspan="3"><strong>Total</strong></td>
+              <td><strong>{{ orden.precioTotalOrden | currency:'CLP':'symbol':'1.0-0' }}</strong></td>
+            </tr>
+            <tr>
+              <td colspan="3"><strong>Total con IVA</strong></td>
+              <td><strong>{{ orden.precioFinalConIva | currency:'CLP':'symbol':'1.0-0' }}</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-</body>
+  
+    <!-- Mensaje de error -->
+    <ng-template #noResult>
+      <p>{{ mensajeError }}</p>
+    </ng-template>
+  </div>
+  
