@@ -69,6 +69,7 @@
             <strong>{{ language === 'es' ? 'Datos de factura:' : 'Billing Info:' }}</strong>
             {{ orden.cliente.empresa.nombre_empresa || 'N/A' }}
           </p>
+          <p><strong>ID de orden: </strong>{{orden._id}}</p>
           <p *ngIf="orden.seleccionProductos?.fechaCreacion"><strong>Fecha de orden:</strong> {{ orden.seleccionProductos.fechaCreacion }}</p>
         </div>
 
