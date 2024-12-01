@@ -74,15 +74,18 @@
 
 <!-- Listado de órdenes -->
 <h1>{{ idioma === 'es' ? 'Órdenes' : 'Orders' }}</h1>
+
 <div *ngFor="let orden of ordenesFiltradas">
   <button class="pedido" (click)="toggleVisibility(orden)">
     Numero de Orden: N°{{ orden.numero }}
   </button>
+  <div class="Scontainer">
   <div *ngIf="orden.isVisible">
     <h4>{{ idioma === 'es' ? 'Orden ID:' : 'Order ID:' }} {{ orden._id }}</h4>
     <p>{{ idioma === 'es' ? 'Estado:' : 'Status:' }} {{ orden.estado }}</p>
     <p>{{ idioma === 'es' ? 'Precio Total:' : 'Total Price:' }} {{ orden.precioTotalOrden }}</p>
     <h5>{{ idioma === 'es' ? 'Productos:' : 'Products:' }}</h5>
+  <div class="container">
   <table>
     <thead>
       <tr>
@@ -103,4 +106,6 @@
       </tr>
     </tbody>
   </table>
+  </div>
+  </div>
 </div>

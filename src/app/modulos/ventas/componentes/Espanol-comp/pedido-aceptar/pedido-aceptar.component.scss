@@ -228,3 +228,22 @@ th {
   font-weight: bold;
   text-transform: uppercase;
 }
+
+.container {
+  display: flex;
+  justify-content: space-between; /* Espacio entre los elementos */
+  align-items: center;           /* Alinea los elementos verticalmente */
+  gap: 50px;                     /* Opcional: espacio entre elementos si no hay suficiente para distribuir */
+  padding: 16px 20px;                 /* Opcional: margen interno del contenedor */
+  border: 1px solid #ccc;        /* Opcional: borde del contenedor */
+  background-color: #f9f9f9;     /* Opcional: color de fondo */
+  margin: 20px 250px;
+}
+
+.Scontainer{
+  display: flex;
+  border: 3px solid #ccc; 
+  background-color: #f9f9f9; 
+  margin: 20px;
+  border-radius: 5px;
+}
