@@ -4,13 +4,14 @@ import { ApiserviceService } from '../../../Service/apiservice.service';
 import { OrdenCompra } from '../../../interface/ordendecompra';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { MatExpansionModule } from '@angular/material/expansion'; // Importa MatExpansionModule
 
 @Component({
   selector: 'app-orden-compra',
   standalone: true,
   templateUrl: './orden-compra.component.html',
   styleUrls: ['./orden-compra.component.css'],
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, MatExpansionModule], // Añade MatExpansionModule aquí
 })
 export class OrdenCompraComponent implements OnInit {
   ordenes: OrdenCompra[] = []; // Almacena las órdenes obtenidas
@@ -18,6 +19,9 @@ export class OrdenCompraComponent implements OnInit {
   activeOrdenId: string | null = null; // Controla cuál orden está activa
   userId: string | null = ''; // Almacena el ID del usuario
   language: string = 'es'; // Idioma inicial (español)
+
+  panelOpenState: boolean = false;
+
 
   constructor(private router: Router, private ordenCompra: ApiserviceService) {}
 
@@ -97,6 +101,5 @@ export class OrdenCompraComponent implements OnInit {
 
   ngOnInit(): void {
     // Obtener las órdenes al inicializar el componente
-
   }
 }
