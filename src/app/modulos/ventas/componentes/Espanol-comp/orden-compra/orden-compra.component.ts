@@ -4,36 +4,36 @@ import { ApiserviceService } from '../../../Service/apiservice.service';
 import { OrdenCompra } from '../../../interface/ordendecompra';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { MatExpansionModule } from '@angular/material/expansion'; // Importa MatExpansionModule
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @Component({
   selector: 'app-orden-compra',
   standalone: true,
   templateUrl: './orden-compra.component.html',
   styleUrls: ['./orden-compra.component.css'],
-  imports: [CommonModule, FormsModule, MatExpansionModule], // Añade MatExpansionModule aquí
+  imports: [CommonModule, FormsModule, MatExpansionModule],
 })
 export class OrdenCompraComponent implements OnInit {
-  ordenes: OrdenCompra[] = []; // Almacena las órdenes obtenidas
-  activeButton: number | null = null; // Botón activo para resaltar el período seleccionado
-  activeOrdenId: string | null = null; // Controla cuál orden está activa
-  userId: string | null = ''; // Almacena el ID del usuario
-  language: string = 'es'; // Idioma inicial (español)
-
+  ordenes: OrdenCompra[] = [];
+  activeButton: number | null = null;
+  activeOrdenId: string | null = null;
+  userId: string | null = '';
+  language: string = 'es';
   panelOpenState: boolean = false;
-
+  hasFiltered: boolean = false; // Variable para rastrear si se ha intentado filtrar
 
   constructor(private router: Router, private ordenCompra: ApiserviceService) {}
 
   // Alternar idioma
   toggleLanguage(): void {
     this.language = this.language === 'es' ? 'en' : 'es';
-    localStorage.setItem('language', this.language); // Guardar el idioma seleccionado en LocalStorage
+    localStorage.setItem('language', this.language);
   }
 
   // Manejar el filtrado de órdenes por período
   filtrarPorPeriodo(periodo: string): void {
-    this.activeButton = this.getButtonNumberByPeriodo(periodo); // Actualiza el botón activo
+    this.hasFiltered = true; // Activar el estado de filtrado
+    this.activeButton = this.getButtonNumberByPeriodo(periodo);
 
     this.userId = this.ordenCompra.loadUserProfile();
     if (!this.userId) {
@@ -62,7 +62,7 @@ export class OrdenCompraComponent implements OnInit {
     );
   }
 
-  // Validación de órdenes
+  // Validar si una orden es válida
   validarOrden(orden: any): boolean {
     return orden?.empleado?._id === this.userId && orden?.seleccionProductos?.productos?.length > 0;
   }
@@ -100,7 +100,6 @@ export class OrdenCompraComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.panelOpenState = true; // Asegurar que el panel esté abierto por defecto
+    this.panelOpenState = true;
   }
-  
 }

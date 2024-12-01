@@ -129,7 +129,8 @@
     </div>
   </div>
 
-  <div *ngIf="ordenes.length === 0">
+  <div *ngIf="ordenes.length === 0 && hasFiltered">
     <p>{{ language === 'es' ? 'No se ha encontrado ninguna orden.' : 'No orders found.' }}</p>
   </div>
+  
 </mat-accordion>
