@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common'; // Importa CommonModule
 import { ApiserviceService } from '../../../Service/apiservice.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-eje-personal',
@@ -13,11 +14,15 @@ export class EjePersonalComponent implements OnInit {
   personal: any = null; // Cambia a un único objeto
   language: string | null = 'es'; // Añadido para el cambio de idioma
 
-  constructor(private apiService: ApiserviceService) {}
+  constructor(private apiService: ApiserviceService, private traducir:TranslateService) {}
 
   ngOnInit() {
     this.cargarPersonal();
-    this.language = localStorage.getItem("selectedLang");
+    //this.language = localStorage.getItem("selectedLang");
+    this.traducir.onLangChange.subscribe((event) => {
+      console.log('Idioma cambiado a:', event.lang);
+      this.language = event.lang;
+    });
   }
 
   cargarPersonal() {

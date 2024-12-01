@@ -5,15 +5,21 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
 export class LanguageService {
-  private languageSubject = new BehaviorSubject<string>('es'); // 'es' por defecto
+
+  language: string | null = localStorage.getItem("selectedLang");
+  private languageSubject = new BehaviorSubject<string | null>(this.language); // 'es' por defecto
+
   currentLanguage$ = this.languageSubject.asObservable();
 
   switchLanguage(language: string): void {
     this.languageSubject.next(language);
   }
 
-  get currentLanguage(): string {
+  get currentLanguage(): string | null {
     return this.languageSubject.value;
   }
+
+
 }

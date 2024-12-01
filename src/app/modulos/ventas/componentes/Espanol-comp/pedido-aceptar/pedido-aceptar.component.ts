@@ -3,6 +3,7 @@ import { ApiserviceService } from '../../../Service/apiservice.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -29,7 +30,7 @@ export class PedidoAceptarComponent implements OnInit {
   panelOpenState: boolean = true;
 
 
-  constructor(private apiService: ApiserviceService) {}
+  constructor(private apiService: ApiserviceService, private traducir:TranslateService) {}
 
   ngOnInit() {
     this.apiService.getOrdenCompra2().subscribe((data: any[]) => {
@@ -37,7 +38,11 @@ export class PedidoAceptarComponent implements OnInit {
       this.ordenesFiltradas = [...this.ordenes];
     });
     this.empleadoId = this.apiService.loadUserProfile();
-    this.idioma = localStorage.getItem("selectedLang");
+    //this.idioma = localStorage.getItem("selectedLang");
+    this.traducir.onLangChange.subscribe((event) => {
+      console.log('Idioma cambiado a:', event.lang);
+      this.idioma = event.lang;
+    });
   }
 
   cambiarIdioma() {

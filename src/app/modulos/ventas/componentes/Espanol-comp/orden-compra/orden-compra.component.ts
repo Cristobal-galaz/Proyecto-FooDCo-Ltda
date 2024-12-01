@@ -5,6 +5,7 @@ import { OrdenCompra } from '../../../interface/ordendecompra';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-orden-compra',
@@ -22,7 +23,7 @@ export class OrdenCompraComponent implements OnInit {
   panelOpenState: boolean = false;
   hasFiltered: boolean = false; // Variable para rastrear si se ha intentado filtrar
 
-  constructor(private router: Router, private ordenCompra: ApiserviceService) {}
+  constructor(private router: Router, private ordenCompra: ApiserviceService, private traducir:TranslateService) {}
 
   // Alternar idioma
   toggleLanguage(): void {
@@ -101,6 +102,10 @@ export class OrdenCompraComponent implements OnInit {
 
   ngOnInit(): void {
     this.panelOpenState = true;
-    this.language = localStorage.getItem("selectedLang");
+    //this.language = localStorage.getItem("selectedLang");
+    this.traducir.onLangChange.subscribe((event) => {
+      console.log('Idioma cambiado a:', event.lang);
+      this.language = event.lang;
+    });
   }
 }

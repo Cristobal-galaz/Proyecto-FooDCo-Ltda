@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ApiserviceService } from '../../../Service/apiservice.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-subcontratos',
@@ -13,11 +14,15 @@ export class SubcontratosComponent implements OnInit {
   subcontratos: any[] = [];
   idioma: string | null = 'es'; // Idioma predeterminado (Español)
 
-  constructor(private apiService: ApiserviceService) {}
+  constructor(private apiService: ApiserviceService, private traducir:TranslateService) {}
 
   ngOnInit() {
     this.cargarSubcontratos();
-    this.idioma = localStorage.getItem("selectedLang");
+    this.traducir.onLangChange.subscribe((event) => {
+      console.log('Idioma cambiado a:', event.lang);
+      this.idioma = event.lang;
+    });
+    //this.idioma = localStorage.getItem("selectedLang");
   }
 
   cargarSubcontratos() {

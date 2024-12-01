@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';  
 import { ApiserviceService } from '../../../Service/apiservice.service'; 
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-factura',
@@ -16,7 +17,7 @@ export class FacturaComponent {
   orderId: string = '';
   language: string | null = 'es';
 
-  constructor(private apiService: ApiserviceService) {}
+  constructor(private apiService: ApiserviceService, private traducir:TranslateService) {}
 
   // Evento al seleccionar un archivo
   onFileSelected(event: Event): void {
@@ -77,6 +78,10 @@ export class FacturaComponent {
   }
 
   ngOnInit() {
-    this.language = localStorage.getItem("selectedLang");
+    //this.language = localStorage.getItem("selectedLang");
+    this.traducir.onLangChange.subscribe((event) => {
+      console.log('Idioma cambiado a:', event.lang);
+      this.language = event.lang;
+    });
   }
 }

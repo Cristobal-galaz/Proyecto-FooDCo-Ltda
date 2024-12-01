@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ApiserviceService } from '../../../Service/apiservice.service';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { LanguageService } from '../../../Service/idioma/lan.service';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -21,9 +23,16 @@ export class VentasPagoComponent {
 
 
 
-  constructor(private router: Router, private apiService: ApiserviceService) {
+  constructor(private router: Router, private apiService: ApiserviceService, private traducir:TranslateService) {
     this.loadCuotas();
-    this.idioma = localStorage.getItem("selectedLang");
+  }
+
+  ngOnInit(){
+    this.traducir.onLangChange.subscribe((event) => {
+      console.log('Idioma cambiado a:', event.lang);
+      this.idioma = event.lang;
+    });
+    //this.idioma = localStorage.getItem("selectedLang");
   }
 
   // Cambiar idioma entre español e inglés
