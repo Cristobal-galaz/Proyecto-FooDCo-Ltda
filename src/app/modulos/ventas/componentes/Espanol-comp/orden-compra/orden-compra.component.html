@@ -1,3 +1,9 @@
+<div class="top-right-button">
+  <button class="btn btn-outline-primary" (click)="toggleLanguage()">
+    {{ language === 'es' ? 'Switch to English' : 'Cambiar a Español' }}
+  </button>
+</div>
+
 <mat-accordion>
   <!-- Filtro por fecha -->
   <mat-expansion-panel [expanded]="panelOpenState" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
