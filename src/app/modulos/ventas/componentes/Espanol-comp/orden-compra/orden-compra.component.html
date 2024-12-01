@@ -107,10 +107,10 @@
           </table>
 
           <div class="resumen">
-            <p><strong>{{ language === 'es' ? 'IVA:' : 'Tax:' }}</strong> {{ orden.iva }}</p>
+            <p><strong>{{ language === 'es' ? 'IVA:' : 'Tax:' }}</strong> ${{ orden.iva }}</p>
             <p class="precio-final">
               <strong>{{ language === 'es' ? 'Precio final:' : 'Final Price:' }}</strong>
-              {{ orden.precioFinalConIva }}
+              ${{ orden.precioFinalConIva }}
             </p>
           </div>
 
