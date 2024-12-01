@@ -1,7 +1,9 @@
 <!-- Botón para cambiar de idioma -->
-<button class="language-switch" (click)="cambiarIdioma()">
-  {{ idioma === 'es' ? 'Cambiar a Inglés' : 'Switch to Spanish' }}
-</button>
+<div class="top-right-button">
+  <button class="language-switch" (click)="cambiarIdioma()">
+    {{ idioma === 'es' ? 'Cambiar a Inglés' : 'Switch to Spanish' }}
+  </button>
+</div>
 
 <mat-accordion>
   <!-- Filtro por estado de orden -->
@@ -10,22 +12,22 @@
       <mat-panel-title>{{ idioma === 'es' ? 'Filtro estado orden' : 'Order Status Filters' }}</mat-panel-title>
     </mat-expansion-panel-header>
 
-    <button class="btn" [class.active-button]="esActivo('todas')" (click)="mostrarTodas()">
+    <button class="btn btn-todas" [class.active-button]="esActivo('todas')" (click)="mostrarTodas()">
       {{ idioma === 'es' ? 'Todas' : 'All' }}
     </button>
-    <button class="btn" [class.active-button]="esActivo('pendientes')" (click)="filtrarPendientes()">
+    <button class="btn btn-pendiente" [class.active-button]="esActivo('pendientes')" (click)="filtrarPendientes()">
       {{ idioma === 'es' ? 'Pendiente' : 'Pending' }}
     </button>
-    <button class="btn" [class.active-button]="esActivo('aprobadas')" (click)="filtrarAprobadas()">
+    <button class="btn btn-aprovado" [class.active-button]="esActivo('aprobadas')" (click)="filtrarAprobadas()">
       {{ idioma === 'es' ? 'Aprobado' : 'Approved' }}
     </button>
-    <button class="btn" [class.active-button]="esActivo('rechazadas')" (click)="filtrarRechazadas()">
+    <button class="btn btn-rechazado" [class.active-button]="esActivo('rechazadas')" (click)="filtrarRechazadas()">
       {{ idioma === 'es' ? 'Rechazado' : 'Rejected' }}
     </button>
-    <button class="btn" [class.active-button]="esActivo('modificarEstado')" (click)="mostrarFormulario()">
+    <button class="btn btn-modE" [class.active-button]="esActivo('modificarEstado')" (click)="mostrarFormulario()">
       {{ idioma === 'es' ? 'Modificar Estado de una Orden' : 'Modify Order Status' }}
     </button>
-    <button class="btn" [class.active-button]="esActivo('modificarCuotas')" (click)="mostrarFormularioCuotas()">
+    <button class="btn btn-modC" [class.active-button]="esActivo('modificarCuotas')" (click)="mostrarFormularioCuotas()">
       {{ idioma === 'es' ? 'Modificar Cuotas' : 'Modify Installments' }}
     </button>
   </mat-expansion-panel>
