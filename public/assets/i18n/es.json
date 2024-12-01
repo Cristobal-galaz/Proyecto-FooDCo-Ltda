@@ -1,0 +1,217 @@
+{
+    "NAV": {
+        "LOGO": "logo",
+        "ABOUT_US": "Nosotros",
+        "MENU": "Menú",
+        "CONTACT_US": "Contáctanos",
+        "CONTROL_PANEL": "Panel de Control",
+        "LOGOUT": "Salir",
+        "LOGIN": "Iniciar Sesión",
+        "REGISTER": "Registrarse"
+    },
+    "LANGUAGE": {
+        "SPANISH": "Español",
+        "ENGLISH": "Inglés",
+        "LABEL": "Idioma"
+    },
+    "HOME": {
+        "TITLE": "Deliciosa Comida para Empresas y Eventos. Siempre Caliente y Fresca",
+        "DESCRIPTION": "El mejor servicio de catering para empresas y eventos. Estamos listos para cumplir tus deseos. La opción ideal para todas tus necesidades de comida saludable, en Chile y más allá.",
+        "BUTTONS": {
+            "VIEW_MENUS": "Ver Menús",
+            "CONTACT_SALES": "Contacto ventas"
+        },
+        "HOW_IT_WORKS": {
+            "TITLE": "Cómo Funciona",
+            "DESCRIPTION": "Regístrate, elige tus menús y platos, selecciona la fecha de entrega, y nosotros nos encargamos del resto. Disfruta de comida saludable y deliciosa, con opciones para todos los gustos: vegetariano, vegano, sin gluten y omnívoro.",
+            "STEPS": {
+                "1": {
+                    "TITLE": "Regístrate",
+                    "DESCRIPTION": "Crea tu cuenta fácilmente en nuestra página web."
+                },
+                "2": {
+                    "TITLE": "Explora los Menús",
+                    "DESCRIPTION": "Descubre nuestro catálogo con una variedad de platos de diferentes menús."
+                },
+                "3": {
+                    "TITLE": "Selecciona tus Platos",
+                    "DESCRIPTION": "Escoge los platos que deseas, ajustando las cantidades según tus necesidades."
+                },
+                "4": {
+                    "TITLE": "Envía tu Pedido",
+                    "DESCRIPTION": "Confirma tu pedido y nuestro equipo se pondrá en contacto para finalizar los detalles."
+                },
+                "5": {
+                    "TITLE": "Recibe tu Pedido",
+                    "DESCRIPTION": "Recibe tu pedido en la fecha que seleccionaste."
+                }
+            }
+        },
+        "BEST_DISHES": {
+            "TITLE": "Platos Exquisitos para Empresas, Eventos y Más",
+            "DESCRIPTION": "Comidas preparadas con ingredientes frescos, diseñadas para satisfacer tanto en la oficina como en eventos especiales.",
+            "OPTIONS": {
+                "1": "Almuerzos para oficina",
+                "2": "Eventos corporativos",
+                "3": "Banquetes para grandes eventos",
+                "4": "Comida para obras y mineras",
+                "5": "Fiestas y celebraciones"
+            }
+        }
+    },
+    "FOOTER": {
+        "LEFT": {
+            "TITLE": "Buena Comida y buena Vida",
+            "ICONS": {
+                "FACEBOOK": "Ve nuestro FaceBook",
+                "X": "Ve nuestro X",
+                "INSTAGRAM": "Ve nuestro Instagram"
+            }
+        },
+        "RIGHT": {
+            "TITLE": "Consúltanos",
+            "FORM": {
+                "PLACEHOLDER_EMAIL": "Correo Electrónico",
+                "BUTTON_LABEL": "Enviar"
+            },
+            "NAVIGATION": {
+                "HOME": "Inicio",
+                "ABOUT_US": "Nosotros",
+                "MENUS": "Menús",
+                "CONTACT": "Contacto"
+            }
+        }
+    },
+    "CONTACT_PAGE": {
+        "TITLE_MAIN": {
+            "TITLE": "Contáctanos",
+            "SUBTITLE": "¡Estamos aquí para ayudarte! No dudes en contactarnos con tus preguntas o inquietudes"
+        },
+        "LEFT_SECTION": {
+            "TITLE": "Información de Contacto",
+            "DESCRIPTION": "No dudes en contactarnos en cualquier momento. Nuestro objetivo es responder en un plazo de 24 horas.",
+            "DETAILS": {
+                "PHONE": {
+                    "LABEL": "Teléfono"
+                },
+                "EMAIL": {
+                    "LABEL": "Correo"
+                },
+                "ADDRESS": {
+                    "LABEL": "Dirección"
+                }
+            }
+        },
+        "RIGHT_SECTION": {
+            "FORM": {
+                "FIELDS": {
+                    "FIRST_NAME": "Nombre",
+                    "LAST_NAME": "Apellido",
+                    "EMAIL": "Correo",
+                    "PHONE": "Teléfono",
+                    "MESSAGE": "Mensaje"
+                },
+                "SUBJECT": {
+                    "TITLE": "Asunto",
+                    "OPTIONS": {
+                        "GENERAL": "Consulta General",
+                        "SERVICE": "Consulta Servicios",
+                        "SUGGESTIONS": "Sugerencias",
+                        "TECHNICAL_SUPPORT": "Soporte Técnico",
+                        "OTHERS": "Otros"
+                    }
+                },
+                "BUTTON": {
+                    "SUBMIT": "Enviar"
+                }
+            }
+        }
+    },
+    "FILTERS": {
+        "TITLE": "Filtros",
+        "FILTERS_SECTION": "Filtros",
+        "FOOD_TYPE": {
+            "TITLE": "Tipo de alimentación",
+            "OPTIONS": {
+                "OMNIVORO": "Omnívoro",
+                "VEGETARIANO": "Vegetariano",
+                "SIN GLUTEN": "Sin Gluten",
+                "VEGANO": "Vegano"
+            }
+        },
+        "PRICE": {
+            "TITLE": "Precio",
+            "MIN_PLACEHOLDER": "Precio Mínimo",
+            "MAX_PLACEHOLDER": "Precio Máximo"
+        },
+        "SERVICES": {
+            "TITLE": "Servicio",
+            "OPTIONS": {
+                "CAFETERIA": "Cafetería",
+                "EVENTOS": "Eventos",
+                "SNACKS": "Snacks"
+            }
+        },
+        "CATEGORIES": {
+            "TITLE": "Categorías",
+            "OPTIONS": {
+                "DESAYUNO": "Desayuno",
+                "ALMUERZO": "Almuerzo",
+                "POSTRE": "Postre",
+                "CENA": "Cena",
+                "COLACION": "Colación"
+            }
+        },
+        "BUTTONS": {
+            "APPLY": "Aplicar",
+            "RESET": "Reiniciar"
+        }
+    },
+    "ORDER": {
+        "TITLE": "Mi Pedido",
+        "EDIT": "Editar",
+        "ACCEPT": "Aceptar",
+        "EMPTY": {
+            "MESSAGE": "Tu pedido está vacío",
+            "ICON": "search"
+        },
+        "PRODUCT": {
+            "QUANTITY": "X",
+            "PRICE": "Precio"
+        },
+        "BUTTONS": {
+            "DELETE_SELECTED": "Eliminar Seleccionados",
+            "CONTINUE": "Continuar"
+        }
+    },
+    "ORDER_SEND": {
+        "DETAILS_TITLE": "Detalle del Pedido",
+        "SUBTOTAL": "SubTotal",
+        "DISCOUNT": "Descuento",
+        "SHIPPING": "Envio",
+        "TOTAL": "Total",
+        "CONTINUE_BUTTON": "Continuar",
+        "FORM_TITLE": "Información de Envío",
+        "ADDRESS": "Dirección",
+        "NUMBER": "Numero",
+        "APARTMENT": "Departamento",
+        "APARTMENT_HINT": "Opcional",
+        "COUNTRY": "País",
+        "CITY": "Ciudad",
+        "DATE_LABEL": "Fecha de entrega",
+        "DATE_HINT": "La fecha de entrega debe ser al menos 15 días después de crear la solicitud.",
+        "SUBMIT_BUTTON": "Enviar",
+        "SUBMIT_SUCCESS": "Pedido enviado con éxito",
+        "SUBMIT_ERROR": "Por favor, complete todos los campos requeridos."
+    },
+    "PRODUCT_CARD": {
+        "DETAIL": "Detalle",
+        "SELECTION": "Seleccionar",
+        "ACCEPT": "Aceptar",
+        "CANCEL": "Cancelar"
+    },
+    "PRODUCT_DETAIL": {
+        "INGREDIENTS": "Ingredientes",
+        "DESCRIPTION": "Descripción"
+    }
+}

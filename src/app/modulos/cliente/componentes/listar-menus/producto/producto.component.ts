@@ -10,10 +10,11 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import{ MatDialog } from '@angular/material/dialog';
 import { DetalleProductoComponent } from './detalle-producto/detalle-producto.component';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-producto',
   standalone: true,
-  imports: [MatCardModule, MatButtonModule, MatIconModule, FormsModule, MatInputModule, MatFormFieldModule],
+  imports: [TranslateModule, MatCardModule, MatButtonModule, MatIconModule, FormsModule, MatInputModule, MatFormFieldModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './producto.component.html',
   styleUrl: './producto.component.scss'

@@ -1,41 +1,51 @@
 <div class="nav-bar">
     <div class="logo">
-        <p routerLink="">logo</p>
+        <p routerLink="">{{ 'NAV.LOGO' | translate }}</p>
     </div>
     <div class="links">
-        <a href="">Nosotros</a>
-        <a routerLink="cliente/menus">Menus</a>
-        <a routerLink="contacto">Contáctanos</a>
+        <a href="home">{{ 'NAV.ABOUT_US' | translate }}</a>
+        <a routerLink="cliente/menus">{{ 'NAV.MENU' | translate }}</a>
+        <a routerLink="contacto">{{ 'NAV.CONTACT_US' | translate }}</a>
     </div>
+
+    <div class="idioma">
+
+        
+        <mat-form-field appearance="outline"> 
+            <mat-label>{{ 'LANGUAGE.LABEL' | translate }}</mat-label>
+            <mat-select [(value)]="selected" (selectionChange)="cambiarIdioma($event.value)">
+                <mat-option value="es">{{'LANGUAGE.SPANISH' | translate}}</mat-option>
+                <mat-option value="en">{{ 'LANGUAGE.ENGLISH' | translate }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+        
     <div class="perfil">
         <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-            <!-- Mostrar imagen de perfil si está disponible -->
-            <img *ngIf="user?.imagenPerfil" [src]="user.imagenPerfil" alt="Perfil"/>
+            <img *ngIf="user?.imagenPerfil" [src]="user.imagenPerfil" alt="Perfil" />
             <mat-icon *ngIf="!user?.imagenPerfil">account_circle</mat-icon>
         </button>
 
         <mat-menu #menu="matMenu">
-            @if(isLogged){
-            <button mat-menu-item routerLink="dashboard">
-                <mat-icon>dialpad</mat-icon>
-                <span>Panel de Control</span>
-            </button>
-            <button mat-menu-item (click)="logout()">
-                <mat-icon>logout</mat-icon>
-                <span>Salir</span>
-            </button>
-            }
-            @else{
-            <button mat-menu-item (click)="AbrirVentana()">
-                <mat-icon>login</mat-icon>
-                <span>Iniciar Sesión</span>
-            </button>
-            <button mat-menu-item routerLink="registro">
-                <mat-icon>person_add</mat-icon>
-                <span>Registrarse</span>
-            </button>
+            @if(isLogged) {
+                <button mat-menu-item routerLink="dashboard">
+                    <mat-icon>dialpad</mat-icon>
+                    <span>{{ 'NAV.CONTROL_PANEL' | translate }}</span>
+                </button>
+                <button mat-menu-item (click)="logout()">
+                    <mat-icon>logout</mat-icon>
+                    <span>{{ 'NAV.LOGOUT' | translate }}</span>
+                </button>
+            } @else {
+                <button mat-menu-item (click)="AbrirVentana()">
+                    <mat-icon>login</mat-icon>
+                    <span>{{ 'NAV.LOGIN' | translate }}</span>
+                </button>
+                <button mat-menu-item routerLink="registro">
+                    <mat-icon>person_add</mat-icon>
+                    <span>{{ 'NAV.REGISTER' | translate }}</span>
+                </button>
             }
         </mat-menu>
-
     </div>
 </div>

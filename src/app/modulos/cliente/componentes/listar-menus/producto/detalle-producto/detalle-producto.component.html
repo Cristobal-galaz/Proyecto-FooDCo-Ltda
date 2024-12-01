@@ -10,7 +10,7 @@
 
     <div class="content">
         <div class="ingredients">
-            <h3>INGREDIENTES:</h3>
+            <h3>{{'PRODUCT_DETAIL.INGREDIENTS'| translate }}:</h3>
 
             <ul>
                 @for(objct of data.producto.ingredientes; track $index){
@@ -21,7 +21,7 @@
         </div>
 
         <div class="preparation">
-            <h3>Descripcion:</h3>
+            <h3>{{'PRODUCT_DETAIL.DESCRIPTION'| translate }}</h3>
             <p> {{data.producto.descripcion}} </p>
         </div>
     </div>

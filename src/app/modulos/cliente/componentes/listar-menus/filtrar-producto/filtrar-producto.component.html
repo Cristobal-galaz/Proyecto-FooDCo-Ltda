@@ -1,74 +1,124 @@
+
 <div class="filtros">
 
-  <mat-accordion multi>    
-    
-    <mat-expansion-panel hideToggle>
-    <mat-expansion-panel-header>
-      <mat-panel-title> Filtros </mat-panel-title>
-    </mat-expansion-panel-header>
-  </mat-expansion-panel>
-  
-  <mat-expansion-panel [expanded]="0" hideToggle>
-    <mat-expansion-panel-header>
-      <mat-panel-title> Tipo de alimentacion </mat-panel-title>
-    </mat-expansion-panel-header>
-    @for(filtro of filtros.tipoAlimentacion; track $index){
-      <p><mat-checkbox [(ngModel)]="filtro.seleccion" >{{filtro.tipo}}</mat-checkbox></p>
-    }
-  </mat-expansion-panel>
-  
-  <mat-expansion-panel [expanded]="0" hideToggle>
-    <mat-expansion-panel-header>
-      <mat-panel-title> Precio </mat-panel-title>
-    </mat-expansion-panel-header>
-    
-    <div class="slider">
-      <!-- Input para Precio Mínimo -->
-      <mat-form-field appearance="outline" class="precio-min">
-        <mat-label>Precio Minimo</mat-label>
-        <input matInput type="number" [(ngModel)]="filtros.precio.min">
-      </mat-form-field>
-      
-      <!-- Input para Precio Máximo -->
-      <mat-form-field appearance="outline" class="precio-max">
-        <mat-label>Precio Máximo</mat-label>
-        <input matInput type="number" [(ngModel)]="filtros.precio.max">
-      </mat-form-field>
-    </div>
-    
-    <!-- Slider para Precio -->
-    <mat-slider min="0" max="10000" class="precio-slider">
-      <input matSliderStartThumb [(ngModel)]="filtros.precio.min">
-      <input matSliderEndThumb [(ngModel)]="filtros.precio.max">
-    </mat-slider>
-  </mat-expansion-panel>
-  
-  <mat-expansion-panel [expanded]="0" hideToggle>
-    <mat-expansion-panel-header>
-      <mat-panel-title>Servicio</mat-panel-title>
-    </mat-expansion-panel-header>
-    @for(filtro of filtros.servicios; track $index){
-      <p><mat-checkbox [(ngModel)]="filtro.seleccion" >{{filtro.tipo}}</mat-checkbox></p>
-    }
-  </mat-expansion-panel>
-  
 
-  <mat-expansion-panel [expanded]="0" hideToggle>
-    <mat-expansion-panel-header>
-      <mat-panel-title> Categorias </mat-panel-title>
-    </mat-expansion-panel-header>
-    @for(filtro of filtros.categorias; track $index){
-      <p><mat-checkbox [(ngModel)]="filtro.seleccion">{{filtro.tipo}}</mat-checkbox></p>
-    }
-  </mat-expansion-panel>
-  
-  
-  
-  
-</mat-accordion>
-<div class="buttons">
-  <button mat-flat-button (click)="applyFiltros()">Aplicar</button>
-  <button mat-flat-button (click)="limpiarFiltros()">Reiniciar</button>
-</div>
+
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>{{ 'FILTERS.TITLE' | translate }}</mat-panel-title>
+      </mat-expansion-panel-header>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="true" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>{{ 'FILTERS.FOOD_TYPE.TITLE' | translate }}</mat-panel-title>
+      </mat-expansion-panel-header>
+      
+
+          <mat-checkbox [(ngModel)]="filtros.tipoAlimentacion[0].seleccion">
+            {{ getTranslationKeyForFoodType(filtros.tipoAlimentacion[0].tipo) | translate }}
+          </mat-checkbox>
+
+      
+      
+        <mat-checkbox [(ngModel)]="filtros.tipoAlimentacion[1].seleccion">
+          {{ getTranslationKeyForFoodType(filtros.tipoAlimentacion[1].tipo) | translate }}
+        </mat-checkbox>
+      
+      
+        <mat-checkbox [(ngModel)]="filtros.tipoAlimentacion[2].seleccion">
+          {{ getTranslationKeyForFoodType(filtros.tipoAlimentacion[2].tipo) | translate }}
+        </mat-checkbox>
+      
+      
+        <mat-checkbox [(ngModel)]="filtros.tipoAlimentacion[3].seleccion">
+          {{ getTranslationKeyForFoodType(filtros.tipoAlimentacion[3].tipo) | translate }}
+        </mat-checkbox>
+      
+
+
+    </mat-expansion-panel>
+
+
+    <mat-expansion-panel [expanded]="0" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>{{ 'FILTERS.PRICE.TITLE' | translate }}</mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="slider">
+
+
+        <mat-form-field appearance="outline" class="precio-min">
+          <mat-label>{{ 'FILTERS.PRICE.MIN_PLACEHOLDER' | translate }}</mat-label>
+          <input matInput type="number" [(ngModel)]="filtros.precio.min">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="precio-max">
+          <mat-label>{{ 'FILTERS.PRICE.MAX_PLACEHOLDER' | translate }}</mat-label>
+          <input matInput type="number" [(ngModel)]="filtros.precio.max">
+        </mat-form-field>
+      </div>
+      <mat-slider min="0" max="10000" class="precio-slider">
+        <input matSliderStartThumb [(ngModel)]="filtros.precio.min">
+        <input matSliderEndThumb [(ngModel)]="filtros.precio.max">
+      </mat-slider>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="0" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>Servicio</mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <p><mat-checkbox
+          [(ngModel)]="filtros.servicios[0].seleccion">{{getTranslationKeyForService(filtros.servicios[0].tipo) |
+          translate}}</mat-checkbox></p>
+      <p><mat-checkbox
+          [(ngModel)]="filtros.servicios[1].seleccion">{{getTranslationKeyForService(filtros.servicios[1].tipo) |
+          translate}}</mat-checkbox></p>
+      <p><mat-checkbox
+          [(ngModel)]="filtros.servicios[2].seleccion">{{getTranslationKeyForService(filtros.servicios[2].tipo) |
+          translate}}</mat-checkbox></p>
+
+
+    </mat-expansion-panel>
+
+
+    <mat-expansion-panel [expanded]="0" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title> Categorias </mat-panel-title>
+      </mat-expansion-panel-header>
+
+
+
+      <p><mat-checkbox
+          [(ngModel)]="filtros.categorias[0].seleccion">{{getTranslationKeyForCategories(filtros.categorias[0].tipo) |
+          translate}}</mat-checkbox></p>
+      <p><mat-checkbox
+          [(ngModel)]="filtros.categorias[1].seleccion">{{getTranslationKeyForCategories(filtros.categorias[1].tipo) |
+          translate}}</mat-checkbox></p>
+      <p><mat-checkbox
+          [(ngModel)]="filtros.categorias[2].seleccion">{{getTranslationKeyForCategories(filtros.categorias[2].tipo) |
+          translate}}</mat-checkbox></p>
+      <p><mat-checkbox
+          [(ngModel)]="filtros.categorias[3].seleccion">{{getTranslationKeyForCategories(filtros.categorias[3].tipo) |
+          translate}}</mat-checkbox></p>
+      <p><mat-checkbox
+          [(ngModel)]="filtros.categorias[4].seleccion">{{getTranslationKeyForCategories(filtros.categorias[4].tipo) |
+          translate}}</mat-checkbox></p>
+
+
+    </mat-expansion-panel>
+
+
+
+
+
+  <div class="buttons">
+    <button mat-flat-button (click)="applyFiltros()">
+      {{ 'FILTERS.BUTTONS.APPLY' | translate }}
+    </button>
+    <button mat-flat-button (click)="limpiarFiltros()">
+      {{ 'FILTERS.BUTTONS.RESET' | translate }}
+    </button>
+  </div>
 
 </div>

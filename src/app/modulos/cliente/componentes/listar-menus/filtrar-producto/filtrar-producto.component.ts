@@ -12,6 +12,9 @@ import { MatInputModule } from '@angular/material/input';
 import {MatSliderModule} from '@angular/material/slider';
 import { ApiMenusService } from '../../../services/api-menus.service';
 import { MatButtonModule } from '@angular/material/button';
+import { TranslateModule } from '@ngx-translate/core';
+import { Observable } from 'rxjs/internal/Observable';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-filtrar-producto',
@@ -26,33 +29,64 @@ import { MatButtonModule } from '@angular/material/button';
             MatFormFieldModule,
             MatInputModule,
             MatSliderModule,
-            MatButtonModule],
+            MatButtonModule,
+            TranslateModule],
+            
   templateUrl: './filtrar-producto.component.html',
   styleUrl: './filtrar-producto.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FiltrarProductoComponent {
 
-  filtros!: FiltroMenus;
+  filtros: FiltroMenus = {
+  tipoAlimentacion: [...tipoMenu],
+  categorias: [...categoriaMenu],
+  servicios: [...servicioMenu],
+  precio: { min: 0, max: 10000 }
+};
 
+  constructor(private menus: ApiMenusService) {
+    
+  }
 
-  constructor(private menus: ApiMenusService) {}
 
   ngOnInit(): void {
+  }
+
+
+
+  cargarFiltros() {
     this.menus.filtros$.subscribe((filtros) => {
-      this.filtros = filtros;
+      if(filtros) {
+
+        this.filtros = filtros
+      }
     })
-
-
   }
 
   applyFiltros() {
-    this.menus.updatefiltros(this.filtros);
-    this.menus.filtrarMenus();
+    if(this.filtros){
+
+      this.menus.updatefiltros(this.filtros);
+      this.menus.filtrarMenus();
+    }
 
   }
   limpiarFiltros() {
     this.menus.cleanFilers(); // Llama al servicio para resetear los filtros
+  }
+
+  getTranslationKeyForFoodType(tipo: string | null): string {
+    if(tipo != null){
+      return `FILTERS.FOOD_TYPE.OPTIONS.${tipo.toUpperCase()}`;
+    }
+    return '';
+  }
+  getTranslationKeyForService(tipo: string): string {
+    return `FILTERS.SERVICES.OPTIONS.${tipo.toUpperCase()}`;
+  }
+  getTranslationKeyForCategories(tipo: string): string {
+    return `FILTERS.CATEGORIES.OPTIONS.${tipo.toUpperCase()}`;
   }
 
 

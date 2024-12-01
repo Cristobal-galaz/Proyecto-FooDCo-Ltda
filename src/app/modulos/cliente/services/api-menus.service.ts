@@ -18,7 +18,7 @@ export class ApiMenusService {
     tipoAlimentacion: [...tipoMenu],
     categorias: [...categoriaMenu],
     servicios: [...servicioMenu],
-    precio: { min: 0, max: 100 },
+    precio: { min: 0, max: 10000 },
   });
 
   productos$ = this.productos.asObservable();
