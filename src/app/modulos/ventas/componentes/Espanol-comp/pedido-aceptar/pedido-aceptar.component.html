@@ -3,28 +3,33 @@
   {{ idioma === 'es' ? 'Cambiar a Inglés' : 'Switch to Spanish' }}
 </button>
 
-<!-- Contenedor de botones -->
-<div class="botones-container">
-  <p>{{ idioma === 'es' ? 'Filtro estado orden' : 'Order Status Filters' }}</p>
-  <button class="btn" [class.active-button]="esActivo('todas')" (click)="mostrarTodas()">
-    {{ idioma === 'es' ? 'Todas' : 'All' }}
-  </button>
-  <button class="btn" [class.active-button]="esActivo('pendientes')" (click)="filtrarPendientes()">
-    {{ idioma === 'es' ? 'Pendiente' : 'Pending' }}
-  </button>
-  <button class="btn" [class.active-button]="esActivo('aprobadas')" (click)="filtrarAprobadas()">
-    {{ idioma === 'es' ? 'Aprobado' : 'Approved' }}
-  </button>
-  <button class="btn" [class.active-button]="esActivo('rechazadas')" (click)="filtrarRechazadas()">
-    {{ idioma === 'es' ? 'Rechazado' : 'Rejected' }}
-  </button>
-  <button class="btn" [class.active-button]="esActivo('modificarEstado')" (click)="mostrarFormulario()">
-    {{ idioma === 'es' ? 'Modificar Estado de una Orden' : 'Modify Order Status' }}
-  </button>
-  <button class="btn" [class.active-button]="esActivo('modificarCuotas')" (click)="mostrarFormularioCuotas()">
-    {{ idioma === 'es' ? 'Modificar Cuotas' : 'Modify Installments' }}
-  </button>
-</div>
+<mat-accordion>
+  <!-- Filtro por estado de orden -->
+  <mat-expansion-panel [expanded]="panelOpenState" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>{{ idioma === 'es' ? 'Filtro estado orden' : 'Order Status Filters' }}</mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <button class="btn" [class.active-button]="esActivo('todas')" (click)="mostrarTodas()">
+      {{ idioma === 'es' ? 'Todas' : 'All' }}
+    </button>
+    <button class="btn" [class.active-button]="esActivo('pendientes')" (click)="filtrarPendientes()">
+      {{ idioma === 'es' ? 'Pendiente' : 'Pending' }}
+    </button>
+    <button class="btn" [class.active-button]="esActivo('aprobadas')" (click)="filtrarAprobadas()">
+      {{ idioma === 'es' ? 'Aprobado' : 'Approved' }}
+    </button>
+    <button class="btn" [class.active-button]="esActivo('rechazadas')" (click)="filtrarRechazadas()">
+      {{ idioma === 'es' ? 'Rechazado' : 'Rejected' }}
+    </button>
+    <button class="btn" [class.active-button]="esActivo('modificarEstado')" (click)="mostrarFormulario()">
+      {{ idioma === 'es' ? 'Modificar Estado de una Orden' : 'Modify Order Status' }}
+    </button>
+    <button class="btn" [class.active-button]="esActivo('modificarCuotas')" (click)="mostrarFormularioCuotas()">
+      {{ idioma === 'es' ? 'Modificar Cuotas' : 'Modify Installments' }}
+    </button>
+  </mat-expansion-panel>
+</mat-accordion>
 
 <!-- Actualizar estado de una orden -->
 <div *ngIf="mostrarSeccionModificar">

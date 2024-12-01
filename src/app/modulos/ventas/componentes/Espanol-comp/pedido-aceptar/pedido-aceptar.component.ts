@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ApiserviceService } from '../../../Service/apiservice.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @Component({
   selector: 'app-pedido-aceptar',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule,MatExpansionModule],
   templateUrl: './pedido-aceptar.component.html',
   styleUrls: ['./pedido-aceptar.component.scss'],
 })
@@ -23,6 +24,9 @@ export class PedidoAceptarComponent implements OnInit {
   numeroDeCuotas: number = 1;
 
   idioma: string = 'es'; // Idioma actual
+
+  panelOpenState: boolean = true;
+
 
   constructor(private apiService: ApiserviceService) {}
 

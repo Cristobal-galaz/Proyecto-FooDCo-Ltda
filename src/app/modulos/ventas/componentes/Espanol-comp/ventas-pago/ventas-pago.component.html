@@ -5,40 +5,45 @@
   </button>
 
   <!-- Filtro de estado de pago -->
-  <div class="top-right-buttons">
-    <p>{{ idioma === 'es' ? 'Filtro estado de pago' : 'Payment Status Filter' }}</p>
-    <button
-      class="btn"
-      [ngClass]="{ 'active-button': activeButton === 1 }"
-      (click)="setActiveButton(1)"
-    >
-      {{ idioma === 'es' ? 'Pendientes' : 'Pending' }}
-    </button>
-    <button
-      class="btn"
-      [ngClass]="{ 'active-button': activeButton === 2 }"
-      (click)="setActiveButton(2)"
-    >
-      {{ idioma === 'es' ? 'Completados' : 'Completed' }}
-    </button>
-  </div>
+  <mat-accordion>
+    <!-- Filtro por fecha -->
+    <mat-expansion-panel [expanded]="panelOpenState" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>{{ idioma === 'es' ? 'Filtro estado de pago' : 'Payment Status Filter' }}</mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <button
+        class="btn"
+        [ngClass]="{ 'active-button': activeButton === 1 }"
+        (click)="setActiveButton(1)"
+      >
+        {{ idioma === 'es' ? 'Pendientes' : 'Pending' }}
+      </button>
+      <button
+        class="btn"
+        [ngClass]="{ 'active-button': activeButton === 2 }"
+        (click)="setActiveButton(2)"
+      >
+        {{ idioma === 'es' ? 'Completados' : 'Completed' }}
+      </button>
+    </mat-expansion-panel>
+  </mat-accordion>
 
   <!-- Detalles de pago -->
   <div class="ventas-pago">
     <h1>{{ idioma === 'es' ? 'Detalles de Pago' : 'Payment Details' }}</h1>
 
-  <div class="order-details" *ngFor="let order of filteredOrders">
-    <!-- Botón para alternar la visibilidad de este cuadro -->
-    <button class="pago" (click)="toggleVisibility(order)">
-      Número de Orden N°{{ order.numeroOrden }}
-    </button>
+    <div class="order-details" *ngFor="let order of filteredOrders">
+      <!-- Botón para alternar la visibilidad de este cuadro -->
+      <button class="pago" (click)="toggleVisibility(order)">
+        Número de Orden N°{{ order.numeroOrden }}
+      </button>
 
-    <!-- Contenido controlado por order.isVisible -->
-    <div *ngIf="order.isVisible">
-      <p><strong>Username:</strong> {{ order.username }}</p>
-      <p><strong>Email:</strong> {{ order.email }}</p>
-      <p><strong>Número de Orden:</strong> {{ order.numeroOrden }}</p>
-      
+      <!-- Contenido controlado por order.isVisible -->
+      <div *ngIf="order.isVisible">
+        <p><strong>Username:</strong> {{ order.username }}</p>
+        <p><strong>Email:</strong> {{ order.email }}</p>
+        <p><strong>Número de Orden:</strong> {{ order.numeroOrden }}</p>
 
         <div class="order-box">
           <h2>{{ idioma === 'es' ? 'Detalles de la Orden' : 'Order Details' }}</h2>

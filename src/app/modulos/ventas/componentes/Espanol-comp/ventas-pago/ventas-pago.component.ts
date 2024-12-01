@@ -2,19 +2,24 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ApiserviceService } from '../../../Service/apiservice.service';
+import { MatExpansionModule } from '@angular/material/expansion';
+
 
 @Component({
   selector: 'app-ventas-pago',
   templateUrl: './ventas-pago.component.html',
   styleUrls: ['./ventas-pago.component.scss'],
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,MatExpansionModule],
 })
 export class VentasPagoComponent {
   orders: any[] = [];
   filteredOrders: any[] = [];
   activeButton: number | null = null;
   idioma: string = 'es'; // Idioma actual
+  panelOpenState: boolean = true;
+
+
 
   constructor(private router: Router, private apiService: ApiserviceService) {
     this.loadCuotas();
