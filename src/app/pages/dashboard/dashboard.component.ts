@@ -67,6 +67,7 @@ export class DashboardComponent {
   ngOnInit() {
     this.checkScreenSize();
     this.loadUserRole();
+    console.log(this.user.getRolUser());
   }
 
   @HostListener('window:resize', ['$event'])

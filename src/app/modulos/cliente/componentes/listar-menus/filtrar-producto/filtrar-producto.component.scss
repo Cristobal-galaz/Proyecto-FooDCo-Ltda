@@ -1,0 +1,106 @@
+.filtros{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding-bottom: 1rem;
+}
+
+mat-accordion {
+    width: 100%; /* Ocupa todo el ancho disponible */
+    box-sizing: border-box; /* Incluye padding y bordes */
+    
+    
+  }
+  
+  /* Encabezados de los paneles */
+  mat-expansion-panel-header {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+
+  
+  /* Contenido de los paneles */
+  mat-expansion-panel {
+    width: 100%;
+  }
+  
+  /* Checkbox */
+  mat-checkbox {
+    display: flex;
+    align-items: center;
+    font-size: 1rem; /* Tamaño del texto */
+    margin: 0.5rem 0; /* Espaciado entre checkboxes */
+  }
+  
+  /* Slider */
+  .slider {
+  width: 100%;
+  display: flex; /* Utiliza flexbox para alinear los elementos en una fila */
+  justify-content: space-between; /* Espaciado uniforme entre los elementos */
+  align-items: center; /* Alinea verticalmente los elementos */
+  gap: 1rem; /* Espacio entre los inputs */
+  flex-wrap: wrap; /* Permite que los inputs bajen de línea en pantallas pequeñas */
+}
+
+/* Estilo para los campos de formulario */
+mat-form-field {
+  flex: 1 1 45%; /* Ocupa el 45% del espacio disponible */
+  min-width: 150px; /* Define un ancho mínimo */
+  max-width: 200px; /* Define un ancho máximo */
+}
+
+/* Slider para Precio */
+.precio-slider {
+  width: 100%; /* Ocupa todo el ancho disponible */
+  margin-top: 1rem; /* Espaciado superior */
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .slider {
+    flex-direction: column; /* Apila los elementos verticalmente */
+    align-items: stretch; /* Los elementos ocupan todo el ancho disponible */
+  }
+
+  mat-form-field {
+    width: 100%; /* Cada campo ocupa todo el ancho disponible */
+    max-width: none; /* Elimina el ancho máximo en pantallas pequeñas */
+  }
+
+  .precio-slider {
+    width: 100%; /* Asegura que el slider también ocupe todo el ancho */
+  }
+}
+  
+  mat-slider {
+    width: 100%; /* Ocupa todo el ancho disponible */
+  }
+  
+  /* Botón de Filtrar */
+
+  
+  /* Responsividad */
+  @media (max-width: 768px) {
+    mat-accordion {
+      max-height: none; /* Permite que ocupe más espacio en pantallas pequeñas */
+      gap: 0.75rem; /* Reduce el espaciado entre paneles */
+    }
+  
+    mat-expansion-panel-header {
+      font-size: 1rem; /* Ajusta el tamaño del texto */
+    }
+  }
+  

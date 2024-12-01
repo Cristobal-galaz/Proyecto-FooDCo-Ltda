@@ -1,0 +1,217 @@
+{
+    "NAV": {
+        "LOGO": "logo",
+        "ABOUT_US": "About Us",
+        "MENU": "Menu",
+        "CONTACT_US": "Contact Us",
+        "CONTROL_PANEL": "Control Panel",
+        "LOGOUT": "Logout",
+        "LOGIN": "Login",
+        "REGISTER": "Register"
+    },
+    "LANGUAGE": {
+        "SPANISH": "Spanish",
+        "ENGLISH": "English",
+        "LABEL": "Language"
+    },
+    "HOME": {
+        "TITLE": "Delicious Food for Companies and Events. Always Hot and Fresh",
+        "DESCRIPTION": "The best catering service for companies and events. We are ready to fulfill your desires. The ideal choice for all your healthy food needs, in Chile and beyond.",
+        "BUTTONS": {
+            "VIEW_MENUS": "View Menus",
+            "CONTACT_SALES": "Contact Sales"
+        },
+        "HOW_IT_WORKS": {
+            "TITLE": "How It Works",
+            "DESCRIPTION": "Register, choose your menus and dishes, select the delivery date, and we'll take care of the rest. Enjoy healthy and delicious food, with options for everyone: vegetarian, vegan, gluten-free and omnivorous.",
+            "STEPS": {
+                "1": {
+                    "TITLE": "Register",
+                    "DESCRIPTION": "Easily create your account on our website."
+                },
+                "2": {
+                    "TITLE": "Explore Menus",
+                    "DESCRIPTION": "Discover our catalog with a variety of dishes from different menus."
+                },
+                "3": {
+                    "TITLE": "Select Your Dishes",
+                    "DESCRIPTION": "Choose the dishes you want, adjusting the quantities to your needs."
+                },
+                "4": {
+                    "TITLE": "Send Your Order",
+                    "DESCRIPTION": "Confirm your order and our team will contact you to finalize the details."
+                },
+                "5": {
+                    "TITLE": "Receive Your Order",
+                    "DESCRIPTION": "Receive your order on the date you selected."
+                }
+            }
+        },
+        "BEST_DISHES": {
+            "TITLE": "Exquisite Dishes for Companies, Events, and More",
+            "DESCRIPTION": "Meals prepared with fresh ingredients, designed to satisfy both in the office and at special events.",
+            "OPTIONS": {
+                "1": "Office Lunches",
+                "2": "Corporate Events",
+                "3": "Banquets for Large Events",
+                "4": "Food for Construction Sites and Mines",
+                "5": "Parties and Celebrations"
+            }
+        }
+    },
+    "FOOTER": {
+        "LEFT": {
+            "TITLE": "Good Food and Good Life",
+            "ICONS": {
+                "FACEBOOK": "Visit our FaceBook",
+                "X": "Visit our X",
+                "INSTAGRAM": "Visit our Instagram"
+            }
+        },
+        "RIGHT": {
+            "TITLE": "Contact Us",
+            "FORM": {
+                "PLACEHOLDER_EMAIL": "Email Address",
+                "BUTTON_LABEL": "Send"
+            },
+            "NAVIGATION": {
+                "HOME": "Home",
+                "ABOUT_US": "About Us",
+                "MENUS": "Menus",
+                "CONTACT": "Contact"
+            }
+        }
+    },
+    "CONTACT_PAGE": {
+        "TITLE_MAIN": {
+            "TITLE": "Contact Us",
+            "SUBTITLE": "We are here to help! Feel free to contact us with your questions or concerns"
+        },
+        "LEFT_SECTION": {
+            "TITLE": "Contact Information",
+            "DESCRIPTION": "Do not hesitate to contact us at any time. Our goal is to respond within 24 hours.",
+            "DETAILS": {
+                "PHONE": {
+                    "LABEL": "Phone"
+                },
+                "EMAIL": {
+                    "LABEL": "Email"
+                },
+                "ADDRESS": {
+                    "LABEL": "Address"
+                }
+            }
+        },
+        "RIGHT_SECTION": {
+            "FORM": {
+                "FIELDS": {
+                    "FIRST_NAME": "First Name",
+                    "LAST_NAME": "Last Name",
+                    "EMAIL": "Email",
+                    "PHONE": "Phone",
+                    "MESSAGE": "Message"
+                },
+                "SUBJECT": {
+                    "TITLE": "Subject",
+                    "OPTIONS": {
+                        "GENERAL": "General Inquiry",
+                        "SERVICE": "Service Inquiry",
+                        "SUGGESTIONS": "Suggestions",
+                        "TECHNICAL_SUPPORT": "Technical Support",
+                        "OTHERS": "Others"
+                    }
+                },
+                "BUTTON": {
+                    "SUBMIT": "Submit"
+                }
+            }
+        }
+    },
+    "FILTERS": {
+        "TITLE": "Filters",
+        "FILTERS_SECTION": "Filters",
+        "FOOD_TYPE": {
+            "TITLE": "Food Type",
+            "OPTIONS": {
+                "OMNIVORO": "Omnivore",
+                "VEGETARIANO": "Vegetarian",
+                "SIN GLUTEN": "Gluten-Free",
+                "VEGANO": "Vegan"
+            }
+        },
+        "PRICE": {
+            "TITLE": "Price",
+            "MIN_PLACEHOLDER": "Minimum Price",
+            "MAX_PLACEHOLDER": "Maximum Price"
+        },
+        "SERVICES": {
+            "TITLE": "Service",
+            "OPTIONS": {
+                "CAFETERIA": "Cafeteria",
+                "EVENTOS": "Events",
+                "SNACKS": "Snacks"
+            }
+        },
+        "CATEGORIES": {
+            "TITLE": "Categories",
+            "OPTIONS": {
+                "DESAYUNO": "Breakfast",
+                "ALMUERZO": "Lunch",
+                "POSTRE": "Dessert",
+                "CENA": "Dinner",
+                "COLACION": "Snack"
+            }
+        },
+        "BUTTONS": {
+            "APPLY": "Apply",
+            "RESET": "Reset"
+        }
+    },
+    "ORDER": {
+        "TITLE": "My Order",
+        "EDIT": "Edit",
+        "ACCEPT": "Accept",
+        "EMPTY": {
+            "MESSAGE": "Your order is empty",
+            "ICON": "search"
+        },
+        "PRODUCT": {
+            "QUANTITY": "X",
+            "PRICE": "Price"
+        },
+        "BUTTONS": {
+            "DELETE_SELECTED": "Delete Selected",
+            "CONTINUE": "Continue"
+        }
+    },
+    "ORDER_SEND": {
+        "DETAILS_TITLE": "Order Details",
+        "SUBTOTAL": "Subtotal",
+        "DISCOUNT": "Discount",
+        "SHIPPING": "Shipping",
+        "TOTAL": "Total",
+        "CONTINUE_BUTTON": "Continue",
+        "FORM_TITLE": "Shipping Information",
+        "ADDRESS": "Address",
+        "NUMBER": "Number",
+        "APARTMENT": "Apartment",
+        "APARTMENT_HINT": "Optional",
+        "COUNTRY": "Country",
+        "CITY": "City",
+        "DATE_LABEL": "Delivery Date",
+        "DATE_HINT": "The delivery date must be at least 15 days after creating the request.",
+        "SUBMIT_BUTTON": "Submit",
+        "SUBMIT_SUCCESS": "Order submitted successfully",
+        "SUBMIT_ERROR": "Please complete all required fields."
+    },
+    "PRODUCT_CARD": {
+        "DETAIL": "Detail",
+        "SELECTION": "Selection",
+        "ACCEPT": "Accept",
+        "CANCEL": "Cancel"
+    },
+    "PRODUCT_DETAIL": {
+        "INGREDIENTS": "Ingredients",
+        "DESCRIPTION": "Description"
+    }
+}

@@ -18,7 +18,9 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    padding: 7.625rem;
+    padding-right: 7.625rem;
+    padding-left: 7.625rem;
+    padding-bottom: 7.625rem;
     margin: 0 auto; /* Centra horizontalmente */
     overflow: hidden; /* Evita desbordamientos */
   
@@ -64,7 +66,24 @@
     flex-direction: column;
     gap: 3.1251rem;
   }
+
+  .datos {
+    display: flex; /* Activa flexbox */
+    flex-direction: row; /* Alinea los elementos en una fila */
+    align-items: center; /* Alinea los elementos verticalmente */
+    gap: 0.5rem; /* Espaciado entre el ícono y el texto */
+  }
   
+  .datos mat-icon {
+    font-size: 1.5rem; /* Asegura un tamaño adecuado para el ícono */
+    line-height: 1; /* Elimina cualquier espaciado vertical adicional */
+  }
+  
+  .datos p {
+    margin: 0; /* Elimina márgenes adicionales */
+    line-height: 1; /* Asegura la alineación vertical */
+    font-size: 1rem; /* Ajusta el tamaño del texto para que coincida con el ícono */
+  }
   /* Columna izquierda */
   .box-izquierdo {
     flex: 1 1 45%; /* Ocupa el 45% del ancho */

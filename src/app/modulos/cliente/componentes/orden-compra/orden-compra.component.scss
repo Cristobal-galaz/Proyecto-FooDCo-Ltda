@@ -1,106 +1,183 @@
-.flex-container {
+/* Contenedor de la página */
+.page {
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 3rem;
+  padding: 1rem;
+  margin-left: 10rem;
+  margin-right: 10rem;
+}
+
+/* Sección del carro */
+.carro {
+  flex: 0 0 40%;
+}
+
+/* Detalles */
+.detalle {
+  flex: 0 0 60%;
+  padding: 1rem;
+  gap: 2rem;
+}
+
+/* Tarjeta responsiva */
+.responsive-card {
+  margin-bottom: 1rem;
+}
+
+/* Contenedor del contenido de la tarjeta */
+.contenido-card {
+  display: grid;
+  grid-template-columns: 1fr 2fr auto; /* Imagen, Título y Botones */
   align-items: center;
-  gap: 15px;
+  gap: 1rem;
+}
+
+/* Imagen */
+.columna.imagen img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Título */
+.columna.titulo {
+  text-align: left;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+/* Botones */
+.columna.botones {
+  display: flex;
+  flex-direction: column; /* Organiza los botones en columna */
+  justify-content: space-between;
+  align-items: flex-end; /* Alinea los botones al extremo derecho */
+  gap: 1.5rem;
+}
+
+/* Botón Eliminar */
+.columna.botones .btn-eliminar {
+  align-self: flex-end; /* Alinea el botón de eliminar en la parte superior derecha */
+}
+
+/* Botones Editar */
+.btn-editar {
+  display: flex;
+  align-items: center; /* Alinea todos los elementos verticalmente al centro */
+  gap: 0.5rem; /* Espaciado entre botones e input */
+}
+
+.input-cantidad {
+  max-width: 90px; /* Ajusta el ancho máximo del input */
+  flex-grow: 1; /* Permite que el input ocupe más espacio si es necesario */
+}
+
+.btn-restar,
+.btn-aumentar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0; /* Opcional: elimina el padding por defecto para botones más pequeños */
+}
+
+.btn-editar mat-form-field {
+  flex-grow: 1; /* Hace que el input ocupe el espacio restante */
+  max-width: 70px; /* Limita el tamaño del input */
+}
+
+.input-cantidad input[type="number"]::-webkit-inner-spin-button, 
+.input-cantidad input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none; /* Desactiva las flechas en navegadores basados en WebKit */
+  margin: 0; /* Elimina cualquier margen residual */
+}
+
+.input-cantidad input[type="number"] {
+  -moz-appearance: textfield; /* Desactiva las flechas en Firefox */
+}
+.detalle-linea {
+  display: flex;
+  justify-content: space-between; /* Alinea el texto a izquierda y derecha */
+  align-items: center; /* Centra verticalmente el texto */
+  margin: 0.5rem 0; /* Espaciado entre líneas */
+}
+
+.detalle-linea p {
+  margin: 0; /* Elimina márgenes de los párrafos */
+  font-weight: bold; /* Opcional: resalta los textos de la izquierda */
+}
+
+.detalle-linea .valores {
+  text-align: right; /* Asegura que el texto del span esté alineado a la derecha */
+  font-weight: bold; /* Opcional: resalta los valores */
+}
+
+.detalle-linea .descuento {
+  color: #FF3333;
+}
+
+.detalle-titulo {
+  margin-bottom: 1.5rem;
+}
+
+.boton-centro {
+  display: flex;
+  justify-content: center; /* Centra el botón horizontalmente */
+  align-items: center; /* Centra el botón verticalmente (si es necesario) */
+  margin-top: 3rem; /* Espaciado superior opcional */
+}
+
+.btn-continuar {
+  width: 80%;
+  padding: 0.5rem 1rem; /* Espaciado interno del botón */
 }
 
 .formulario {
-  width: 60%;
-  margin: auto;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-@media (max-width: 768px) {
-  .formulario {
-    width: 95%;
-  }
-}
-
-@media (max-width: 480px) {
-  .formulario {
-    width: 100%;
-  }
-}
-
-.mat-form-field {
-  width: 100%;
-}
-
-.inputs, .table {
-  padding: 10px;
-}
-
-.button-row {
-  display: flex;
-  justify-content: center;
-}
-
-.quantity {
-  text-align: right;
-  padding-right: 20px;
-}
-
-th, td {
-  vertical-align: middle;
-  text-align: center;
-  padding: 10px;
-}
-
-.form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 70%;
-  margin: 0 auto;
+  justify-content: left;
+  gap: 0.5rem;
+  margin: 1rem;
 }
 
-.horizontal-inputs {
+.direccion {
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
+  gap: 0.25rem;
   width: 100%;
-  gap: 20px;
+
 }
 
-.info-input {
-  width: 100%;
-  margin: 10px 0;
+.calle {
+  width: 60%;
+}
+.numero {
+  width: 20%;
+}
+.departamento {
+  width: 20%;
 }
 
-.info-input.direccion {
-  width: 100%;
-}
-
-@media (max-width: 600px) {
-  .horizontal-inputs {
-    flex-direction: column;
-  }
-}
-
-.table {
-  width: 100%;
-  overflow-x: auto;
-}
-
-.button-container {
+.pais {
   display: flex;
-  justify-content: flex-end; /* Alinea los botones a la derecha */
-  gap: 10px; /* Añade espacio entre los botones */
+  flex-direction: row;
+  gap: 0.25rem;
+  width: 100%;
+}
+.input-pais {
+  width: 50%;
+}
+.input-ciudad {
+  width: 50%;
+}
+.fecha {
+  width: 100%;
 }
 
-.enviar-btn, .atras-btn {
-  margin-top: 20px;
-}
 
-@media (max-width: 600px) {
-  .enviar-btn, .atras-btn {
-    margin: 10px auto;
-    display: block;
-  }
-}
 
-.form::after {
-  content: "";
-  display: table;
-  clear: both;
-}
+
+

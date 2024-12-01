@@ -1,90 +1,100 @@
 <div class="page">
     <div class="titulo-principal">
-
-        <h1>Contáctanos</h1>
-        <h2>¡Estamos aquí para ayudarte! No dudes en contactarnos con tus preguntas o inquietudes</h2>
+      <h1>{{ 'CONTACT_PAGE.TITLE_MAIN.TITLE' | translate }}</h1>
+      <h2>{{ 'CONTACT_PAGE.TITLE_MAIN.SUBTITLE' | translate }}</h2>
     </div>
-
+  
     <div class="contact-info">
-        <div class="box-izquierdo">
-
-            <div class="titulo-izquierdo">
-                <h3>Informacion de Contacto</h3>
-                <h4>No dudes en contactarnos en cualquier momento. Nuestro objetivo es responder en un plazo de 24
-                    horas.</h4>
-            </div>
-
-            <div class="datos-empresa">
-                <div class="datos">
-                    <mat-icon fontIcon="phone_in_talk"></mat-icon>
-                    <p>Telefono</p>
-                </div>
-                <div class="datos">
-                    <mat-icon fontIcon="mail"></mat-icon>
-                    <p>correo</p>
-                </div>
-                <div class="datos">
-                    <mat-icon fontIcon="location_on"></mat-icon>
-                    <p>Direccion</p>
-                </div>
-            </div>
+      <!-- Sección Izquierda -->
+      <div class="box-izquierdo">
+        <div class="titulo-izquierdo">
+          <h3>{{ 'CONTACT_PAGE.LEFT_SECTION.TITLE' | translate }}</h3>
+          <h4>{{ 'CONTACT_PAGE.LEFT_SECTION.DESCRIPTION' | translate }}</h4>
         </div>
-
-        <div class="box-derecho">
-            <form [formGroup]="contactoForm" (ngSubmit)="onSubmit()">
-
-                <div class="datos-contacto">
-
-                    <div class="campos">
-
-                        <mat-form-field appearance="outline">
-                            <mat-label>Nombre</mat-label>
-                            <input matInput formControlName="nombre">
-                        </mat-form-field>
-                        <mat-form-field appearance="outline">
-                            <mat-label>Apellido</mat-label>
-                            <input matInput formControlName="apellido">
-                        </mat-form-field>
-                    </div>
-
-                    <div class="campos">
-
-                        <mat-form-field appearance="outline">
-                            <mat-label>Correo</mat-label>
-                            <input matInput formControlName="email">
-                        </mat-form-field>
-                        <mat-form-field appearance="outline">
-                            <mat-label>Teléfono</mat-label>
-                            <input matInput formControlName="telefono">
-                        </mat-form-field>
-                    </div>
-
-
-
-                    <section class="asunto">
-                        <p>Asunto:</p>
-                        <mat-radio-group formControlName="asunto">
-                            <mat-radio-button value="general"><span>Consulta General</span> </mat-radio-button>
-                            <mat-radio-button value="servicio"><span>Consulta Servicios</span></mat-radio-button>
-                            <mat-radio-button value="sugerencias"><span>Sugerencias</span></mat-radio-button>
-                            <mat-radio-button value="soporte_tecnico"><span>Soporte Tecnico</span></mat-radio-button>
-                            <mat-radio-button value="otros"><span>Otros</span></mat-radio-button>
-                        </mat-radio-group>
-                    </section>
-
-                    <div class="texto">
-                        <mat-form-field appearance="outline">
-                            <mat-label>Mensaje</mat-label>
-                            <textarea matInput formControlName="mensaje"></textarea>
-                        </mat-form-field>
-                    </div>
-
-                    <div class="botones">
-                        <button type="submit">Enviar</button>
-                    </div>
-                </div>
-            </form>
-
+  
+        <div class="datos-empresa">
+          <div class="datos">
+            <mat-icon fontIcon="phone_in_talk"></mat-icon>
+            <p>{{ 'CONTACT_PAGE.LEFT_SECTION.DETAILS.PHONE.LABEL' | translate }}</p>
+          </div>
+          <div class="datos">
+            <mat-icon fontIcon="mail"></mat-icon>
+            <p>{{ 'CONTACT_PAGE.LEFT_SECTION.DETAILS.EMAIL.LABEL' | translate }}</p>
+          </div>
+          <div class="datos">
+            <mat-icon fontIcon="location_on"></mat-icon>
+            <p>{{ 'CONTACT_PAGE.LEFT_SECTION.DETAILS.ADDRESS.LABEL' | translate }}</p>
+          </div>
         </div>
+      </div>
+  
+      <!-- Sección Derecha -->
+      <div class="box-derecho">
+        <form [formGroup]="contactoForm" (ngSubmit)="onSubmit()">
+          <div class="datos-contacto">
+            <!-- Campos Nombre y Apellido -->
+            <div class="campos">
+              <mat-form-field appearance="outline">
+                <mat-label>{{ 'CONTACT_PAGE.RIGHT_SECTION.FORM.FIELDS.FIRST_NAME' | translate }}</mat-label>
+                <input matInput formControlName="nombre">
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>{{ 'CONTACT_PAGE.RIGHT_SECTION.FORM.FIELDS.LAST_NAME' | translate }}</mat-label>
+                <input matInput formControlName="apellido">
+              </mat-form-field>
+            </div>
+  
+            <!-- Campos Correo y Teléfono -->
+            <div class="campos">
+              <mat-form-field appearance="outline">
+                <mat-label>{{ 'CONTACT_PAGE.RIGHT_SECTION.FORM.FIELDS.EMAIL' | translate }}</mat-label>
+                <input matInput formControlName="email">
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>{{ 'CONTACT_PAGE.RIGHT_SECTION.FORM.FIELDS.PHONE' | translate }}</mat-label>
+                <input matInput formControlName="telefono">
+              </mat-form-field>
+            </div>
+  
+            <!-- Opciones de Asunto -->
+            <section class="asunto">
+              <p>{{ 'CONTACT_PAGE.RIGHT_SECTION.FORM.SUBJECT.TITLE' | translate }}</p>
+              <mat-radio-group formControlName="asunto">
+                <mat-radio-button value="general">
+                  {{ 'CONTACT_PAGE.RIGHT_SECTION.FORM.SUBJECT.OPTIONS.GENERAL' | translate }}
+                </mat-radio-button>
+                <mat-radio-button value="servicio">
+                  {{ 'CONTACT_PAGE.RIGHT_SECTION.FORM.SUBJECT.OPTIONS.SERVICE' | translate }}
+                </mat-radio-button>
+                <mat-radio-button value="sugerencias">
+                  {{ 'CONTACT_PAGE.RIGHT_SECTION.FORM.SUBJECT.OPTIONS.SUGGESTIONS' | translate }}
+                </mat-radio-button>
+                <mat-radio-button value="soporte_tecnico">
+                  {{ 'CONTACT_PAGE.RIGHT_SECTION.FORM.SUBJECT.OPTIONS.TECHNICAL_SUPPORT' | translate }}
+                </mat-radio-button>
+                <mat-radio-button value="otros">
+                  {{ 'CONTACT_PAGE.RIGHT_SECTION.FORM.SUBJECT.OPTIONS.OTHERS' | translate }}
+                </mat-radio-button>
+              </mat-radio-group>
+            </section>
+  
+            <!-- Mensaje -->
+            <div class="texto">
+              <mat-form-field appearance="outline">
+                <mat-label>{{ 'CONTACT_PAGE.RIGHT_SECTION.FORM.FIELDS.MESSAGE' | translate }}</mat-label>
+                <textarea matInput formControlName="mensaje"></textarea>
+              </mat-form-field>
+            </div>
+  
+            <!-- Botón -->
+            <div class="botones">
+              <button type="submit">
+                {{ 'CONTACT_PAGE.RIGHT_SECTION.FORM.BUTTON.SUBMIT' | translate }}
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
-</div>
+  </div>
+  
