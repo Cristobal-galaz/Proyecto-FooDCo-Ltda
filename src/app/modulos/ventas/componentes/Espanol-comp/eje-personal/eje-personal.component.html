@@ -24,18 +24,18 @@
       <tr>
         <td>
           <img
-            [src]="personal.imagenPerfil"
+            [src]="personal?.imagenPerfil"
             alt="{{ language === 'es' ? 'Imagen de perfil' : 'Profile image' }}"
             class="profile-image"
           />
         </td>
-        <td>{{ personal.nombre }}</td>
-        <td>{{ personal.rut }}</td>
-        <td>{{ personal.email }}</td>
-        <td>{{ personal.departamento?.nombre }}</td>
-        <td>{{ personal.role?.nombre }}</td>
-        <td>{{ personal.sucursal?.nombre }}</td>
-        <td>{{ personal.createdAt | date: 'short' }}</td>
+        <td>{{ personal?.nombre }}</td>
+        <td>{{ personal?.rut }}</td>
+        <td>{{ personal?.email }}</td>
+        <td>{{ personal?.departamento?.nombre }}</td>
+        <td>{{ personal?.role?.nombre }}</td>
+        <td>{{ personal?.sucursal?.nombre }}</td>
+        <td>{{ personal?.createdAt | date: 'short' }}</td>
       </tr>
     </tbody>
   </table>
