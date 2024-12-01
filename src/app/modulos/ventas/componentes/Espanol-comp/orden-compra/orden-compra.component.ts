@@ -100,6 +100,7 @@ export class OrdenCompraComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // Obtener las órdenes al inicializar el componente
+    this.panelOpenState = true; // Asegurar que el panel esté abierto por defecto
   }
+  
 }
