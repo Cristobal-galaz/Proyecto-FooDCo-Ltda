@@ -17,6 +17,18 @@
       </mat-form-field>
 
       <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Tipo</mat-label>
+        <mat-select formControlName="tipo">
+          <mat-option value="Kilo">Kilo</mat-option>
+          <mat-option value="Litro">Litro</mat-option>
+          <mat-option value="Unidad">Unidad</mat-option>
+        </mat-select>
+        <mat-error *ngIf="materiaPrimaForm.get('tipo')?.invalid && materiaPrimaForm.get('tipo')?.touched">
+          El tipo es requerido.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
         <mat-label>Cantidad</mat-label>
         <input matInput type="number" formControlName="cantidad">
         <mat-error *ngIf="materiaPrimaForm.get('cantidad')?.invalid && materiaPrimaForm.get('cantidad')?.touched">
@@ -40,9 +52,23 @@
         </mat-error>
       </mat-form-field>
 
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Fecha de Ingreso</mat-label>
+        <input matInput [matDatepicker]="pickerIngreso" formControlName="fecha_ingreso">
+        <mat-datepicker-toggle matSuffix [for]="pickerIngreso"></mat-datepicker-toggle>
+        <mat-datepicker #pickerIngreso></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Fecha de Vencimiento</mat-label>
+        <input matInput [matDatepicker]="pickerVencimiento" formControlName="fecha_vencimiento">
+        <mat-datepicker-toggle matSuffix [for]="pickerVencimiento"></mat-datepicker-toggle>
+        <mat-datepicker #pickerVencimiento></mat-datepicker>
+      </mat-form-field>
+
       <div class="actions">
         <button mat-raised-button color="primary" type="submit" [disabled]="materiaPrimaForm.invalid">Guardar</button>
-        <button mat-button color="warn" type="button" routerLink="/produccion/materias-primas">Cancelar</button> 
+        <button mat-button color="warn" type="button" routerLink="/produccion/materias-primas">Cancelar</button>
       </div>
     </form>
   </mat-card-content>

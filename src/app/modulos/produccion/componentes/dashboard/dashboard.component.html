@@ -1,40 +1,70 @@
-<div class="dashboard-content">
+<div class="dashboard-container">
+  <!-- Header del Dashboard -->
+  <div class="dashboard-header">
+    <h1>Dashboard de Producción</h1>
+  </div>
+
   <!-- Sección de estadísticas -->
   <div class="stats-container">
-
-    <!-- Tarjeta Producción Total -->
+    <!-- Producción Total -->
     <mat-card class="stat-card">
       <mat-card-header>
-        <mat-card-title>Producción Total</mat-card-title>
+        <div class="icon-container">
+          <mat-icon color="primary">production_quantity_limits</mat-icon>
+        </div>
+        <div class="title-container">
+          <mat-card-title>Producción Total</mat-card-title>
+          <mat-card-subtitle>Acumulado mensual</mat-card-subtitle>
+        </div>
       </mat-card-header>
       <mat-card-content>
-        <p>{{ produccionTotal }}</p>
+        <h2 class="stat-number">{{ produccionTotal }}</h2>
       </mat-card-content>
     </mat-card>
 
-    <!-- Tarjeta Materias Primas en Inventario -->
+    <!-- Materias Primas en Inventario -->
     <mat-card class="stat-card">
       <mat-card-header>
-        <mat-card-title>Materias Primas en Inventario</mat-card-title>
+        <div class="icon-container">
+          <mat-icon color="accent">inventory_2</mat-icon>
+        </div>
+        <div class="title-container">
+          <mat-card-title>Inventario</mat-card-title>
+          <mat-card-subtitle>Materias primas disponibles</mat-card-subtitle>
+        </div>
       </mat-card-header>
       <mat-card-content>
-        <p>{{ materiasPrimasTotal }}</p>
+        <h2 class="stat-number">{{ materiasPrimasTotal }}</h2>
       </mat-card-content>
     </mat-card>
 
-    <!-- Tarjeta Empleados en Turno -->
+    <!-- Empleados en Turno -->
     <mat-card class="stat-card">
       <mat-card-header>
-        <mat-card-title>Empleados en Turno</mat-card-title>
+        <div class="icon-container">
+          <mat-icon color="warn">group</mat-icon>
+        </div>
+        <div class="title-container">
+          <mat-card-title>Empleados en Turno</mat-card-title>
+          <mat-card-subtitle>Actualmente activos</mat-card-subtitle>
+        </div>
       </mat-card-header>
       <mat-card-content>
-        <p>{{ empleadosEnTurno }}</p>
+        <h2 class="stat-number">{{ empleadosEnTurno }}</h2>
       </mat-card-content>
     </mat-card>
   </div>
 
-  <!-- Espacio reservado para gráficos  -->
-  <div class="charts-container">
-    <!-- Aquí podemos añadir gráficos -->
+  <!-- Espacio reservado para otras funcionalidades -->
+  <div class="additional-info-container">
+    <mat-card class="info-card">
+      <mat-card-header>
+        <mat-icon>info</mat-icon>
+        <mat-card-title>Información Adicional</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>Aquí puedes agregar secciones adicionales para reportes o alertas relevantes.</p>
+      </mat-card-content>
+    </mat-card>
   </div>
 </div>
