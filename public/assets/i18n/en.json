@@ -7,7 +7,8 @@
         "CONTROL_PANEL": "Control Panel",
         "LOGOUT": "Logout",
         "LOGIN": "Login",
-        "REGISTER": "Register"
+        "REGISTER": "Register",
+        "TRACKING": "Tracking"
     },
     "LANGUAGE": {
         "SPANISH": "Spanish",
@@ -19,7 +20,8 @@
         "DESCRIPTION": "The best catering service for companies and events. We are ready to fulfill your desires. The ideal choice for all your healthy food needs, in Chile and beyond.",
         "BUTTONS": {
             "VIEW_MENUS": "View Menus",
-            "CONTACT_SALES": "Contact Sales"
+            "CONTACT_SALES": "Contact Sales",
+            "TRACKING": "Tracking"
         },
         "HOW_IT_WORKS": {
             "TITLE": "How It Works",

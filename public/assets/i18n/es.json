@@ -7,7 +7,8 @@
         "CONTROL_PANEL": "Panel de Control",
         "LOGOUT": "Salir",
         "LOGIN": "Iniciar Sesión",
-        "REGISTER": "Registrarse"
+        "REGISTER": "Registrarse",
+        "TRACKING": "Seguimiento"
     },
     "LANGUAGE": {
         "SPANISH": "Español",
@@ -19,7 +20,8 @@
         "DESCRIPTION": "El mejor servicio de catering para empresas y eventos. Estamos listos para cumplir tus deseos. La opción ideal para todas tus necesidades de comida saludable, en Chile y más allá.",
         "BUTTONS": {
             "VIEW_MENUS": "Ver Menús",
-            "CONTACT_SALES": "Contacto ventas"
+            "CONTACT_SALES": "Contacto ventas",
+            "TRACKING": "Seguimiento"
         },
         "HOW_IT_WORKS": {
             "TITLE": "Cómo Funciona",
