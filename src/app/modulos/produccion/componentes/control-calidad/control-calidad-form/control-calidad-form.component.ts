@@ -1,13 +1,13 @@
-// control-calidad-form.component.ts
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar'; // IMPORTAR MatSnackBar
 import { ControlCalidadService } from '../../../services/control-calidad.service';
 
 @Component({
   selector: 'app-control-calidad-form',
   templateUrl: './control-calidad-form.component.html',
-  styleUrls: ['./control-calidad-form.component.css']
+  styleUrls: ['./control-calidad-form.component.css'],
 })
 export class ControlCalidadFormComponent implements OnInit {
   controlCalidadForm: FormGroup;
@@ -17,18 +17,18 @@ export class ControlCalidadFormComponent implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private controlCalidadService: ControlCalidadService
+    private snackBar: MatSnackBar, // INYECTAR MatSnackBar
+    private controlCalidadService: ControlCalidadService // INYECTAR EL SERVICIO
   ) {
     this.controlCalidadForm = this.fb.group({
-      produccion_id: [{ value: '', disabled: true }, Validators.required], // Campo deshabilitado para el ID
+      produccion_id: [{ value: '', disabled: true }, Validators.required],
       estado: ['', Validators.required],
       observaciones: ['', Validators.required],
-      inspector: ['', Validators.required]
+      inspector: ['', Validators.required],
     });
   }
 
   ngOnInit(): void {
-    // Obtén el ID de producción desde los parámetros de la URL
     this.route.queryParams.subscribe(params => {
       this.produccionId = params['produccionId'];
       if (this.produccionId) {
@@ -39,13 +39,16 @@ export class ControlCalidadFormComponent implements OnInit {
 
   onSubmit(): void {
     if (this.controlCalidadForm.valid) {
-      const controlData = this.controlCalidadForm.getRawValue(); // Obtener datos sin los campos deshabilitados
+      const controlData = this.controlCalidadForm.getRawValue(); // Obtener datos del formulario
       this.controlCalidadService.addRegistro(controlData).subscribe({
-        next: () => {
-          // Redirige al listado de controles de calidad después de guardar
+        next: (response: any) => {
+          this.snackBar.open('Control de calidad guardado correctamente', 'Cerrar', { duration: 3000 });
           this.router.navigate(['/produccion/control-calidad']);
         },
-        error: error => console.error('Error al agregar el control de calidad:', error)
+        error: (err: any) => {
+          console.error('Error al guardar el control de calidad:', err);
+          this.snackBar.open('Error al guardar el control de calidad', 'Cerrar', { duration: 3000 });
+        },
       });
     }
   }

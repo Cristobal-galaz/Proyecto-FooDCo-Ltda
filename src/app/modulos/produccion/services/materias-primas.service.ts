@@ -19,6 +19,10 @@ export class MateriasPrimasService {
   getMateriaPrimaById(id: string): Observable<MateriaPrima> {
     return this.http.get<MateriaPrima>(`${this.apiUrl}/${id}`);
   }
+  
+  descontarMateriaPrima(id: string, cantidad: number): Observable<any> {
+    return this.http.post(`${this.apiUrl}/inventario/descontar`, { id, cantidad });
+  }
 
   addMateriaPrima(materiaPrima: MateriaPrima): Observable<MateriaPrima> {
     return this.http.post<MateriaPrima>(this.apiUrl, materiaPrima);

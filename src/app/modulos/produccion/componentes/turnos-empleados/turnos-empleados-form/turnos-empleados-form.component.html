@@ -1,57 +1,43 @@
-<mat-card class="mat-elevation-z8">
+<mat-card>
   <mat-card-header>
-    <mat-card-title>{{ turnoId ? 'Editar Turno' : 'Nuevo Turno' }}</mat-card-title>
+    <mat-card-title>
+      {{ isEdit ? 'Editar Turno' : 'Asignar Nuevo Turno' }}
+    </mat-card-title>
   </mat-card-header>
 
   <mat-card-content>
-    <form [formGroup]="turnoForm" (ngSubmit)="onSubmit()">
-
-      <!-- ID del Empleado (en lugar de nombre del empleado) -->
-      <mat-form-field class="full-width">
-        <mat-label>ID del Empleado</mat-label>
-        <input matInput formControlName="empleado_id" placeholder="Ingrese el ID del empleado">
-        <mat-error *ngIf="turnoForm.get('empleado_id')?.hasError('required')">
-          El ID del empleado es requerido.
-        </mat-error>
+    <form [formGroup]="turnoForm" (ngSubmit)="onSubmit()" class="form-container">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Seleccione un Empleado</mat-label>
+        <mat-select formControlName="empleado_id" required>
+          <mat-option *ngFor="let empleado of empleados" [value]="empleado._id">
+            {{ empleado.nombre }} - {{ empleado.departamento?.nombre }}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
 
-      <!-- Fecha del Turno -->
-      <mat-form-field class="full-width">
+      <mat-form-field appearance="fill" class="full-width">
         <mat-label>Fecha</mat-label>
-        <input matInput [matDatepicker]="picker" formControlName="fecha" placeholder="Seleccione la fecha">
+        <input matInput [matDatepicker]="picker" formControlName="fecha" />
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
-        <mat-error *ngIf="turnoForm.get('fecha')?.hasError('required')">
-          La fecha es requerida.
-        </mat-error>
       </mat-form-field>
 
-      <!-- Hora de Inicio del Turno -->
-      <mat-form-field class="full-width">
+      <mat-form-field appearance="fill" class="full-width">
         <mat-label>Hora de Inicio</mat-label>
-        <input matInput type="time" formControlName="hora_inicio" placeholder="Ingrese la hora de inicio">
-        <mat-error *ngIf="turnoForm.get('hora_inicio')?.invalid">
-          La hora de inicio es requerida.
-        </mat-error>
+        <input matInput type="time" formControlName="hora_inicio" />
       </mat-form-field>
 
-      <!-- Hora de Fin del Turno -->
-      <mat-form-field class="full-width">
+      <mat-form-field appearance="fill" class="full-width">
         <mat-label>Hora de Fin</mat-label>
-        <input matInput type="time" formControlName="hora_fin" placeholder="Ingrese la hora de fin">
-        <mat-error *ngIf="turnoForm.get('hora_fin')?.invalid">
-          La hora de fin es requerida.
-        </mat-error>
+        <input matInput type="time" formControlName="hora_fin" />
       </mat-form-field>
 
-      <!-- Botones de Acción -->
-      <div class="actions">
-        <button mat-raised-button color="primary" class="full-width" type="submit" [disabled]="turnoForm.invalid">
-          {{ turnoId ? 'Actualizar' : 'Guardar' }}
+      <div class="button-group">
+        <button mat-raised-button color="primary" type="submit">
+          {{ isEdit ? 'Guardar Cambios' : 'Asignar Turno' }}
         </button>
-        <button mat-button color="warn" class="full-width" type="button" routerLink="/produccion/turnos-empleados">
-          Cancelar
-        </button>
+        <button mat-button color="warn" routerLink="/produccion/turnos-empleados">Cancelar</button>
       </div>
     </form>
   </mat-card-content>

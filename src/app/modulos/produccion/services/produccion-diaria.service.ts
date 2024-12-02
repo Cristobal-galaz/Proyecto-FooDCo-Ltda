@@ -22,9 +22,9 @@ export class ProduccionDiariaService {
     return this.http.get<ProduccionDiaria>(`${this.apiUrl}/${id}`);
   }
 
-  addProduccionDiaria(produccionDiaria: ProduccionDiaria): Observable<ProduccionDiaria> {
-    return this.http.post<ProduccionDiaria>(this.apiUrl, produccionDiaria);
-  }
+  addProduccionDiaria(produccionDiaria: ProduccionDiaria): Observable<any> {
+    return this.http.post<any>(this.apiUrl, produccionDiaria);
+  }  
 
   updateProduccionDiaria(id: string, produccionDiaria: Partial<ProduccionDiaria>): Observable<ProduccionDiaria> {
     return this.http.put<ProduccionDiaria>(`${this.apiUrl}/update/${id}`, produccionDiaria);
