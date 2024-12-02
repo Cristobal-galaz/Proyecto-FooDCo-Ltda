@@ -10,7 +10,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MatNativeDateModule, MatOptionModule } from '@angular/material/core';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -19,6 +19,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatTreeModule } from '@angular/material/tree';
+
 
 @NgModule({
   imports: [
@@ -39,6 +40,7 @@ import { MatTreeModule } from '@angular/material/tree';
     MatDialogModule,
     MatExpansionModule,
     MatDividerModule,
+    MatOptionModule,
     MatTreeModule
   ],
   exports: [
@@ -59,6 +61,7 @@ import { MatTreeModule } from '@angular/material/tree';
     MatExpansionModule,
     MatPaginatorModule,
     MatDividerModule,
+    MatOptionModule,
     MatTreeModule
   ]
 })

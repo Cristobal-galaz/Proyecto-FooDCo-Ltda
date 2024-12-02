@@ -1,56 +1,68 @@
 <mat-card>
-    <mat-card-header>
-      <mat-card-title>Gestión de Turnos de Empleados</mat-card-title>
-      <button mat-raised-button color="primary" [routerLink]="['/produccion/turnos-empleados/nuevo']">Agregar Nuevo Turno</button>
-    </mat-card-header>
-  
-    <mat-card-content>
-      <!-- Filtrado por nombre de empleado -->
-      <mat-form-field>
-        <mat-label>Buscar por nombre de empleado</mat-label>
-        <input matInput [(ngModel)]="filtro" (input)="filtrarTurnos()" placeholder="Nombre de empleado">
-      </mat-form-field>
-      
-      <!-- Tabla de turnos -->
-      <table mat-table [dataSource]="turnosFiltrados" class="mat-elevation-z8">
-        <!-- Columnas de la tabla -->
-        <ng-container matColumnDef="nombre_empleado">
-          <th mat-header-cell *matHeaderCellDef> Nombre del Empleado </th>
-          <td mat-cell *matCellDef="let turno"> {{turno.nombre_empleado}} </td>
-        </ng-container>
-  
-        <ng-container matColumnDef="turno">
-          <th mat-header-cell *matHeaderCellDef> Turno </th>
-          <td mat-cell *matCellDef="let turno"> {{turno.turno}} </td>
-        </ng-container>
-  
-        <ng-container matColumnDef="fecha">
-          <th mat-header-cell *matHeaderCellDef> Fecha </th>
-          <td mat-cell *matCellDef="let turno"> {{turno.fecha | date}} </td>
-        </ng-container>
-  
-        <ng-container matColumnDef="horas_trabajadas">
-          <th mat-header-cell *matHeaderCellDef> Horas Trabajadas </th>
-          <td mat-cell *matCellDef="let turno"> {{turno.horas_trabajadas}} horas </td>
-        </ng-container>
-  
-        <ng-container matColumnDef="acciones">
-          <th mat-header-cell *matHeaderCellDef> Acciones </th>
-          <td mat-cell *matCellDef="let turno">
-            <button mat-icon-button color="primary" [routerLink]="['/produccion/turnos-empleados/editar', turno.id]">
-              <mat-icon>edit</mat-icon>
-            </button>
-            <button mat-icon-button color="warn" (click)="eliminarTurno(turno.id)">
-              <mat-icon>delete</mat-icon>
-            </button>
-          </td>
-        </ng-container>
-  
-        <tr mat-header-row *matHeaderRowDef="['nombre_empleado', 'turno', 'fecha', 'horas_trabajadas', 'acciones']"></tr>
-        <tr mat-row *matRowDef="let row; columns: ['nombre_empleado', 'turno', 'fecha', 'horas_trabajadas', 'acciones']"></tr>
-      </table>
-    </mat-card-content>
-  
-    
-  </mat-card>
-  
+  <mat-card-header>
+    <mat-card-title>Gestión de Turnos de Empleados</mat-card-title>
+    <button mat-raised-button color="primary" routerLink="/produccion/turnos-empleados/nuevo">
+      Asignar Nuevo Turno
+    </button>
+  </mat-card-header>
+
+  <mat-card-content>
+    <!-- Campo de búsqueda -->
+    <mat-form-field appearance="fill">
+      <mat-label>Buscar por nombre de empleado</mat-label>
+      <input
+        matInput
+        [(ngModel)]="filtro"
+        (input)="filtrarTurnos()"
+        placeholder="Escriba un nombre"
+      />
+    </mat-form-field>
+
+    <!-- Tabla de turnos -->
+    <table mat-table [dataSource]="turnosFiltrados" class="mat-elevation-z8">
+      <!-- Columna: Empleado -->
+      <ng-container matColumnDef="empleado">
+        <th mat-header-cell *matHeaderCellDef>Empleado</th>
+        <td mat-cell *matCellDef="let turno">
+          {{ turno.empleado_id.nombre || 'No encontrado' }}
+        </td>
+      </ng-container>
+
+      <!-- Columna: Fecha -->
+      <ng-container matColumnDef="fecha">
+        <th mat-header-cell *matHeaderCellDef>Fecha</th>
+        <td mat-cell *matCellDef="let turno">
+          {{ turno.fecha | date }}
+        </td>
+      </ng-container>
+
+      <!-- Columna: Horas -->
+      <ng-container matColumnDef="horas">
+        <th mat-header-cell *matHeaderCellDef>Horas</th>
+        <td mat-cell *matCellDef="let turno">
+          {{ turno.hora_inicio }} - {{ turno.hora_fin }}
+        </td>
+      </ng-container>
+
+      <!-- Columna: Acciones -->
+      <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef>Acciones</th>
+        <td mat-cell *matCellDef="let turno">
+          <button
+            mat-icon-button
+            color="primary"
+            [routerLink]="['/produccion/turnos-empleados/editar', turno._id]"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="eliminarTurno(turno._id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </mat-card-content>
+</mat-card>

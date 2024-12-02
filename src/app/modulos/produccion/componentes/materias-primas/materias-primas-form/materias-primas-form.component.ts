@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MateriasPrimasService } from '../../../services/materias-primas.service';
-import { MateriaPrima } from '../../../interfaces/materia-prima.model';
 
 @Component({
   selector: 'app-materias-primas-form',
@@ -21,9 +20,12 @@ export class MateriasPrimasFormComponent implements OnInit {
   ) {
     this.materiaPrimaForm = this.fb.group({
       nombre: ['', Validators.required],
+      tipo: ['', Validators.required],
       cantidad: ['', [Validators.required, Validators.min(1)]],
       stock_minimo: ['', [Validators.required, Validators.min(0)]],
-      unidad: ['', Validators.required]
+      unidad: ['', Validators.required],
+      fecha_ingreso: ['', Validators.required],
+      fecha_vencimiento: ['', Validators.required]
     });
   }
 
@@ -38,15 +40,17 @@ export class MateriasPrimasFormComponent implements OnInit {
 
   onSubmit(): void {
     if (this.materiaPrimaForm.valid) {
-      const materiaPrima: MateriaPrima = this.materiaPrimaForm.value;
+      const materiaPrima = this.materiaPrimaForm.value;
 
       if (this.materiaPrimaId) {
-        this.materiasPrimasService.updateMateriaPrima(this.materiaPrimaId, materiaPrima).subscribe(() => {
-          this.router.navigate(['/produccion/materias-primas']);
+        this.materiasPrimasService.updateMateriaPrima(this.materiaPrimaId, materiaPrima).subscribe({
+          next: () => this.router.navigate(['/produccion/materias-primas']),
+          error: error => console.error('Error al actualizar materia prima:', error)
         });
       } else {
-        this.materiasPrimasService.addMateriaPrima(materiaPrima).subscribe(() => {
-          this.router.navigate(['/produccion/materias-primas']);
+        this.materiasPrimasService.addMateriaPrima(materiaPrima).subscribe({
+          next: () => this.router.navigate(['/produccion/materias-primas']),
+          error: error => console.error('Error al agregar materia prima:', error)
         });
       }
     }

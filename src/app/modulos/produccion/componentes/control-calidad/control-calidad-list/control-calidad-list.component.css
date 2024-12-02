@@ -1,0 +1,20 @@
+table {
+  width: 100%;
+  text-align: left;
+}
+
+mat-header-cell,
+mat-cell {
+  padding: 8px;
+  text-align: left;
+}
+
+mat-cell {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mat-icon-button {
+  margin: 0 4px;
+}

@@ -7,6 +7,7 @@ import { MateriasPrimasService } from '../../../services/materias-primas.service
 import { ProduccionDiaria } from '../../../interfaces/produccion-diaria.model';
 import { TipoProducto } from '../../../interfaces/tipo-producto.model';
 import { MateriaPrima } from '../../../interfaces/materia-prima.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-produccion-diaria-form',
@@ -17,9 +18,9 @@ export class ProduccionDiariaFormComponent implements OnInit {
   produccionForm: FormGroup;
   tiposProducto: TipoProducto[] = [];
   materiasPrimas: MateriaPrima[] = [];
-  materiasPrimasUtilizadas: any[] = [];  
+  materiasPrimasUtilizadas: any[] = [];
   produccionId: string | null = null;
-  unidadSeleccionada: string = '';  
+  unidadSeleccionada: string = '';
 
   constructor(
     private fb: FormBuilder,
@@ -27,15 +28,16 @@ export class ProduccionDiariaFormComponent implements OnInit {
     private tipoProductoService: TipoProductoService,
     private materiasPrimasService: MateriasPrimasService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar
   ) {
     this.produccionForm = this.fb.group({
       tipo_producto_id: ['', Validators.required],
-      materia_prima: [''],  
-      cantidad_usada: [''],  
+      materia_prima: [''],
+      cantidad_usada: [''],
       cantidad_producida: ['', [Validators.required, Validators.min(1)]],
       fecha_produccion: ['', [Validators.required, this.validateFechaProduccion]],
-      unidad_materia: [{value: '', disabled: true}]  
+      unidad_materia: [{ value: '', disabled: true }]
     });
   }
 
@@ -77,22 +79,43 @@ export class ProduccionDiariaFormComponent implements OnInit {
   addMateriaPrima(): void {
     const materiaId = this.produccionForm.get('materia_prima')?.value;
     const cantidadUsada = this.produccionForm.get('cantidad_usada')?.value;
-
-    const materia = this.materiasPrimas.find(m => m._id === materiaId);
-    if (materia && cantidadUsada > 0) {
-      this.materiasPrimasUtilizadas.push({
-        id: materia._id,
-        nombre: materia.nombre,
-        cantidadUsada,
-        unidad: materia.unidad
-      });
-
-      this.produccionForm.get('materia_prima')?.reset();
-      this.produccionForm.get('cantidad_usada')?.reset();
-      this.produccionForm.get('unidad_materia')?.reset();  
-      this.unidadSeleccionada = '';
+  
+    const materia = this.materiasPrimas.find((m) => m._id === materiaId);
+    if (materia) {
+      if (cantidadUsada > materia.cantidad) {
+        // Mostrar mensaje de error si la cantidad supera el stock disponible
+        this.snackBar.open(
+          `No hay suficiente stock de ${materia.nombre}. Disponible: ${materia.cantidad} ${materia.unidad}.`,
+          'Cerrar',
+          { duration: 5000 }
+        );
+        return;
+      }
+  
+      if (cantidadUsada > 0) {
+        // Si hay suficiente stock, agregar a la lista de materias primas utilizadas
+        this.materiasPrimasUtilizadas.push({
+          id: materia._id,
+          nombre: materia.nombre,
+          cantidadUsada,
+          unidad: materia.unidad,
+        });
+  
+        // Limpiar los campos del formulario relacionados con la materia prima
+        this.produccionForm.get('materia_prima')?.reset();
+        this.produccionForm.get('cantidad_usada')?.reset();
+        this.produccionForm.get('unidad_materia')?.reset();
+        this.unidadSeleccionada = '';
+      } else {
+        // Mostrar mensaje si la cantidad usada no es válida
+        this.snackBar.open('La cantidad usada debe ser mayor a 0.', 'Cerrar', { duration: 3000 });
+      }
+    } else {
+      // Mostrar mensaje si no se seleccionó una materia prima válida
+      this.snackBar.open('Por favor selecciona una materia prima válida.', 'Cerrar', { duration: 3000 });
     }
   }
+  
 
   removeMateriaPrima(index: number): void {
     this.materiasPrimasUtilizadas.splice(index, 1);
@@ -104,35 +127,67 @@ export class ProduccionDiariaFormComponent implements OnInit {
     return fechaSeleccionada > hoy ? { fechaInvalida: true } : null;
   }
 
-  // produccion-diaria-form.component.ts
   onSubmit(): void {
     if (this.produccionForm.valid) {
       const produccionData = {
         ...this.produccionForm.value,
-        materiasPrimasUtilizadas: this.materiasPrimasUtilizadas
+        materiasPrimasUtilizadas: this.materiasPrimasUtilizadas,
       };
   
       if (this.produccionId) {
-        // Si se está editando una producción diaria existente
+        // Actualizar producción existente
         this.produccionDiariaService.updateProduccionDiaria(this.produccionId.toString(), produccionData).subscribe({
-          next: () => this.router.navigate(['/produccion/produccion-diaria']), 
-          error: error => console.error('Error al actualizar la producción diaria:', error)
+          next: () => this.router.navigate(['/produccion/produccion-diaria']),
+          error: (error) => console.error('Error al actualizar la producción diaria:', error),
         });
       } else {
-        // Creación de una nueva producción diaria
+        // Crear nueva producción diaria
         this.produccionDiariaService.addProduccionDiaria(produccionData).subscribe({
-          next: (nuevaProduccion) => {
-            // Redirige directamente al formulario de Control de Calidad con el ID de la nueva producción
-            this.router.navigate(['/produccion/control-calidad/evaluar'], {
-              queryParams: { produccionId: nuevaProduccion._id } // Pasa el ID de la producción recién creada
-            });
+          next: (response) => {
+            const produccionId = response?.produccionDiaria?._id; // Obtiene el ID de la producción creada
+  
+            if (produccionId) {
+              // Descontar el stock de las materias primas
+              const stockDescuentoRequests = this.materiasPrimasUtilizadas.map((materia) =>
+                this.materiasPrimasService.descontarMateriaPrima(materia.id, materia.cantidadUsada).toPromise()
+              );
+  
+              Promise.all(stockDescuentoRequests)
+                .then(() => {
+                  console.log('Stock descontado correctamente.');
+                  this.snackBar.open('Producción creada y stock actualizado.', 'Cerrar', { duration: 3000 });
+  
+                  // Redirigir al formulario de Control de Calidad con el ID de la producción
+                  this.router.navigate(['/produccion/control-calidad/evaluar'], {
+                    queryParams: { produccionId },
+                  });
+                })
+                .catch((err) => {
+                  console.error('Error al descontar el stock:', err);
+                  this.snackBar.open(
+                    'Producción creada, pero ocurrió un error al actualizar el stock. Por favor, verifica el inventario.',
+                    'Cerrar',
+                    { duration: 5000 }
+                  );
+  
+                  // Redirigir al formulario de Control de Calidad con el ID de la producción incluso si falla el descuento
+                  this.router.navigate(['/produccion/control-calidad/evaluar'], {
+                    queryParams: { produccionId },
+                  });
+                });
+            } else {
+              console.error('Error: La respuesta del backend no contiene un ID de producción válido.');
+            }
           },
-          error: error => console.error('Error al agregar la producción diaria:', error)
+          error: (error) => {
+            console.error('Error al agregar la producción diaria:', error);
+            this.snackBar.open('Error al agregar la producción. Inténtalo nuevamente.', 'Cerrar', { duration: 3000 });
+          },
         });
       }
     }
   }
-
+  
 
   onCancel(): void {
     this.router.navigate(['/produccion/produccion-diaria']);

@@ -13,7 +13,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
-
+//
 export const appConfig: ApplicationConfig = {
   providers: 
             [provideZoneChangeDetection({ eventCoalescing: true }), 

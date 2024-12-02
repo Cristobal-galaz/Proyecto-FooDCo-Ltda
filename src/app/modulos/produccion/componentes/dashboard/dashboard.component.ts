@@ -4,13 +4,14 @@ import { CommonModule } from '@angular/common';
 import { ProduccionDiariaService } from '../../services/produccion-diaria.service';
 import { MateriasPrimasService } from '../../services/materias-primas.service';
 import { TurnosEmpleadosService } from '../../services/turnos-empleados.service';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,  
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
-  imports: [MatCardModule, CommonModule]  
+  imports: [MatCardModule, CommonModule, MatIconModule]  
 })
 export class DashboardComponent implements OnInit {
   produccionTotal: number = 0;
@@ -21,11 +22,12 @@ export class DashboardComponent implements OnInit {
     private produccionDiariaService: ProduccionDiariaService,
     private materiasPrimasService: MateriasPrimasService,
     private turnosEmpleadosService: TurnosEmpleadosService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.obtenerProduccionTotal();
     this.obtenerMateriasPrimasTotal();
+    this.obtenerEmpleadosEnTurno();
   }
 
   obtenerProduccionTotal(): void {
@@ -36,7 +38,13 @@ export class DashboardComponent implements OnInit {
 
   obtenerMateriasPrimasTotal(): void {
     this.materiasPrimasService.getMateriasPrimas().subscribe(data => {
-      this.materiasPrimasTotal = data.length; 
+      this.materiasPrimasTotal = data.length;
+    });
+  }
+
+  obtenerEmpleadosEnTurno(): void {
+    this.turnosEmpleadosService.getTurnosEmpleados().subscribe(data => {
+      this.empleadosEnTurno = data.length;
     });
   }
 }
