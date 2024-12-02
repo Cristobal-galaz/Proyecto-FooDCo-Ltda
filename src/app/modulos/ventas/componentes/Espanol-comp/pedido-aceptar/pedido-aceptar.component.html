@@ -72,7 +72,7 @@
 
 <div *ngFor="let orden of ordenesFiltradas">
   <button class="pedido" (click)="toggleVisibility(orden)">
-    Numero de Orden: N°{{ orden.numero }}
+    {{ idioma === 'es' ? 'Numero de Orden: N°' : 'Order number: N° '}} {{ orden.numero }}
   </button>
   <div class="Scontainer">
   <div *ngIf="orden.isVisible">
