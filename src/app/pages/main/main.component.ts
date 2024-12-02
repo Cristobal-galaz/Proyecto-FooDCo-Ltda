@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { RouterLink } from '@angular/router';
 import { TranslateModule} from '@ngx-translate/core';
+
 
 @Component({
   selector: 'app-main',
@@ -10,5 +12,9 @@ import { TranslateModule} from '@ngx-translate/core';
   styleUrl: './main.component.scss'
 })
 export class MainComponent {
+  constructor(private router: Router){}
 
+  irASeguimiento() {
+    this.router.navigate(['/seguimiento']);
+  }
 }

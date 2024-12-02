@@ -38,17 +38,13 @@ export const routes: Routes = [
   },
   {
     path: 'login',
-    loadComponent: () => import('./pages/clientes/login-clientes/login-clientes.component').then(m => m.LoginClientesComponent),
+    loadComponent: () => import('./pages/login/login.component').then(m => m.LoginComponent),
     canActivate: [authenticatedGuard]
   },
   {
     path: 'home',
     loadComponent: () => import('./pages/main/main.component').then(m => m.MainComponent),
   },
-    {
-        path: 'login-empleados',
-        loadComponent: ()=> import('./pages/empleados/login-empleados/login-empleados.component'),
-    },
   {
     path: 'registro',
     title: 'Registro Cliente',
@@ -58,10 +54,6 @@ export const routes: Routes = [
     {
         path: 'recovery',
         loadComponent: ()=> import('./pages/clientes/recovery-password/recovery-password.component').then(m => m.RecoveryPasswordComponent)
-    },
-    {
-        path: 'change-password',
-        loadComponent: ()=> import('./pages/clientes/change-password/change-password.component').then(m => m.ChangePasswordComponent)
     },
   {
     path: 'dashboard',
@@ -118,13 +110,13 @@ export const routes: Routes = [
     ]
   },
   {
-    path: 'guia-despacho',
-    title: 'Guia del despacho',
-    loadComponent: () => import('./modulos/Despacho/componentes/guia-despacho/guia-despacho.component').then(m=>m.GuiaDespachoComponent),
-  },
-  {
     path: 'contacto',
     title: 'Contactanos',
     loadComponent: () => import('./pages/contacto/contacto.component').then(m => m.ContactoComponent)
+  },
+  {
+    path: 'seguimiento',
+    title: 'Seguimiento',
+    loadComponent: () => import('./pages/seguimiento-sin-login/seguimiento-sin-login.component').then(m => m.SeguimientoSinLoginComponent) 
   }
 ];

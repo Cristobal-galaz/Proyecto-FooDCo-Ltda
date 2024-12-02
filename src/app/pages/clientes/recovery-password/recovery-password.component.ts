@@ -14,12 +14,36 @@ import { RecoveryPasswordService } from '../../../services/recovery-password.ser
 })
 export class RecoveryPasswordComponent {
   email:string = "";
+  codigo: string = "";
+  password: string = "";
+  password2: string = "";
+  codigoEnviado: boolean = false;
+
   constructor(private router: Router, private recoveryPass: RecoveryPasswordService){
   }
+
   recoveryPassword(): void{
     this.recoveryPass.recovery(this.email).subscribe({
-      next: ()=> this.router.navigate(["change-password"]),
+      next: () => {
+        console.log("Código enviado correctamente");
+        this.codigoEnviado = true;
+      },
       error: (err) => console.error("Envio de codigo fallido", err)
     })
+  }
+
+  ResetPassword(){
+    if(this.email && this.password == this.password2){
+      this.recoveryPass.resetPassword(this.email, this.codigo, this.password).subscribe({
+        next: ()=> {
+          console.log("Contraseña cambiada con éxito");
+          this.router.navigate(["login"]);
+        },
+        error: (err) => console.error("Reset password failed", err)
+      })
+      localStorage.removeItem("email")
+    }else{
+      console.log("Las contrasenas son diferentes")
+    } 
   }
 }

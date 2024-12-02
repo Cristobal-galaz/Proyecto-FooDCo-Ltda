@@ -3,10 +3,13 @@
     <h1>{{ 'HOME.TITLE' | translate }}</h1>
     <p>{{ 'HOME.DESCRIPTION' | translate }}</p>
     <div class="buttons">
+      
       <button class="ver-productos">{{ 'HOME.BUTTONS.VIEW_MENUS' | translate }}</button>
       <button class="dato-contacto" mat-button routerLink="cliente/menus">
         {{ 'HOME.BUTTONS.CONTACT_SALES' | translate }}
       </button>
+      <button class="ver-seguimiento" (click)="irASeguimiento()">Seguimiento</button>
+
     </div>
   </div>
   <div class="imagenes">

@@ -5,12 +5,13 @@ import { FormsModule } from "@angular/forms";
 import { FooterComponent } from './core/footer/footer.component';
 import { NavBarComponent } from './core/nav-bar/nav-bar.component';
 import { MatButtonModule } from '@angular/material/button';
+import { MatTabsModule } from '@angular/material/tabs';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, RouterLink, RouterLinkActive, FormsModule, FooterComponent, NavBarComponent, MatButtonModule],
+  imports: [RouterOutlet, CommonModule, RouterLink, RouterLinkActive, FormsModule, FooterComponent, NavBarComponent, MatButtonModule, MatTabsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

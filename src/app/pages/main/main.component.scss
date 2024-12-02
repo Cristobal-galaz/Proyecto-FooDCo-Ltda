@@ -42,7 +42,7 @@
   gap: 16px;
 }
 
-.ver-productos, .dato-contacto {
+.ver-productos, .dato-contacto, .ver-seguimiento {
   padding: 16px;
   background: #74e478;
   box-shadow: 0 8px 24px rgba(169, 230, 169, 0.24);
@@ -77,6 +77,16 @@
 .dato-contacto:hover {
   background-color: #3d8ddc;
   box-shadow: 0 10px 30px rgba(130, 193, 247, 0.35);
+  transform: scale(1.05);
+}
+
+.ver-seguimiento {
+  background-color: rgb(216, 216, 0);
+}
+
+.ver-seguimiento:hover {
+  background-color: rgb(197, 197, 0);
+  box-shadow: 0 10px 30px rgba(146, 146, 0, 0.35);
   transform: scale(1.05);
 }
 

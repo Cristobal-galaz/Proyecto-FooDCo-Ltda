@@ -1,4 +1,4 @@
-import { Cliente, OrdenCompra } from "../../ventas/interface/ordendecompra";
+import { Cliente, OrdenCompra, SeleccionProducto, } from "../../ventas/interface/ordendecompra";
 
 export interface OrdenDespacho {
     _id: string;
@@ -9,9 +9,12 @@ export interface OrdenDespacho {
     fecha: Date;
     ordenCompra: OrdenCompra;
     historialEstados: HistorialEstado[];
+    seleccionProductos: SeleccionProducto;
     camion:Camion;
     createdAt: Date;
     updatedAt: Date;
+    precioTotalOrden: number;
+    precioFinalConIva: number;
 }
 
 export interface Camion{

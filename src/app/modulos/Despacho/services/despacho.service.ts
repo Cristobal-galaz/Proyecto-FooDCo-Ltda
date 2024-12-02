@@ -8,7 +8,7 @@ import { Camion, OrdenDespacho } from '../interfaces/ordendespacho';
   providedIn: 'root',
 })
 export class DespachoService {
-  private apiUrl = `${environment.apiUrl}/orden-despacho`;
+  private apiUrl = `${environment.apiUrl}orden-despacho`;
 
   constructor(private http: HttpClient) {}
 
@@ -32,9 +32,13 @@ export class DespachoService {
     return this.http.put(`${this.apiUrl}${id}/estado`, { nuevoEstado });
   }
 
+  obtenerOrdenesDespacho(id: string): Observable<OrdenDespacho> {
+    return this.http.get<OrdenDespacho>(`${environment.apiUrl}orden-compra/list/despacho`);
+  }
+
   // Obtener órdenes de compra listas para despacho
   obtenerOrdenesListasParaDespacho(): Observable<OrdenDespacho[]> {
     return this.http.get<OrdenDespacho[]>(`${environment.apiUrl}orden-compra/list/despacho`);
   }
-  
+
 }
