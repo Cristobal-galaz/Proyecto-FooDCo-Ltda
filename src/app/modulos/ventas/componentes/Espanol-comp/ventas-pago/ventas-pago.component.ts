@@ -2,66 +2,89 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ApiserviceService } from '../../../Service/apiservice.service';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { LanguageService } from '../../../Service/idioma/lan.service';
+import { TranslateService } from '@ngx-translate/core';
+
 
 @Component({
   selector: 'app-ventas-pago',
   templateUrl: './ventas-pago.component.html',
   styleUrls: ['./ventas-pago.component.scss'],
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,MatExpansionModule],
 })
 export class VentasPagoComponent {
-  orders: any[] = []; // Array para almacenar las órdenes completas
-  filteredOrders: any[] = []; // Array para almacenar las órdenes filtradas
-  activeButton: number | null = null; // Estado del botón activo
+  orders: any[] = [];
+  filteredOrders: any[] = [];
+  activeButton: number | null = null;
+  idioma: string | null = 'es'; // Idioma actual
+  panelOpenState: boolean = true;
 
-  constructor(
-    private router: Router,
-    private apiService: ApiserviceService
-  ) {
-    this.loadCuotas(); // Llamada inicial para cargar las órdenes
+
+
+  constructor(private router: Router, private apiService: ApiserviceService, private traducir:TranslateService) {
+    this.loadCuotas();
   }
 
-  // Función que se ejecuta cuando un botón es presionado
+  ngOnInit(){
+    this.traducir.onLangChange.subscribe((event) => {
+      console.log('Idioma cambiado a:', event.lang);
+      this.idioma = event.lang;
+    });
+    //this.idioma = localStorage.getItem("selectedLang");
+  }
+
+  // Cambiar idioma entre español e inglés
+  cambiarIdioma(): void {
+    this.idioma = this.idioma === 'es' ? 'en' : 'es';
+  }
+
   setActiveButton(buttonNumber: number): void {
     this.activeButton = buttonNumber;
-    console.log(`Botón ${buttonNumber} activado`);
-    this.filterOrders(); // Filtra las órdenes según el estado del botón
+    this.filterOrders();
   }
 
-  // Función para filtrar las órdenes
   filterOrders(): void {
     if (this.activeButton === 1) {
-      // Filtra las órdenes con cuotas por pagar
-      this.filteredOrders = this.orders.filter(order => order.detallesCuotas.cuotasPorPagar > 0);
+      this.filteredOrders = this.orders.filter(
+        (order) => order.detallesCuotas.cuotasPorPagar > 0
+      );
     } else if (this.activeButton === 2) {
-      // Filtra las órdenes completadas (sin cuotas por pagar)
-      this.filteredOrders = this.orders.filter(order => order.detallesCuotas.cuotasPorPagar === 0);
+      this.filteredOrders = this.orders.filter(
+        (order) => order.detallesCuotas.cuotasPorPagar === 0
+      );
     } else {
-      // Si no hay filtro, muestra todas las órdenes
       this.filteredOrders = this.orders;
     }
   }
 
-  // Llamada al servicio para cargar las órdenes y cuotas
   loadCuotas(): void {
     this.apiService.getCuotasPorOrdenes().subscribe(
       (cuotas) => {
-        // Asigna los datos de las cuotas a las órdenes
         this.orders = cuotas.map((cuota) => ({
           username: cuota.cliente.username,
-          email: cuota.cliente.email, // Email del cliente
+          email: cuota.cliente.email,
           numeroOrden: cuota.numeroOrden,
           detallesCuotas: cuota.detallesCuotas,
         }));
-
-        // Filtra las órdenes después de cargarlas
         this.filterOrders();
-        console.log('Órdenes obtenidas:', this.filteredOrders);
       },
       (error) => {
         console.error('Error al obtener las cuotas:', error);
       }
     );
+  }
+
+  toggleVisibility(order: any): void {
+    order.isVisible = !order.isVisible;
+  }
+
+  // Formatear el estado de las cuotas
+  formatEstado(estado: string): string {
+    if (estado === 'por_pagar') {
+      return this.idioma === 'es' ? 'Pago pendiente' : 'Pending payment';
+    }
+    return estado;
   }
 }

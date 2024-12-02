@@ -1,40 +1,37 @@
+/* Contenedor principal */
 .ventas-pago-container {
-    position: relative;
-    padding-top: 60px; /* Añadir espacio suficiente para que el botón no se superponga con el contenido */
-  }
-  
-  .top-right-button {
-    position: absolute;
-    top: 20px; /* Ajustar la posición del botón */
-    right: 20px;
-  }
-  
-  .top-right-button button {
-    padding: 10px 20px;
-    font-size: 1rem;
-    background-color: #1b79f5b0; /* Color similar a los otros componentes */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .top-right-button button:hover {
-    background-color: #b39e00; /* Cambia de color al hacer hover */
-  }
-  
-  .seccion {
-    margin-bottom: 20px;
-  }
-  
-  a.btn-primary {
-    background-color: #1b79f5b0; /* Color de fondo del botón Ir a orden-compra */
-    border: none;
-  }
-  
-  a.btn-primary:hover {
-    background-color: #b39e00; /* Color hover */
-  }
+  position: relative;
+  padding-top: 60px; /* Espacio suficiente para el botón superior */
+}
+
+/* Botón de cambio de idioma */
+.language-switch {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: #00bfff; /* Celeste */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.language-switch:hover {
+  background-color: #b8860b; /* Dorado */
+  color: white;
+}
+
+/* Filtro de estado de pago */
+.top-right-buttons {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px; /* Espaciado entre botones */
+  margin-bottom: 20px; /* Espacio entre botones y contenido */
+}
 
 .top-right-buttons .btn {
   padding: 10px 20px;
@@ -45,87 +42,19 @@
   border: 1px solid #ccc;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
-  
+
 .top-right-buttons .btn.active-button {
-  background-color: #E3F2FD; /* Azul para botón activo */
+  background-color: #e3f2fd; /* Azul para botón activo */
   color: #a7a7a7;
   border-color: #f8f8f8;
 }
-  
-  
-.top-right-buttons {
-  display: flex;
-  justify-content: flex-start; /* Cambia según la ubicación deseada: center, flex-end, etc. */
-  gap: 10px; /* Espaciado entre botones */
-  margin-bottom: 20px; /* Espacio entre los botones y el resto del contenido */
-}
-  
-.top-right-buttons button {
-  padding: 10px 20px; /* Tamaño del botón */
-  font-size: 15px; /* Tamaño del texto */
-  border-radius: 5px; /* Bordes redondeados */
-  border: 1px solid transparent; /* Personalización de bordes */
-  transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave */
-}
-  
-/* Colores específicos para cada botón */
-.top-right-buttons button:nth-child(1) {
-  background-color: #FFF9C4; /* Azul */
-  color: rgb(0, 0, 0);
-}
-  
-.top-right-buttons button:nth-child(2) {
-  background-color: #BBDEFB; /* Gris */
-  color: #000000;
-}
-  
-.top-right-buttons button:nth-child(3) {
-  background-color: #C8E6C9; /* Verde */
-  color: rgb(0, 0, 0);
-}
-   
-/* Efectos hover para todos los botones */
-.top-right-buttons button:hover {
-  background-color: #E3F2FD; /* Negro al pasar el mouse */
-  color: #a7a7a7; /* Texto blanco al pasar el mouse */
-  border-color: #000000; /* Borde blanco al pasar el mouse */
-}
-  
-.cuotas-box {
-  border: 2px solid #ccc;  /* Borde gris claro */
-  padding: 10px;  /* Espaciado interno */
-  margin-top: 10px;  /* Espacio encima del recuadro */
-  border-radius: 8px;  /* Bordes redondeados */
-  background-color: #f9f9f9;  /* Fondo suave */
+
+.top-right-buttons .btn:hover {
+  background-color: #e3f2fd;
+  color: #a7a7a7;
 }
 
-.cuotas-box {
-  border: 2px solid #ddd;
-  padding: 15px;
-  border-radius: 10px;
-  background-color: #fff;
-  margin-top: 15px;
-}
-
-.cuotas-list ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.cuota-item {
-  border-bottom: 1px solid #ddd;
-  padding: 10px 0;
-}
-
-.cuota-item:last-child {
-  border-bottom: none;
-}
-
-.cuota-item p {
-  margin: 0;
-  padding: 5px 0;
-}
-
+/* Detalles de pago */
 .ventas-pago {
   margin: 20px;
 }
@@ -146,16 +75,22 @@
   background-color: #ffffff;
 }
 
-.cuotas-list {
-  margin-top: 20px;
+/* Cuotas */
+.cuotas-box {
+  border: 2px solid #ccc; /* Borde gris claro */
+  padding: 15px;
+  border-radius: 10px;
+  background-color: #fff; /* Fondo blanco */
+  margin-top: 15px;
 }
 
 .cuotas-box table {
   width: 100%;
-  border-collapse: collapse; /* Para que las celdas se junten sin espacio entre ellas */
+  border-collapse: collapse; /* Sin espacio entre celdas */
 }
 
-.cuotas-box th, .cuotas-box td {
+.cuotas-box th,
+.cuotas-box td {
   padding: 10px;
   text-align: left;
   border: 1px solid #d0d0d0;
@@ -171,9 +106,90 @@
 }
 
 .cuotas-box tr:nth-child(even) td {
-  background-color: #f9f9f9; /* Alterna el color de las filas */
+  background-color: #f9f9f9; /* Color alternado */
 }
 
 .cuotas-box tr:hover {
-  background-color: #f0f0f0; /* Resalta la fila cuando el mouse pasa por encima */
+  background-color: #f0f0f0; /* Resaltado */
+}
+
+/* Botón de visibilidad de órdenes */
+.pago {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  background-color: #666f88; /* Gris oscuro */
+  color: white;
+  border: none;
+  text-align: center;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.pago:hover {
+  background-color: #e3f2fd; /* Azul claro */
+  color: #a7a7a7;
+}
+
+/* Contenido oculto */
+.pago.ng-hide {
+  opacity: 0;
+  display: none;
+}
+
+.btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  background-color: #f8f9fa; /* Color por defecto */
+  color: #000;
+  border: 1px solid #ccc;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn.active-button {
+  background-color: #E3F2FD; /* Azul para botón activo */
+  color: #a7a7a7;
+  border-color: #f8f8f8;
+}
+
+
+.top-right-buttons {
+  display: flex;
+  justify-content: flex-start; /* Cambia según la ubicación deseada: center, flex-end, etc. */
+  gap: 10px; /* Espaciado entre botones */
+  margin-bottom: 20px; /* Espacio entre los botones y el resto del contenido */
+}
+
+.top-right-buttons button {
+  padding: 10px 20px; /* Tamaño del botón */
+  font-size: 15px; /* Tamaño del texto */
+  border-radius: 5px; /* Bordes redondeados */
+  border: 1px solid transparent; /* Personalización de bordes */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave */
+}
+
+.top-right-buttons button:nth-child(1) {
+  background-color: #FFF9C4; /* Azul */
+  color: rgb(0, 0, 0);
+}
+
+.btn-pendiente {
+  background-color: #BBDEFB; /* Gris */
+  color: #000000;
+}
+
+.btn-completado {
+  background-color: #C8E6C9; /* Verde */
+  color: rgb(0, 0, 0);
+}
+
+/* Efectos hover para todos los botones */
+.btn:hover {
+  background-color: #E3F2FD; /* Negro al pasar el mouse */
+  color: #a7a7a7; /* Texto blanco al pasar el mouse */
+  border-color: #000000; /* Borde blanco al pasar el mouse */
 }

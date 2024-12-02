@@ -1,50 +1,81 @@
-<div class="top-right-buttons">
-  <p>Filtro estado de pago </p>
-  <button
-    class="btn"
-    [ngClass]="{ 'active-button': activeButton === 1 }"
-    (click)="setActiveButton(1)"
-  >
-    Pendientes
-  </button>
-  <button
-    class="btn"
-    [ngClass]="{ 'active-button': activeButton === 2 }"
-    (click)="setActiveButton(2)"
-  >
-    Completados
-  </button>
-</div>
+<div class="ventas-pago-container">
+  <!-- Botón para cambiar de idioma en la esquina superior derecha -->
 
-<div class="ventas-pago">
-  <h1>Detalles de Pago</h1>
+  <!-- Filtro de estado de pago -->
+  <mat-accordion>
+    <!-- Filtro por fecha -->
+    <mat-expansion-panel [expanded]="panelOpenState" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>{{ idioma === 'es' ? 'Filtro estado de pago' : 'Payment Status Filter' }}</mat-panel-title>
+      </mat-expansion-panel-header>
 
-  <div class="order-details" *ngFor="let order of filteredOrders">
-    <p><strong>Username:</strong> {{ order.username }}</p>
-    <p><strong>Email:</strong> {{ order.email }}</p>
-    <p><strong>Número de Orden:</strong> {{ order.numeroOrden }}</p>
+      <button
+        class="btn btn-pendiente"
+        [ngClass]="{ 'active-button': activeButton === 1 }"
+        (click)="setActiveButton(1)"
+      >
+        {{ idioma === 'es' ? 'Pendientes' : 'Pending' }}
+      </button>
+      <button
+        class="btn btn-completado"
+        [ngClass]="{ 'active-button': activeButton === 2 }"
+        (click)="setActiveButton(2)"
+      >
+        {{ idioma === 'es' ? 'Completados' : 'Completed' }}
+      </button>
+    </mat-expansion-panel>
+  </mat-accordion>
 
-    <div class="order-box">
-      <h2>Detalles de la Orden</h2>
-      <div class="cuotas-list">
-        <h3>Cuotas</h3>
-        <div class="cuotas-box">
-          <table>
-            <thead>
-              <tr>
-                <th>Cuota</th>
-                <th>Estado</th>
-                <th>Monto</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let cuota of order.detallesCuotas.listaCuotas">
-                <td><strong>{{ cuota.numeroCuota }}</strong></td>
-                <td>{{ cuota.estado }}</td>
-                <td>{{ cuota.monto | currency }}</td>
-              </tr>
-            </tbody>
-          </table>
+  <!-- Detalles de pago -->
+  <div class="ventas-pago">
+    <h1>{{ idioma === 'es' ? 'Detalles de Pago' : 'Payment Details' }}</h1>
+
+    <div class="order-details" *ngFor="let order of filteredOrders">
+      <!-- Botón para alternar la visibilidad de este cuadro -->
+      <button class="pago" (click)="toggleVisibility(order)">
+        {{ idioma === 'es' ? 'Número de Orden' : 'Order Number' }} N°{{ order.numeroOrden }}
+      </button>
+
+      <!-- Contenido controlado por order.isVisible -->
+      <div *ngIf="order.isVisible">
+        <p><strong>{{ idioma === 'es' ? 'Usuario:' : 'Username:' }}</strong> {{ order.username }}</p>
+        <p><strong>{{ idioma === 'es' ? 'Correo Electrónico:' : 'Email:' }}</strong> {{ order.email }}</p>
+        <p><strong>{{ idioma === 'es' ? 'Número de Orden:' : 'Order Number:' }}</strong> {{ order.numeroOrden }}</p>
+
+        <div class="order-box">
+          <h2>{{ idioma === 'es' ? 'Detalles de la Orden' : 'Order Details' }}</h2>
+
+          <!-- Mostrar mensaje si no hay cuotas -->
+          <div *ngIf="order.detallesCuotas.listaCuotas.length === 0">
+            <p class="no-cuotas">
+              {{ idioma === 'es'
+                ? 'Esta orden no tiene cuotas pendientes.'
+                : 'This order has no pending installments.' }}
+            </p>
+          </div>
+
+          <!-- Tabla de cuotas si existen cuotas -->
+          <div class="cuotas-list" *ngIf="order.detallesCuotas.listaCuotas.length > 0">
+            <h3>{{ idioma === 'es' ? 'Cuotas' : 'Installments' }}</h3>
+            <div class="cuotas-box">
+              <table>
+                <thead>
+                  <tr>
+                    <th>{{ idioma === 'es' ? 'Cuota' : 'Installment' }}</th>
+                    <th>{{ idioma === 'es' ? 'Estado' : 'Status' }}</th>
+                    <th>{{ idioma === 'es' ? 'Monto' : 'Amount' }}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let cuota of order.detallesCuotas.listaCuotas">
+                    <td><strong>{{ cuota.numeroCuota }}</strong></td>
+                    <td>{{ formatEstado(cuota.estado) }}</td>
+                    <td>{{ cuota.monto | currency }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     </div>

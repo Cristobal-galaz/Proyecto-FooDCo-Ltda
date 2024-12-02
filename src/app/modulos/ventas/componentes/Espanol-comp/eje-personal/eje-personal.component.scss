@@ -1,66 +1,94 @@
+.eje-personal-container {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+/* Botón de cambio de idioma */
 .language-switch {
   position: absolute;
   top: 20px;
   right: 20px;
-  background-color: #00bfff; // Color celeste
+  background-color: #00bfff;
   color: white;
-  border: none;
   padding: 10px 20px;
+  border: none;
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
+  transition: background-color 0.3s ease;
 }
 
 .language-switch:hover {
-  background-color: #b8860b; // Color dorado al pasar el cursor
+  background-color: #b39e00;
 }
 
-.eje-personal-container {
-max-width: 800px;
-margin: 0 auto;
-position: relative; /* Para permitir la posición relativa del botón */
-padding-top: 80px; /* Espacio suficiente para evitar superposición con el botón */
+/* Título */
+h1 {
+  margin-bottom: 30px;
+  font-size: 24px;
+  color: #333;
 }
 
-.header {
-display: flex;
-justify-content: space-between;
-margin-bottom: 10px;
-}
-
-.header input[type="text"] {
-flex: 1;
-margin-right: 10px;
-padding: 5px;
-}
-
-.header button {
-padding: 5px 10px;
-}
-
+/* Tabla */
 table {
-width: 100%;
-border-collapse: collapse;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
 }
 
-th, td {
-border: 1px solid #ddd;
-padding: 8px;
-text-align: left;
+thead {
+  background-color: #f2f2f2;
 }
 
 th {
-background-color: #f2f2f2;
+  text-align: left;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #555;
+  border-bottom: 2px solid #ddd;
 }
 
+td {
+  padding: 15px;
+  font-size: 14px;
+  color: #333;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Imagen de perfil */
 .profile-image {
-width: 100px;
-height: 100px;
-object-fit: cover;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ddd;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.message {
-margin-top: 15px;
-font-weight: bold;
-color: green;
+.profile-image:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Alternar colores en las filas */
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
+/* Mensaje cuando no hay datos */
+p {
+  font-size: 16px;
+  color: #888;
+  margin-top: 20px;
 }

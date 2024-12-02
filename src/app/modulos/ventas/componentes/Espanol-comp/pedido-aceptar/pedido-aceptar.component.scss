@@ -1,14 +1,28 @@
+
+.top-right-button {
+  position: absolute; /* Fijado en la ventana */
+  top: 60px;       /* Distancia desde la parte superior */
+  right: 20px;     /* Distancia desde el borde derecho */
+  z-index: 1000;   /* Asegura que el botón esté encima de otros elementos */
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 .language-switch {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background-color: #00bfff; // Color celeste
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: #00bfff; /* Celeste */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  white-space: nowrap;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .language-switch:hover {
@@ -71,62 +85,165 @@ h2 {
     background-color: #e53935;
 }
 
-.top-right-buttons .btn {
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    background-color: #f8f9fa; /* Color por defecto */
-    color: #000;
-    border: 1px solid #ccc;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-  
-  .top-right-buttons .btn.active-button {
-    background-color: #E3F2FD; /* Azul para botón activo */
-    color: #a7a7a7;
-    border-color: #f8f8f8;
-  }
-  
-  
-  .top-right-buttons {
-    display: flex;
-    justify-content: flex-start; /* Cambia según la ubicación deseada: center, flex-end, etc. */
-    gap: 10px; /* Espaciado entre botones */
-    margin-bottom: 20px; /* Espacio entre los botones y el resto del contenido */
-  }
-  
-  .top-right-buttons button {
-    padding: 10px 20px; /* Tamaño del botón */
-    font-size: 15px; /* Tamaño del texto */
-    border-radius: 5px; /* Bordes redondeados */
-    border: 1px solid transparent; /* Personalización de bordes */
-    transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave */
-  }
-  
-  /* Colores específicos para cada botón */
-  .top-right-buttons button:nth-child(1) {
-    background-color: #FFF9C4; /* Azul */
-    color: rgb(0, 0, 0);
-  }
-  
-  .top-right-buttons button:nth-child(2) {
-    background-color: #BBDEFB; /* Gris */
-    color: #000000;
-  }
-  
-  .top-right-buttons button:nth-child(3) {
-    background-color: #C8E6C9; /* Verde */
-    color: rgb(0, 0, 0);
-  }
-  
-  .top-right-buttons button:nth-child(4) {
-    background-color: #FFF9C4; /* Rojo */
-    color: rgb(0, 0, 0);
-  }
-  
-  /* Efectos hover para todos los botones */
-  .top-right-buttons button:hover {
-    background-color: #E3F2FD; /* Negro al pasar el mouse */
-    color: #a7a7a7; /* Texto blanco al pasar el mouse */
-    border-color: #000000; /* Borde blanco al pasar el mouse */
-  }
+.botones-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start; /* Cambia según la ubicación deseada */
+  gap: 20px; /* Espaciado entre botones */
+  margin-bottom: 20px; /* Espacio entre los botones y el resto del contenido */
+}
+
+/* Estilo base para los botones */
+.btn {
+  padding: 10px 20px; /* Tamaño del botón */
+  font-size: 16px; /* Tamaño del texto */
+  border-radius: 5px; /* Bordes redondeados */
+  border: 1px solid transparent; /* Personalización de bordes */
+  background-color: #f8f9fa; /* Color base */
+  color: #000; /* Color del texto */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Transiciones suaves */
+}
+
+/* Estilos específicos por posición (orden visual en el HTML) */
+.btn-todas {
+  background-color: #FFF9C4; /* Amarillo claro */
+  color: #000; /* Texto negro */
+}
+
+.btn-pendiente {
+  background-color: #BBDEFB; /* Azul claro */
+  color: #000; /* Texto negro */
+}
+
+.btn-aprovado {
+  background-color: #C8E6C9; /* Verde claro */
+  color: #000; /* Texto negro */
+}
+
+.btn-rechazado {
+  background-color: #FFCDD2; /* Rojo claro */
+  color: #000; /* Texto negro */
+}
+
+.btn-modE {
+  background-color: #FFF9C4; 
+  color: #000; /* Texto negro */
+}
+
+.btn-modC {
+  background-color: #BBDEFB; /* Cian claro */
+  color: #000; /* Texto negro */
+}
+
+/* Efectos hover para todos los botones */
+.btn:hover {
+  background-color: #E3F2FD; /* Negro al pasar el mouse */
+  color: #a7a7a7; /* Texto blanco al pasar el mouse */
+  border-color: #000000; /* Borde blanco al pasar el mouse */
+}
+
+/* Estilo para el botón activo */
+.btn .active-button {
+  background-color: #E3F2FD; /* Azul para el botón activo */
+  color: #a7a7a7; /* Texto gris */
+  border-color: #f8f8f8; /* Borde claro */
+}
+
+.pedido {
+  transition: all 0.3s ease-in-out;
+  opacity: 1;
+}
+.pago.ng-hide {
+  opacity: 0;
+  display: none;
+}
+
+.pedido {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  background-color: #666f88;
+  color: white;
+  border: none;
+  text-align: center;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.pedido:hover {
+  background-color: #E3F2FD;
+  color: #a7a7a7; /* Texto blanco al pasar el mouse */
+  border-color: #000000; /* Borde blanco al pasar el mouse */
+}
+
+.actualizar {
+  background-color: #C8E6C9; /* Verde claro */
+  color: #000; /* Texto negro */
+}
+
+.actualizar:hover {
+  background-color: #E3F2FD;
+  color: #a7a7a7; /* Texto blanco al pasar el mouse */
+  border-color: #000000; /* Borde blanco al pasar el mouse */
+}
+
+.cancelar {
+  background-color: #FFCDD2; /* Rojo claro */
+  color: #000; /* Texto negro */
+}
+
+.cancelar:hover {
+  background-color: #E3F2FD;
+  color: #a7a7a7; /* Texto blanco al pasar el mouse */
+  border-color: #000000; /* Borde blanco al pasar el mouse */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+thead {
+  background-color: #f4f4f4;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+}
+
+th {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between; /* Espacio entre los elementos */
+  align-items: center;           /* Alinea los elementos verticalmente */
+  gap: 50px;                     /* Opcional: espacio entre elementos si no hay suficiente para distribuir */
+  padding: 16px 20px;                 /* Opcional: margen interno del contenedor */
+  border: 1px solid #ccc;        /* Opcional: borde del contenedor */
+  background-color: #f9f9f9;     /* Opcional: color de fondo */
+  margin: 20px 250px;
+}
+
+.Scontainer{
+  display: flex;
+  border: 3px solid #ccc; 
+  background-color: #f9f9f9; 
+  margin: 20px;
+  border-radius: 5px;
+}
