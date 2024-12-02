@@ -4,8 +4,8 @@
     <p>{{ 'HOME.DESCRIPTION' | translate }}</p>
     <div class="buttons">
       
-      <button class="ver-productos">{{ 'HOME.BUTTONS.VIEW_MENUS' | translate }}</button>
-      <button class="dato-contacto" mat-button routerLink="cliente/menus">
+      <button class="ver-productos" (click)="irAMenu()">{{ 'HOME.BUTTONS.VIEW_MENUS' | translate }}</button>
+      <button class="dato-contacto" mat-button (click)="irAContacto()" >
         {{ 'HOME.BUTTONS.CONTACT_SALES' | translate }}
       </button>
       <button class="ver-seguimiento" (click)="irASeguimiento()">{{ 'HOME.BUTTONS.TRACKING' | translate }}</button>

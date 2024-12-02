@@ -68,15 +68,18 @@
         <mat-panel-title>Servicio</mat-panel-title>
       </mat-expansion-panel-header>
 
-      <p><mat-checkbox
+
+      <mat-checkbox
+
           [(ngModel)]="filtros.servicios[0].seleccion">{{getTranslationKeyForService(filtros.servicios[0].tipo) |
-          translate}}</mat-checkbox></p>
-      <p><mat-checkbox
+            translate}}</mat-checkbox>
+
+      <mat-checkbox
           [(ngModel)]="filtros.servicios[1].seleccion">{{getTranslationKeyForService(filtros.servicios[1].tipo) |
-          translate}}</mat-checkbox></p>
-      <p><mat-checkbox
+          translate}}</mat-checkbox>
+      <mat-checkbox
           [(ngModel)]="filtros.servicios[2].seleccion">{{getTranslationKeyForService(filtros.servicios[2].tipo) |
-          translate}}</mat-checkbox></p>
+          translate}}</mat-checkbox>
 
 
     </mat-expansion-panel>
@@ -89,21 +92,21 @@
 
 
 
-      <p><mat-checkbox
+      <mat-checkbox
           [(ngModel)]="filtros.categorias[0].seleccion">{{getTranslationKeyForCategories(filtros.categorias[0].tipo) |
-          translate}}</mat-checkbox></p>
-      <p><mat-checkbox
+          translate}}</mat-checkbox>
+      <mat-checkbox
           [(ngModel)]="filtros.categorias[1].seleccion">{{getTranslationKeyForCategories(filtros.categorias[1].tipo) |
-          translate}}</mat-checkbox></p>
-      <p><mat-checkbox
+          translate}}</mat-checkbox>
+      <mat-checkbox
           [(ngModel)]="filtros.categorias[2].seleccion">{{getTranslationKeyForCategories(filtros.categorias[2].tipo) |
-          translate}}</mat-checkbox></p>
-      <p><mat-checkbox
+          translate}}</mat-checkbox>
+      <mat-checkbox
           [(ngModel)]="filtros.categorias[3].seleccion">{{getTranslationKeyForCategories(filtros.categorias[3].tipo) |
-          translate}}</mat-checkbox></p>
-      <p><mat-checkbox
+          translate}}</mat-checkbox>
+      <mat-checkbox
           [(ngModel)]="filtros.categorias[4].seleccion">{{getTranslationKeyForCategories(filtros.categorias[4].tipo) |
-          translate}}</mat-checkbox></p>
+          translate}}</mat-checkbox>
 
 
     </mat-expansion-panel>

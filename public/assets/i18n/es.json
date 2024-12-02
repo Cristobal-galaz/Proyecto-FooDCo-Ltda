@@ -215,5 +215,26 @@
     "PRODUCT_DETAIL": {
         "INGREDIENTS": "Ingredientes",
         "DESCRIPTION": "Descripción"
+    },
+    "DASHBOARD": {
+        "TITLE": "Panel de Control"
+    },
+    "NAV_CLIENT": {
+        "MY_ORDERS": "Mis pedidos",
+        "ORDERS": {
+            "CURRENT": "Pedidos Actuales",
+            "COMPLETED": "Pedidos Completados",
+            "ALL": "Todos los pedidos"
+        },
+        "MY_PROFILE": "Mi perfil",
+        "DATA": {
+            "COMPANY": "Datos Empresa",
+            "CONTACT": "Datos Contacto"
+        }
+    },
+    "OTHERS": {
+        "TITLE": "Otros",
+        "HELP": "Ayuda",
+        "LOGOUT": "Cerrar Sesión"
     }
 }

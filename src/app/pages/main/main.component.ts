@@ -17,4 +17,10 @@ export class MainComponent {
   irASeguimiento() {
     this.router.navigate(['/seguimiento']);
   }
+  irAMenu() {
+    this.router.navigate(['/cliente/menus']);
+  }
+  irAContacto() {
+    this.router.navigate(['/contacto']);
+  }
 }
