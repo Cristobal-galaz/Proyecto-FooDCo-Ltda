@@ -1,4 +1,5 @@
 export interface OrdenCompra{
+    empleado: any;
     _id:string,
     cliente:Cliente,
     estado:string,

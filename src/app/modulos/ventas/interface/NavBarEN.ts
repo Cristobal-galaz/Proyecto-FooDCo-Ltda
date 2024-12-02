@@ -1,11 +1,11 @@
-export interface Links {
+export interface LinksEN {
     name: string;
     icon?: string;
     route?: string;
-    children?: Links[];
+    children?: LinksEN[];
 }
 
-export const Main: Links[] = [
+export const MainEN: LinksEN[] = [
     {
         name: 'Personal', icon: 'account_circle', route:'ventas/ejecutivo/personal-en'
         },
@@ -31,6 +31,6 @@ export const Main: Links[] = [
         },
 ];
 
-export const Otros: Links[] = [
+export const OtrosEN: LinksEN[] = [
     {name: 'Ayuda', icon: 'help'},
 ];

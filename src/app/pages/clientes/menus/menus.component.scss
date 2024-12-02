@@ -1,0 +1,67 @@
+.catalogo {
+  display: flex; /* Activa Flexbox */
+  flex-direction: row; /* Dispone las secciones en una fila */
+  height: 100vh; /* Usa toda la altura de la pantalla */
+  width: 100%; /* Usa todo el ancho de la pantalla */
+  overflow: hidden; /* Evita desbordes */
+  margin-bottom: 2rem;
+}
+
+/* Columna izquierda (20% del ancho) */
+.catalogo .izquierda {
+  flex: 0 0 20%; /* Fija el ancho en 20% */
+  background-color: #f4f4f4; /* Cambia el color de fondo si es necesario */
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  box-shadow: inset -1px 0 0 #e0e0e0; /* Línea divisoria opcional */
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding: 1rem;
+}
+
+/* Nueva columna centro-derecha (80% del ancho) */
+.catalogo .centro-derecha {
+  flex: 0 0 80%; /* Ocupa el resto del espacio */
+  display: flex;
+  flex-direction: row; /* Organiza las subcolumnas en columna */
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+/* Columna centro (70% del ancho de centro-derecha) */
+.catalogo .centro {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff; /* Cambia el color de fondo si es necesario */
+  padding: 1rem; /* Espaciado interno */
+}
+
+/* Columna derecha fija */
+.catalogo .derecha.fija {
+  flex: 0 0 auto; /* Tamaño automático basado en el contenido */
+  background-color: #f4f4f4; /* Cambia el color de fondo si es necesario */
+  box-shadow: inset -1px 0 0 #e0e0e0; /* Línea divisoria opcional */
+  padding: 1rem;
+  position: sticky; /* Hace que permanezca visible en la pantalla */
+  top: 0; /* Se fija al tope de la pantalla */
+  height: auto; /* Se ajusta al contenido */
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .catalogo {
+    flex-direction: column; /* Cambia a diseño en columna */
+  }
+
+  .catalogo .izquierda,
+  .catalogo .centro-derecha {
+    flex: none; /* Elimina la proporción fija */
+    width: 100%; /* Ocupa el 100% del ancho */
+    height: auto; /* Ajusta la altura automáticamente */
+  }
+
+  .catalogo .centro-derecha {
+    flex-direction: column; /* Ajusta las subcolumnas */
+  }
+}

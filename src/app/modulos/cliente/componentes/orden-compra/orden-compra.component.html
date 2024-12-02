@@ -1,122 +1,149 @@
-<form class="formulario" [formGroup]="formOrdenCompra" (ngSubmit)="onSubmit()">
-<div class="form">
-  <h1>Envío orden de solicitud de compra</h1>
-  <div class="inputs">
+<div class="page">
+  <div class="carro">
+    @for (producto of listaProductos; track $index) {
+    <mat-card class="responsive-card">
+      <mat-card-content>
+        <div class="contenido-card">
+          <!-- Columna 1: Imagen -->
+          <div class="columna imagen">
+            <img mat-card-image [src]="producto.producto.imagenes[0]">
+          </div>
+          <!-- Columna 2: Título -->
+          <div class="columna titulo">
+            <span>{{producto.producto.nombre}}</span><br>
+            <span>${{producto.producto.precio}}</span>
+          </div>
+          <!-- Columna 3: Botones -->
+          <div class="columna botones">
+            <button mat-icon-button class="btn-eliminar" (click)="deleteProducto($index)">
+              <mat-icon>delete</mat-icon>
+            </button>
+            <div class="btn-editar">
+              <button mat-icon-button (click)="editarProducto($index, producto.cantidad - 1)">
+                <mat-icon>remove</mat-icon>
+              </button>
+              <mat-form-field appearance="outline" class="input-cantidad">
+                <input 
+                  matInput
+                  type="number"
+                  [value]="producto.cantidad"
+                  [(ngModel)]="producto.cantidad"
+                  (ngModelChange)="editarProducto($index, producto.cantidad)"
+                >
+              </mat-form-field>
+              <button mat-icon-button (click)="editarProducto($index, producto.cantidad + 1)">
+                <mat-icon>add</mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    }
+  </div>
 
-    <mat-form-field  class = "info-input" >
-      <mat-label> Direccion </mat-label> 
-      <input  matInput  placeholder = "Direccion"  value = "" formControlName="direccion" required> 
-    </mat-form-field>
-    <div class="horizontal-inputs">
-
-      <mat-form-field  class = "info-input" > 
-        <mat-label> Ciudad </mat-label> 
-        <input  matInput  placeholder = "Ciudad"  value = "" formControlName="ciudad" required> 
-      </mat-form-field>
- 
-      <mat-form-field  class = "info-input" > 
-        <mat-label> Pais </mat-label> 
-        <input  matInput  placeholder = "Pais"  value = "" formControlName="pais" required> 
-      </mat-form-field>
-    </div>
-    
-    <mat-form-field class="info-input">
-      <mat-label>Choose a date</mat-label>
-      <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker" formControlName="fechaRequerida" required>
-    <mat-hint>MM/DD/YYYY</mat-hint>
-    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
-</div>
+  <div class="detalle">
+    @if(!abrirFormulario) {
+      <mat-card>
+        <mat-card-content>
+          <mat-card-title class="detalle-titulo">{{ 'ORDER_SEND.DETAILS_TITLE' | translate }}</mat-card-title>
+          <div class="detalle-linea">
+            <p>{{ 'ORDER_SEND.SUBTOTAL' | translate }}:</p>
+            <span class="valores">${{ subTotalCompra }}</span>
+          </div>
+          <div class="detalle-linea">
+            <p>{{ 'ORDER_SEND.DISCOUNT' | translate }} ({{ 100 * descuento }}%):</p>
+            <span class="valores descuento">-${{ descuentoCompra }}</span>
+          </div>
+          <div class="detalle-linea">
+            <p>{{ 'ORDER_SEND.SHIPPING' | translate }}:</p>
+            <span class="valores">${{ envio }}</span>
+          </div>
+          <mat-divider></mat-divider>
+          <div class="detalle-linea">
+            <p>{{ 'ORDER_SEND.TOTAL' | translate }}:</p>
+            <span class="valores">${{ totalCompra }}</span>
+          </div>
+          <div class="boton-centro">
+            <button class="btn-continuar" mat-flat-button color="primary" (click)="manejarFormulario()">
+              {{ 'ORDER_SEND.CONTINUE_BUTTON' | translate }}
+            </button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    }
+    @else {
+      <mat-card [formGroup]="form">
+        <mat-card-content>
+          <div class="formulario">
+            <mat-card-title class="detalle-titulo">{{ 'ORDER_SEND.FORM_TITLE' | translate }}</mat-card-title>
   
-  <div class="mat-elevation-z8 table">
-      
-      <table mat-table [dataSource]="dataSource">
-        
-        
-        
-        
-        
-        <ng-container formArrayName="productos">
-          
-          <ng-container matColumnDef="producto">
-            <th mat-header-cell *matHeaderCellDef> <h2>Producto</h2> </th>
-            <td mat-cell *matCellDef="let element; let i = index" [formGroupName]="i" class=product-name>
-             <p>
-              {{ productosForm.at(i).get('productoNombre')?.value }}
-             </p> 
-            </td>
-          </ng-container>
-          <ng-container matColumnDef="cantidad">
-                    <th mat-header-cell *matHeaderCellDef> <h2>Cantidad</h2> </th>
-                    <td mat-cell *matCellDef="let element; let i = index" [formGroupName]="i" class="quantity">
-                        @if(!editMode[i]){
-                          <p>
-                            {{ productosForm.at(i).get('cantidad')?.value }}
-
-                          </p>
-                        }
-                        @else{
-                          
-                          <mat-form-field class="full-width">
-                            <!-- Asegúrate de que el objeto producto dentro de la array tiene una propiedad nombre -->
-                            <input matInput placeholder="cantidad" [value]="element.cantidad" formControlName="cantidad" required>
-                          </mat-form-field>
-                        }
-                      </td>
-                    </ng-container>
-                    <ng-container matColumnDef="acciones">
-                    <th mat-header-cell *matHeaderCellDef style="width: 80px;"></th>
-                    <td mat-cell *matCellDef="let element; let i = index">
-                      <div class="button-row">
-                        <div class="flex-container">
-                          @if(!editMode[i]){
-                            <div class="button-container">
-                                <button mat-mini-fab aria-label="Editar producto" (click)="onEdit(i)" type="button">
-                                  <mat-icon>edit</mat-icon>
-                                </button>
-                              </div>
-                              <div class="button-container">
-                                <button mat-mini-fab aria-label="Eliminar Producto" (click)="onDelete(i)"type="button">
-                                  <mat-icon>delete</mat-icon>
-                                </button>
-                              </div>
-                            }
-                              @else{
-                                <div class="button-container">
-                                <button mat-mini-fab aria-label="Guardar producto" (click)="onSave(i)" type="button">
-                                  <mat-icon>save</mat-icon>
-                                </button>
-                              </div>
-                            }
-              
-                          </div>
-                        </div>
-                    </td>
-                </ng-container>
-                
-                
-                
-                
-                
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                
-                
-                
-                
-                
-                
-                
-              </ng-container>
-            
-            
-            
-            </table>
-    </div>
-    <div class="button-container">
-    <button mat-stroked-button type="submit" class="enviar-btn">Enviar</button>
-    <button mat-stroked-button (click)="onBack()" type="button" class="enviar-btn">Atras</button>
+            <div class="direccion">
+              <mat-form-field appearance="outline" class="calle">
+                <mat-label>{{ 'ORDER_SEND.ADDRESS' | translate }}</mat-label>
+                <input
+                  matInput
+                  placeholder="{{ 'ORDER_SEND.ADDRESS' | translate }}"
+                  #calle
+                  (input)="actualizarDireccion(calle.value, numero.value, departamento.value)"
+                />
+              </mat-form-field>
+  
+              <mat-form-field appearance="outline" class="numero">
+                <mat-label>{{ 'ORDER_SEND.NUMBER' | translate }}</mat-label>
+                <input
+                  matInput
+                  placeholder="{{ 'ORDER_SEND.NUMBER' | translate }}"
+                  type="number"
+                  #numero
+                  (input)="actualizarDireccion(calle.value, numero.value, departamento.value)"
+                />
+              </mat-form-field>
+  
+              <mat-form-field appearance="outline" class="departamneto">
+                <mat-label>{{ 'ORDER_SEND.APARTMENT' | translate }}</mat-label>
+                <input
+                  matInput
+                  placeholder="{{ 'ORDER_SEND.DEPARTMENT' | translate }}"
+                  #departamento
+                  (input)="actualizarDireccion(calle.value, numero.value, departamento.value)"
+                />
+                <mat-hint>{{ 'ORDER_SEND.APARTMENT_HINT' | translate }}</mat-hint>
+              </mat-form-field>
+            </div>
+  
+            <div class="pais">
+              <mat-form-field appearance="outline" class="input-pais">
+                <mat-label>{{ 'ORDER_SEND.COUNTRY' | translate }}</mat-label>
+                <input matInput placeholder="{{ 'ORDER_SEND.COUNTRY' | translate }}" formControlName="pais" />
+              </mat-form-field>
+  
+              <mat-form-field appearance="outline" class="input-ciudad">
+                <mat-label>{{ 'ORDER_SEND.CITY' | translate }}</mat-label>
+                <input matInput placeholder="{{ 'ORDER_SEND.CITY' | translate }}" formControlName="ciudad" />
+              </mat-form-field>
+            </div>
+  
+            <mat-form-field appearance="outline" class="fecha">
+              <mat-label>{{ 'ORDER_SEND.DATE_LABEL' | translate }}</mat-label>
+              <input
+                matInput
+                [matDatepicker]="datepicker"
+                (dateChange)="onFechaChange($event)"
+                [matDatepickerFilter]="dateFilter"
+              />
+              <mat-datepicker #datepicker></mat-datepicker>
+              <mat-datepicker-toggle [for]="datepicker" matSuffix></mat-datepicker-toggle>
+              <mat-hint>{{ 'ORDER_SEND.DATE_HINT' | translate }}</mat-hint>
+            </mat-form-field>
+          </div>
+          <div class="boton-centro">
+            <button class="btn-continuar" mat-flat-button color="primary" (click)="onSubmit()">
+              {{ 'ORDER_SEND.SUBMIT_BUTTON' | translate }}
+            </button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    }
   </div>
-  </div>
-  </form>
+</div>

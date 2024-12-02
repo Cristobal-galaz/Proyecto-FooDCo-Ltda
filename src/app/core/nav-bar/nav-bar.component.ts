@@ -6,16 +6,22 @@ import { AuthService } from '../../services/auth.service';
 import { RouterLink } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { CommonModule } from '@angular/common';
+import { TranslateModule, TranslateService} from '@ngx-translate/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-nav-bar',
   standalone: true,
   imports: [
+    MatFormFieldModule, 
+    MatSelectModule,
     MatIconModule,
     MatMenuModule,
     MatButtonModule,
     RouterLink,
-    CommonModule // Asegúrate de incluir CommonModule aquí
+    CommonModule,
+    TranslateModule
   ],
   templateUrl: './nav-bar.component.html',
   styleUrl: './nav-bar.component.scss'
@@ -23,17 +29,39 @@ import { CommonModule } from '@angular/common';
 export class NavBarComponent {
   user: any = null;
   isLogged: boolean = false;
+  selected = '';
 
-  constructor(private auth: AuthService, private userService: UserService) { }
+  constructor(private auth: AuthService, private userService: UserService, private translate: TranslateService) { }
 
   ngOnInit(): void {
     this.auth.isLoggedIn$.subscribe((isLogged) => {
       this.isLogged = isLogged;
+      this.initLanguage();
       const userRole = this.userService.getTypeUser();
       if(userRole === 'Empleado'){
         this.loadUserProfile();
       }
     });
+  }
+
+  initLanguage(): void {
+    // Obtener el idioma actual o usar el predeterminado
+    if (typeof window !== 'undefined' && localStorage) {
+      const storedLang = localStorage.getItem('selectedLang');
+      this.selected = storedLang || 'es'; // Idioma seleccionado
+      this.translate.use(this.selected); // Usar el idioma seleccionado
+    }
+  }
+
+  cambiarIdioma(lang: string): void {
+    // Cambiar idioma dinámicamente
+    this.translate.use(lang);
+    this.selected = lang;
+
+    // Almacenar el idioma en localStorage
+    if (typeof window !== 'undefined' && localStorage) {
+      localStorage.setItem('selectedLang', lang);
+    }
   }
 
   loadUserProfile(): void {
