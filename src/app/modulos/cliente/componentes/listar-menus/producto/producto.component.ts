@@ -11,6 +11,7 @@ import{ MatDialog } from '@angular/material/dialog';
 import { DetalleProductoComponent } from './detalle-producto/detalle-producto.component';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { TranslateModule } from '@ngx-translate/core';
+import { AuthService } from '../../../../../services/auth.service';
 @Component({
   selector: 'app-producto',
   standalone: true,
@@ -21,8 +22,7 @@ import { TranslateModule } from '@ngx-translate/core';
 })
 export class ProductoComponent {
 constructor(private listaProductosService: ListaProductosService, private _matDialog: MatDialog,
-  private cdr: ChangeDetectorRef
-  
+  private cdr: ChangeDetectorRef, private auth: AuthService  
 ){}
 
   @Input() cardProduct!: Producto;
@@ -67,6 +67,9 @@ constructor(private listaProductosService: ListaProductosService, private _matDi
       horizontalPosition: this.horizontalPosition,
       verticalPosition: this.verticalPosition,
     });
+  }
+  authentificated() : boolean{
+    return this.auth.isAuthenticated();
   }
 }
 

@@ -22,6 +22,7 @@ export const routes: Routes = [
         path: 'orden',
         title: 'Orden',
         loadComponent: () => import('./pages/clientes/orden-de-compra/orden-de-compra.component').then(m => m.OrdenDeCompraComponent),
+        canActivate: [authGuard]
       },
       {
         path: 'historial',
